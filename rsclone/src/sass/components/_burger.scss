@@ -28,7 +28,7 @@
   }
 
   &__checkbox-input:checked ~ .header__menu-list {
-    right: 0;
+    left: 0;
   }
 
   &__checkbox-input:checked ~ &__lines {
