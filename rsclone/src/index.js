@@ -3,6 +3,7 @@ import {
 } from './js/components/index';
 import { Rules, Settings } from './js/pages/index';
 import { Extra, Constants } from './js/core/index';
+import { Authorization } from './js/components/authorization/authorization.component.js';
 
 class App {
   constructor() {
