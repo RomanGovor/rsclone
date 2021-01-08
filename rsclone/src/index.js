@@ -1,8 +1,8 @@
-import { Rules, Settings } from './js/pages/index';
-import { Constants, Extra, Storage } from './js/core/index';
 import {
-  Playground, SwitchLang, Animations, Player,
+  Playground, Player, Timer, Authorization, Animations,
 } from './js/components/index';
+import { Rules, Settings } from './js/pages/index';
+import { Extra, Constants } from './js/core/index';
 
 class App {
   constructor() {
@@ -103,3 +103,8 @@ class App {
 }
 
 const APP = new App();
+localStorage.setItem('isAuthorization', false);
+localStorage.setItem('token', null);
+const authorization = new Authorization();
+const authorizationLink = document.querySelector('.menu__item-authorization');
+authorizationLink.addEventListener('click', () => authorization.init());

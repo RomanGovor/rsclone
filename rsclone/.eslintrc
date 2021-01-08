@@ -16,7 +16,7 @@
     "no-underscore-dangle": "off",
     "new-cap": "off",
     "no-implied-eval": "off",
-    "import/extensions": "warn",
+	"no-console": "off",
     "no-unused-expressions": "warn",
     "no-shadow": "off"
   },

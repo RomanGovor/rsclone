@@ -1,4 +1,6 @@
-import { Constants, Extra } from '../core/index';
+
+import { Constants } from '../core/Constants';
+import { Extra } from '../core/services/Extra';
 
 export class Rules {
   constructor(lang) {
@@ -43,7 +45,7 @@ export class Rules {
        <span language="ru">Назад</span>
      `;
 
-    function handleClick(event) {
+    function handleClick() {
       const container = document.querySelector('.container__rules');
       Extra.clearContainer(container);
       Extra.hidePages(document.querySelector(Constants.MAIN_PAGE));
