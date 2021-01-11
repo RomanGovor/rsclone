@@ -5,34 +5,56 @@ class Player {
     this.gender = options.gender || 'man';
     this.score = options.score || 0;
     this.lang = options.lang || 'en';
+    this.avatar = options.avatar || null;
     this.render();
 
-    // this.changeScore(500);
-    // this.changeScore(-700);
+    this.bindEvents();
   }
 
   render() {
     this.player = document.createElement('div');
     this.player.classList = 'player';
 
-    // по идее тут должна быть форма, если будет что-то на бэк отправляться ??
     this.player.innerHTML = `
-      <div class='player__controls'>
-      <span>Кнопки еще что нужно? как в оригинале пауза/выход ?? </span>
-      <button class='player__answer-button'>Кнопочка</button>
-      </div>
-      <div class='player__info'>
-        <div class='player__avatar player__avatar_${this.gender}'></div>
-        <span class='player__name'>${this.name}</span>
-        <span class='player__score'>${this.score}</span>
-      </div>
+    <div class='player__avatar player__avatar_${this.gender}'></div>
+    <div class='player__info'>
+    <span class='player__name'>${this.name}</span>
+    <span class='player__score'>${this.score}</span>
+    </div>
+    <div class='player__answer-field none'></div>
       `;
-    this.container.prepend(this.player);
+    this.addAvatar();
+    this.container.append(this.player);
   }
 
   changeScore(points) {
     this.score = Number(this.score) + Number(points);
     this.player.querySelector('.player__score').textContent = this.score;
+  }
+
+  addAvatar() {
+    if (this.avatar !== null) {
+      const ava = this.player.querySelector('.player__avatar');
+      ava.setAttribute('style', `background-image: ${this.avatar}`);
+    }
+  }
+
+  say(text = 'hello') {
+    const answer = this.player.querySelector('.player__answer-field');
+    answer.textContent = text;
+    answer.classList.remove('none');
+
+    setTimeout(() => {
+      answer.classList.add('none');
+    }, 3000);
+  }
+
+  bindEvents() {
+    this.player.addEventListener('click', (e) => {
+      if (e.target.classList.contains('player__avatar')) {
+        this.say(`hello my name is ${this.name} and I'm ${this.gender} :)`);
+      }
+    });
   }
 }
 

@@ -27,10 +27,10 @@
       width: 60vw;
       height: 10vh;
       border-radius: 3px;
-      background: #BCD0E5;
+      background: #bcd0e5;
       border: 2px solid $color-recovered;
-      color: $color-text;                         ///////
-      font-family: 'Montserrat', sans-serif;      ///////
+      color: $color-text; ///////
+      font-family: 'Montserrat', sans-serif; ///////
       cursor: pointer;
       transition: 0.3s all;
 
@@ -70,7 +70,7 @@
   }
 
   &__active {
-    width: 20%;
+    width: 25%;
     background: $color-yellow;
   }
 
@@ -80,8 +80,11 @@
   }
 
   &__players {
-    width: 30%;
+    width: 25%;
     background: $color-violet;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .none {

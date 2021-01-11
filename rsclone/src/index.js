@@ -1,8 +1,8 @@
 import StartMenu from './js/StartMenu';
 import Playground from './js/Playground';
 import Player from './js/Player';
-import BotsContainer from './js/BotsContainer';
-import Bot from './js/Bot';
+// import BotsContainer from './js/BotsContainer';
+// import Bot from './js/Bot';
 
 class App {
   constructor() {
@@ -12,28 +12,34 @@ class App {
     this.startMenu = new StartMenu({
       lang: this.language,
     });
-    this.startMenu.show();
+    // this.startMenu.show();
 
     this.playground = new Playground({});
 
-    this.player = new Player({ name: 'Sam' });
+    this.player = new Player({ name: 'Pushkin', avatar: 'url(../assets/img/ava1.jpg)' });
 
-    this.botsContainer = new BotsContainer({});
-    // console.log('this.botsContainer ', this.botsContainer);
-    // this.botsContainer.classList.add('bots-container');
+    this.player.changeScore(500);
+
     this.bots = {
-      bot1: new Bot({
+      bot1: new Player({
         name: 'Bot 1',
-        container: this.botsContainer.botsContainer,
         avatar: 'url(../assets/img/bot.jpg)',
+        score: -700,
       }),
-      bot2: new Bot({
+      bot2: new Player({
         name: 'Bot 2',
-        container: this.botsContainer.botsContainer,
         gender: 'woman',
+        avatar: 'url(../assets/img/ava3.jpg)',
+        score: 1900,
       }),
-      bot3: new Bot({ name: 'Bot 3', container: this.botsContainer.botsContainer }),
+      bot3: new Player({
+        name: 'Bot 3',
+        avatar: 'url(../assets/img/ava2.jpg)',
+      }),
     };
+    this.bots.bot3.changeScore(777);
+
+    this.bindOpenBurgerHandler();
   }
 
   setEvents() {
@@ -60,6 +66,21 @@ class App {
     });
     ruStings.forEach((el) => {
       el.classList.toggle('none');
+    });
+  }
+
+  bindOpenBurgerHandler() {
+    const burger = document.querySelector('.burger-menu__lines');
+    burger.addEventListener('click', () => {
+      const wrap = document.querySelector('#main');
+      console.log('JJJJj ', this.startMenu.isOpen(), wrap);
+      if (this.startMenu.isOpen()) {
+        this.startMenu.hide();
+        wrap.classList.remove('none');
+      } else {
+        this.startMenu.show();
+        wrap.classList.add('none');
+      }
     });
   }
 }

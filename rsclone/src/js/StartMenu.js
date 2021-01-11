@@ -53,5 +53,9 @@ class StartMenu {
   show() {
     this.menu.classList.remove('none');
   }
+
+  isOpen() {
+    return !this.menu.classList.contains('none');
+  }
 }
 export default StartMenu;
