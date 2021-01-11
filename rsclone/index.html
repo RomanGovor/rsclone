@@ -61,7 +61,24 @@
             <h1>То, что выше - это меню которое видит любой пользователь, когда заходит на сайт</h1>
             <h1>То, что ниже - сама игра. короч при нажатии на меню выше будет открываться игровое поле</h1>
             <div class="container__game">
-                <div class="container__active">Активный игрок + может быть чат и прочее</div>
+                <div class="container__active">
+                    <div class="timer">
+                        <figure class="clock">
+                            <div class="clock__mins">0</div>
+                            <div>:</div>
+                            <div class="clock__secs">00</div>
+                            <audio src="./src/assets/audio/bell.mp3"></audio>
+                            <svg class="clock__progress-ring" height="120" width="120">
+                                <circle class="progress-ring__circle circle-color" stroke-width="8" fill="transparent" r="50" cx="60" cy="60"/>
+                            </svg>
+                        </figure>
+
+                        <div class="timer__btn-group">
+                            <button class="button timer__start">start focus</button>
+                            <button class="button timer__pause">pause</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="container__playground">Игровое поле и кнопки взаимодействия</div>
                 <div class="container__players">Все игроки</div>
             </div>
