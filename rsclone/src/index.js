@@ -1,7 +1,10 @@
+import { Timer } from './js/Timer.js';
+
 class App {
   constructor() {
     this.language = 'en';
     this.setEvents();
+    this.TIMER = new Timer();
   }
 
   setEvents() {

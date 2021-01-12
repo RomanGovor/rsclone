@@ -1,0 +1,100 @@
+.timer {
+  &__btn-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10%;
+    margin: 35px 0;
+  }
+
+  button {
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    font-size: 18px;
+    transition: 0.5s ease-in-out;
+  }
+
+  &__start {
+    background: $color-blue;
+    color: $color-light;
+  }
+
+  &__break {
+    background: $color-break;
+    color: $color-black;
+  }
+
+  &__reset {
+    background: $color-reset;
+    color: $color-black;
+  }
+
+  &__pause {
+    background: $color-additional
+  }
+
+  &__resume {
+    background: $color-resume;
+    color: $color-light;
+  }
+
+  .clock {
+    padding: 3px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    height: 30%;
+    font-size: 24px;
+
+    &__progress-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .progress-ring__circle {
+    transition: 0.5s;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+  }
+
+  .circle-color {
+    stroke: $color-circle;
+  }
+
+  &__danger {
+    stroke: $color-danger;
+    animation: pulse 0.9s ease-in-out infinite;
+  }
+
+  @media screen and (min-width: $content-little-width) {
+    &__btn-group {
+      justify-content: center;
+    }
+    .clock {
+      grid-area: clock;
+      height: 100%;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: rotate(-90deg) scale(1);
+  }
+  50% {
+    transform: rotate(-90deg) scale(1.05);
+  }
+  75% {
+    transform: rotate(-90deg) scale(0.8);
+  }
+}
+
+
+
