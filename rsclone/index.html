@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,7 +49,7 @@
                     <span language="en">Single player with bots</span>
                     <span class="none" language="ru">Одиночная игра с ботами</span>
                 </div>
-                <div class="main-menu__item">
+                <div class="main-menu__item menu-settings">
                     <span language="en">Settings</span>
                     <span class="none" language="ru">Настройки</span>
                 </div>
@@ -57,9 +57,42 @@
                     <span language="en">Multiplayer</span>
                     <span class="none" language="ru">Мультиплеер</span>
                 </div>
+                <div class="main-menu__item menu-rules">
+                    <span language="en">About the game</span>
+                    <span class="none" language="ru">Об игре</span>
+                </div>
             </div>
-            <h1>То, что выше - это меню которое видит любой пользователь, когда заходит на сайт</h1>
-            <h1>То, что ниже - сама игра. короч при нажатии на меню выше будет открываться игровое поле</h1>
+
+            <div class="container__rules"></div>
+            <div class="container__settings none">
+                <div class="settings">
+                    <div class="settings__header">
+                        <span language="en">Settings</span>
+                        <span class="none" language="ru">Настройки</span>
+                    </div>
+                    <div class="settings__description">
+                        <div class="settings__music">
+                            <div class="settings__label">
+                                <span language="en">Background music</span>
+                                <span class="none" language="ru">Фоновая музыка</span>
+                            </div>
+                            <input class="settings__checkbox checkbox-music" type="checkbox">
+                        </div>
+                        <div class="settings__background">
+                            <div class="settings__label">
+                                <span language="en">Dark mode</span>
+                                <span class="none" language="ru">Темная тема</span>
+                            </div>
+                            <input class="settings__checkbox checkbox-background" type="checkbox">
+                        </div>
+                    </div>
+                    <button class="settings__button-back">
+                        <span language="en">Back</span>
+                        <span class="none" language="ru">Назад</span>
+                    </button>
+                </div>
+            </div>
+
             <div class="container__game">
                 <div class="container__active">
                     <div class="timer">
@@ -67,7 +100,6 @@
                             <div class="clock__mins">0</div>
                             <div>:</div>
                             <div class="clock__secs">00</div>
-                            <audio src="./src/assets/audio/bell.mp3"></audio>
                             <svg class="clock__progress-ring" height="120" width="120">
                                 <circle class="progress-ring__circle circle-color" stroke-width="8" fill="transparent" r="50" cx="60" cy="60"/>
                             </svg>

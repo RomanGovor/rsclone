@@ -7,7 +7,9 @@
   justify-content: center;
   min-height: 70vh;
 
-  &__menu {
+  &__menu,
+  &__rules,
+  &__settings {
     display: flex;
     align-items: center;
     justify-content: center;

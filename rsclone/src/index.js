@@ -1,32 +1,38 @@
 import { Timer } from './js/Timer.js';
+import { Extra } from './js/Extra.js';
+import { Rules } from './js/Rules.js';
+import {Settings} from "./js/Settings.js";
 
 class App {
   constructor() {
     this.language = 'en';
     this.setEvents();
     this.TIMER = new Timer();
+    this.SETTINGS = new Settings();
   }
 
   setEvents() {
     const switchGameModeBtn = document.querySelector('.switch__checkbox');
+    const menuRulesBtn = document.querySelector('.menu-rules');
+    const menuSettingsBtn = document.querySelector('.menu-settings');
+
     switchGameModeBtn.addEventListener('change', () => {
       const switchEn = document.querySelector('.switch__en');
       const switchRu = document.querySelector('.switch__ru');
       switchRu.classList.toggle('none');
       switchEn.classList.toggle('none');
+      this.language = this.language === 'en' ? 'ru' : 'en';
 
-      this.translateStrings();
+      Extra.translate(this.language);
     });
-  }
 
-  translateStrings() {
-    const enStings = document.querySelectorAll('[language="en"]');
-    const ruStings = document.querySelectorAll('[language="ru"]');
-    enStings.forEach((el) => {
-      el.classList.toggle('none');
+    menuRulesBtn.addEventListener('click', () => {
+      const rules = new Rules(this.language);
     });
-    ruStings.forEach((el) => {
-      el.classList.toggle('none');
+
+    menuSettingsBtn.addEventListener('click', () => {
+      const container = document.querySelector('.container__settings');
+      container.classList.remove('none');
     });
   }
 }
