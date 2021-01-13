@@ -6,6 +6,7 @@ export class Settings {
     this.audio = null;
     this.setSettingsEvents();
     this.playMusic();
+    this.renderAvatars();
   }
 
   setSettingsEvents() {
@@ -17,9 +18,26 @@ export class Settings {
     });
 
     btnBack.addEventListener('click', () => {
-       const container = document.querySelector('.container__settings');
-       container.classList.add('none');
+      const container = document.querySelector('.container__settings');
+      // btnBack.lastChild.addEventListener('transitionend', () => {
+      //   container.classList.add('none');
+      // });
     });
+  }
+
+  renderAvatars() {
+    const avatarsContainer = document.createElement('div');
+    const btnBack = document.querySelector('.settings__button-back');
+
+    avatarsContainer.classList.add('avatars');
+    for (let i = 0; i < 24; i++) {
+      const image = new Image(150, 150);
+      image.src = `./assets/images/avatars/avatar_${i + 1}.jpg`;
+      image.classList.add('avatars__item');
+      avatarsContainer.append(image);
+    }
+
+    btnBack.before(avatarsContainer);
   }
 
   playMusic() {

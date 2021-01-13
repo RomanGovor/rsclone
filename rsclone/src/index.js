@@ -1,7 +1,8 @@
 import { Timer } from './js/Timer.js';
 import { Extra } from './js/Extra.js';
 import { Rules } from './js/Rules.js';
-import {Settings} from "./js/Settings.js";
+import { Settings } from './js/Settings.js';
+import { Animations } from './js/Animations.js';
 
 class App {
   constructor() {
@@ -9,6 +10,7 @@ class App {
     this.setEvents();
     this.TIMER = new Timer();
     this.SETTINGS = new Settings();
+    this.ANIMATIONS = new Animations();
   }
 
   setEvents() {
