@@ -1,3 +1,5 @@
+import { Constants } from './Constants.js';
+
 export class Timer {
   constructor() {
     this.initial = 0;
@@ -51,7 +53,6 @@ export class Timer {
   }
 
   decrement() {
-    const bell = document.querySelector('audio');
     const mindiv = document.querySelector('.clock__mins');
     const secdiv = document.querySelector('.clock__secs');
     const startBtn = document.querySelector('.timer__start');
@@ -73,12 +74,13 @@ export class Timer {
       if (this.seconds < 10) {
         circle.classList.remove('circle-color');
         circle.classList.add('timer__danger');
-      }
-      else circle.classList.add('circle-color');
-    }
-     else {
+      } else circle.classList.add('circle-color');
+    } else {
       this.mins = 0;
       this.seconds = 0;
+      this.perc = 100;
+      this.setProgress(this.perc);
+      const bell = new Audio(Constants.BELL);
       bell.play();
 
       startBtn.classList.remove('timer__break');
