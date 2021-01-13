@@ -1,5 +1,5 @@
-import { Constants } from './Constants.js';
-import { Extra } from './Extra.js';
+import { Constants } from '../constants/Constants.js';
+import { Extra } from '../others/Extra.js';
 
 export class Rules {
   constructor(lang) {

@@ -1,8 +1,8 @@
-import { Timer } from './js/Timer.js';
-import { Extra } from './js/Extra.js';
-import { Rules } from './js/Rules.js';
-import { Settings } from './js/Settings.js';
-import { Animations } from './js/Animations.js';
+import { Timer } from './js/components/Timer.js';
+import { Extra } from './js/others/Extra.js';
+import { Rules } from './js/pages/Rules.js';
+import { Settings } from './js/pages/Settings.js';
+import { Animations } from './js/animation/Animations.js';
 
 class App {
   constructor() {

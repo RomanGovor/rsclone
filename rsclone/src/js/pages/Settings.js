@@ -1,4 +1,4 @@
-import { Constants } from './Constants.js';
+import { Constants } from '../constants/Constants.js';
 
 export class Settings {
   constructor() {
@@ -52,7 +52,6 @@ export class Settings {
   }
 
   countinueMusic() {
-    // this.audio.currentTime = 0;
     this.audio.play();
   }
 }
