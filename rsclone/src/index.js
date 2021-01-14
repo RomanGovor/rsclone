@@ -5,29 +5,42 @@ import { Extra } from './js/others/Extra.js';
 import { Rules } from './js/pages/Rules.js';
 import { Settings } from './js/pages/Settings.js';
 import { Animations } from './js/animation/Animations.js';
+import { Constants } from './js/constants/Constants';
 
 class App {
   constructor() {
     this.language = 'en';
     this.setEvents();
 
-    this.playground = new Playground({
-      lang: this.language,
-      allCategoriesEn: [
-        'Cat1',
-        'Cat2',
-        'Cat3',
-        'Cat4',
-        'Cat5',
-        'Cat1',
-        'Cat2',
-        'Cat3',
-        'Cat4',
-        'Cat5',
-      ],
-      allCategoriesRu: ['Кат1', 'Кат2', 'Кат3', 'Кат4', 'Кат5'],
+    this.TIMER = new Timer();
+    this.SETTINGS = new Settings();
+    this.ANIMATIONS = new Animations();
+
+    this.playground = null;
+    this.initPlayground();
+    this.addPlayers();
+  }
+
+  async initPlayground() {
+    const categoriesEn = [];
+    const categoriesRu = [];
+    const response = await fetch(Constants.URLS.categories);
+    const data = await response.json();
+    await data.rounds.forEach((el) => {
+      el.categories.forEach((cat) => {
+        categoriesEn.push(cat.categoryInfo.categoryNameEn);
+        categoriesRu.push(cat.categoryInfo.categoryNameRu);
+      });
     });
 
+    this.playground = new Playground({
+      lang: this.language,
+      allCategoriesEn: categoriesEn,
+      allCategoriesRu: categoriesRu,
+    });
+  }
+
+  addPlayers() {
     this.player = new Player({ name: 'Pushkin', avatar: 'url(../assets/img/ava1.jpg)' });
 
     this.player.changeScore(500);
@@ -46,14 +59,10 @@ class App {
       }),
       bot3: new Player({
         name: 'Bot 3',
-        avatar: 'url(../assets/img/ava2.jpg)',
+        // avatar: 'url(../assets/img/ava2.jpg)',
       }),
     };
     this.bots.bot3.changeScore(777);
-
-    this.TIMER = new Timer();
-    this.SETTINGS = new Settings();
-    this.ANIMATIONS = new Animations();
   }
 
   setEvents() {

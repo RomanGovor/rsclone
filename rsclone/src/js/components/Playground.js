@@ -4,44 +4,19 @@ class Playground {
     this.lang = options.lang || 'en';
     this.allCategoriesEn = options.allCategoriesEn || [];
     this.allCategoriesRu = options.allCategoriesRu || [];
-    // this.response();
-    // console.log(' this.allCategoriesEn ', this.allCategoriesEn);
     this.render();
     this.showCategories(this.lang === 'en' ? this.allCategoriesEn : this.allCategoriesRu);
   }
 
-  async render() {
-    await (() => {
-      this.playground = document.createElement('div');
-      this.playground.classList = 'playground';
-      this.container.append(this.playground);
+  render() {
+    this.playground = document.createElement('div');
+    this.playground.classList = 'playground';
+    this.container.append(this.playground);
 
-      this.createTable(this.lang === 'en' ? this.allCategoriesEn : this.allCategoriesRu);
-      this.createButton();
-    })();
+    this.createTable(this.lang === 'en' ? this.allCategoriesEn : this.allCategoriesRu);
+    this.createButton();
+    this.createScoreboard();
   }
-
-  // async response() {
-  //   const response = await fetch('../assets/quiz.json');
-  //   this.allCategoriesEn = [];
-  //   this.allCategoriesRu = [];
-  //   // console.log(response.ok);
-  //   if (response.ok) {
-  //     // const data = await response.json();
-  //     (await response.json()).rounds.forEach((el) => {
-  //       // console.log(el);
-  //       el.categories.forEach((cat) => {
-  //         // console.log(cat);
-  //         this.allCategoriesEn.push(cat.categoryInfo.categoryNameEn);
-  //         this.allCategoriesRu.push(cat.categoryInfo.categoryNameRu);
-  //       });
-  //     });
-  //   } else throw new Error(`Error ${response.status}`);
-  //   // TODO вывод категорий
-  //   // console.log('data ', data.rounds);
-  //   console.dir(this.allCategoriesEn);
-  //   console.dir(this.allCategoriesRu);
-  // }
 
   createTable(arr) {
     this.table = document.createElement('table');
@@ -75,6 +50,15 @@ class Playground {
           e.target.classList.remove('blink');
           e.target.textContent = '';
         }, 2500);
+        setTimeout(() => {
+          this.showQuestion();
+        }, 3000);
+
+        setTimeout(() => {
+          this.showTable();
+          this.showButton();
+          this.hideScoreboard();
+        }, 21000);
       }
     });
   }
@@ -99,10 +83,59 @@ class Playground {
       this.categoriesList.classList.add('playground__categories-list_animated');
     }, 0);
     setTimeout(() => {
+      this.showRound(1);
+    }, delay * 1000);
+    setTimeout(() => {
       this.categoriesList.classList.add('none');
       this.showTable();
       this.showButton();
-    }, delay * 1000);
+      this.hideScoreboard();
+    }, (delay + 3) * 1000);
+  }
+
+  createScoreboard() {
+    this.scoreboard = document.createElement('div');
+    this.scoreboard.classList = 'playground__scoreboard none';
+    this.answerInput = document.createElement('input');
+    this.answerInput.classList = 'playground__answer ';
+    this.answerInput.setAttribute('type', 'text');
+    this.scoreboard.append(this.answerInput);
+    this.playground.append(this.scoreboard);
+  }
+
+  showScoreboard() {
+    this.scoreboard.classList.remove('none');
+  }
+
+  hideScoreboard() {
+    this.scoreboard.classList.add('none');
+  }
+
+  showQuestion(question = 'question question question question???') {
+    if (this.answerButton && this.table) {
+      this.hideTable();
+      this.hideButton();
+    }
+    if (this.categoriesList) {
+      this.hideCategories();
+    }
+    this.showScoreboard();
+    setTimeout(() => {
+      this.scoreboard.textContent = `${question}`;
+    }, 1000);
+  }
+
+  showRound(count) {
+    if (this.answerButton && this.table) {
+      this.hideTable();
+      this.hideButton();
+    }
+    if (this.categoriesList) {
+      this.hideCategories();
+    }
+    this.showScoreboard();
+    this.scoreboard.textContent = `${this.lang === 'en' ? 'Round' : 'Раунд'} ${count}`;
+    // setTimeout(this.hideScoreboard(), 1000);
   }
 
   hideCategories() {
