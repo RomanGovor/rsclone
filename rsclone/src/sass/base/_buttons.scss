@@ -1,0 +1,36 @@
+button {
+  //position: relative;
+  //display: inline-block;
+  padding: 12px 36px;
+  margin: 10px 0;
+  color: $color-light;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  border-radius: 40px;
+  background-image: linear-gradient(90deg,$color-btn-gradient1,$color-btn-gradient2);
+  border: none;
+  overflow: hidden;
+  cursor: pointer;
+
+  span:not([language]){
+    position: absolute;
+    background: $color-light;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+    border-radius: 50%;
+    animation: animate-btn 1s linear infinite;
+    overflow: hidden;
+  };
+}
+
+@keyframes animate-btn {
+  0% {
+    @include size(0px, 0px);
+    opacity: 0.5;
+  }
+  100% {
+    @include size(500px, 500px);
+    opacity: 0;
+  }
+}

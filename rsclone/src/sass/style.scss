@@ -3,6 +3,7 @@
 
 @import 'base/base';
 @import 'base/switch';
+@import 'base/buttons';
 
 @import 'layouts/footer';
 @import 'layouts/wrapper';
@@ -18,3 +19,8 @@
 @import 'components/bot.scss';
 @import 'components/controls.scss';
 @import 'components/playground.scss';
+@import 'components/menu-list';
+@import 'components/burger';
+@import 'components/timer';
+@import 'components/rules';
+@import 'components/settings';

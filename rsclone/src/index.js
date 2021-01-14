@@ -1,6 +1,10 @@
-// import StartMenu from './js/StartMenu';
-import Playground from './js/Playground';
-import Player from './js/Player';
+import Playground from './js/components/Playground';
+import Player from './js/components/Player';
+import { Timer } from './js/components/Timer.js';
+import { Extra } from './js/others/Extra.js';
+import { Rules } from './js/pages/Rules.js';
+import { Settings } from './js/pages/Settings.js';
+import { Animations } from './js/animation/Animations.js';
 
 class App {
   constructor() {
@@ -46,32 +50,38 @@ class App {
       }),
     };
     this.bots.bot3.changeScore(777);
+
+    this.TIMER = new Timer();
+    this.SETTINGS = new Settings();
+    this.ANIMATIONS = new Animations();
   }
 
   setEvents() {
     const switchGameModeBtn = document.querySelector('.switch__checkbox');
+    const menuRulesBtn = document.querySelector('.menu-rules');
+    const menuSettingsBtn = document.querySelector('.menu-settings');
+
     switchGameModeBtn.addEventListener('change', () => {
       const switchEn = document.querySelector('.switch__en');
       const switchRu = document.querySelector('.switch__ru');
       switchRu.classList.toggle('none');
       switchEn.classList.toggle('none');
+      this.language = this.language === 'en' ? 'ru' : 'en';
 
       this.translateStrings();
-      // ?
       if (this.language === 'en') this.language = 'ru';
       else this.language = 'en';
       this.startMenu.renderByLang(this.language);
+      Extra.translate(this.language);
     });
-  }
 
-  translateStrings() {
-    const enStings = document.querySelectorAll('[language="en"]');
-    const ruStings = document.querySelectorAll('[language="ru"]');
-    enStings.forEach((el) => {
-      el.classList.toggle('none');
+    menuRulesBtn.addEventListener('click', () => {
+      const rules = new Rules(this.language);
     });
-    ruStings.forEach((el) => {
-      el.classList.toggle('none');
+
+    menuSettingsBtn.addEventListener('click', () => {
+      const container = document.querySelector('.container__settings');
+      container.classList.remove('none');
     });
   }
 }
