@@ -1,20 +1,28 @@
-import StartMenu from './js/StartMenu';
+// import StartMenu from './js/StartMenu';
 import Playground from './js/Playground';
 import Player from './js/Player';
-// import BotsContainer from './js/BotsContainer';
-// import Bot from './js/Bot';
 
 class App {
   constructor() {
     this.language = 'en';
     this.setEvents();
 
-    this.startMenu = new StartMenu({
+    this.playground = new Playground({
       lang: this.language,
+      allCategoriesEn: [
+        'Cat1',
+        'Cat2',
+        'Cat3',
+        'Cat4',
+        'Cat5',
+        'Cat1',
+        'Cat2',
+        'Cat3',
+        'Cat4',
+        'Cat5',
+      ],
+      allCategoriesRu: ['Кат1', 'Кат2', 'Кат3', 'Кат4', 'Кат5'],
     });
-    // this.startMenu.show();
-
-    this.playground = new Playground({});
 
     this.player = new Player({ name: 'Pushkin', avatar: 'url(../assets/img/ava1.jpg)' });
 
@@ -38,8 +46,6 @@ class App {
       }),
     };
     this.bots.bot3.changeScore(777);
-
-    this.bindOpenBurgerHandler();
   }
 
   setEvents() {
@@ -66,21 +72,6 @@ class App {
     });
     ruStings.forEach((el) => {
       el.classList.toggle('none');
-    });
-  }
-
-  bindOpenBurgerHandler() {
-    const burger = document.querySelector('.burger-menu__lines');
-    burger.addEventListener('click', () => {
-      const wrap = document.querySelector('#main');
-      console.log('JJJJj ', this.startMenu.isOpen(), wrap);
-      if (this.startMenu.isOpen()) {
-        this.startMenu.hide();
-        wrap.classList.remove('none');
-      } else {
-        this.startMenu.show();
-        wrap.classList.add('none');
-      }
     });
   }
 }
