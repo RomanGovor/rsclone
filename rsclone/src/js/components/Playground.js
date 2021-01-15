@@ -102,44 +102,55 @@ class Playground {
     this.question.classList = 'playground__question';
     this.scoreboard.append(this.question);
 
-    this.answerInput = document.createElement('input');
-    this.answerInput.classList = 'playground__answer-input';
-    this.answerInput.setAttribute('type', 'text');
+    this.answerInput = document.createElement('div');
+    this.answerInput.classList = 'playground__answer_input';
+    const isEn = this.lang === 'en' ? 'enter answer' : 'введите ответ';
+    const isEnBtn = this.lang === 'en' ? 'Reply' : 'Ответить';
+    this.answerInput.innerHTML = `
+      <input type='text' class='playground__answer-input' placeholder='${isEn}'></input>
+      <button class='playground__answer-button'>${isEnBtn}</button>
+    `;
     this.scoreboard.append(this.answerInput);
 
-    this.answerRadio = document.createElement('div');
-    this.answerRadio.classList = 'playground__answer-radio none';
-    this.answerRadio.innerHTML = `
-    <label class="playground__answer-radio-buttons">
-      <input type="radio" name="answer" checked>Option 1
-    </label>
-    <label class="playground__answer-radio-buttons">
-      <input type="radio" name="answer">Option 2
-    </label>
-    <label class="playground__answer-radio-buttons">
-      <input type="radio" name="answer">Option 3
-    </label>
-    <label class="playground__answer-radio-buttons">
-      <input type="radio" name="answer">Option 4
-    </label>
+    this.answerCheckbox = document.createElement('div');
+    this.answerCheckbox.classList = 'playground__answer_checkbox none';
+    this.answerCheckbox.innerHTML = `
+      <button class='playground__answer-button-checkbox'>Option 1</button>
+      <button class='playground__answer-button-checkbox'>Option 2</button>
+      <button class='playground__answer-button-checkbox'>Option 3</button>
+      <button class='playground__answer-button-checkbox'>Option 4</button>
     `;
-    this.scoreboard.append(this.answerRadio);
+    this.scoreboard.append(this.answerCheckbox);
 
     this.playground.append(this.scoreboard);
+
+    this.bindAnswerButtonsEvents();
   }
 
-  showScoreboard() {
-    this.showButton();
-    this.scoreboard.classList.remove('none');
+  bindAnswerButtonsEvents() {
+    this.answerInput.addEventListener('click', (e) => {
+      if (e.target.classList.contains('playground__answer-button')) {
+        if (this.answerInput.querySelector('.playground__answer-input').value !== '') {
+          this.hideScoreboard();
+          this.showTable();
+          this.showButton();
+        }
+      }
+    });
+
+    this.answerCheckbox.addEventListener('click', (e) => {
+      if (e.target.classList.contains('playground__answer-button-checkbox')) {
+        this.hideScoreboard();
+        this.showTable();
+        this.showButton();
+      }
+    });
   }
 
-  hideScoreboard() {
-    this.scoreboard.classList.add('none');
-  }
-
-  showQuestion(question = 'question question question question???', type = 'input') {
-    if (this.table) {
+  showQuestion(question = 'question question question question???', type = 'checkbox') {
+    if (this.table && this.answerButton) {
       this.hideTable();
+      this.hideButton();
     }
     if (this.categoriesList) {
       this.hideCategories();
@@ -148,10 +159,10 @@ class Playground {
     this.question.textContent = `${question}`;
     if (type === 'input') {
       this.answerInput.classList.remove('none');
-      this.answerRadio.classList.add('none');
-      this.answerInput.value = '';
+      this.answerCheckbox.classList.add('none');
+      this.answerInput.querySelector('.playground__answer-input').value = '';
     } else if (type === 'checkbox') {
-      this.answerRadio.classList.remove('none');
+      this.answerCheckbox.classList.remove('none');
       this.answerInput.classList.add('none');
     }
     // setTimeout(() => {}, 0);
@@ -183,21 +194,9 @@ class Playground {
     }, 1000);
   }
 
-  hideCategories() {
-    this.categoriesList.classList.add('none');
-  }
-
-  hideTable() {
-    this.table.classList.add('none');
-  }
-
-  showTable() {
-    this.table.classList.remove('none');
-  }
-
   createButton() {
     this.answerButton = document.createElement('button');
-    this.answerButton.textContent = 'Кнопочка';
+    this.answerButton.textContent = '';
     this.answerButton.classList.add('controls__answer-button');
     this.container.append(this.answerButton);
   }
@@ -208,6 +207,27 @@ class Playground {
 
   showButton() {
     this.answerButton.classList.remove('none');
+  }
+
+  showScoreboard() {
+    // this.showButton();
+    this.scoreboard.classList.remove('none');
+  }
+
+  hideScoreboard() {
+    this.scoreboard.classList.add('none');
+  }
+
+  hideCategories() {
+    this.categoriesList.classList.add('none');
+  }
+
+  hideTable() {
+    this.table.classList.add('none');
+  }
+
+  showTable() {
+    this.table.classList.remove('none');
   }
 
   clear() {
