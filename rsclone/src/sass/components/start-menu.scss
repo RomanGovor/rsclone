@@ -1,0 +1,39 @@
+@import '../abstracts/constants.scss';
+
+.start-menu {
+  font-size: $font-size-main;
+  margin: 0 auto;
+
+  &__list {
+    display: block;
+    list-style: none;
+    box-sizing: border-box;
+    min-width: 400px;
+    margin: 0;
+    padding: 20px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    max-height: 100px;
+    width: 60vw;
+    height: 10vh;
+    border-radius: 3px;
+    background: #bcd0e5;
+    border: 2px solid $color-recovered;
+    color: $color-text;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: 0.3s all;
+    font-size: 2rem;
+    font-weight: bold;
+
+    &:hover {
+      background: $color-hovered;
+      transform: scale(1.2);
+    }
+  }
+}

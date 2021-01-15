@@ -1,0 +1,91 @@
+@import '../abstracts/constants.scss';
+
+.player {
+  position: relative;
+  font-size: 1rem;
+  width: 100%;
+  // border: 2px solid $color-border;
+  background-color: rgba($color: $color-border, $alpha: 0.2);
+  border-radius: 5px;
+  display: flex;
+
+  &_active {
+    background-color: rgba($color: rgb(246, 250, 8), $alpha: 0.2);
+  }
+
+  &__avatar {
+    width: 100px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 5px auto;
+    background-size: cover;
+
+    @media (max-width: $content-middle-width) {
+      width: 80px;
+      height: 120px;
+    }
+    @media (max-width: $content-middle-keyboard) {
+      width: 75px;
+      height: 100px;
+    }
+
+    &_man {
+      background-image: url('../assets/img/man.png');
+    }
+
+    &_woman {
+      background-image: url('../assets/img/woman.png');
+    }
+  }
+
+  &__info {
+    width: 50%;
+    height: 100%;
+    // margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-around;
+    align-items: center;
+    font-size: 2rem;
+
+    @media (max-width: $content-big-width) {
+      font-size: 1.75rem;
+    }
+    @media (max-width: $content-hd-width) {
+      font-size: 1.5rem;
+    }
+    @media (max-width: $content-middle-width) {
+      font-size: 1.25rem;
+    }
+    @media (max-width: $content-middle-keyboard) {
+      font-size: 1rem;
+    }
+  }
+
+  &__name {
+    width: 100%;
+    display: block;
+    text-align: center;
+    color: $color-primary;
+    margin: 5px 0;
+  }
+
+  &__score {
+    margin: auto 0 10px;
+    color: cornsilk;
+  }
+
+  &__answer-field {
+    position: absolute;
+    padding: 10px;
+    top: -30%;
+    right: 90%;
+    border-radius: 20px;
+    min-width: 50%;
+    min-height: 60%;
+    background-color: rgba($color: white, $alpha: 0.9);
+    color: black;
+    font-style: 1rem;
+    z-index: 10;
+  }
+}

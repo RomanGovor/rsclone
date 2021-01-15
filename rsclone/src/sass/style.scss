@@ -1,18 +1,26 @@
-@import "abstracts/constants";
-@import "abstracts/mixins";
+@import 'abstracts/constants';
+@import 'abstracts/mixins';
 
-@import "base/base";
-@import "base/switch";
-@import "base/buttons";
+@import 'base/base';
+@import 'base/switch';
+@import 'base/buttons';
 
-@import "layouts/footer";
-@import "layouts/wrapper";
-@import "layouts/header";
-@import "layouts/background";
-@import "layouts/container";
+@import 'layouts/footer';
+@import 'layouts/wrapper';
+@import 'layouts/header';
+@import 'layouts/background';
+@import 'layouts/container';
 
-@import "components/menu-list";
-@import "components/burger";
-@import "components/timer";
-@import "components/rules";
-@import "components/settings";
+@import 'components/menu-list';
+@import 'components/burger';
+
+@import 'components/start-menu.scss';
+@import 'components/player.scss';
+@import 'components/bot.scss';
+@import 'components/controls.scss';
+@import 'components/playground.scss';
+@import 'components/menu-list';
+@import 'components/burger';
+@import 'components/timer';
+@import 'components/rules';
+@import 'components/settings';

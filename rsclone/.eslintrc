@@ -15,7 +15,9 @@
     "no-case-declarations": "off",
     "no-underscore-dangle": "off",
     "new-cap": "off",
-    "no-implied-eval": "off"
+    "no-implied-eval": "off",
+    "import/extensions": "warn",
+    "no-unused-expressions": "warn"
   },
   "env": {
     "es6": true,
