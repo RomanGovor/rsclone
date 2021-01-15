@@ -16,6 +16,7 @@ class Playground {
     this.createTable(this.lang === 'en' ? this.allCategoriesEn : this.allCategoriesRu);
     this.createButton();
     this.createScoreboard();
+    this.createRound();
   }
 
   createTable(arr) {
@@ -96,14 +97,39 @@ class Playground {
   createScoreboard() {
     this.scoreboard = document.createElement('div');
     this.scoreboard.classList = 'playground__scoreboard none';
+
+    this.question = document.createElement('p');
+    this.question.classList = 'playground__question';
+    this.scoreboard.append(this.question);
+
     this.answerInput = document.createElement('input');
-    this.answerInput.classList = 'playground__answer ';
+    this.answerInput.classList = 'playground__answer-input';
     this.answerInput.setAttribute('type', 'text');
     this.scoreboard.append(this.answerInput);
+
+    this.answerRadio = document.createElement('div');
+    this.answerRadio.classList = 'playground__answer-radio none';
+    this.answerRadio.innerHTML = `
+    <label class="playground__answer-radio-buttons">
+      <input type="radio" name="answer" checked>Option 1
+    </label>
+    <label class="playground__answer-radio-buttons">
+      <input type="radio" name="answer">Option 2
+    </label>
+    <label class="playground__answer-radio-buttons">
+      <input type="radio" name="answer">Option 3
+    </label>
+    <label class="playground__answer-radio-buttons">
+      <input type="radio" name="answer">Option 4
+    </label>
+    `;
+    this.scoreboard.append(this.answerRadio);
+
     this.playground.append(this.scoreboard);
   }
 
   showScoreboard() {
+    this.showButton();
     this.scoreboard.classList.remove('none');
   }
 
@@ -111,31 +137,50 @@ class Playground {
     this.scoreboard.classList.add('none');
   }
 
-  showQuestion(question = 'question question question question???') {
-    if (this.answerButton && this.table) {
+  showQuestion(question = 'question question question question???', type = 'input') {
+    if (this.table) {
       this.hideTable();
-      this.hideButton();
     }
     if (this.categoriesList) {
       this.hideCategories();
     }
     this.showScoreboard();
-    setTimeout(() => {
-      this.scoreboard.textContent = `${question}`;
-    }, 1000);
+    this.question.textContent = `${question}`;
+    if (type === 'input') {
+      this.answerInput.classList.remove('none');
+      this.answerRadio.classList.add('none');
+      this.answerInput.value = '';
+    } else if (type === 'checkbox') {
+      this.answerRadio.classList.remove('none');
+      this.answerInput.classList.add('none');
+    }
+    // setTimeout(() => {}, 0);
   }
 
-  showRound(count) {
-    if (this.answerButton && this.table) {
+  createRound() {
+    this.round = document.createElement('h2');
+    this.round.textContent = `${this.lang === 'en' ? 'Round' : 'Раунд'} 1`;
+    this.round.classList = 'playground__round none';
+    this.playground.append(this.round);
+  }
+
+  showRound(count = 1) {
+    if (this.table && this.answerButton) {
       this.hideTable();
       this.hideButton();
+      this.hideScoreboard();
     }
     if (this.categoriesList) {
       this.hideCategories();
     }
-    this.showScoreboard();
-    this.scoreboard.textContent = `${this.lang === 'en' ? 'Round' : 'Раунд'} ${count}`;
-    // setTimeout(this.hideScoreboard(), 1000);
+    this.round.classList.remove('none');
+    this.round.textContent = `${this.lang === 'en' ? 'Round' : 'Раунд'} ${count}`;
+
+    setTimeout(() => {
+      this.round.classList.add('none');
+      this.showTable();
+      this.showButton();
+    }, 1000);
   }
 
   hideCategories() {
