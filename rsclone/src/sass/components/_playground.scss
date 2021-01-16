@@ -19,6 +19,7 @@
   }
   @media (max-width: $content-middle-keyboard) {
     font-size: 1rem;
+    min-height: 400px;
   }
 
   &__table {
@@ -113,18 +114,48 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     vertical-align: middle;
   }
 
   &__question {
     width: 100%;
-    height: 100%;
+    font-size: 1.5rem;
+    // height: 100%;
     text-align: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     vertical-align: middle;
+    margin: 0;
+    @media (max-width: $content-middle-keyboard) {
+      font-size: 1rem;
+    }
+
+    &-descriptions {
+      margin-top: 10px;
+      font-size: 1.5rem;
+      text-align: justify;
+      @media (max-width: $content-middle-keyboard) {
+        font-size: 1rem;
+      }
+    }
+
+    &-picture {
+      max-width: 400px;
+      width: 100%;
+      max-height: 400px;
+      height: auto;
+      margin: auto;
+
+      @media (max-width: $content-middle-keyboard) {
+        max-width: 300px;
+        width: 100%;
+        max-height: 300px;
+        height: auto;
+      }
+    }
   }
 
   &__answer {
@@ -140,12 +171,19 @@
       flex-wrap: wrap;
       flex-direction: column;
       padding: 20px;
+      @media (max-width: $content-hd-width) {
+        font-size: 0.75rem;
+        padding: 10px;
+      }
+      @media (max-width: $content-middle-keyboard) {
+        padding: 5px;
+      }
     }
 
     &_checkbox {
-      width: 90%;
+      width: 100%;
       height: max-content;
-      background: white;
+      // background: white;
       border-radius: 5px;
       font-size: 1rem;
       text-align: center;
@@ -153,11 +191,17 @@
       justify-content: space-between;
       flex-wrap: wrap;
       padding: 20px;
+      margin-bottom: 5px;
+
+      @media (max-width: $content-middle-width) {
+        padding: 10px;
+        font-size: 0.75rem;
+      }
     }
 
     &-input {
       width: 100%;
-      font-size: 2rem;
+      font-size: 1rem;
       text-align: center;
       border-radius: 5px;
       border: 2px solid lightseagreen;
@@ -165,11 +209,8 @@
       padding: 10px;
       margin-bottom: 10px;
 
-      @media (max-width: $content-middle-width) {
-        font-size: 1.25rem;
-      }
       @media (max-width: $content-middle-keyboard) {
-        font-size: 1rem;
+        font-size: 0.75rem;
       }
       @media (max-width: $content-little-width) {
         font-size: 0.6rem;
@@ -183,8 +224,27 @@
       text-align: center;
 
       &-checkbox {
+        font-size: 1rem;
         width: 45%;
+
+        @media (max-width: $content-hd-width) {
+          font-size: 0.85rem;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+        @media (max-width: $content-middle-width) {
+          font-size: 0.5rem;
+        }
+        @media (max-width: $content-middle-keyboard) {
+          font-size: 0.25rem;
+        }
       }
+    }
+
+    &-picture {
+      margin: auto;
+      width: 90%;
+      height: auto;
     }
   }
 }

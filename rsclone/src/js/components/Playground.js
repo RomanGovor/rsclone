@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 // import {Extra} from "../core/services/Extra.js";
 import { Timer } from './Timer';
 
@@ -58,7 +59,19 @@ export class Playground {
         }, 2500);
 
         setTimeout(() => {
-          this.showQuestion();
+          this.showQuestion({
+            type: 'checkbox',
+            subtype: 'picture',
+            points: 100,
+            questionRu: 'Выберите правильный мультфильм по картинке',
+            questionEn: 'Choose the right cartoon from the picture',
+            questionPicture:
+              'https://regnum.ru/uploads/pictures/news/2017/11/22/regnum_picture_1511370887532540_normal.jpg',
+            answerOptionsEn: ['Dunno on the Moon', 'Hercules', 'Tarzan', 'Futurama'],
+            answerOptionsRu: ['Незнайка на луне', 'Геркулес', 'Тарзан', 'Футурама'],
+            trueAnswerEn: 'Dunno on the Moon',
+            trueAnswerRu: 'Незнайка на луне',
+          });
           this.TIMER = new Timer();
         }, 3000);
 
@@ -109,23 +122,29 @@ export class Playground {
     this.question.classList = 'playground__question';
     this.scoreboard.append(this.question);
 
+    const isEnCheckbox = this.lang === 'en' ? '' : ' none';
+    const isRuCheckbox = this.lang === 'ru' ? '' : ' none';
     this.answerInput = document.createElement('div');
     this.answerInput.classList = 'playground__answer_input';
-    const isEn = this.lang === 'en' ? 'enter answer' : 'введите ответ';
-    const isEnBtn = this.lang === 'en' ? 'Reply' : 'Ответить';
     this.answerInput.innerHTML = `
-      <input type='text' class='playground__answer-input' placeholder='${isEn}'>
-      <button class='playground__answer-button'>${isEnBtn}</button>
+      <input type='text' class='playground__answer-input${isEnCheckbox}' placeholder='enter answer' language='en'>
+      <button class='playground__answer-button${isEnCheckbox}' language='en'>Reply</button>
+      <input type='text' class='playground__answer-input${isRuCheckbox}' placeholder='введите ответ' language='ru'>
+      <button class='playground__answer-button${isRuCheckbox}' language='ru'>Ответить</button>
     `;
     this.scoreboard.append(this.answerInput);
 
     this.answerCheckbox = document.createElement('div');
     this.answerCheckbox.classList = 'playground__answer_checkbox none';
     this.answerCheckbox.innerHTML = `
-      <button class='playground__answer-button-checkbox'>Option 1</button>
-      <button class='playground__answer-button-checkbox'>Option 2</button>
-      <button class='playground__answer-button-checkbox'>Option 3</button>
-      <button class='playground__answer-button-checkbox'>Option 4</button>
+      <button class='playground__answer-button-checkbox${isEnCheckbox}' language='en'>Option 1</button>
+      <button class='playground__answer-button-checkbox${isEnCheckbox}' language='en'>Option 2</button>
+      <button class='playground__answer-button-checkbox${isEnCheckbox}' language='en'>Option 3</button>
+      <button class='playground__answer-button-checkbox${isEnCheckbox}' language='en'>Option 4</button>
+      <button class='playground__answer-button-checkbox${isRuCheckbox}' language='ru'>Опция 1</button>
+      <button class='playground__answer-button-checkbox${isRuCheckbox}' language='ru'>Опция 2</button>
+      <button class='playground__answer-button-checkbox${isRuCheckbox}' language='ru'>Опция 3</button>
+      <button class='playground__answer-button-checkbox${isRuCheckbox}' language='ru'>Опция 4</button>
     `;
     this.scoreboard.append(this.answerCheckbox);
 
@@ -147,6 +166,7 @@ export class Playground {
 
     this.answerCheckbox.addEventListener('click', (e) => {
       if (e.target.classList.contains('playground__answer-button-checkbox')) {
+        // TODO проверка на правильность ответа нужно сюда
         this.hideScoreboard();
         this.showTable();
         this.showButton();
@@ -154,7 +174,7 @@ export class Playground {
     });
   }
 
-  showQuestion(question = 'question question question question???', type = 'checkbox') {
+  showQuestion(question) {
     if (this.table && this.answerButton) {
       this.hideTable();
       this.hideButton();
@@ -163,16 +183,59 @@ export class Playground {
       this.hideCategories();
     }
     this.showScoreboard();
-    this.question.textContent = `${question}`;
-    if (type === 'input') {
+    // this.question.textContent = `${question[0]}`;
+    const isEn = this.lang === 'en' ? '' : ' none';
+    const isRu = this.lang === 'ru' ? '' : ' none';
+    const isQuestionPicture = question.questionPicture === undefined ? ' none' : '';
+    const isQuestionDescriptionEn =
+      question.descriptionEn === undefined ? '' : question.descriptionEn;
+    const isQuestionDescriptionRu =
+      question.descriptionRu === undefined ? '' : question.descriptionRu;
+    this.question.innerHTML = `
+      <strong class='playground__question${isEn}' language='en'>${question.questionEn}</strong>
+      <strong class='playground__question${isRu}' language='ru'>${question.questionRu}</strong>
+      <span class='playground__question-descriptions${isEn}' language='en'>${isQuestionDescriptionEn}</span>
+      <span class='playground__question-descriptions${isRu}' language='ru'>${isQuestionDescriptionRu}</span>
+      <img src='${question.questionPicture}' class='playground__question-picture${isQuestionPicture}' width=200 height=200>
+      <img src='${question.answerPicture}' class='playground__answer-picture none' width=200 height=200>
+    `;
+
+    if (question.type === 'checkbox') {
+      this.changeAnswerOptionsValue(question.answerOptionsEn, question.answerOptionsRu);
+    }
+
+    if (question.type === 'input') {
       this.answerInput.classList.remove('none');
       this.answerCheckbox.classList.add('none');
       this.answerInput.querySelector('.playground__answer-input').value = '';
-    } else if (type === 'checkbox') {
+    } else if (question.type === 'checkbox') {
       this.answerCheckbox.classList.remove('none');
       this.answerInput.classList.add('none');
     }
     // setTimeout(() => {}, 0);
+  }
+
+  changeAnswerOptionsValue(OptionsEn, OptionsRu) {
+    this.answerCheckbox
+      .querySelectorAll('.playground__answer-button-checkbox[language="ru"]')
+      .forEach((child, index) => {
+        child.textContent = OptionsRu[index];
+      });
+    this.answerCheckbox
+      .querySelectorAll('.playground__answer-button-checkbox[language="en"]')
+      .forEach((child, index) => {
+        child.textContent = OptionsEn[index];
+      });
+  }
+
+  showAnswerPicture(picture) {
+    if (picture !== undefined) {
+      const pict = this.question.querySelector('.playground__answer-picture');
+      pict.classList.remove('none');
+      setTimeout(() => {
+        pict.classList.add('none');
+      }, 3000);
+    }
   }
 
   createRound() {

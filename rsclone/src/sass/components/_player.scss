@@ -60,6 +60,9 @@
     @media (max-width: $content-middle-keyboard) {
       font-size: 1rem;
     }
+    @media (max-width: $content-little-width) {
+      font-size: 0.75rem;
+    }
   }
 
   &__name {
