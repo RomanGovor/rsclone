@@ -29,10 +29,11 @@
       border-radius: 3px;
       background: #bcd0e5;
       border: 2px solid $color-recovered;
-      color: $color-text; ///////
-      font-family: 'Montserrat', sans-serif; ///////
+      color: $color-text;
+      font-family: 'Montserrat', sans-serif;
       cursor: pointer;
       transition: 0.3s all;
+      text-align: center;
 
       &:hover {
         background: $color-hovered;

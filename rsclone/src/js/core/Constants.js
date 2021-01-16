@@ -18,4 +18,5 @@ export const Constants = {
   URLS: {
     categories: '../assets/quiz.json',
   },
+  MAIN_PAGE: '.main-menu',
 };

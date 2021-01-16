@@ -17,7 +17,8 @@
     "new-cap": "off",
     "no-implied-eval": "off",
     "import/extensions": "warn",
-    "no-unused-expressions": "warn"
+    "no-unused-expressions": "warn",
+    "no-shadow": "off"
   },
   "env": {
     "es6": true,

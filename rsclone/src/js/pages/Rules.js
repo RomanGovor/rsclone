@@ -1,5 +1,4 @@
-import { Constants } from '../constants/Constants.js';
-import { Extra } from '../others/Extra.js';
+import { Constants, Extra } from '../core/index';
 
 export class Rules {
   constructor(lang) {
@@ -11,6 +10,8 @@ export class Rules {
   renderRules() {
     const container = document.querySelector('.container__rules');
     Extra.clearContainer(container);
+    Extra.hidePages(container);
+
     const rules = document.createElement('div');
     rules.classList.add('rules');
 
@@ -45,6 +46,7 @@ export class Rules {
     function handleClick(event) {
       const container = document.querySelector('.container__rules');
       Extra.clearContainer(container);
+      Extra.hidePages(document.querySelector(Constants.MAIN_PAGE));
       btn.removeEventListener('click', handleClick);
     }
 

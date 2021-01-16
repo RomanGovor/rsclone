@@ -37,6 +37,9 @@ module.exports = (env, options) => {
       path: path.join(__dirname, '/dist'),
       filename: 'script.js',
     },
+    resolve: {
+      extensions: ['.js'],
+    },
 
     module: {
       rules: [

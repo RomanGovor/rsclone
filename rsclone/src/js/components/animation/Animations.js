@@ -13,8 +13,6 @@ export class Animations {
         const x = e.pageX;
         const y = e.pageY - 76;
 
-        console.log(e);
-
         const ripples = document.createElement('span');
         ripples.style.left = `${x}px`;
         ripples.style.top = `${y}px`;

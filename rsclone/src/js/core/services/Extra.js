@@ -18,4 +18,17 @@ export class Extra {
       container.removeChild(container.firstChild);
     }
   }
+
+  static delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  static hidePages(active) {
+    const container = document.querySelector('.wrapper .container');
+    for (let i = 0; i < container.childElementCount; i++) {
+      const el = container.children[i];
+      if (active === el) el.classList.remove('none');
+      else el.classList.add('none');
+    }
+  }
 }

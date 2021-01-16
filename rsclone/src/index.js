@@ -1,24 +1,22 @@
-import Playground from './js/components/Playground';
-import Player from './js/components/Player';
-import { Timer } from './js/components/Timer.js';
-import { Extra } from './js/others/Extra.js';
-import { Rules } from './js/pages/Rules.js';
-import { Settings } from './js/pages/Settings.js';
-import { Animations } from './js/animation/Animations.js';
-import { Constants } from './js/constants/Constants';
+import { Rules, Settings } from './js/pages/index';
+import { Constants, Extra, Storage } from './js/core/index';
+import {
+  Playground, SwitchLang, Animations, Player,
+} from './js/components/index';
 
 class App {
   constructor() {
-    this.language = 'en';
+    this.language = Storage.getLanguage();
+    this.SWITCHLANG = new SwitchLang(this.language);
+
     this.setEvents();
 
-    this.TIMER = new Timer();
     this.SETTINGS = new Settings();
     this.ANIMATIONS = new Animations();
 
     this.playground = null;
-    this.initPlayground();
-    this.addPlayers();
+    Extra.hidePages(document.querySelector(Constants.MAIN_PAGE));
+    Extra.translate(this.language);
   }
 
   async initPlayground() {
@@ -69,28 +67,37 @@ class App {
     const switchGameModeBtn = document.querySelector('.switch__checkbox');
     const menuRulesBtn = document.querySelector('.menu-rules');
     const menuSettingsBtn = document.querySelector('.menu-settings');
+    const menuPlaygroundBtn = document.querySelector('.menu-single-player');
 
     switchGameModeBtn.addEventListener('change', () => {
       const switchEn = document.querySelector('.switch__en');
       const switchRu = document.querySelector('.switch__ru');
       switchRu.classList.toggle('none');
       switchEn.classList.toggle('none');
-      this.language = this.language === 'en' ? 'ru' : 'en';
 
-      this.translateStrings();
-      if (this.language === 'en') this.language = 'ru';
-      else this.language = 'en';
-      this.startMenu.renderByLang(this.language);
+      this.language = this.language === 'en' ? 'ru' : 'en';
+      Storage.setLanguage(this.language);
+
+      // this.startMenu.renderByLang(this.language);
       Extra.translate(this.language);
     });
 
+    menuPlaygroundBtn.addEventListener('click', () => {
+      const containerGame = document.querySelector('.container__game');
+      Extra.hidePages(containerGame);
+
+      this.initPlayground();
+      this.addPlayers();
+    });
+
     menuRulesBtn.addEventListener('click', () => {
+      // this.language = Storage.getLanguage();
       const rules = new Rules(this.language);
     });
 
     menuSettingsBtn.addEventListener('click', () => {
       const container = document.querySelector('.container__settings');
-      container.classList.remove('none');
+      Extra.hidePages(container);
     });
   }
 }

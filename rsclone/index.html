@@ -45,7 +45,7 @@
     <main class="wrapper" id="main">
         <div class="container">
             <div class="container__menu main-menu">
-                <div class="main-menu__item">
+                <div class="main-menu__item menu-single-player">
                     <span language="en">Single player with bots</span>
                     <span class="none" language="ru">Одиночная игра с ботами</span>
                 </div>
@@ -62,9 +62,8 @@
                     <span class="none" language="ru">Об игре</span>
                 </div>
             </div>
-
             <div class="container__rules"></div>
-            <div class="container__settings none">
+            <div class="container__settings">
                 <div class="settings">
                     <div class="settings__header">
                         <span language="en">Settings</span>
@@ -93,27 +92,10 @@
                     </button>
                 </div>
             </div>
-
             <div class="container__game">
-                <div class="container__active">
-                    <div class="timer">
-                        <figure class="clock">
-                            <div class="clock__mins">0</div>
-                            <div>:</div>
-                            <div class="clock__secs">00</div>
-                            <svg class="clock__progress-ring" height="120" width="120">
-                                <circle class="progress-ring__circle circle-color" stroke-width="8" fill="transparent" r="50" cx="60" cy="60"/>
-                            </svg>
-                        </figure>
-
-                        <div class="timer__btn-group">
-                            <button class="button timer__start">start focus</button>
-                            <button class="button timer__pause">pause</button>
-                        </div>
-                    </div>
-                </div>
+                <div class="container__active"></div>
                 <div class="container__playground"></div>
-                <div class="container__players">Все игроки</div>
+                <div class="container__players"></div>
             </div>
         </div>
     </main>

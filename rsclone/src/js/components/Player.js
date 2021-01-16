@@ -1,4 +1,4 @@
-class Player {
+export class Player {
   constructor(options) {
     this.container = options.container || document.querySelector('.container__players');
     this.name = options.name || 'Player';
@@ -57,5 +57,3 @@ class Player {
     });
   }
 }
-
-export default Player;

@@ -1,6 +1,10 @@
-class Playground {
+// import {Extra} from "../core/services/Extra.js";
+import { Timer } from './Timer';
+
+export class Playground {
   constructor(options) {
     this.container = options.container || document.querySelector('.container__playground');
+
     this.lang = options.lang || 'en';
     this.allCategoriesEn = options.allCategoriesEn || [];
     this.allCategoriesRu = options.allCategoriesRu || [];
@@ -47,19 +51,22 @@ class Playground {
     this.table.addEventListener('click', (e) => {
       if (e.target.classList.contains('cell')) {
         e.target.classList.add('blink');
+
         setTimeout(() => {
           e.target.classList.remove('blink');
           e.target.textContent = '';
         }, 2500);
+
         setTimeout(() => {
           this.showQuestion();
+          this.TIMER = new Timer();
         }, 3000);
 
         setTimeout(() => {
           this.showTable();
           this.showButton();
           this.hideScoreboard();
-        }, 21000);
+        }, 24000);
       }
     });
   }
@@ -107,7 +114,7 @@ class Playground {
     const isEn = this.lang === 'en' ? 'enter answer' : 'введите ответ';
     const isEnBtn = this.lang === 'en' ? 'Reply' : 'Ответить';
     this.answerInput.innerHTML = `
-      <input type='text' class='playground__answer-input' placeholder='${isEn}'></input>
+      <input type='text' class='playground__answer-input' placeholder='${isEn}'>
       <button class='playground__answer-button'>${isEnBtn}</button>
     `;
     this.scoreboard.append(this.answerInput);
@@ -234,5 +241,3 @@ class Playground {
     this.playground.innerHTML = '';
   }
 }
-
-export default Playground;

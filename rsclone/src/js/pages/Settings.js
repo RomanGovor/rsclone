@@ -1,4 +1,4 @@
-import { Constants } from '../constants/Constants.js';
+import { Constants, Extra } from '../core/index';
 
 export class Settings {
   constructor() {
@@ -18,10 +18,9 @@ export class Settings {
     });
 
     btnBack.addEventListener('click', () => {
-      const container = document.querySelector('.container__settings');
-      // btnBack.lastChild.addEventListener('transitionend', () => {
-      //   container.classList.add('none');
-      // });
+      Extra.delay(1000).then(() => {
+        Extra.hidePages(document.querySelector(Constants.MAIN_PAGE));
+      });
     });
   }
 
