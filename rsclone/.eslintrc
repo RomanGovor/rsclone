@@ -19,7 +19,7 @@
     "no-shadow": "off",
     "import/extensions": "warn",
     "no-unused-expressions": "warn",
-	"no-console": "off",
+	  "no-console": "off"
   },
   "env": {
     "es6": true,
