@@ -1,8 +1,8 @@
 import {
-  Playground, Player, Timer, Authorization, Animations,
+  Playground, Player, Timer, Authorization, Animations, SwitchLang,
 } from './js/components/index';
 import { Rules, Settings } from './js/pages/index';
-import { Extra, Constants } from './js/core/index';
+import { Extra, Constants, Storage } from './js/core/index';
 
 class App {
   constructor() {

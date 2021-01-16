@@ -1,4 +1,3 @@
-
 import { Constants } from '../core/Constants';
 import { Extra } from '../core/services/Extra';
 
@@ -32,7 +31,6 @@ export class Rules {
     rulesDescription.append(descEn, descRu);
 
     const btnBack = this.appendButtonBack();
-
     rules.append(rulesHeader, rulesDescription, btnBack);
     container.append(rules);
   }
