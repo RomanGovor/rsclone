@@ -9,17 +9,13 @@
   overflow: hidden;
   position: relative;
   transition: all 0.5s;
-  // background: rgb(240, 62, 61);
-  // background: radial-gradient(circle, rgba(240, 62, 61, 1) 0%, rgba(236, 79, 217, 1) 100%);
-  // border: 10px solid black;
-  // border-top: 0;
 
   @media (max-width: $content-middle-width) {
     font-size: 1.25rem;
   }
   @media (max-width: $content-middle-keyboard) {
     font-size: 1rem;
-    min-height: 400px;
+    height: 400px;
   }
 
   &__table {
@@ -155,6 +151,10 @@
         max-height: 300px;
         height: auto;
       }
+      @media (max-width: $content-middle-keyboard) {
+        max-width: 250px;
+        max-height: 170px;
+      }
     }
   }
 
@@ -235,9 +235,6 @@
         @media (max-width: $content-middle-width) {
           font-size: 0.5rem;
         }
-        @media (max-width: $content-middle-keyboard) {
-          font-size: 0.25rem;
-        }
       }
     }
 
@@ -247,6 +244,10 @@
       height: auto;
     }
   }
+}
+
+.non-clickable {
+  pointer-events: none;
 }
 
 .blink {
