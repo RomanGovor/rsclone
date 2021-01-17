@@ -49,8 +49,8 @@ padding: 30px 20px;
   display: block;
 }
 
-.authorization__form-massage {
-  margin-bottom: 10px;
+.authorization__form-message {
+  margin-bottom: 15px;
   color: red;
   text-align: center;
 }
@@ -108,4 +108,38 @@ cursor: pointer;
   .authorization__form-nickname {
     display: block;
   }
+}
+
+.tooltip {
+  position: fixed;
+  padding: 10px 20px;
+  border: 1px solid #b3c9ce;
+  border-radius: 4px;
+  text-align: center;
+  font: italic 14px/1.3 sans-serif;
+  color: #333;
+  background: #fff;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+  z-index: 2001;
+}
+
+button.authorization__form-buttonSubmit:disabled {
+  background-image: linear-gradient(90deg, #d0d8e0, #d0d8e0);
+  cursor: default;
+}
+
+.header {
+  position: relative;
+}
+
+.header__user {
+  position: absolute;
+  display: flex;
+  right: 10;
+  top: 5px;
+  padding: 5px;
+}
+
+.header__userAuthotization {
+  margin-right: 25px;
 }

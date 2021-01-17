@@ -18,6 +18,7 @@ export const Constants = {
   URLS: {
     categories: '../assets/quiz.json',
   },
+  MAIN_PAGE: '.main-menu',
 };
 
 const PathSignUp = 'https://reclone-be-2.herokuapp.com/users';
@@ -25,6 +26,14 @@ const PathSignIn = 'https://reclone-be-2.herokuapp.com/users/login';
 const PathGetAndPutRequest = 'https://reclone-be-2.herokuapp.com/users/me';
 const PathLogout = 'https://rsclone-be-2.herokuapp.com/users/me/logout';
 const PathLogoutAll = 'https://rsclone-be-2.herokuapp.com/users/me/logoutall';
+const EmptyUserData = {
+  numberOfGames: '0',
+  maximumNumberOfWins: '0',
+  points: '0',
+  averagePoints: '0',
+  averagePlayTime: '0',
+  maximumPlayTime: '0',
+};
 
 export {
   PathSignIn,
@@ -32,4 +41,5 @@ export {
   PathGetAndPutRequest,
   PathLogout,
   PathLogoutAll,
+  EmptyUserData,
 };

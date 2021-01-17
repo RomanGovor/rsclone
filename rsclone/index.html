@@ -1,160 +1,113 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SiGame</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,500;0,800;1,100;1,200;1,400;1,700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="wrap">
-      <header class="wrapper">
-        <div class="header">
+<div class="wrap">
+  <header class="wrapper">
+      <div class="header">
+          <div class="header__user">
+              <a href="#!" type="button" class="header__userAuthotization"></a>
+              <div class="header__userName"></div>
+          </div>
           <div class="header__menu">
-            <div class="burger-menu">
-              <input
-                type="checkbox"
-                id="hmt"
-                class="burger-menu__checkbox-input"
-              />
-              <label class="burger-menu__lines" for="hmt">
-                <div class="line line-1"></div>
-                <div class="line line-2"></div>
-                <div class="line line-3"></div>
-              </label>
-              <div class="header__menu-list">
-                <ul class="menu-list-ul">
-                  <li class="menu__item active-item">Main page</li>
-                  <li class="menu__item">Action (set A)</li>
-                  <li class="menu__item">Action (set B)</li>
-                  <li class="menu__item menu__item-authorization">
-                    Authorization
-                  </li>
-                </ul>
+              <div class="burger-menu">
+                  <input type="checkbox" id="hmt" class="burger-menu__checkbox-input">
+                  <label class="burger-menu__lines" for="hmt">
+                      <div class="line line-1"></div>
+                      <div class="line line-2"></div>
+                      <div class="line line-3"></div>
+                  </label>
+                  <div class="header__menu-list">
+                      <ul class="menu-list-ul">
+                          <li class="menu__item active-item">Main page</li>
+                          <li class="menu__item">Action (set A)</li>
+                          <li class="menu__item">Action (set B)</li> 
+                          <li class="menu__item menu__item-authorization">Author</li> 
+                      </ul>
+                  </div>
               </div>
-            </div>
           </div>
           <div class="header__logo">
-            <h1 class="title">SiGame</h1>
+              <h1 class="title">SiGame</h1>
           </div>
           <div class="header__switch switch">
-            <input type="checkbox" class="switch__checkbox" id="checkbox" />
-            <label for="checkbox" class="switch__checkbox-label"></label>
-            <span class="switch__en">En</span>
-            <span class="switch__ru none">Ru</span>
-            <span class="switch__bg"></span>
+              <input type="checkbox" class="switch__checkbox" id="checkbox">
+              <label for="checkbox" class="switch__checkbox-label"></label>
+              <span class="switch__en">En</span>
+              <span class="switch__ru none">Ru</span>
+              <span class="switch__bg"></span>
           </div>
-        </div>
-      </header>
-
-    <main class="wrapper" id="main">
-        <div class="container">
-            <div class="container__menu main-menu">
-                <div class="main-menu__item menu-single-player">
-                    <span language="en">Single player with bots</span>
-                    <span class="none" language="ru">Одиночная игра с ботами</span>
-                </div>
-                <div class="main-menu__item menu-settings">
-                    <span language="en">Settings</span>
-                    <span class="none" language="ru">Настройки</span>
-                </div>
-                <div class="main-menu__item">
-                    <span language="en">Multiplayer</span>
-                    <span class="none" language="ru">Мультиплеер</span>
-                </div>
-                <div class="main-menu__item menu-rules">
-                    <span language="en">About the game</span>
-                    <span class="none" language="ru">Об игре</span>
-                </div>
-            </div>
-            <div class="container__rules"></div>
-            <div class="container__settings">
-                <div class="settings">
-                    <div class="settings__header">
-                        <span language="en">Settings</span>
-                        <span class="none" language="ru">Настройки</span>
-                    </div>
-                    <div class="settings__description">
-                        <div class="settings__music">
-                            <div class="settings__label">
-                                <span language="en">Background music</span>
-                                <span class="none" language="ru">Фоновая музыка</span>
-                            </div>
-                            <input class="settings__checkbox checkbox-music" type="checkbox">
-                        </div>
-                        <div class="settings__background">
-                            <div class="settings__label">
-                                <span language="en">Dark mode</span>
-                                <span class="none" language="ru">Темная тема</span>
-                            </div>
-                            <input class="settings__checkbox checkbox-background" type="checkbox">
-                        </div>
-                    </div>
-
-                    <button class="settings__button-back">
-                        <span language="en">Back</span>
-                        <span class="none" language="ru">Назад</span>
-                    </button>
-                </div>
-            </div>
-            <div class="container__game">
-                <div class="container__active"></div>
-                <div class="container__playground"></div>
-                <div class="container__players"></div>
-            </div>
-            <div class="main-menu__item">
-              <span language="en">Multiplayer</span>
-              <span class="none" language="ru">Мультиплеер</span>
-            </div>
-          </div>
-          <h1>
-            То, что выше - это меню которое видит любой пользователь, когда
-            заходит на сайт
-          </h1>
-          <h1>
-            То, что ниже - сама игра. короч при нажатии на меню выше будет
-            открываться игровое поле
-          </h1>
-          <div class="container__game">
-            <div class="container__active">
-              Активный игрок + может быть чат и прочее
-            </div>
-            <div class="container__playground">
-              Игровое поле и кнопки взаимодействия
-            </div>
-            <div class="container__players">Все игроки</div>
-          </div>
-        </div>
-      </main>
-
-      <footer>
-        <div class="footer wrapper">
-          <div class="footer__author">
-            <a href="https://github.com/RomanGovor" target="#">Author 1</a>
-            <a href="https://github.com/ssamvelk" target="#">Author 2</a>
-            <a href="https://github.com/dubichtonya" target="#">Author 3</a>
-          </div>
-          <div class="footer__logo">
-            <img src="./assets/icons/rs_school_js.svg" alt="rs-logo" />
-          </div>
-          <div class="footer__courses">
-            <a href="https://rs.school/js/" target="#">JS courses</a>
-          </div>
-          <div>2021</div>
-        </div>
-      </footer>
-
-      <div class="background">
-        <label class="background__burger" for="hmt"></label>
       </div>
-    </div>
-  </body>
-</html>
+  </header>
+
+  <main class="wrapper" id="main">
+      <div class="container">
+          <div class="container__menu main-menu">
+              <div class="main-menu__item menu-single-player">
+                  <span language="en">Single player with bots</span>
+                  <span class="none" language="ru">Одиночная игра с ботами</span>
+              </div>
+              <div class="main-menu__item menu-settings">
+                  <span language="en">Settings</span>
+                  <span class="none" language="ru">Настройки</span>
+              </div>
+              <div class="main-menu__item">
+                  <span language="en">Multiplayer</span>
+                  <span class="none" language="ru">Мультиплеер</span>
+              </div>
+              <div class="main-menu__item menu-rules">
+                  <span language="en">About the game</span>
+                  <span class="none" language="ru">Об игре</span>
+              </div>
+          </div>
+          <div class="container__rules"></div>
+          <div class="container__settings">
+              <div class="settings">
+                  <div class="settings__header">
+                      <span language="en">Settings</span>
+                      <span class="none" language="ru">Настройки</span>
+                  </div>
+                  <div class="settings__description">
+                      <div class="settings__music">
+                          <div class="settings__label">
+                              <span language="en">Background music</span>
+                              <span class="none" language="ru">Фоновая музыка</span>
+                          </div>
+                          <input class="settings__checkbox checkbox-music" type="checkbox">
+                      </div>
+                      <div class="settings__background">
+                          <div class="settings__label">
+                              <span language="en">Dark mode</span>
+                              <span class="none" language="ru">Темная тема</span>
+                          </div>
+                          <input class="settings__checkbox checkbox-background" type="checkbox">
+                      </div>
+                  </div>
+
+                  <button class="settings__button-back">
+                      <span language="en">Back</span>
+                      <span class="none" language="ru">Назад</span>
+                  </button>
+              </div>
+          </div>
+          <div class="container__game">
+              <div class="container__active"></div>
+              <div class="container__playground"></div>
+              <div class="container__players"></div>
+          </div>
+      </div>
+  </main>
+
+  <footer>
+      <div class="footer wrapper">
+          <div class="footer__author">
+              <a href="https://github.com/RomanGovor" target="#">Author 1</a>
+              <a href="https://github.com/ssamvelk" target="#">Author 2</a>
+              <a href="https://github.com/dubichtonya" target="#">Author 3</a>
+          </div>
+          <div class="footer__logo"><img src="./assets/icons/rs_school_js.svg" alt="rs-logo"></div>
+          <div class="footer__courses"><a href="https://rs.school/js/" target="#">JS courses</a></div>
+          <div>2021</div>
+      </div>
+  </footer>
+
+  <div class="background">
+      <label class="background__burger" for="hmt"></label>
+  </div>
+</div>

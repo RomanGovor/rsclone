@@ -6,7 +6,7 @@ export class Settings {
     // this.isMusic = true;
     this.audio = null;
     this.setSettingsEvents();
-    this.playMusic();
+    // this.playMusic();
     this.renderAvatars();
   }
 

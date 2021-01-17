@@ -8,7 +8,7 @@ export class Request {
   }
 
   // Зарегистрироваться POST
-  signUp(data, callbackError) {
+  signUp(data, message, finish) {
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -17,13 +17,25 @@ export class Request {
       body: JSON.stringify(data),
     };
     fetch(PathSignUp, requestOptions)
-      .then((response) => response.json())
-      .then((result) => result)
-      .catch(callbackError());
+      .then((response) => {
+        if (response.status >= 400 && response.status < 600) {
+          message.innerHTML = 'Fill in the fields correctly.Try again';
+          setTimeout(() => {
+            message.innerHTML = 'Sign in';
+          }, 2000);
+        } else {
+          message.innerHTML = 'Registration was successful';
+          setTimeout(() => {
+            finish();
+          }, 2000);
+        }
+        return response.json();
+      }).then((result) => this.setUserDataInStorage(result))
+      .catch(() => { message.innerHTML = 'Enter the correct email'; });
   }
 
   // Войти POST
-  signIn(data, callbackError) {
+  signIn(data, message, finish) {
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -32,26 +44,39 @@ export class Request {
       body: JSON.stringify(data),
     };
     fetch(PathSignIn, requestOptions)
-      .then((response) => response.json())
-      .then((result) => result)
-      .catch(callbackError());
+      .then((response) => {
+        if (response.status >= 400 && response.status < 600) {
+          message.innerHTML = 'Fill in the fields correctly.Try again';
+          setTimeout(() => {
+            message.innerHTML = 'Authorization';
+          }, 2000);
+        } else {
+          message.innerHTML = 'Authorization was successful';
+          setTimeout(() => {
+            console.log(PathLogout);
+            finish();
+          }, 2000);
+        }
+        return response.json();
+      }).then((result) => this.setUserDataInStorage(result))
+      .catch(() => { message.innerHTML = 'Enter the correct data'; });
   }
 
-  logout(callbackError) {
+  logout() {
     const requestOptions = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.requestToken}`,
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     };
     fetch(PathLogout, requestOptions)
       .then((response) => response.json())
-      .then((result) => result)
-      .catch(callbackError());
+      .then(() => localStorage.setItem('isAuthorization', 'false'))
+      .catch((err) => { console.log(err); });
   }
 
-  logoutAll(callbackError) {
+  logoutAll() {
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -62,7 +87,7 @@ export class Request {
     fetch(PathLogoutAll, requestOptions)
       .then((response) => response.json())
       .then((result) => console.log(result))
-      .catch(callbackError());
+      .catch((err) => console.log(err));
   }
 
   // Получить данные клиента GET
@@ -76,7 +101,7 @@ export class Request {
     };
     fetch(PathGetAndPutRequest, requestOptions)
       .then((response) => response.json())
-      .then((result) => result)
+      .then((result) => this.setUserDataInStorage(result))
       .catch(callbackError());
   }
 
@@ -94,6 +119,12 @@ export class Request {
       .then((response) => response.json())
       .then((result) => console.log(result))
       .catch(callbackError());
+  }
+
+  setUserDataInStorage(result) {
+    localStorage.setItem('token', `${result.token}`);
+    localStorage.setItem('name', `${result.user.name}`);
+    localStorage.setItem('statistic', `${JSON.stringify(result.result.user.data)}`);
   }
 
   setTokenInStorage(token) {
