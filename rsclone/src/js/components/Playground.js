@@ -1,6 +1,8 @@
 /* eslint-disable operator-linebreak */
 // import {Extra} from "../core/services/Extra.js";
 import { Timer } from './Timer';
+import { Extra } from '../core';
+import { Storage } from '../core/services/Storage';
 
 export class Playground {
   constructor(options) {
@@ -9,8 +11,14 @@ export class Playground {
     this.lang = options.lang || 'en';
     this.allCategoriesEn = options.allCategoriesEn || [];
     this.allCategoriesRu = options.allCategoriesRu || [];
+    this.package = options.package || {};
+
+    this.categories = this.package.rounds[0].categories;
+    this.currentQuestion = null;
+
     this.render();
     this.showCategories(this.lang === 'en' ? this.allCategoriesEn : this.allCategoriesRu);
+    this.TIMER = null;
   }
 
   render() {
@@ -18,31 +26,54 @@ export class Playground {
     this.playground.classList = 'playground';
     this.container.append(this.playground);
 
+    this.createScoreboard();
     this.createTable(this.lang === 'en' ? this.allCategoriesEn : this.allCategoriesRu);
     this.createButton();
-    this.createScoreboard();
     this.createRound();
   }
 
   createTable(arr) {
     this.table = document.createElement('table');
     this.table.classList = 'playground__table';
-    let i = 0;
-    // eslint-disable-next-line operator-linebreak
-    const str =
-      "<td class='cell cell-1'>100</td><td class='cell cell-2'>200</td><td class='cell cell-3'>300</td><td class='cell cell-4'>400</td><td class='cell cell-5'>500</td>";
-    this.table.innerHTML = `
-    <tr class='row-${++i}'>
-    <th class='cell-0'>${arr[i - 1]}</th>${str}</tr>
-    <tr class='row-${++i}'>
-    <th class='cell-0'>${arr[i - 1]}</th>${str}</tr>
-    <tr class='row-${++i}'>
-    <th class='cell-0'>${arr[i - 1]}</th>${str}</tr>
-    <tr class='row-${++i}'>
-    <th class='cell-0'>${arr[i - 1]}</th>${str}</tr>
-    <tr class='row-${++i}'>
-    <th class='cell-0'>${arr[i - 1]}</th>${str}</tr>
-    `;
+    // let i = 0;
+
+    for (let i = 0; i < this.categories.length; i++) {
+      const row = document.createElement('tr');
+      row.classList.add(`row-${i + 1}`);
+
+      const th = document.createElement('th');
+      th.classList.add(`cell-${i}`);
+      th.textContent = arr[i];
+      row.append(th);
+
+      for (let j = 0; j < this.categories[i].questions.length; j++) {
+        const td = document.createElement('td');
+        td.classList.add('cell', `cell-${j + 1}`);
+        td.setAttribute('question-row', i);
+        td.setAttribute('question-column', j);
+        td.textContent = this.categories[i].questions[j].points;
+        row.append(td);
+      }
+      this.table.append(row);
+    }
+    // // eslint-disable-next-line operator-linebreak
+    // const str =
+    //   "<td class='cell cell-1'>100</td>
+    //   <td class='cell cell-2'>200</td><td class='cell cell-3'>300</td>
+    //   <td class='cell cell-4'>400</td><td class='cell cell-5'>500</td>";
+    // this.table.innerHTML = `
+    // <tr class='row-${++i}'>
+    // <th class='cell-0'>${arr[i - 1]}</th>${str}</tr>
+    //
+    // <tr class='row-${++i}'>
+    // <th class='cell-0'>${arr[i - 1]}</th>${str}</tr>
+    // <tr class='row-${++i}'>
+    // <th class='cell-0'>${arr[i - 1]}</th>${str}</tr>
+    // <tr class='row-${++i}'>
+    // <th class='cell-0'>${arr[i - 1]}</th>${str}</tr>
+    // <tr class='row-${++i}'>
+    // <th class='cell-0'>${arr[i - 1]}</th>${str}</tr>
+    // `;
     this.playground.append(this.table);
 
     this.bindTableEvent();
@@ -53,33 +84,47 @@ export class Playground {
       if (e.target.classList.contains('cell')) {
         e.target.classList.add('blink');
 
-        setTimeout(() => {
-          e.target.classList.remove('blink');
-          e.target.textContent = '';
-        }, 2500);
+        const row = +(e.target.getAttribute('question-row'));
+        const column = +(e.target.getAttribute('question-column'));
+        this.currentQuestion = this.categories[row].questions[column];
+        Storage.setCurrentQuestion(this.currentQuestion);
 
-        setTimeout(() => {
-          this.showQuestion({
-            type: 'checkbox',
-            subtype: 'picture',
-            points: 100,
-            questionRu: 'Выберите правильный мультфильм по картинке',
-            questionEn: 'Choose the right cartoon from the picture',
-            questionPicture:
-              'https://regnum.ru/uploads/pictures/news/2017/11/22/regnum_picture_1511370887532540_normal.jpg',
-            answerOptionsEn: ['Dunno on the Moon', 'Hercules', 'Tarzan', 'Futurama'],
-            answerOptionsRu: ['Незнайка на луне', 'Геркулес', 'Тарзан', 'Футурама'],
-            trueAnswerEn: 'Dunno on the Moon',
-            trueAnswerRu: 'Незнайка на луне',
+        Extra.delay(2500)
+          .then(() => {
+            e.target.classList.remove('blink');
+            e.target.textContent = '';
+          })
+          .then(() => {
+            Extra.delay(500)
+              .then(() => {
+                this.showQuestion(this.currentQuestion);
+                this.TIMER = new Timer();
+              })
+              .then(() => {
+                Extra.delay(21000).then(() => {
+                  this.showTable();
+                  this.showButton();
+                  this.hideScoreboard();
+                  this.currentQuestion = null;
+                });
+              });
           });
-          this.TIMER = new Timer();
-        }, 3000);
 
-        setTimeout(() => {
-          this.showTable();
-          this.showButton();
-          this.hideScoreboard();
-        }, 24000);
+        // setTimeout(() => {
+        //   e.target.classList.remove('blink');
+        //   e.target.textContent = '';
+        // }, 2500);
+        //
+        // setTimeout(() => {
+        // this.showQuestion(this.categories[row].questions[column]);
+        //   this.TIMER = new Timer();
+        // }, 3000);
+        //
+        // setTimeout(() => {
+        //   this.showTable();
+        //   this.showButton();
+        //   this.hideScoreboard();
+        // }, 24000);
       }
     });
   }
@@ -103,15 +148,26 @@ export class Playground {
     setTimeout(() => {
       this.categoriesList.classList.add('playground__categories-list_animated');
     }, 0);
+
     setTimeout(() => {
       this.showRound(1);
     }, delay * 1000);
+
     setTimeout(() => {
       this.categoriesList.classList.add('none');
       this.showTable();
       this.showButton();
       this.hideScoreboard();
     }, (delay + 3) * 1000);
+    this.clearInput();
+  }
+
+  clearInput() {
+    const inputs = document.querySelectorAll('.playground__answer-input');
+    inputs.forEach((input) => {
+      input.textContent = '';
+      input.value = '';
+    });
   }
 
   createScoreboard() {
@@ -122,54 +178,64 @@ export class Playground {
     this.question.classList = 'playground__question';
     this.scoreboard.append(this.question);
 
-    const isEnCheckbox = this.lang === 'en' ? '' : ' none';
-    const isRuCheckbox = this.lang === 'ru' ? '' : ' none';
     this.answerInput = document.createElement('div');
     this.answerInput.classList = 'playground__answer_input';
     this.answerInput.innerHTML = `
-      <input type='text' class='playground__answer-input${isEnCheckbox}' placeholder='enter answer' language='en'>
-      <button class='playground__answer-button${isEnCheckbox}' language='en'>Reply</button>
-      <input type='text' class='playground__answer-input${isRuCheckbox}' placeholder='введите ответ' language='ru'>
-      <button class='playground__answer-button${isRuCheckbox}' language='ru'>Ответить</button>
+      <input type='text' class='playground__answer-input' placeholder='enter answer' language='en'>
+      <button class='playground__answer-button' language='en'>Reply</button>
+      <input type='text' class='playground__answer-input' placeholder='введите ответ' language='ru'>
+      <button class='playground__answer-button' language='ru'>Ответить</button>
     `;
     this.scoreboard.append(this.answerInput);
 
     this.answerCheckbox = document.createElement('div');
     this.answerCheckbox.classList = 'playground__answer_checkbox none';
-    this.answerCheckbox.innerHTML = `
-      <button class='playground__answer-button-checkbox${isEnCheckbox}' language='en'>Option 1</button>
-      <button class='playground__answer-button-checkbox${isEnCheckbox}' language='en'>Option 2</button>
-      <button class='playground__answer-button-checkbox${isEnCheckbox}' language='en'>Option 3</button>
-      <button class='playground__answer-button-checkbox${isEnCheckbox}' language='en'>Option 4</button>
-      <button class='playground__answer-button-checkbox${isRuCheckbox}' language='ru'>Опция 1</button>
-      <button class='playground__answer-button-checkbox${isRuCheckbox}' language='ru'>Опция 2</button>
-      <button class='playground__answer-button-checkbox${isRuCheckbox}' language='ru'>Опция 3</button>
-      <button class='playground__answer-button-checkbox${isRuCheckbox}' language='ru'>Опция 4</button>
-    `;
-    this.scoreboard.append(this.answerCheckbox);
+    for (let i = 0; i < 4; i++) {
+      const button = Extra.createMultipleLanguageElement('button', ['playground__answer-button-checkbox'], 'Info', 'Инфо');
+      this.answerCheckbox.append(button);
+    }
 
+    // this.answerCheckbox.innerHTML = `
+    //   <button class='playground__answer-button-checkbox' language='en'>Option 1</button>
+    //   <button class='playground__answer-button-checkbox' language='en'>Option 2</button>
+    //   <button class='playground__answer-button-checkbox' language='en'>Option 3</button>
+    //   <button class='playground__answer-button-checkbox' language='en'>Option 4</button>
+    //   <button class='playground__answer-button-checkbox' language='ru'>Опция 1</button>
+    //   <button class='playground__answer-button-checkbox' language='ru'>Опция 2</button>
+    //   <button class='playground__answer-button-checkbox' language='ru'>Опция 3</button>
+    //   <button class='playground__answer-button-checkbox' language='ru'>Опция 4</button>
+    // `;
+    this.scoreboard.append(this.answerCheckbox);
     this.playground.append(this.scoreboard);
 
     this.bindAnswerButtonsEvents();
+    Extra.translate(this.lang);
   }
 
   bindAnswerButtonsEvents() {
     this.answerInput.addEventListener('click', (e) => {
-      if (e.target.classList.contains('playground__answer-button')) {
+      const button = e.target.closest('button');
+      if (!button) return;
+
+      if (button.classList.contains('playground__answer-button')) {
         if (this.answerInput.querySelector('.playground__answer-input').value !== '') {
           this.hideScoreboard();
           this.showTable();
           this.showButton();
+          this.TIMER.deleteTimer();
         }
       }
     });
 
     this.answerCheckbox.addEventListener('click', (e) => {
-      if (e.target.classList.contains('playground__answer-button-checkbox')) {
-        // TODO проверка на правильность ответа нужно сюда
+      const button = e.target.closest('button');
+      if (!button) return;
+
+      if (button.classList.contains('playground__answer-button-checkbox')) {
         this.hideScoreboard();
         this.showTable();
         this.showButton();
+        this.TIMER.deleteTimer();
       }
     });
   }
@@ -179,23 +245,20 @@ export class Playground {
       this.hideTable();
       this.hideButton();
     }
-    if (this.categoriesList) {
-      this.hideCategories();
-    }
+    if (this.categoriesList) this.hideCategories();
+
     this.showScoreboard();
     // this.question.textContent = `${question[0]}`;
-    const isEn = this.lang === 'en' ? '' : ' none';
-    const isRu = this.lang === 'ru' ? '' : ' none';
     const isQuestionPicture = question.questionPicture === undefined ? ' none' : '';
     const isQuestionDescriptionEn =
       question.descriptionEn === undefined ? '' : question.descriptionEn;
     const isQuestionDescriptionRu =
       question.descriptionRu === undefined ? '' : question.descriptionRu;
     this.question.innerHTML = `
-      <strong class='playground__question${isEn}' language='en'>${question.questionEn}</strong>
-      <strong class='playground__question${isRu}' language='ru'>${question.questionRu}</strong>
-      <span class='playground__question-descriptions${isEn}' language='en'>${isQuestionDescriptionEn}</span>
-      <span class='playground__question-descriptions${isRu}' language='ru'>${isQuestionDescriptionRu}</span>
+      <strong class='playground__question' language='en'>${question.questionEn}</strong>
+      <strong class='playground__question' language='ru'>${question.questionRu}</strong>
+      <span class='playground__question-descriptions' language='en'>${isQuestionDescriptionEn}</span>
+      <span class='playground__question-descriptions' language='ru'>${isQuestionDescriptionRu}</span>
       <img src='${question.questionPicture}' class='playground__question-picture${isQuestionPicture}' width=200 height=200>
       <img src='${question.answerPicture}' class='playground__answer-picture none' width=200 height=200>
     `;
@@ -208,24 +271,31 @@ export class Playground {
       this.answerInput.classList.remove('none');
       this.answerCheckbox.classList.add('none');
       this.answerInput.querySelector('.playground__answer-input').value = '';
+      this.clearInput();
     } else if (question.type === 'checkbox') {
       this.answerCheckbox.classList.remove('none');
       this.answerInput.classList.add('none');
     }
     // setTimeout(() => {}, 0);
+    Extra.translate(this.lang);
   }
 
   changeAnswerOptionsValue(OptionsEn, OptionsRu) {
     this.answerCheckbox
-      .querySelectorAll('.playground__answer-button-checkbox[language="ru"]')
+      .querySelectorAll('.playground__answer-button-checkbox span[language="ru"]')
       .forEach((child, index) => {
         child.textContent = OptionsRu[index];
+        child.value = OptionsRu[index];
       });
+
     this.answerCheckbox
-      .querySelectorAll('.playground__answer-button-checkbox[language="en"]')
+      .querySelectorAll('.playground__answer-button-checkbox span[language="en"]')
       .forEach((child, index) => {
         child.textContent = OptionsEn[index];
+        child.value = OptionsEn[index];
       });
+
+    Extra.translate(this.lang);
   }
 
   showAnswerPicture(picture) {

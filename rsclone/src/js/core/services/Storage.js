@@ -7,4 +7,13 @@ export class Storage {
   static setLanguage(lang) {
     localStorage.setItem('sigame/lang', lang);
   }
+
+  static getCurrentQuestion() {
+    const question = JSON.parse(sessionStorage.getItem('sigame/currentQuestion'));
+    return !question ? {} : question;
+  }
+
+  static setCurrentQuestion(question) {
+    sessionStorage.setItem('sigame/currentQuestion', JSON.stringify(question));
+  }
 }

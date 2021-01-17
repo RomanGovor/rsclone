@@ -19,4 +19,11 @@ export const Constants = {
     categories: '../assets/quiz.json',
   },
   MAIN_PAGE: '.main-menu',
+  ANSWER_INPUT: 'playground__answer_input',
+  ANSWER_CHECKBOX: 'playground__answer-button-checkbox',
+  PLAYGROUND: '.container__playground',
+  AUDIO: {
+    FAILURE: '../assets/audio/failure.mp3',
+    CORRECT: '../assets/audio/success.mp3',
+  },
 };

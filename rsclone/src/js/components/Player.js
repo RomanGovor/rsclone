@@ -29,7 +29,10 @@ export class Player {
 
   changeScore(points) {
     this.score = Number(this.score) + Number(points);
-    this.player.querySelector('.player__score').textContent = this.score;
+    const player = this.player.querySelector('.player__score');
+
+    player.textContent = this.score;
+    player.value = this.score;
   }
 
   addAvatar() {

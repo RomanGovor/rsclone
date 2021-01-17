@@ -35,13 +35,13 @@ class App {
       lang: this.language,
       allCategoriesEn: categoriesEn,
       allCategoriesRu: categoriesRu,
+      package: data,
     });
   }
 
   addPlayers() {
     this.player = new Player({ name: 'Pushkin', avatar: 'url(../assets/img/ava1.jpg)' });
-
-    this.player.changeScore(500);
+    this.player.changeScore(0);
 
     this.bots = {
       bot1: new Player({
@@ -57,7 +57,6 @@ class App {
       }),
       bot3: new Player({
         name: 'Bot 3',
-        // avatar: 'url(../assets/img/ava2.jpg)',
       }),
     };
     this.bots.bot3.changeScore(777);
@@ -88,10 +87,10 @@ class App {
 
       this.initPlayground();
       this.addPlayers();
+      this.checkAnswerButtonsEvents();
     });
 
     menuRulesBtn.addEventListener('click', () => {
-      // this.language = Storage.getLanguage();
       const rules = new Rules(this.language);
     });
 
@@ -99,6 +98,53 @@ class App {
       const container = document.querySelector('.container__settings');
       Extra.hidePages(container);
     });
+  }
+
+  checkAnswerButtonsEvents() {
+    const answerInput = document.querySelector(Constants.ANSWER_INPUT);
+    const playground = document.querySelector(Constants.PLAYGROUND);
+
+    playground.addEventListener('click', (e) => {
+      const button = e.target.closest('button');
+      if (!button) return;
+
+      if (button.classList.contains('playground__answer-button')) {
+        if (answerInput.value !== '') {
+          console.log(1);
+        }
+      }
+
+      if (button.classList.contains(Constants.ANSWER_CHECKBOX)) {
+        this.checkTrueAnswer(button);
+      }
+    });
+  }
+
+  checkTrueAnswer(checkbox = undefined) {
+    const currentQuestion = Storage.getCurrentQuestion();
+    if (currentQuestion.type === 'checkbox') this.checkTrueAnswerCheckbox(checkbox);
+    else this.checkTrueAnswerInput();
+  }
+
+  checkTrueAnswerCheckbox(checkbox) {
+    const currentQuestion = Storage.getCurrentQuestion();
+
+    const span = checkbox.querySelector('span[language=\'en\']');
+    if (span.value === currentQuestion.trueAnswerEn) {
+      this.updatePlayerScore(currentQuestion.points);
+      Extra.playAudio(Constants.AUDIO.CORRECT);
+    } else {
+      this.updatePlayerScore((-1) * currentQuestion.points);
+      Extra.playAudio(Constants.AUDIO.FAILURE);
+    }
+  }
+
+  updatePlayerScore(num) {
+    this.player.changeScore(num);
+  }
+
+  checkTrueAnswerInput() {
+    console.log('lf');
   }
 }
 

@@ -31,4 +31,29 @@ export class Extra {
       else el.classList.add('none');
     }
   }
+
+  static createMultipleLanguageElement(type, classList, textEn, textRu) {
+    const element = document.createElement(type);
+    element.classList.add(...classList);
+
+    const spanEn = this.createSpan('en', textEn);
+    const spanRu = this.createSpan('ru', textRu);
+
+    element.append(spanEn, spanRu);
+    return element;
+  }
+
+  static createSpan(lang, text) {
+    const span = document.createElement('span');
+    span.setAttribute('language', lang);
+    span.textContent = text;
+    span.value = text;
+
+    return span;
+  }
+
+  static playAudio(src) {
+    const audio = new Audio(src);
+    audio.play();
+  }
 }

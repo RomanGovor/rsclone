@@ -41,7 +41,7 @@ export class Settings {
 
   playMusic() {
     this.audio = new Audio(Constants.BACKGROUND_AUDIO);
-    this.audio.play();
+    // this.audio.play();
     this.audio.loop = true;
     this.audio.autoplay = true;
   }
