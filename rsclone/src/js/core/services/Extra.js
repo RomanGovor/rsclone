@@ -1,3 +1,5 @@
+import { Constants } from '../Constants';
+
 export class Extra {
   static translate(lang) {
     const enStings = document.querySelectorAll('[language="en"]');
@@ -55,5 +57,16 @@ export class Extra {
   static playAudio(src) {
     const audio = new Audio(src);
     audio.play();
+  }
+
+  static checkOnNoEmptyInputs() {
+    const inputs = document.querySelectorAll(Constants.ANSWER_INPUT);
+    let value = '';
+
+    for (let i = 0; i < inputs.length; i++) {
+      if (inputs[i].value !== '') value = inputs[i].value;
+    }
+
+    return value;
   }
 }

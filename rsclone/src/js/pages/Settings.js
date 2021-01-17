@@ -43,7 +43,7 @@ export class Settings {
     this.audio = new Audio(Constants.BACKGROUND_AUDIO);
     // this.audio.play();
     this.audio.loop = true;
-    this.audio.autoplay = true;
+    // this.audio.autoplay = true;
   }
 
   pauseMusic() {

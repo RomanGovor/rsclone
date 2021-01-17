@@ -1,7 +1,7 @@
 /* eslint-disable operator-linebreak */
 // import {Extra} from "../core/services/Extra.js";
 import { Timer } from './Timer';
-import { Extra } from '../core';
+import { Constants, Extra } from '../core';
 import { Storage } from '../core/services/Storage';
 
 export class Playground {
@@ -218,7 +218,7 @@ export class Playground {
       if (!button) return;
 
       if (button.classList.contains('playground__answer-button')) {
-        if (this.answerInput.querySelector('.playground__answer-input').value !== '') {
+        if (Extra.checkOnNoEmptyInputs() !== '') {
           this.hideScoreboard();
           this.showTable();
           this.showButton();

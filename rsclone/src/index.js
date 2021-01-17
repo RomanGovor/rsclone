@@ -101,7 +101,6 @@ class App {
   }
 
   checkAnswerButtonsEvents() {
-    const answerInput = document.querySelector(Constants.ANSWER_INPUT);
     const playground = document.querySelector(Constants.PLAYGROUND);
 
     playground.addEventListener('click', (e) => {
@@ -109,8 +108,9 @@ class App {
       if (!button) return;
 
       if (button.classList.contains('playground__answer-button')) {
-        if (answerInput.value !== '') {
-          console.log(1);
+        const value = Extra.checkOnNoEmptyInputs();
+        if (value !== '') {
+          this.checkTrueAnswer(value);
         }
       }
 
@@ -120,16 +120,16 @@ class App {
     });
   }
 
-  checkTrueAnswer(checkbox = undefined) {
+  checkTrueAnswer(element = undefined) {
     const currentQuestion = Storage.getCurrentQuestion();
-    if (currentQuestion.type === 'checkbox') this.checkTrueAnswerCheckbox(checkbox);
-    else this.checkTrueAnswerInput();
+    if (currentQuestion.type === 'checkbox') this.checkTrueAnswerCheckbox(element);
+    else this.checkTrueAnswerInput(element);
   }
 
   checkTrueAnswerCheckbox(checkbox) {
     const currentQuestion = Storage.getCurrentQuestion();
-
     const span = checkbox.querySelector('span[language=\'en\']');
+
     if (span.value === currentQuestion.trueAnswerEn) {
       this.updatePlayerScore(currentQuestion.points);
       Extra.playAudio(Constants.AUDIO.CORRECT);
@@ -139,12 +139,32 @@ class App {
     }
   }
 
-  updatePlayerScore(num) {
-    this.player.changeScore(num);
+  checkTrueAnswerInput(input) {
+    const value = input.trim().toLowerCase();
+
+    const currentQuestion = Storage.getCurrentQuestion();
+    const answersArray = [...currentQuestion.trueOptionsAnswerEn,
+      ...currentQuestion.trueOptionsAnswerRu]
+      .map((str) => str.trim().toLowerCase());
+    let isCorrect = false;
+
+    for (let i = 0; i < answersArray.length; i++) {
+      console.log(value, answersArray[i]);
+      if (value === answersArray[i]) {
+        this.updatePlayerScore(currentQuestion.points);
+        Extra.playAudio(Constants.AUDIO.CORRECT);
+        isCorrect = true;
+        break;
+      }
+    }
+    if (!isCorrect) {
+      this.updatePlayerScore((-1) * currentQuestion.points);
+      Extra.playAudio(Constants.AUDIO.FAILURE);
+    }
   }
 
-  checkTrueAnswerInput() {
-    console.log('lf');
+  updatePlayerScore(num) {
+    this.player.changeScore(num);
   }
 }
 
