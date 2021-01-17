@@ -115,7 +115,7 @@ const logoutLink = document.querySelector('.header__userAuthotization');
 logoutLink.addEventListener('click', () => {
   if (logoutLink.textContent === 'Log out') {
     request.logout();
-    removeUserAuthorizationData();
+    // removeUserAuthorizationData();
   } else if (logoutLink.textContent === 'Log in') {
     authorization.init();
   }

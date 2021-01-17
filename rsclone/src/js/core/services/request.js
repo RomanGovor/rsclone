@@ -1,12 +1,9 @@
 import {
-  PathSignIn, PathSignUp, PathGetAndPutRequest, PathLogout, PathLogoutAll,
+  PathSignIn, PathSignUp, PathGetAndPutRequest, PathLogout, PathLogoutAll, EmptyUserData,
 } from '../Constants';
+import { removeUserAuthorizationData } from './userAuthorizationData';
 
 export class Request {
-  constructor() {
-    this.requestToken = this.getTokenFromStorage();
-  }
-
   // Зарегистрироваться POST
   signUp(data, message, finish) {
     const requestOptions = {
@@ -31,7 +28,7 @@ export class Request {
         }
         return response.json();
       }).then((result) => this.setUserDataInStorage(result))
-      .catch(() => { message.innerHTML = 'Enter the correct email'; });
+      .catch((err) => console.log(err));
   }
 
   // Войти POST
@@ -53,13 +50,12 @@ export class Request {
         } else {
           message.innerHTML = 'Authorization was successful';
           setTimeout(() => {
-            console.log(PathLogout);
             finish();
           }, 2000);
         }
         return response.json();
       }).then((result) => this.setUserDataInStorage(result))
-      .catch(() => { message.innerHTML = 'Enter the correct data'; });
+      .catch((err) => { console.log(err); });
   }
 
   logout() {
@@ -71,9 +67,18 @@ export class Request {
       },
     };
     fetch(PathLogout, requestOptions)
-      .then((response) => response.json())
-      .then(() => localStorage.setItem('isAuthorization', 'false'))
-      .catch((err) => { console.log(err); });
+      .then((response) => {
+        console.log(response.status);
+        if (response.status >= 400 && response.status < 600) {
+          console.log('error');
+        } else if (response.status === 200) {
+          localStorage.clear();
+          localStorage.setItem('isAutorization', 'false');
+          localStorage.setItem('statistic', `${JSON.stringify(EmptyUserData)}`);
+          removeUserAuthorizationData();
+        }
+      })
+      .catch((err) => console.log(err));
   }
 
   logoutAll() {
@@ -81,7 +86,7 @@ export class Request {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.requestToken}`,
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     };
     fetch(PathLogoutAll, requestOptions)
@@ -91,18 +96,18 @@ export class Request {
   }
 
   // Получить данные клиента GET
-  getClientData(callbackError) {
+  getClientData() {
     const requestOptions = {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.requestToken}`,
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     };
     fetch(PathGetAndPutRequest, requestOptions)
       .then((response) => response.json())
-      .then((result) => this.setUserDataInStorage(result))
-      .catch(callbackError());
+      .then((result) => console.log(result))
+      .catch((err) => console.log(err));
   }
 
   // Получить данные статистики PUT
@@ -124,19 +129,10 @@ export class Request {
   setUserDataInStorage(result) {
     localStorage.setItem('token', `${result.token}`);
     localStorage.setItem('name', `${result.user.name}`);
-    localStorage.setItem('statistic', `${JSON.stringify(result.result.user.data)}`);
+    localStorage.setItem('statistic', `${JSON.stringify(result.user.data)}`);
   }
 
   setTokenInStorage(token) {
     localStorage.setItem('token', token);
-  }
-
-  getTokenFromStorage() {
-    const token = localStorage.getItem('token');
-    if (token === null) {
-      throw new Error();
-    } else {
-      return token;
-    }
   }
 }
