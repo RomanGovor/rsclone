@@ -143,3 +143,35 @@ button.authorization__form-buttonSubmit:disabled {
 .header__userAuthotization {
   margin-right: 25px;
 }
+
+@media ( max-width: 650px ){
+  .authorization__form {
+    max-width: 90%;
+    min-width: 90%;
+  }
+
+  .authorization__form-message {
+    margin-bottom: 19px;
+  }
+} 
+
+@media ( max-width: 400px ) {
+  .authorization__form {
+    max-width: 95%;
+    min-width: 95%;
+    padding: 5px;
+  }
+  .authorization__form-linkWrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      margin-bottom: 10px;
+    }
+  }
+
+  .authorization__form-message {
+    margin-bottom: 20px;
+  }
+}

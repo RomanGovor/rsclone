@@ -24,7 +24,7 @@ export class Request {
           message.innerHTML = 'Registration was successful';
           setTimeout(() => {
             finish();
-          }, 2000);
+          }, 1000);
         }
         return response.json();
       }).then((result) => this.setUserDataInStorage(result))
@@ -51,7 +51,7 @@ export class Request {
           message.innerHTML = 'Authorization was successful';
           setTimeout(() => {
             finish();
-          }, 2000);
+          }, 1000);
         }
         return response.json();
       }).then((result) => this.setUserDataInStorage(result))
@@ -68,7 +68,6 @@ export class Request {
     };
     fetch(PathLogout, requestOptions)
       .then((response) => {
-        console.log(response.status);
         if (response.status >= 400 && response.status < 600) {
           console.log('error');
         } else if (response.status === 200) {
