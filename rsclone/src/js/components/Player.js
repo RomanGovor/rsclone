@@ -1,3 +1,5 @@
+import { Constants } from '../core';
+
 export class Player {
   constructor(options) {
     this.container = options.container || document.querySelector('.container__players');
@@ -6,6 +8,7 @@ export class Player {
     this.score = options.score || 0;
     this.lang = options.lang || 'en';
     this.avatar = options.avatar || null;
+    this.status = options.status || Constants.USER_STATUSES.BOT;
     this.render();
 
     this.bindEvents();
@@ -29,7 +32,17 @@ export class Player {
 
   changeScore(points) {
     this.score = Number(this.score) + Number(points);
-    this.player.querySelector('.player__score').textContent = this.score;
+    const player = this.player.querySelector('.player__score');
+
+    player.textContent = this.score;
+    player.value = this.score;
+  }
+
+  setAvatar(src) {
+    if (this.avatar !== null) {
+      const ava = this.player.querySelector('.player__avatar');
+      ava.setAttribute('style', `background-image: url(${src})`);
+    }
   }
 
   addAvatar() {

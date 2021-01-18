@@ -8,7 +8,6 @@ export class Animations {
 
     buttons.forEach((btn) => {
       btn.addEventListener('click', function (e) {
-        console.log(1);
         const x = e.pageX;
         const y = e.pageY - 76;
 

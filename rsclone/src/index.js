@@ -37,29 +37,32 @@ class App {
       lang: this.language,
       allCategoriesEn: categoriesEn,
       allCategoriesRu: categoriesRu,
+      package: data,
     });
   }
 
   addPlayers() {
-    this.player = new Player({ name: 'Pushkin', avatar: 'url(../assets/img/ava1.jpg)' });
-
-    this.player.changeScore(500);
+    this.player = new Player({
+      name: 'Pushkin',
+      avatar: 'url(../assets/img/ava1.jpg)',
+      status: Constants.USER_STATUSES.PLAYER,
+    });
+    this.player.changeScore(0);
 
     this.bots = {
       bot1: new Player({
         name: 'Bot 1',
-        avatar: 'url(../assets/img/bot.jpg)',
+        avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(Constants.COUNT_DEFAULT_AVATARS)}.jpg)`,
         score: -700,
       }),
       bot2: new Player({
         name: 'Bot 2',
         gender: 'woman',
-        avatar: 'url(../assets/img/ava3.jpg)',
+        avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(Constants.COUNT_DEFAULT_AVATARS)}.jpg)`,
         score: 1900,
       }),
       bot3: new Player({
         name: 'Bot 3',
-        // avatar: 'url(../assets/img/ava2.jpg)',
       }),
     };
     this.bots.bot3.changeScore(777);
@@ -90,10 +93,10 @@ class App {
 
       this.initPlayground();
       this.addPlayers();
+      this.checkAnswerButtonsEvents();
     });
 
     menuRulesBtn.addEventListener('click', () => {
-      // this.language = Storage.getLanguage();
       const rules = new Rules(this.language);
     });
 
@@ -101,6 +104,72 @@ class App {
       const container = document.querySelector('.container__settings');
       Extra.hidePages(container);
     });
+  }
+
+  checkAnswerButtonsEvents() {
+    const playground = document.querySelector(Constants.PLAYGROUND);
+
+    playground.addEventListener('click', (e) => {
+      const button = e.target.closest('button');
+      if (!button) return;
+
+      if (button.classList.contains('playground__answer-button')) {
+        const value = Extra.checkOnNoEmptyInputs();
+        if (value !== '') {
+          this.checkTrueAnswer(value);
+        }
+      }
+
+      if (button.classList.contains(Constants.ANSWER_CHECKBOX)) {
+        this.checkTrueAnswer(button);
+      }
+    });
+  }
+
+  checkTrueAnswer(element = undefined) {
+    const currentQuestion = Storage.getCurrentQuestion();
+    if (currentQuestion.type === 'checkbox') this.checkTrueAnswerCheckbox(element);
+    else this.checkTrueAnswerInput(element);
+  }
+
+  checkTrueAnswerCheckbox(checkbox) {
+    const currentQuestion = Storage.getCurrentQuestion();
+    const span = checkbox.querySelector('span[language=\'en\']');
+
+    if (span.value === currentQuestion.trueAnswerEn) {
+      this.updatePlayerScore(currentQuestion.points);
+      Extra.playAudio(Constants.AUDIO.CORRECT);
+    } else {
+      this.updatePlayerScore((-1) * currentQuestion.points);
+      Extra.playAudio(Constants.AUDIO.FAILURE);
+    }
+  }
+
+  checkTrueAnswerInput(input) {
+    const value = input.trim().toLowerCase();
+
+    const currentQuestion = Storage.getCurrentQuestion();
+    const answersArray = [...currentQuestion.trueOptionsAnswerEn,
+      ...currentQuestion.trueOptionsAnswerRu]
+      .map((str) => str.trim().toLowerCase());
+    let isCorrect = false;
+
+    for (let i = 0; i < answersArray.length; i++) {
+      if (value === answersArray[i]) {
+        this.updatePlayerScore(currentQuestion.points);
+        Extra.playAudio(Constants.AUDIO.CORRECT);
+        isCorrect = true;
+        break;
+      }
+    }
+    if (!isCorrect) {
+      this.updatePlayerScore((-1) * currentQuestion.points);
+      Extra.playAudio(Constants.AUDIO.FAILURE);
+    }
+  }
+
+  updatePlayerScore(num) {
+    this.player.changeScore(num);
   }
 }
 

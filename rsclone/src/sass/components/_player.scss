@@ -9,6 +9,12 @@
   border-radius: 5px;
   display: flex;
 
+  @media (max-width: $content-middle-keyboard) {
+    align-items: center;
+    width: 20%;
+    padding: 0 5px;
+  }
+
   &_active {
     background-color: rgba($color: rgb(246, 250, 8), $alpha: 0.2);
   }
@@ -19,6 +25,7 @@
     border-radius: 50%;
     margin: 5px auto;
     background-size: cover;
+    background-position: top;
 
     @media (max-width: $content-middle-width) {
       width: 80px;
@@ -27,6 +34,10 @@
     @media (max-width: $content-middle-keyboard) {
       width: 75px;
       height: 100px;
+    }
+    @media (max-width: 720px) {
+      width: 60px;
+      height: 80px;
     }
 
     &_man {
@@ -58,7 +69,11 @@
       font-size: 1.25rem;
     }
     @media (max-width: $content-middle-keyboard) {
-      font-size: 1rem;
+      font-size: 0.75rem;
+      justify-content: center;
+    }
+    @media (max-width: 720px) {
+      font-size: 0.6rem;
     }
   }
 
@@ -68,11 +83,15 @@
     text-align: center;
     color: $color-primary;
     margin: 5px 0;
+    word-wrap: break-word;
   }
 
   &__score {
     margin: auto 0 10px;
     color: cornsilk;
+    @media (max-width: $content-middle-keyboard) {
+      margin: 0;
+    }
   }
 
   &__answer-field {
@@ -85,7 +104,25 @@
     min-height: 60%;
     background-color: rgba($color: white, $alpha: 0.9);
     color: black;
-    font-style: 1rem;
+    font-size: 1rem;
     z-index: 10;
+
+    @media (max-width: $content-middle-keyboard) {
+      min-width: 70%;
+      min-height: 40%;
+      top: 0;
+      font-size: 0.75rem;
+    }
+    @media (max-width: $content-little-width) {
+      font-size: 0.5rem;
+    }
+  }
+
+  &:first-child {
+    .player__answer-field {
+      @media (max-width: $content-middle-keyboard) {
+        left: 40%;
+      }
+    }
   }
 }

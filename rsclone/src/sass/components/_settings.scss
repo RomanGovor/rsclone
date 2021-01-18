@@ -47,6 +47,7 @@
       border: 1px solid $color-primary;
       border-radius: 10px;
       transition: all 0.2s;
+      cursor: pointer;
 
       &:hover {
         transform: scale(1.3);

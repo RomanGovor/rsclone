@@ -18,6 +18,8 @@ export class Timer {
 
   renderTimer() {
     const container = document.querySelector('.container__active');
+    Extra.clearContainer(container);
+
     const timer = document.createElement('div');
     timer.classList.add('timer');
     timer.innerHTML = `
@@ -48,26 +50,16 @@ export class Timer {
   }
 
   setTimerEvents() {
-    // const startBtn = document.querySelector('.timer__start');
     const pauseBtn = document.querySelector('.timer__pause');
 
-    // startBtn.addEventListener('click', () => {
     this.totalsecs = this.mins * 60 + this.seconds;
-
-    console.log(this.totalsecs);
-
     const bindDecrement = this.decrement.bind(this);
     setTimeout(bindDecrement, 60);
-    // startBtn.style.transform = 'scale(0)';
     this.isPaused = false;
-    // });
 
     pauseBtn.addEventListener('click', () => {
       if (this.isPaused) {
-        const bindDecrement = this.decrement.bind(this);
-        this.initial = setTimeout(bindDecrement, 60);
-        pauseBtn.textContent = 'pause';
-        pauseBtn.classList.remove('timer__resume');
+        this.pauseTimer();
       } else {
         clearTimeout(this.initial);
         pauseBtn.textContent = 'resume';
@@ -77,10 +69,17 @@ export class Timer {
     });
   }
 
+  pauseTimer() {
+    const pauseBtn = document.querySelector('.timer__pause');
+    const bindDecrement = this.decrement.bind(this);
+    this.initial = setTimeout(bindDecrement, 60);
+    pauseBtn.textContent = 'pause';
+    pauseBtn.classList.remove('timer__resume');
+  }
+
   decrement() {
     const mindiv = document.querySelector('.clock__mins');
     const secdiv = document.querySelector('.clock__secs');
-    // const startBtn = document.querySelector('.timer__start');
     const circle = document.querySelector('.progress-ring__circle');
 
     mindiv.textContent = Math.floor(this.seconds / 60);
@@ -110,11 +109,13 @@ export class Timer {
         Extra.clearContainer(document.querySelector('.container__active'));
       });
 
-      // startBtn.classList.remove('timer__break');
-      // startBtn.textContent = 'start focus';
-      // startBtn.style.transform = 'scale(1)';
       circle.classList.add('circle-color');
     }
+  }
+
+  deleteTimer() {
+    clearTimeout(this.initial);
+    Extra.clearContainer(document.querySelector('.container__active'));
   }
 
   setProgress(percent) {
