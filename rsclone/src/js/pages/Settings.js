@@ -1,11 +1,12 @@
-import { Constants, Extra } from '../core/index';
+import { Extra } from '../core/services/Extra';
+import { Constants } from '../core/Constants';
 
 export class Settings {
   constructor() {
     // this.isMusic = true;
     this.audio = null;
     this.setSettingsEvents();
-    this.playMusic();
+    // this.playMusic();
     this.renderAvatars();
   }
 
@@ -14,6 +15,7 @@ export class Settings {
     const btnBack = document.querySelector('.settings__button-back');
 
     musicCheckbox.addEventListener('change', () => {
+      // eslint-disable-next-line no-unused-expressions
       musicCheckbox.checked ? this.countinueMusic() : this.pauseMusic();
     });
 

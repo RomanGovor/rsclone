@@ -4,7 +4,7 @@
   "description": "final project for rss",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --open chrome",
+    "dev": "webpack serve --open --watch",
     "prod": "webpack --mode production",
     "lint": "eslint --fix --ext .js ."
   },

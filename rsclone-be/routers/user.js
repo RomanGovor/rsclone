@@ -47,6 +47,7 @@ router.put('/users/me', update, function (req, res) {
 router.post('/users/me/logout', auth, async (req, res) => {
   // Log user out of the application
   try {
+    res.header('Access-Control-Allow-Origin', '*');
     req.user.tokens = req.user.tokens.filter((token) => {
       return token.token != req.token;
     });
@@ -60,6 +61,7 @@ router.post('/users/me/logout', auth, async (req, res) => {
 router.post('/users/me/logoutall', auth, async (req, res) => {
   // Log user out of all devices
   try {
+    res.header('Access-Control-Allow-Origin', '*');
     req.user.tokens.splice(0, req.user.tokens.length);
     await req.user.save();
     res.send();

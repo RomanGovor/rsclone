@@ -1,0 +1,177 @@
+.authorization__form-wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 2000;
+}
+
+.authorization__form-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  background-color: rgba($color: #000000, $alpha: .7);
+}
+
+.authorization__form {
+position: absolute;
+left: 50%;
+top: 50%;
+max-width: 600px;
+width: 100%;
+min-height: 50vh;
+min-width: 320px;
+transform: translate(-50%, -50%);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: stretch;
+
+background-color: #fff;
+padding: 30px 20px;
+
+  input {
+    display: block;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  .authorization__form-linkWrapper {
+    display: flex;
+  }
+
+
+}
+
+.authorization__form-nickname {
+  display: block;
+}
+
+.authorization__form-message {
+  margin-bottom: 15px;
+  color: red;
+  text-align: center;
+}
+
+.authorization__form-buttonSubmit {
+width: 50%;
+margin: 0 auto 10px;
+padding: 10px;
+cursor: pointer;
+}
+
+.authorization__form-buttonClose {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+}
+
+.authorization__form-title {
+  font-size: 36px;
+  line-height: 140%;
+  text-align: center;
+  margin: 15px 0;
+
+}
+
+.authorization__form-linkWrapper {
+  display: flex;
+  padding: 15px;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.authorization__form.login {
+  .authorization__form-linkLogin,
+  .authorization__form-nickname {
+    display: none;
+  }
+}
+.authorization__form.registration {
+  .authorization__form-linkRegistration {
+    display: none;
+  }
+}
+.authorization__form.guest {
+  .authorization__form-linkLoginGuest,
+  .authorization__form-email,
+  .authorization__form-password{
+    display: none;
+  }
+  .authorization__form-nickname {
+    display: block;
+  }
+}
+
+.tooltip {
+  position: fixed;
+  padding: 10px 20px;
+  border: 1px solid #b3c9ce;
+  border-radius: 4px;
+  text-align: center;
+  font: italic 14px/1.3 sans-serif;
+  color: #333;
+  background: #fff;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+  z-index: 2001;
+}
+
+button.authorization__form-buttonSubmit:disabled {
+  background-image: linear-gradient(90deg, #d0d8e0, #d0d8e0);
+  cursor: default;
+}
+
+.header {
+  position: relative;
+}
+
+.header__user {
+  position: absolute;
+  display: flex;
+  right: 10;
+  top: 5px;
+  padding: 5px;
+}
+
+.header__userAuthotization {
+  margin-right: 25px;
+}
+
+@media ( max-width: 650px ){
+  .authorization__form {
+    max-width: 90%;
+    min-width: 90%;
+  }
+
+  .authorization__form-message {
+    margin-bottom: 19px;
+  }
+} 
+
+@media ( max-width: 400px ) {
+  .authorization__form {
+    max-width: 95%;
+    min-width: 95%;
+    padding: 5px;
+  }
+  .authorization__form-linkWrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      margin-bottom: 10px;
+    }
+  }
+
+  .authorization__form-message {
+    margin-bottom: 20px;
+  }
+}

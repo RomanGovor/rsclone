@@ -83,10 +83,7 @@ module.exports = (env, options) => {
     },
 
     devServer: {
-      compress: true,
       port: 8081,
-      overlay: true,
-      hot: !isProduction,
     },
 
     plugins: [
