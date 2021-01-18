@@ -5,7 +5,7 @@ export class Settings {
     this.isMusic = Storage.getPlayBackgroundMusicFlag();
     this.audio = null;
     this.setSettingsEvents();
-    this.playMusic();
+    // this.playMusic();
     this.renderAvatars();
   }
 
@@ -14,6 +14,7 @@ export class Settings {
     const btnBack = document.querySelector('.settings__button-back');
 
     musicCheckbox.addEventListener('change', () => {
+      // eslint-disable-next-line no-unused-expressions
       musicCheckbox.checked ? this.countinueMusic() : this.pauseMusic();
     });
 

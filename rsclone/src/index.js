@@ -1,8 +1,10 @@
-import { Rules, Settings } from './js/pages/index';
-import { Constants, Extra, Storage } from './js/core/index';
 import {
-  Playground, SwitchLang, Animations, Player,
+  Playground, Player, Timer, Authorization, Animations, SwitchLang,
 } from './js/components/index';
+import { Rules, Settings } from './js/pages/index';
+import {
+  Extra, Constants, Storage, setUserAuthorizationData, removeUserAuthorizationData, Request,
+} from './js/core/index';
 
 class App {
   constructor() {
@@ -172,3 +174,25 @@ class App {
 }
 
 const APP = new App();
+if (localStorage.getItem('isAuthorization') === null) {
+  localStorage.setItem('isAuthorization', 'false');
+  localStorage.setItem('token', null);
+}
+const authorization = new Authorization();
+const request = new Request();
+const logoutLink = document.querySelector('.header__userAuthotization');
+logoutLink.addEventListener('click', () => {
+  if (logoutLink.textContent === 'Log out') {
+    request.logout();
+    // removeUserAuthorizationData();
+  } else if (logoutLink.textContent === 'Log in') {
+    authorization.init();
+  }
+});
+document.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('isAuthorization') === 'false') {
+    authorization.init();
+  } else {
+    setUserAuthorizationData();
+  }
+});
