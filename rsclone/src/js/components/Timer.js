@@ -2,7 +2,7 @@ import { Constants } from '../core/Constants';
 import { Extra } from '../core/services/Extra';
 
 export class Timer {
-  constructor(min = 0, sec = 20) {
+  constructor(min = 0, sec = Constants.QUESTION_TIME) {
     this.renderTimer();
 
     this.initial = 0;

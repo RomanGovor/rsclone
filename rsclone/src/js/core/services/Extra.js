@@ -1,4 +1,5 @@
 import { Constants } from '../Constants';
+import { Storage } from './Storage';
 
 export class Extra {
   static translate(lang) {
@@ -72,5 +73,17 @@ export class Extra {
 
   static getRandomInt(max) { // Get Random Number
     return Math.floor(Math.random() * Math.floor(max)) + 1;
+  }
+
+  static deleteQuestionFromArray(row, column) {
+    const questions = Storage.getQuestionsArray();
+    for (let i = 0; i < questions.length; i++) {
+      if (questions[i].row === row && questions[i].column === column) {
+        questions.splice(i, 1);
+        break;
+      }
+    }
+
+    Storage.setQuestionsArray(questions);
   }
 }

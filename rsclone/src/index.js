@@ -137,10 +137,10 @@ class App {
     const span = checkbox.querySelector('span[language=\'en\']');
 
     if (span.value === currentQuestion.trueAnswerEn) {
-      this.updatePlayerScore(currentQuestion.points);
+      this.updatePlayerScore(currentQuestion.points, true, span.value);
       Extra.playAudio(Constants.AUDIO.CORRECT);
     } else {
-      this.updatePlayerScore((-1) * currentQuestion.points);
+      this.updatePlayerScore((-1) * currentQuestion.points, false, span.value);
       Extra.playAudio(Constants.AUDIO.FAILURE);
     }
   }
@@ -156,20 +156,21 @@ class App {
 
     for (let i = 0; i < answersArray.length; i++) {
       if (value === answersArray[i]) {
-        this.updatePlayerScore(currentQuestion.points);
-        Extra.playAudio(Constants.AUDIO.CORRECT);
         isCorrect = true;
+        this.updatePlayerScore(currentQuestion.points, isCorrect, input);
+        Extra.playAudio(Constants.AUDIO.CORRECT);
         break;
       }
     }
     if (!isCorrect) {
-      this.updatePlayerScore((-1) * currentQuestion.points);
+      this.updatePlayerScore((-1) * currentQuestion.points, isCorrect, input);
       Extra.playAudio(Constants.AUDIO.FAILURE);
     }
   }
 
-  updatePlayerScore(num) {
+  updatePlayerScore(num, isRight, answer) {
     this.player.changeScore(num);
+    this.player.sayPossibleAnswer(this.language, isRight, answer);
   }
 }
 

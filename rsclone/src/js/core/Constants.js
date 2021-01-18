@@ -31,6 +31,74 @@ export const Constants = {
     PLAYER: 'player',
     BOT: 'bot',
   },
+  QUESTION_TIME: 30,
+  LEVELS_BOTS: {
+    LOW: 'low',
+    MIDDLE: 'middle',
+    HARD: 'hard',
+  },
+  USER_RESPONSE_OPTIONS: {
+    RU: {
+      GOOD: [
+        {
+          first: 'Видишь что, я прав ;) ',
+          second: ' - правильный ответ',
+        },
+        {
+          first: 'А вот вот так вот ',
+          second: ' - ответ',
+        },
+        {
+          first: 'Ну не унывайте, кто ж знал, что ',
+          second: ' то что надо)',
+        },
+      ],
+      BAD: [
+        {
+          first: 'Пробовал ',
+          second: ', но чтот не проканало ((',
+        },
+        {
+          first: 'Попробуйте ещё раз ',
+          second: ' ввести, мне кажется я в букве ошибся)',
+        },
+        {
+          first: 'Та это вопрос составлен не правильно, ',
+          second: ' то что нужно ввел',
+        },
+      ],
+    },
+    EN: {
+      GOOD: [
+        {
+          first: 'Sorry, but ',
+          second: ' is too obvious an answer',
+        },
+        {
+          first: 'Sleep on the keyboard and wrote with my left ear ',
+          second: ' cool :)',
+        },
+        {
+          first: 'And Wikipedia really knows about ',
+          second: ' ,oops... said too much',
+        },
+      ],
+      BAD: [
+        {
+          first: 'Some of you gave me the wrong advice, ',
+          second: ' not at all',
+        },
+        {
+          first: 'Oooh, the cat walked across the keyboard and entered ',
+          second: ' ',
+        },
+        {
+          first: 'Burgers promo code, enter ',
+          second: ' and get 2 for the price of 3',
+        },
+      ],
+    },
+  },
 };
 
 const PathSignUp = 'https://reclone-be-2.herokuapp.com/users';

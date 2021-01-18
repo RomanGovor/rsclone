@@ -1,5 +1,3 @@
-/* eslint-disable operator-linebreak */
-// import {Extra} from "../core/services/Extra.js";
 import { Timer } from './Timer';
 import { Constants, Extra } from '../core';
 import { Storage } from '../core/services/Storage';
@@ -15,10 +13,29 @@ export class Playground {
 
     this.categories = this.package.rounds[0].categories;
     this.currentQuestion = null;
+    this.countRounds = this.package.rounds.length;
+    this.currentRound = 1;
 
     this.render();
     this.showCategories(this.lang === 'en' ? this.allCategoriesEn : this.allCategoriesRu);
-    this.TIMER = null;
+    this.getQuestionsArrayByRound();
+  }
+
+  getQuestionsArrayByRound() {
+    const questions = [];
+    this.package.rounds[this.currentRound].categories
+      .forEach((cat, row) => {
+        cat.questions
+          .forEach((quest, column) => {
+            const coords = {
+              row: row + 1,
+              column: column + 1,
+            };
+            questions.push(coords);
+          });
+      });
+
+    Storage.setQuestionsArray(questions);
   }
 
   render() {
@@ -34,17 +51,21 @@ export class Playground {
   }
 
   createTable(arr) {
+    this.lang = Storage.getLanguage();
     this.table = document.createElement('table');
     this.table.classList = 'playground__table';
-    // let i = 0;
 
     for (let i = 0; i < this.categories.length; i++) {
       const row = document.createElement('tr');
       row.classList.add(`row-${i + 1}`);
 
-      const th = document.createElement('th');
-      th.classList.add(`cell-${i}`);
-      th.textContent = arr[i];
+      // const th = document.createElement('th');
+      // th.classList.add(`cell-${i}`);
+      // th.textContent = arr[i];
+      const th = Extra.createMultipleLanguageElement('th',
+        [`cell-${i}`],
+        this.categories[i].categoryInfo.categoryNameEn,
+        this.categories[i].categoryInfo.categoryNameRu);
       row.append(th);
 
       for (let j = 0; j < this.categories[i].questions.length; j++) {
@@ -60,6 +81,7 @@ export class Playground {
 
     this.playground.append(this.table);
     this.bindTableEvent();
+    Extra.translate(this.lang);
   }
 
   bindTableEvent() {
@@ -71,7 +93,11 @@ export class Playground {
 
         const row = +e.target.getAttribute('question-row');
         const column = +e.target.getAttribute('question-column');
+        Extra.deleteQuestionFromArray(row + 1, column + 1);
+
         this.currentQuestion = this.categories[row].questions[column];
+        this.currentQuestion.row = row;
+        this.currentQuestion.column = column;
         Storage.setCurrentQuestion(this.currentQuestion);
 
         Extra.delay(2500)
@@ -87,11 +113,13 @@ export class Playground {
                 this.TIMER = new Timer();
               })
               .then(() => {
-                Extra.delay(21000).then(() => {
-                  this.showTable();
-                  // this.showButton();
-                  this.hideScoreboard();
-                  this.currentQuestion = null;
+                Extra.delay((Constants.QUESTION_TIME + 1) * 1000).then(() => {
+                  if (this.currentQuestion.row === row && this.currentQuestion.column === column) {
+                    this.showTable();
+                    // this.showButton();
+                    this.hideScoreboard();
+                    this.currentQuestion = null;
+                  }
                 });
               });
           });
@@ -100,6 +128,8 @@ export class Playground {
   }
 
   showCategories(arr = this.allCategoriesEn, delay = 5) {
+    this.lang = Storage.getLanguage();
+
     if (this.table) {
       this.hideTable();
       // this.hideButton();
@@ -120,7 +150,7 @@ export class Playground {
     }, 0);
 
     setTimeout(() => {
-      this.showRound(1);
+      this.showRound(this.currentRound);
     }, delay * 1000);
 
     setTimeout(() => {
@@ -130,6 +160,8 @@ export class Playground {
       this.hideScoreboard();
     }, (delay + 3) * 1000);
     this.clearInput();
+
+    Extra.translate(this.lang);
   }
 
   clearInput() {
@@ -141,6 +173,8 @@ export class Playground {
   }
 
   createScoreboard() {
+    this.lang = Storage.getLanguage();
+
     this.scoreboard = document.createElement('div');
     this.scoreboard.classList = 'playground__scoreboard none';
 
@@ -207,6 +241,8 @@ export class Playground {
   }
 
   showQuestion(question) {
+    this.lang = Storage.getLanguage();
+
     if (this.table) {
       this.hideTable();
       // this.hideButton();
@@ -216,10 +252,8 @@ export class Playground {
     this.showScoreboard();
     // this.question.textContent = `${question[0]}`;
     const isQuestionPicture = question.questionPicture === undefined ? ' none' : '';
-    const isQuestionDescriptionEn =
-      question.descriptionEn === undefined ? '' : question.descriptionEn;
-    const isQuestionDescriptionRu =
-      question.descriptionRu === undefined ? '' : question.descriptionRu;
+    const isQuestionDescriptionEn = question.descriptionEn === undefined ? '' : question.descriptionEn;
+    const isQuestionDescriptionRu = question.descriptionRu === undefined ? '' : question.descriptionRu;
     this.question.innerHTML = `
       <strong class='playground__question' language='en'>${question.questionEn}</strong>
       <strong class='playground__question' language='ru'>${question.questionRu}</strong>
@@ -242,10 +276,12 @@ export class Playground {
       this.answerInput.classList.add('none');
     }
     // setTimeout(() => {}, 0);
+    console.log(this.lang);
     Extra.translate(this.lang);
   }
 
   createTrueAnswerField() {
+    this.lang = Storage.getLanguage();
     this.trueAnswerField = document.createElement('div');
     this.trueAnswerField.classList = 'playground__true-answer none';
 
@@ -255,9 +291,10 @@ export class Playground {
     <img class='playground__answer-picture none' width=200 height=200>
     `;
     this.playground.append(this.trueAnswerField);
+    Extra.translate(this.lang);
   }
 
-  showTrueAnswer(type = 'text', answer, lang = this.lang) {
+  showTrueAnswer(type = 'text', answer, lang = Extra.translate(Storage.getLanguage())) {
     this.hideScoreboard();
     this.hideCategories();
     this.trueAnswerField.classList.remove('none');
@@ -283,6 +320,9 @@ export class Playground {
       answerContainer.classList.add('none');
       this.showTable();
     }, 3000);
+
+    this.lang = Storage.getLanguage();
+    Extra.translate(this.lang);
   }
 
   // showAnswerPicture(picture) {
@@ -310,17 +350,20 @@ export class Playground {
         child.value = OptionsEn[index];
       });
 
+    this.lang = Storage.getLanguage();
     Extra.translate(this.lang);
   }
 
   createRound() {
     this.round = document.createElement('h2');
-    this.round.textContent = `${this.lang === 'en' ? 'Round' : 'Раунд'} 1`;
+    this.round.textContent = `${this.lang === 'en' ? 'Round' : 'Раунд'} ${this.currentRound}`;
     this.round.classList = 'playground__round none';
     this.playground.append(this.round);
   }
 
   showRound(count = 1) {
+    this.lang = Storage.getLanguage();
+
     if (this.table) {
       this.hideTable();
       // this.hideButton();
@@ -339,24 +382,10 @@ export class Playground {
     }, 1000);
   }
 
-  // createButton() {
-  //   this.answerButton = document.createElement('button');
-  //   this.answerButton.textContent = '';
-  //   this.answerButton.classList.add('controls__answer-button');
-  //   this.container.append(this.answerButton);
-  // }
-
-  // hideButton() {
-  //   this.answerButton.classList.add('none');
-  // }
-
-  // showButton() {
-  //   this.answerButton.classList.remove('none');
-  // }
-
   showScoreboard() {
-    // this.showButton();
+    this.lang = Storage.getLanguage();
     this.scoreboard.classList.remove('none');
+    Extra.translate(this.lang);
   }
 
   hideScoreboard() {
@@ -372,7 +401,9 @@ export class Playground {
   }
 
   showTable() {
+    this.lang = Storage.getLanguage();
     this.table.classList.remove('none');
+    Extra.translate(this.lang);
   }
 
   clear() {

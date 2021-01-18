@@ -1,4 +1,4 @@
-import { Constants } from '../core';
+import { Constants, Extra } from '../core';
 
 export class Player {
   constructor(options) {
@@ -52,6 +52,14 @@ export class Player {
     }
   }
 
+  sayPossibleAnswer(lang, isRight, answer) {
+    const result = isRight ? 'GOOD' : 'BAD';
+    const language = lang.toUpperCase();
+    const variants = Constants.USER_RESPONSE_OPTIONS[language][result];
+    const choice = variants[Extra.getRandomInt(variants.length) - 1];
+    this.say(`${choice.first}${answer}${choice.second}`);
+  }
+
   say(text = 'hello') {
     const answer = this.player.querySelector('.player__answer-field');
     answer.textContent = text;
@@ -59,7 +67,7 @@ export class Player {
 
     setTimeout(() => {
       answer.classList.add('none');
-    }, 3000);
+    }, 5000);
   }
 
   bindEvents() {

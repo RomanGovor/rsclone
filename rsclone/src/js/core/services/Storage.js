@@ -25,4 +25,13 @@ export class Storage {
   static setCurrentQuestion(question) {
     sessionStorage.setItem('sigame/currentQuestion', JSON.stringify(question));
   }
+
+  static getQuestionsArray() {
+    const questionsArr = JSON.parse(sessionStorage.getItem('sigame/questionsArray'));
+    return !questionsArr ? [] : questionsArr;
+  }
+
+  static setQuestionsArray(questionsArr) {
+    sessionStorage.setItem('sigame/questionsArray', JSON.stringify(questionsArr));
+  }
 }
