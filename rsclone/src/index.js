@@ -1,9 +1,19 @@
 import {
-  Playground, Player, Timer, Authorization, Animations, SwitchLang,
+  Playground,
+  Player,
+  Timer,
+  Authorization,
+  Animations,
+  SwitchLang,
 } from './js/components/index';
 import { Rules, Settings } from './js/pages/index';
 import {
-  Extra, Constants, Storage, setUserAuthorizationData, removeUserAuthorizationData, Request,
+  Extra,
+  Constants,
+  Storage,
+  setUserAuthorizationData,
+  removeUserAuthorizationData,
+  Request,
 } from './js/core/index';
 
 class App {
@@ -46,23 +56,31 @@ class App {
       name: 'Pushkin',
       avatar: 'url(../assets/img/ava1.jpg)',
       status: Constants.USER_STATUSES.PLAYER,
+      isActivePlayer: true,
     });
     this.player.changeScore(0);
 
     this.bots = {
       bot1: new Player({
-        name: 'Bot 1',
-        avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(Constants.COUNT_DEFAULT_AVATARS)}.jpg)`,
-        score: -700,
+        name: 'Ibn Asalalaalalal',
+        avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(
+          Constants.COUNT_DEFAULT_AVATARS,
+        )}.jpg)`,
+        score: 0,
       }),
       bot2: new Player({
-        name: 'Bot 2',
+        name: 'Stepa Kurochkin',
         gender: 'woman',
-        avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(Constants.COUNT_DEFAULT_AVATARS)}.jpg)`,
-        score: 1900,
+        avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(
+          Constants.COUNT_DEFAULT_AVATARS,
+        )}.jpg)`,
+        score: 0,
       }),
       bot3: new Player({
-        name: 'Bot 3',
+        name: 'Petrushka',
+        avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(
+          Constants.COUNT_DEFAULT_AVATARS,
+        )}.jpg)`,
       }),
     };
     this.bots.bot3.changeScore(777);
@@ -134,13 +152,13 @@ class App {
 
   checkTrueAnswerCheckbox(checkbox) {
     const currentQuestion = Storage.getCurrentQuestion();
-    const span = checkbox.querySelector('span[language=\'en\']');
+    const span = checkbox.querySelector("span[language='en']");
 
     if (span.value === currentQuestion.trueAnswerEn) {
       this.updatePlayerScore(currentQuestion.points);
       Extra.playAudio(Constants.AUDIO.CORRECT);
     } else {
-      this.updatePlayerScore((-1) * currentQuestion.points);
+      this.updatePlayerScore(-1 * currentQuestion.points);
       Extra.playAudio(Constants.AUDIO.FAILURE);
     }
   }
@@ -149,9 +167,10 @@ class App {
     const value = input.trim().toLowerCase();
 
     const currentQuestion = Storage.getCurrentQuestion();
-    const answersArray = [...currentQuestion.trueOptionsAnswerEn,
-      ...currentQuestion.trueOptionsAnswerRu]
-      .map((str) => str.trim().toLowerCase());
+    const answersArray = [
+      ...currentQuestion.trueOptionsAnswerEn,
+      ...currentQuestion.trueOptionsAnswerRu,
+    ].map((str) => str.trim().toLowerCase());
     let isCorrect = false;
 
     for (let i = 0; i < answersArray.length; i++) {
@@ -163,7 +182,7 @@ class App {
       }
     }
     if (!isCorrect) {
-      this.updatePlayerScore((-1) * currentQuestion.points);
+      this.updatePlayerScore(-1 * currentQuestion.points);
       Extra.playAudio(Constants.AUDIO.FAILURE);
     }
   }

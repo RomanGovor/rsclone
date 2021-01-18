@@ -16,7 +16,10 @@
   }
 
   &_active {
-    background-color: rgba($color: rgb(246, 250, 8), $alpha: 0.2);
+    background-color: rgba($color: rgb(130, 241, 2), $alpha: 0.7);
+    .player__name {
+      color: #1500a9;
+    }
   }
 
   &__avatar {
@@ -52,10 +55,8 @@
   &__info {
     width: 50%;
     height: 100%;
-    // margin: 0 auto;
     display: flex;
     flex-direction: column;
-    // justify-content: space-around;
     align-items: center;
     font-size: 2rem;
 
@@ -84,6 +85,7 @@
     color: $color-primary;
     margin: 5px 0;
     word-wrap: break-word;
+    font-weight: 700;
   }
 
   &__score {

@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable operator-linebreak */
 // import {Extra} from "../core/services/Extra.js";
 import { Timer } from './Timer';
@@ -28,7 +29,6 @@ export class Playground {
 
     this.createScoreboard();
     this.createTable(this.lang === 'en' ? this.allCategoriesEn : this.allCategoriesRu);
-    // this.createButton();
     this.createRound();
     this.createTrueAnswerField();
   }
@@ -36,7 +36,6 @@ export class Playground {
   createTable(arr) {
     this.table = document.createElement('table');
     this.table.classList = 'playground__table';
-    // let i = 0;
 
     for (let i = 0; i < this.categories.length; i++) {
       const row = document.createElement('tr');
@@ -126,7 +125,6 @@ export class Playground {
     setTimeout(() => {
       this.categoriesList.classList.add('none');
       this.showTable();
-      // this.showButton();
       this.hideScoreboard();
     }, (delay + 3) * 1000);
     this.clearInput();
@@ -185,9 +183,11 @@ export class Playground {
       if (button.classList.contains('playground__answer-button')) {
         if (Extra.checkOnNoEmptyInputs() !== '') {
           this.hideScoreboard();
-          this.showTable();
-          // this.showButton();
+          this.showTrueAnswer(this.currentQuestion);
           this.TIMER.deleteTimer();
+          setTimeout(() => {
+            this.showTable();
+          }, 3000);
         }
       }
     });
@@ -198,10 +198,12 @@ export class Playground {
 
       if (button.classList.contains('playground__answer-button-checkbox')) {
         this.hideScoreboard();
-        this.showTable();
-        // this.showButton();
+        // this.showTable();
+        this.showTrueAnswer(this.currentQuestion);
         this.TIMER.deleteTimer();
-        // this.showTrueAnswer();
+        setTimeout(() => {
+          this.showTable();
+        }, 3000);
       }
     });
   }
@@ -257,31 +259,49 @@ export class Playground {
     this.playground.append(this.trueAnswerField);
   }
 
-  showTrueAnswer(type = 'text', answer, lang = this.lang) {
+  showTrueAnswer(answer) {
     this.hideScoreboard();
     this.hideCategories();
     this.trueAnswerField.classList.remove('none');
 
-    let answerContainer;
-    if (type === 'text') {
-      if (this.lang === 'ru') {
-        answerContainer = this.trueAnswerField.querySelector(
-          '.playground__answer-text[language="ru"]',
-        );
-      } else if (this.lang === 'en') {
-        answerContainer = this.trueAnswerField.querySelector(
-          '.playground__answer-text[language="en"]',
-        );
-      }
-    } else if (type === 'picture') {
-      answerContainer = this.trueAnswerField.querySelector('.playground__answer-picture');
+    // type = 'text', answer = 'Ответ', lang = this.lang
+    const answerEn = this.trueAnswerField.querySelector('.playground__answer-text[language="en"]');
+    const answerRu = this.trueAnswerField.querySelector('.playground__answer-text[language="ru"]');
+
+    if (answer.trueAnswerEn && answer.trueAnswerRu) {
+      answerEn.textContent = answer.trueAnswerEn;
+      answerRu.textContent = answer.trueAnswerRu;
+    } else if (answer.trueOptionsAnswerEn && answer.trueOptionsAnswerRu) {
+      answerEn.textContent = answer.trueOptionsAnswerEn[0];
+      answerRu.textContent = answer.trueOptionsAnswerRu[0];
     }
 
-    answerContainer.classList.remove('none');
+    if (this.lang === 'en') {
+      answerEn.classList.remove('none');
+      answerRu.classList.add('none');
+    } else {
+      answerRu.classList.remove('none');
+      answerEn.classList.add('none');
+    }
+
+    let pict;
+    if (answer.answerPicture) {
+      pict = this.trueAnswerField.querySelector('.playground__answer-picture');
+      pict.classList.remove('none');
+      pict.setAttribute('src', answer.answerPicture);
+    }
 
     setTimeout(() => {
-      answerContainer.classList.add('none');
-      this.showTable();
+      this.trueAnswerField.classList.add('none');
+      answerEn.textContent = '';
+      answerRu.textContent = '';
+      if (pict) {
+        pict.setAttribute('src', '');
+        pict.classList.add('none');
+      }
+      answerEn.classList.add('none');
+      answerRu.classList.add('none');
+      // this.showTable();
     }, 3000);
   }
 
@@ -323,7 +343,6 @@ export class Playground {
   showRound(count = 1) {
     if (this.table) {
       this.hideTable();
-      // this.hideButton();
       this.hideScoreboard();
     }
     if (this.categoriesList) {
@@ -335,27 +354,10 @@ export class Playground {
     setTimeout(() => {
       this.round.classList.add('none');
       this.showTable();
-      // this.showButton();
     }, 1000);
   }
 
-  // createButton() {
-  //   this.answerButton = document.createElement('button');
-  //   this.answerButton.textContent = '';
-  //   this.answerButton.classList.add('controls__answer-button');
-  //   this.container.append(this.answerButton);
-  // }
-
-  // hideButton() {
-  //   this.answerButton.classList.add('none');
-  // }
-
-  // showButton() {
-  //   this.answerButton.classList.remove('none');
-  // }
-
   showScoreboard() {
-    // this.showButton();
     this.scoreboard.classList.remove('none');
   }
 
