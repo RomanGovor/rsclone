@@ -69,4 +69,8 @@ export class Extra {
 
     return value;
   }
+
+  static getRandomInt(max) { // Get Random Number
+    return Math.floor(Math.random() * Math.floor(max)) + 1;
+  }
 }

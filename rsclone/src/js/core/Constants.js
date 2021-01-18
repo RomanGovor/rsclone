@@ -26,4 +26,9 @@ export const Constants = {
     FAILURE: '../assets/audio/failure.mp3',
     CORRECT: '../assets/audio/success.mp3',
   },
+  COUNT_DEFAULT_AVATARS: 27,
+  USER_STATUSES: {
+    PLAYER: 'player',
+    BOT: 'bot',
+  },
 };
