@@ -40,19 +40,23 @@ class App {
   }
 
   addPlayers() {
-    this.player = new Player({ name: 'Pushkin', avatar: 'url(../assets/img/ava1.jpg)' });
+    this.player = new Player({
+      name: 'Pushkin',
+      avatar: 'url(../assets/img/ava1.jpg)',
+      status: Constants.USER_STATUSES.PLAYER,
+    });
     this.player.changeScore(0);
 
     this.bots = {
       bot1: new Player({
         name: 'Bot 1',
-        avatar: 'url(../assets/img/bot.jpg)',
+        avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(Constants.COUNT_DEFAULT_AVATARS)}.jpg)`,
         score: -700,
       }),
       bot2: new Player({
         name: 'Bot 2',
         gender: 'woman',
-        avatar: 'url(../assets/img/ava3.jpg)',
+        avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(Constants.COUNT_DEFAULT_AVATARS)}.jpg)`,
         score: 1900,
       }),
       bot3: new Player({
@@ -149,7 +153,6 @@ class App {
     let isCorrect = false;
 
     for (let i = 0; i < answersArray.length; i++) {
-      console.log(value, answersArray[i]);
       if (value === answersArray[i]) {
         this.updatePlayerScore(currentQuestion.points);
         Extra.playAudio(Constants.AUDIO.CORRECT);
