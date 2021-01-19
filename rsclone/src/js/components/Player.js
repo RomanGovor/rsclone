@@ -10,6 +10,9 @@ export class Player {
     this.avatar = options.avatar || null;
     this.status = options.status || Constants.USER_STATUSES.BOT;
     this.isActivePlayer = options.isActivePlayer || false;
+    if (this.status === Constants.USER_STATUSES.BOT) {
+      this.botLevel = options.botLevel || Constants.LEVELS_BOTS.LOW;
+    }
 
     this.permissionToAnswer = options.permissionToAnswer || true;
     this.render();
@@ -73,7 +76,7 @@ export class Player {
     this.say(`${choice.first}${answer}${choice.second}`);
   }
 
-  say(text = 'hello') {
+  say(text = `Hello. I ${this.name}`) {
     const answer = this.player.querySelector('.player__answer-field');
     answer.textContent = text;
     answer.classList.remove('none');

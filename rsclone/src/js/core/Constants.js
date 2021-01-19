@@ -22,6 +22,8 @@ export const Constants = {
   ANSWER_INPUT: '.playground__answer-input',
   ANSWER_CHECKBOX: 'playground__answer-button-checkbox',
   PLAYGROUND: '.container__playground',
+  CELL: 'cell',
+  NON_CLICKABLE: 'non-clickable',
   AUDIO: {
     FAILURE: '../assets/audio/failure.mp3',
     CORRECT: '../assets/audio/success.mp3',
@@ -32,11 +34,17 @@ export const Constants = {
     BOT: 'bot',
   },
   QUESTION_TIME: 30,
+  QUESTION_START_ANIMATION_TIME: 3,
   LEVELS_BOTS: {
     LOW: 'low',
     MIDDLE: 'middle',
     HARD: 'hard',
   },
+  MAX_COUNT_OF_BOTS: 3,
+  NICKNAMES_BOTS: ['Alexander', 'Loloshka', 'Да да я', 'Johnny Silverhand',
+    'Утка в тапках', 'Девчонка в наушниках', 'Stepa Kurochkin', 'Petrushka',
+    'Ibn Asalalaalalal', 'Cmetanka', 'Летучий олень', 'Сын маминой подруги',
+    'Суслик переросток', 'Дед с Веслом', 'Олег', '4eByRaShKa'],
   USER_RESPONSE_OPTIONS: {
     RU: {
       GOOD: [

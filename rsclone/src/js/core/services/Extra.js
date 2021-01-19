@@ -71,8 +71,18 @@ export class Extra {
     return value;
   }
 
-  static getRandomInt(max) { // Get Random Number
+  static getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max)) + 1;
+  }
+
+  static getRandomArray(len, count) {
+    const currentArr = (new Array(len)).fill(1).map((a, i) => i);
+    const arr = [];
+    for (let i = 0; i < count; i++) {
+      const removed = currentArr.splice(this.getRandomInt(len - i) - 1, 1);
+      arr.push(removed[0]);
+    }
+    return arr;
   }
 
   static deleteQuestionFromArray(row, column) {
@@ -96,5 +106,20 @@ export class Extra {
     const question = Storage.getCurrentQuestion();
     question.isPermissionToAnswer = newState;
     Storage.setCurrentQuestion(question);
+  }
+
+  static createQueueBots(countBots) {
+    const times = this.getRandomArray(Constants.QUESTION_TIME / 2, countBots);
+    const queue = [];
+    for (let i = 0; i < countBots; i++) {
+      const obj = {
+        bot: `bot${i + 1}`,
+        time: times[i],
+        initialTimer: null,
+      };
+      queue.push(obj);
+    }
+    queue.sort((a, b) => b.time - a.time);
+    return queue;
   }
 }

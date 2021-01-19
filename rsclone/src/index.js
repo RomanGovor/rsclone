@@ -1,7 +1,6 @@
 import {
   Playground,
   Player,
-  Timer,
   Authorization,
   Animations,
   SwitchLang,
@@ -60,30 +59,17 @@ class App {
     });
     this.player.changeScore(0);
 
-    this.bots = {
-      bot1: new Player({
-        name: 'Ibn Asalalaalalal',
+    this.bots = {};
+    for (let i = 0; i < Constants.MAX_COUNT_OF_BOTS; i++) {
+      this.bots[`bot${i + 1}`] = new Player({
+        name: Constants.NICKNAMES_BOTS[Extra
+          .getRandomInt(Constants.NICKNAMES_BOTS.length) - 1],
         avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(
           Constants.COUNT_DEFAULT_AVATARS,
         )}.jpg)`,
         score: 0,
-      }),
-      bot2: new Player({
-        name: 'Stepa Kurochkin',
-        gender: 'woman',
-        avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(
-          Constants.COUNT_DEFAULT_AVATARS,
-        )}.jpg)`,
-        score: 0,
-      }),
-      bot3: new Player({
-        name: 'Petrushka',
-        avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(
-          Constants.COUNT_DEFAULT_AVATARS,
-        )}.jpg)`,
-      }),
-    };
-    this.bots.bot3.changeScore(0);
+      });
+    }
   }
 
   setEvents() {
@@ -101,7 +87,6 @@ class App {
       this.language = this.language === 'en' ? 'ru' : 'en';
       Storage.setLanguage(this.language);
 
-      // this.startMenu.renderByLang(this.language);
       Extra.translate(this.language);
     });
 
@@ -112,6 +97,7 @@ class App {
       this.initPlayground();
       this.addPlayers();
       this.checkAnswerButtonsEvents();
+      this.clickPlaygroundTableEvents();
     });
 
     menuRulesBtn.addEventListener('click', () => {
@@ -124,13 +110,28 @@ class App {
     });
   }
 
+  clickPlaygroundTableEvents() {
+    const playground = document.querySelector(Constants.PLAYGROUND);
+    playground.addEventListener('click', (e) => {
+      if (e.target.classList.contains(Constants.CELL)) {
+        this.queueBots = Extra.createQueueBots(Constants.MAX_COUNT_OF_BOTS);
+        for (let i = 0; i < this.queueBots.length; i++) {
+          this.queueBots[i].initialTimer = setTimeout(() => {
+            this.bots[this.queueBots[i].bot].say();
+          }, (this.queueBots[i].time
+              + Constants.QUESTION_START_ANIMATION_TIME
+              + Constants.QUESTION_TIME / 2) * 1000);
+        }
+      }
+    });
+  }
+
   checkAnswerButtonsEvents() {
     const playground = document.querySelector(Constants.PLAYGROUND);
 
     playground.addEventListener('click', (e) => {
       const button = e.target.closest('button');
       this.player.setPermissionToAnswer(Extra.checkOnPermission());
-      console.log(this.player.getPermissionToAnswer());
 
       if (!button || !this.player.getPermissionToAnswer()) return;
 
@@ -196,6 +197,13 @@ class App {
     this.player.changeScore(num);
     this.player.sayPossibleAnswer(this.language, isRight, answer);
     if (!isRight) this.player.setPermissionToAnswer(false);
+    else this.resetTimerOfBots();
+  }
+
+  resetTimerOfBots() {
+    this.queueBots.forEach((bot) => {
+      clearTimeout(bot.initialTimer);
+    });
   }
 }
 
