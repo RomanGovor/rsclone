@@ -5,8 +5,7 @@ export class Settings {
     this.isMusic = Storage.getPlayBackgroundMusicFlag();
     this.audio = null;
     this.setSettingsEvents();
-    // this.playMusic();
-    this.renderAvatars();
+    this.playMusic();
   }
 
   setSettingsEvents() {
@@ -23,21 +22,6 @@ export class Settings {
         Extra.hidePages(document.querySelector(Constants.MAIN_PAGE));
       });
     });
-  }
-
-  renderAvatars() {
-    const avatarsContainer = document.createElement('div');
-    const btnBack = document.querySelector('.settings__button-back');
-
-    avatarsContainer.classList.add('avatars');
-    for (let i = 0; i < Constants.COUNT_DEFAULT_AVATARS; i++) {
-      const image = new Image(150, 150);
-      image.src = `./assets/images/avatars/avatar_${i + 1}.jpg`;
-      image.classList.add('avatars__item');
-      avatarsContainer.append(image);
-    }
-
-    btnBack.before(avatarsContainer);
   }
 
   playMusic() {

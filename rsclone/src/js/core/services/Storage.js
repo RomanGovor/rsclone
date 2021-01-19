@@ -34,4 +34,13 @@ export class Storage {
   static setQuestionsArray(questionsArr) {
     sessionStorage.setItem('sigame/questionsArray', JSON.stringify(questionsArr));
   }
+
+  static getGameParameters() {
+    const param = JSON.parse(sessionStorage.getItem('sigame/gameParam'));
+    return !param ? {} : param;
+  }
+
+  static setGameParameters(param) {
+    sessionStorage.setItem('sigame/gameParam', JSON.stringify(param));
+  }
 }

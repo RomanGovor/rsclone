@@ -1,4 +1,4 @@
-.settings {
+.parameters {
   display: flex;
   max-width: $content-big-width;
   width: 80vw;
@@ -17,8 +17,9 @@
     flex-direction: column;
   }
 
-  &__music,
-  &__background {
+  &__bots,
+  &__levels,
+  &__avatars {
     display: flex;
     align-items: center;
     text-align: center;
@@ -26,12 +27,22 @@
     margin-bottom: 20px;
   }
 
-  &__checkbox {
-    margin-left: 10vw;
-    transform: scale(2);
+  &__levels {
+    .select {
+      width: 100px;
+    }
   }
 
   &__label {
     font-size: 1.2rem;
+  }
+
+  &__avatars {
+    margin-top: 15px;
+    flex-direction: column;
+  }
+
+  button {
+    margin-bottom: 84px;
   }
 }

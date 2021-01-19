@@ -5,7 +5,7 @@ import {
   Animations,
   SwitchLang,
 } from './js/components/index';
-import { Rules, Settings } from './js/pages/index';
+import { GameParameters, Rules, Settings } from './js/pages/index';
 import {
   Extra,
   Constants,
@@ -53,14 +53,14 @@ class App {
   addPlayers() {
     this.player = new Player({
       name: 'Pushkin',
-      avatar: 'url(../assets/img/ava1.jpg)',
+      avatar: `url(${this.gameParam.avatar})`,
       status: Constants.USER_STATUSES.PLAYER,
       isActivePlayer: true,
     });
     this.player.changeScore(0);
 
     this.bots = {};
-    for (let i = 0; i < Constants.MAX_COUNT_OF_BOTS; i++) {
+    for (let i = 0; i < this.gameParam.countBots; i++) {
       this.bots[`bot${i + 1}`] = new Player({
         name: Constants.NICKNAMES_BOTS[Extra
           .getRandomInt(Constants.NICKNAMES_BOTS.length) - 1],
@@ -77,6 +77,7 @@ class App {
     const menuRulesBtn = document.querySelector('.menu-rules');
     const menuSettingsBtn = document.querySelector('.menu-settings');
     const menuPlaygroundBtn = document.querySelector('.menu-single-player');
+    const parametersContainer = document.querySelector('.container__game-param');
 
     switchGameModeBtn.addEventListener('change', () => {
       const switchEn = document.querySelector('.switch__en');
@@ -91,9 +92,21 @@ class App {
     });
 
     menuPlaygroundBtn.addEventListener('click', () => {
-      const containerGame = document.querySelector('.container__game');
-      Extra.hidePages(containerGame);
+      const containerParameters = document.querySelector('.container__game-param');
+      Extra.hidePages(containerParameters);
 
+      const parameters = new GameParameters(this.language);
+    });
+
+    parametersContainer.addEventListener('click', (e) => {
+      const containerGame = document.querySelector('.container__game');
+      const button = e.target.closest('button');
+
+      if (!button) return;
+
+      this.gameParam = Storage.getGameParameters();
+
+      Extra.hidePages(containerGame);
       this.initPlayground();
       this.addPlayers();
       this.checkAnswerButtonsEvents();
@@ -114,7 +127,7 @@ class App {
     const playground = document.querySelector(Constants.PLAYGROUND);
     playground.addEventListener('click', (e) => {
       if (e.target.classList.contains(Constants.CELL)) {
-        this.queueBots = Extra.createQueueBots(Constants.MAX_COUNT_OF_BOTS);
+        this.queueBots = Extra.createQueueBots(this.gameParam.countBots);
         for (let i = 0; i < this.queueBots.length; i++) {
           this.queueBots[i].initialTimer = setTimeout(() => {
             this.bots[this.queueBots[i].bot].say();

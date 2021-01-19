@@ -7,7 +7,7 @@ export class Player {
     this.gender = options.gender || 'man';
     this.score = options.score || 0;
     this.lang = options.lang || 'en';
-    this.avatar = options.avatar || null;
+    this.avatar = options.avatar === 'url(undefined)' ? 'url(../assets/img/ava1.jpg)' : options.avatar;
     this.status = options.status || Constants.USER_STATUSES.BOT;
     this.isActivePlayer = options.isActivePlayer || false;
     if (this.status === Constants.USER_STATUSES.BOT) {
