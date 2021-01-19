@@ -4,6 +4,7 @@ import {
   Authorization,
   Animations,
   SwitchLang,
+  Statistic,
 } from './js/components/index';
 import { GameParameters, Rules, Settings } from './js/pages/index';
 import {
@@ -321,28 +322,41 @@ class App {
       clearTimeout(bot.initialTimer);
     });
   }
+
+  authorization() {
+    if (Storage.getAuthorizationStatus() === null) {
+      Storage.setAuthorizationStatus('false');
+      Storage.setUserToken(null);
+    }
+    const authorization = new Authorization();
+    const request = new Request();
+    const logoutLink = document.querySelector('.header__userAuthotization');
+    logoutLink.addEventListener('click', () => {
+      if (logoutLink.textContent === 'Log out') {
+        request.logout();
+        removeUserAuthorizationData();
+      } else if (logoutLink.textContent === 'Log in') {
+        authorization.init();
+      }
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      if (Storage.getAuthorizationStatus() === 'false') {
+        authorization.init();
+      } else {
+        setUserAuthorizationData();
+      }
+    });
+  }
+
+  statistic() {
+    const statisticLink = document.querySelector('.menu__item-statistic');
+    const statisticModule = new Statistic();
+    statisticLink.addEventListener('click', () => {
+      statisticModule.init();
+    });
+  }
 }
 
 const APP = new App();
-if (localStorage.getItem('isAuthorization') === null) {
-  localStorage.setItem('isAuthorization', 'false');
-  localStorage.setItem('token', null);
-}
-const authorization = new Authorization();
-const request = new Request();
-const logoutLink = document.querySelector('.header__userAuthotization');
-logoutLink.addEventListener('click', () => {
-  if (logoutLink.textContent === 'Log out') {
-    request.logout();
-    // removeUserAuthorizationData();
-  } else if (logoutLink.textContent === 'Log in') {
-    authorization.init();
-  }
-});
-document.addEventListener('DOMContentLoaded', () => {
-  if (localStorage.getItem('isAuthorization') === 'false') {
-    authorization.init();
-  } else {
-    setUserAuthorizationData();
-  }
-});
+APP.authorization();
+APP.statistic();

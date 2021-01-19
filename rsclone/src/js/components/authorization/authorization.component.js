@@ -1,7 +1,7 @@
 /* eslint-disable prefer-destructuring */
 import { authorizationForm } from './authorization.template';
 import { Request } from '../../core/services/request';
-import { setUserAuthorizationData } from '../../core/index';
+import { setUserAuthorizationData, setGuestName } from '../../core/index';
 
 export class Authorization {
   constructor() {
@@ -147,6 +147,7 @@ export class Authorization {
           return;
         }
         localStorage.setItem('name', `${this.nick.value}`);
+        setGuestName(this.nick.value);
         this.removeForm();
       }
     });
