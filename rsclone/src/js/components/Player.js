@@ -9,6 +9,9 @@ export class Player {
     this.lang = options.lang || 'en';
     this.avatar = options.avatar || null;
     this.status = options.status || Constants.USER_STATUSES.BOT;
+    this.isActivePlayer = options.isActivePlayer || false;
+
+    this.permissionToAnswer = options.permissionToAnswer || true;
     this.render();
 
     this.bindEvents();
@@ -17,6 +20,7 @@ export class Player {
   render() {
     this.player = document.createElement('div');
     this.player.classList = 'player';
+    if (this.isActivePlayer) this.player.classList.add('player_active');
 
     this.player.innerHTML = `
     <div class='player__avatar player__avatar_${this.gender}'></div>
@@ -52,6 +56,15 @@ export class Player {
     }
   }
 
+  setPermissionToAnswer(newPermision) {
+    this.permissionToAnswer = newPermision;
+    Extra.changePermission(newPermision);
+  }
+
+  getPermissionToAnswer() {
+    return this.permissionToAnswer;
+  }
+
   sayPossibleAnswer(lang, isRight, answer) {
     const result = isRight ? 'GOOD' : 'BAD';
     const language = lang.toUpperCase();
@@ -70,10 +83,20 @@ export class Player {
     }, 5000);
   }
 
+  makePlayerActive() {
+    document.querySelectorAll('.player').forEach((el) => el.classList.remove('player_active'));
+    this.isActivePlayer = true;
+    this.player.classList.add('player_active');
+    // if (this.isActivePlayer === true) {
+    //   this.player.classList.add('player_active');
+    // } else this.player.classList.remove('player_active');
+  }
+
   bindEvents() {
     this.player.addEventListener('click', (e) => {
       if (e.target.classList.contains('player__avatar')) {
         this.say(`hello my name is ${this.name} and I'm ${this.gender} :)`);
+        this.makePlayerActive();
       }
     });
   }

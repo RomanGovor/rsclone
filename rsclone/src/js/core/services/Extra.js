@@ -86,4 +86,15 @@ export class Extra {
 
     Storage.setQuestionsArray(questions);
   }
+
+  static checkOnPermission() {
+    const question = Storage.getCurrentQuestion();
+    return question.isPermissionToAnswer;
+  }
+
+  static changePermission(newState) {
+    const question = Storage.getCurrentQuestion();
+    question.isPermissionToAnswer = newState;
+    Storage.setCurrentQuestion(question);
+  }
 }

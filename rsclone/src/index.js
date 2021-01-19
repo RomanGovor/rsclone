@@ -1,9 +1,19 @@
 import {
-  Playground, Player, Timer, Authorization, Animations, SwitchLang,
+  Playground,
+  Player,
+  Timer,
+  Authorization,
+  Animations,
+  SwitchLang,
 } from './js/components/index';
 import { Rules, Settings } from './js/pages/index';
 import {
-  Extra, Constants, Storage, setUserAuthorizationData, removeUserAuthorizationData, Request,
+  Extra,
+  Constants,
+  Storage,
+  setUserAuthorizationData,
+  removeUserAuthorizationData,
+  Request,
 } from './js/core/index';
 
 class App {
@@ -46,26 +56,34 @@ class App {
       name: 'Pushkin',
       avatar: 'url(../assets/img/ava1.jpg)',
       status: Constants.USER_STATUSES.PLAYER,
+      isActivePlayer: true,
     });
     this.player.changeScore(0);
 
     this.bots = {
       bot1: new Player({
-        name: 'Bot 1',
-        avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(Constants.COUNT_DEFAULT_AVATARS)}.jpg)`,
-        score: -700,
+        name: 'Ibn Asalalaalalal',
+        avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(
+          Constants.COUNT_DEFAULT_AVATARS,
+        )}.jpg)`,
+        score: 0,
       }),
       bot2: new Player({
-        name: 'Bot 2',
+        name: 'Stepa Kurochkin',
         gender: 'woman',
-        avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(Constants.COUNT_DEFAULT_AVATARS)}.jpg)`,
-        score: 1900,
+        avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(
+          Constants.COUNT_DEFAULT_AVATARS,
+        )}.jpg)`,
+        score: 0,
       }),
       bot3: new Player({
-        name: 'Bot 3',
+        name: 'Petrushka',
+        avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(
+          Constants.COUNT_DEFAULT_AVATARS,
+        )}.jpg)`,
       }),
     };
-    this.bots.bot3.changeScore(777);
+    this.bots.bot3.changeScore(0);
   }
 
   setEvents() {
@@ -111,13 +129,14 @@ class App {
 
     playground.addEventListener('click', (e) => {
       const button = e.target.closest('button');
-      if (!button) return;
+      this.player.setPermissionToAnswer(Extra.checkOnPermission());
+      console.log(this.player.getPermissionToAnswer());
+
+      if (!button || !this.player.getPermissionToAnswer()) return;
 
       if (button.classList.contains('playground__answer-button')) {
         const value = Extra.checkOnNoEmptyInputs();
-        if (value !== '') {
-          this.checkTrueAnswer(value);
-        }
+        if (value !== '') this.checkTrueAnswer(value);
       }
 
       if (button.classList.contains(Constants.ANSWER_CHECKBOX)) {
@@ -134,14 +153,16 @@ class App {
 
   checkTrueAnswerCheckbox(checkbox) {
     const currentQuestion = Storage.getCurrentQuestion();
-    const span = checkbox.querySelector('span[language=\'en\']');
+    const span = checkbox.querySelector("span[language='en']");
 
     if (span.value === currentQuestion.trueAnswerEn) {
       this.updatePlayerScore(currentQuestion.points, true, span.value);
       Extra.playAudio(Constants.AUDIO.CORRECT);
+      this.playground.hideQuestion(true, Constants.USER_STATUSES.PLAYER);
     } else {
       this.updatePlayerScore((-1) * currentQuestion.points, false, span.value);
       Extra.playAudio(Constants.AUDIO.FAILURE);
+      this.playground.hideQuestion(false, Constants.USER_STATUSES.PLAYER);
     }
   }
 
@@ -149,9 +170,10 @@ class App {
     const value = input.trim().toLowerCase();
 
     const currentQuestion = Storage.getCurrentQuestion();
-    const answersArray = [...currentQuestion.trueOptionsAnswerEn,
-      ...currentQuestion.trueOptionsAnswerRu]
-      .map((str) => str.trim().toLowerCase());
+    const answersArray = [
+      ...currentQuestion.trueOptionsAnswerEn,
+      ...currentQuestion.trueOptionsAnswerRu,
+    ].map((str) => str.trim().toLowerCase());
     let isCorrect = false;
 
     for (let i = 0; i < answersArray.length; i++) {
@@ -159,18 +181,21 @@ class App {
         isCorrect = true;
         this.updatePlayerScore(currentQuestion.points, isCorrect, input);
         Extra.playAudio(Constants.AUDIO.CORRECT);
+        this.playground.hideQuestion(isCorrect, Constants.USER_STATUSES.PLAYER);
         break;
       }
     }
     if (!isCorrect) {
       this.updatePlayerScore((-1) * currentQuestion.points, isCorrect, input);
       Extra.playAudio(Constants.AUDIO.FAILURE);
+      this.playground.hideQuestion(isCorrect, Constants.USER_STATUSES.PLAYER);
     }
   }
 
   updatePlayerScore(num, isRight, answer) {
     this.player.changeScore(num);
     this.player.sayPossibleAnswer(this.language, isRight, answer);
+    if (!isRight) this.player.setPermissionToAnswer(false);
   }
 }
 

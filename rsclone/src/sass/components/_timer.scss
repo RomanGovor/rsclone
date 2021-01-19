@@ -1,4 +1,14 @@
 .timer {
+  @media (max-width: $content-middle-keyboard) {
+    width: max-content;
+    height: 120px;
+    display: flex;
+    align-items: baseline;
+  }
+  @media (max-width: $content-little-width) {
+    margin: 30px 0 0;
+  }
+
   &__btn-group {
     display: flex;
     justify-content: space-between;
@@ -31,7 +41,7 @@
   }
 
   &__pause {
-    background: $color-additional
+    background: $color-additional;
   }
 
   &__resume {
@@ -95,6 +105,3 @@
     transform: rotate(-90deg) scale(0.8);
   }
 }
-
-
-
