@@ -240,41 +240,6 @@ export class Playground {
     Extra.translate(this.lang);
   }
 
-  // bindAnswerButtonsEvents() {
-  //   this.answerInput.addEventListener('click', (e) => {
-  //     const button = e.target.closest('button');
-  //     if (!button) return;
-  //
-  //     if (button.classList.contains('playground__answer-button')) {
-  //       if (Extra.checkOnNoEmptyInputs() !== '') {
-  //
-  //         this.hideScoreboard();
-  //         this.showTrueAnswer(this.currentQuestion);
-  //         this.TIMER.deleteTimer();
-  //         setTimeout(() => {
-  //           if (!this.isLastQuestion()) this.showTable();
-  //           else this.updateStatePlayground();
-  //         }, 3000);
-  //       }
-  //     }
-  //   });
-  //
-  //   this.answerCheckbox.addEventListener('click', (e) => {
-  //     const button = e.target.closest('button');
-  //     if (!button) return;
-  //
-  //     if (button.classList.contains('playground__answer-button-checkbox')) {
-  //       this.hideScoreboard();
-  //       this.showTrueAnswer(this.currentQuestion);
-  //       this.TIMER.deleteTimer();
-  //       setTimeout(() => {
-  //         if (!this.isLastQuestion()) this.showTable();
-  //         else this.updateStatePlayground();
-  //       }, 3000);
-  //     }
-  //   });
-  // }
-
   hideQuestion(isCorrect, user) {
     if (isCorrect) {
       this.hideScoreboard();

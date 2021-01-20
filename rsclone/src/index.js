@@ -67,6 +67,7 @@ class App {
         avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(
           Constants.COUNT_DEFAULT_AVATARS,
         )}.jpg)`,
+        botLevel: this.gameParam.level,
         score: 0,
       });
     }
@@ -128,9 +129,19 @@ class App {
     playground.addEventListener('click', (e) => {
       if (e.target.classList.contains(Constants.CELL)) {
         this.queueBots = Extra.createQueueBots(this.gameParam.countBots);
+
         for (let i = 0; i < this.queueBots.length; i++) {
           this.queueBots[i].initialTimer = setTimeout(() => {
-            this.bots[this.queueBots[i].bot].say();
+            this.bots[this.queueBots[i].bot].makePlayerActive();
+
+            setTimeout(() => {
+              const answer = this.generatingPossibleResponse();
+              this.botResponseAttempt(answer, this.bots[this.queueBots[i].bot]);
+              // this.bots[this.queueBots[i].bot].say(answer);
+              // console.log(this.bots[this.queueBots[i].bot].getName() + ' ' + answer);
+
+              this.player.makePlayerActive();
+            }, 900);
           }, (this.queueBots[i].time
               + Constants.QUESTION_START_ANIMATION_TIME
               + Constants.QUESTION_TIME / 2) * 1000);
@@ -145,42 +156,54 @@ class App {
     playground.addEventListener('click', (e) => {
       const button = e.target.closest('button');
       this.player.setPermissionToAnswer(Extra.checkOnPermission());
+      const isActivePlayer = this.player.getActivePlayer();
 
-      if (!button || !this.player.getPermissionToAnswer()) return;
+      if (!button || !this.player.getPermissionToAnswer() || !isActivePlayer) return;
 
       if (button.classList.contains('playground__answer-button')) {
         const value = Extra.checkOnNoEmptyInputs();
-        if (value !== '') this.checkTrueAnswer(value);
+        if (value !== '') this.checkTrueAnswer(value, this.player);
       }
 
       if (button.classList.contains(Constants.ANSWER_CHECKBOX)) {
-        this.checkTrueAnswer(button);
+        this.checkTrueAnswer(button, this.player);
       }
     });
   }
 
-  checkTrueAnswer(element = undefined) {
-    const currentQuestion = Storage.getCurrentQuestion();
-    if (currentQuestion.type === 'checkbox') this.checkTrueAnswerCheckbox(element);
-    else this.checkTrueAnswerInput(element);
+  botResponseAttempt(answer, player) {
+    const question = Storage.getCurrentQuestion();
+    if (question.type === 'checkbox') this.checkBySpanValue(answer, player);
+    else this.checkTrueAnswerInput(answer, player);
   }
 
-  checkTrueAnswerCheckbox(checkbox) {
+  checkTrueAnswer(element = undefined, player) {
     const currentQuestion = Storage.getCurrentQuestion();
-    const span = checkbox.querySelector("span[language='en']");
+    if (currentQuestion.type === 'checkbox') this.checkTrueAnswerCheckbox(element, player);
+    else this.checkTrueAnswerInput(element, player);
+  }
 
-    if (span.value === currentQuestion.trueAnswerEn) {
-      this.updatePlayerScore(currentQuestion.points, true, span.value);
+  checkTrueAnswerCheckbox(checkbox, player) {
+    const spanEn = checkbox.querySelector("span[language='en']");
+    this.checkBySpanValue(spanEn.value, player);
+  }
+
+  checkBySpanValue(value, player) {
+    const currentQuestion = Storage.getCurrentQuestion();
+
+    if (value === currentQuestion.trueAnswerEn
+        || value === currentQuestion.trueAnswerRu) {
+      this.updatePlayerScore(currentQuestion.points, true, value, player);
       Extra.playAudio(Constants.AUDIO.CORRECT);
-      this.playground.hideQuestion(true, Constants.USER_STATUSES.PLAYER);
+      this.playground.hideQuestion(true, player.getStatus());
     } else {
-      this.updatePlayerScore((-1) * currentQuestion.points, false, span.value);
+      this.updatePlayerScore((-1) * currentQuestion.points, false, value, player);
       Extra.playAudio(Constants.AUDIO.FAILURE);
-      this.playground.hideQuestion(false, Constants.USER_STATUSES.PLAYER);
+      this.playground.hideQuestion(false, player.getStatus());
     }
   }
 
-  checkTrueAnswerInput(input) {
+  checkTrueAnswerInput(input, player) {
     const value = input.trim().toLowerCase();
 
     const currentQuestion = Storage.getCurrentQuestion();
@@ -193,24 +216,35 @@ class App {
     for (let i = 0; i < answersArray.length; i++) {
       if (value === answersArray[i]) {
         isCorrect = true;
-        this.updatePlayerScore(currentQuestion.points, isCorrect, input);
+        this.updatePlayerScore(currentQuestion.points, isCorrect, input, player);
         Extra.playAudio(Constants.AUDIO.CORRECT);
-        this.playground.hideQuestion(isCorrect, Constants.USER_STATUSES.PLAYER);
+        this.playground.hideQuestion(isCorrect, player.getStatus());
         break;
       }
     }
     if (!isCorrect) {
-      this.updatePlayerScore((-1) * currentQuestion.points, isCorrect, input);
+      this.updatePlayerScore((-1) * currentQuestion.points, isCorrect, input, player);
       Extra.playAudio(Constants.AUDIO.FAILURE);
-      this.playground.hideQuestion(isCorrect, Constants.USER_STATUSES.PLAYER);
+      this.playground.hideQuestion(isCorrect, player.getStatus());
     }
   }
 
-  updatePlayerScore(num, isRight, answer) {
-    this.player.changeScore(num);
-    this.player.sayPossibleAnswer(this.language, isRight, answer);
-    if (!isRight) this.player.setPermissionToAnswer(false);
-    else this.resetTimerOfBots();
+  generatingPossibleResponse() {
+    const question = Storage.getCurrentQuestion();
+    const { level } = this.gameParam;
+    const randomArray = Extra.generateArrayOfAnswers(question, level, this.language);
+    console.log(randomArray);
+    return randomArray[Extra.getRandomInt(randomArray.length) - 1];
+  }
+
+  updatePlayerScore(num, isRight, answer, player) {
+    player.changeScore(num);
+    player.sayPossibleAnswer(this.language, isRight, answer);
+    if (!isRight) {
+      if (player.getStatus() === Constants.USER_STATUSES.PLAYER) {
+        this.player.setPermissionToAnswer(false);
+      }
+    } else this.resetTimerOfBots();
   }
 
   resetTimerOfBots() {
