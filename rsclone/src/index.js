@@ -61,13 +61,15 @@ class App {
 
     this.bots = {};
     for (let i = 0; i < this.gameParam.countBots; i++) {
-      this.bots[`bot${i + 1}`] = new Player({
+      const workName = `bot${i + 1}`;
+      this.bots[workName] = new Player({
         name: Constants.NICKNAMES_BOTS[Extra
           .getRandomInt(Constants.NICKNAMES_BOTS.length) - 1],
         avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(
           Constants.COUNT_DEFAULT_AVATARS,
         )}.jpg)`,
         botLevel: this.gameParam.level,
+        workName,
         score: 0,
       });
     }
@@ -111,7 +113,8 @@ class App {
       this.initPlayground();
       this.addPlayers();
       this.checkAnswerButtonsEvents();
-      this.clickPlaygroundTableEvents();
+      this.delegateTableEvent();
+      Storage.setPossiblePlayer(Constants.USER_STATUSES.PLAYER);
     });
 
     menuRulesBtn.addEventListener('click', () => {
@@ -124,30 +127,82 @@ class App {
     });
   }
 
-  clickPlaygroundTableEvents() {
+  delegateTableEvent() {
     const playground = document.querySelector(Constants.PLAYGROUND);
     playground.addEventListener('click', (e) => {
-      if (e.target.classList.contains(Constants.CELL)) {
-        this.queueBots = Extra.createQueueBots(this.gameParam.countBots);
+      const isActivePlayer = this.player.getActivePlayer();
 
-        for (let i = 0; i < this.queueBots.length; i++) {
-          this.queueBots[i].initialTimer = setTimeout(() => {
-            this.bots[this.queueBots[i].bot].makePlayerActive();
-
-            setTimeout(() => {
-              const answer = this.generatingPossibleResponse();
-              this.botResponseAttempt(answer, this.bots[this.queueBots[i].bot]);
-              // this.bots[this.queueBots[i].bot].say(answer);
-              // console.log(this.bots[this.queueBots[i].bot].getName() + ' ' + answer);
-
-              this.player.makePlayerActive();
-            }, 900);
-          }, (this.queueBots[i].time
-              + Constants.QUESTION_START_ANIMATION_TIME
-              + Constants.QUESTION_TIME / 2) * 1000);
-        }
+      if (e.target.classList.contains(Constants.CELL) && isActivePlayer) {
+        this.clickCell(e.target);
       }
     });
+  }
+
+  setQuestionTimer() {
+    this.handlerQuestionTimer = setTimeout(() => {
+      const possiblePlayer = Storage.getPossiblePlayer();
+      if (possiblePlayer === Constants.USER_STATUSES.PLAYER) {
+        this.player.makePlayerActive();
+      } else {
+        this.bots[possiblePlayer].makePlayerActive();
+        this.chooseRandomQuestion(this.bots[possiblePlayer]);
+      }
+    }, (Constants.TIME_SHOW_ANSWER
+            + Constants.QUESTION_TIME
+            + Constants.QUESTION_START_ANIMATION_TIME
+            + 1) * 1000);
+  }
+
+  chooseRandomQuestion(bot) {
+    const questionsArray = Storage.getQuestionsArray();
+
+    if (questionsArray && questionsArray.length !== 0) {
+      const question = questionsArray[Extra.getRandomInt(questionsArray.length) - 1];
+      const row = question.row - 1;
+      const column = question.column - 1;
+
+      Extra.delay((Constants.TIME_CHOOSE_QUESTION * 1000) / 4).then(() => {
+        bot.hideSpeech();
+        if (this.language === 'en') bot.say(Constants.BOT_CHOOSE_QUESTION.EN);
+        else bot.say(Constants.BOT_CHOOSE_QUESTION.RU);
+
+        Extra.delay(((Constants.TIME_CHOOSE_QUESTION * 1000) / 4) * 3).then(() => {
+          bot.hideSpeech();
+          const cell = this.playground.findCellByCoordinates(row, column);
+          this.clickCell(cell);
+        });
+      });
+    }
+  }
+
+  clickCell(cell) {
+    this.playground.clickOnTable(cell);
+    this.setQuestionTimer();
+    this.setUpBotsResponseQueue();
+
+    setTimeout(() => {
+      this.player.makePlayerActive();
+    }, Constants.QUESTION_START_ANIMATION_TIME * 1000);
+  }
+
+  clearQuestionTimer() {
+    clearTimeout(this.handlerQuestionTimer);
+  }
+
+  setUpBotsResponseQueue() {
+    this.queueBots = Extra.createQueueBots(this.gameParam.countBots);
+    for (let i = 0; i < this.queueBots.length; i++) {
+      this.queueBots[i].initialTimer = setTimeout(() => {
+        this.bots[this.queueBots[i].bot].makePlayerActive();
+
+        setTimeout(() => {
+          const answer = this.generatingPossibleResponse();
+          this.botResponseAttempt(answer, this.bots[this.queueBots[i].bot]);
+        }, 900);
+      }, (this.queueBots[i].time
+          + Constants.QUESTION_START_ANIMATION_TIME
+          + Constants.QUESTION_TIME / 2) * 1000);
+    }
   }
 
   checkAnswerButtonsEvents() {
@@ -173,6 +228,7 @@ class App {
 
   botResponseAttempt(answer, player) {
     const question = Storage.getCurrentQuestion();
+    console.log(answer, typeof answer);
     if (question.type === 'checkbox') this.checkBySpanValue(answer, player);
     else this.checkTrueAnswerInput(answer, player);
   }
@@ -204,7 +260,7 @@ class App {
   }
 
   checkTrueAnswerInput(input, player) {
-    const value = input.trim().toLowerCase();
+    const value = input.toString().trim().toLowerCase();
 
     const currentQuestion = Storage.getCurrentQuestion();
     const answersArray = [
@@ -233,7 +289,6 @@ class App {
     const question = Storage.getCurrentQuestion();
     const { level } = this.gameParam;
     const randomArray = Extra.generateArrayOfAnswers(question, level, this.language);
-    console.log(randomArray);
     return randomArray[Extra.getRandomInt(randomArray.length) - 1];
   }
 
@@ -241,10 +296,24 @@ class App {
     player.changeScore(num);
     player.sayPossibleAnswer(this.language, isRight, answer);
     if (!isRight) {
+      this.player.makePlayerActive();
       if (player.getStatus() === Constants.USER_STATUSES.PLAYER) {
         this.player.setPermissionToAnswer(false);
       }
-    } else this.resetTimerOfBots();
+    } else {
+      Storage.setPossiblePlayer(player.getWorkName);
+      this.resetTimerOfBots();
+      this.clearQuestionTimer();
+      player.makePlayerActive();
+
+      this.waitForAnswerToBeShownAndSelectQuestion(player);
+    }
+  }
+
+  waitForAnswerToBeShownAndSelectQuestion(player) {
+    setTimeout(() => {
+      this.chooseRandomQuestion(player);
+    }, Constants.TIME_SHOW_ANSWER * 1000);
   }
 
   resetTimerOfBots() {

@@ -119,7 +119,7 @@ export class Extra {
 
     switch (level) {
       case Constants.LEVELS_BOTS.LOW:
-        result.push(options.splice(0, 1));
+        result.push(options.splice(0, 1)[0]);
         result.push(options.splice(options.length - 1, 1)[0]);
         break;
 
