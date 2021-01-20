@@ -156,6 +156,19 @@
         max-height: 170px;
       }
     }
+
+    &-repeat {
+      width: 100px;
+      height: 100px;
+      margin: 20px auto 0;
+      cursor: pointer;
+      transform: scale(0.9);
+      transition: transform 1s;
+
+      &:hover {
+        transform: rotate(90deg);
+      }
+    }
   }
 
   &__answer {

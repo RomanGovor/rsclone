@@ -15,6 +15,7 @@ export class Playground {
     this.currentQuestion = null;
     this.countRounds = this.package.rounds.length;
     this.currentRound = 1;
+    this.audioObj = null;
 
     this.render();
     this.showCategories(this.lang === 'en' ? this.allCategoriesEn : this.allCategoriesRu);
@@ -23,17 +24,15 @@ export class Playground {
 
   getQuestionsArrayByRound() {
     const questions = [];
-    this.package.rounds[this.currentRound - 1].categories
-      .forEach((cat, row) => {
-        cat.questions
-          .forEach((quest, column) => {
-            const coords = {
-              row: row + 1,
-              column: column + 1,
-            };
-            questions.push(coords);
-          });
+    this.package.rounds[this.currentRound - 1].categories.forEach((cat, row) => {
+      cat.questions.forEach((quest, column) => {
+        const coords = {
+          row: row + 1,
+          column: column + 1,
+        };
+        questions.push(coords);
       });
+    });
 
     Storage.setQuestionsArray(questions);
   }
@@ -60,10 +59,12 @@ export class Playground {
       const row = document.createElement('tr');
       row.classList.add(`row-${i + 1}`);
 
-      const th = Extra.createMultipleLanguageElement('th',
+      const th = Extra.createMultipleLanguageElement(
+        'th',
         [`cell-${i}`],
         this.categories[i].categoryInfo.categoryNameEn,
-        this.categories[i].categoryInfo.categoryNameRu);
+        this.categories[i].categoryInfo.categoryNameRu,
+      );
       row.append(th);
 
       for (let j = 0; j < this.categories[i].questions.length; j++) {
@@ -299,20 +300,23 @@ export class Playground {
     if (this.categoriesList) this.hideCategories();
 
     this.showScoreboard();
-    // this.question.textContent = `${question[0]}`;
     const isQuestionPicture = question.questionPicture === undefined ? ' none' : '';
     const isQuestionDescriptionEn = question.descriptionEn === undefined ? '' : question.descriptionEn;
     const isQuestionDescriptionRu = question.descriptionRu === undefined ? '' : question.descriptionRu;
+    const title = this.lang === 'en' ? 'Repeat sound' : 'Повторить звук';
     this.question.innerHTML = `
       <strong class='playground__question' language='en'>${question.questionEn}</strong>
       <strong class='playground__question' language='ru'>${question.questionRu}</strong>
       <span class='playground__question-descriptions' language='en'>${isQuestionDescriptionEn}</span>
       <span class='playground__question-descriptions' language='ru'>${isQuestionDescriptionRu}</span>
       <img src='${question.questionPicture}' class='playground__question-picture${isQuestionPicture}' width=200 height=200>
-    `;
+      <img src='../../assets/icons/repeat.png' class='playground__question-repeat none' title='${title}' width=100 height=100>
+      `;
 
-    if (question.type === 'checkbox') {
-      this.changeAnswerOptionsValue(question.answerOptionsEn, question.answerOptionsRu);
+    const repeat = this.question.querySelector('.playground__question-repeat');
+    if (question.subtype === 'sound') {
+      this.audioObj = new Audio(this.);
+      repeat.classList.remove('none');
     }
 
     if (question.type === 'input') {
@@ -321,10 +325,11 @@ export class Playground {
       this.answerInput.querySelector('.playground__answer-input').value = '';
       this.clearInput();
     } else if (question.type === 'checkbox') {
+      this.changeAnswerOptionsValue(question.answerOptionsEn, question.answerOptionsRu);
       this.answerCheckbox.classList.remove('none');
       this.answerInput.classList.add('none');
     }
-    // setTimeout(() => {}, 0);
+
     Extra.translate(this.lang);
   }
 
