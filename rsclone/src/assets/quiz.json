@@ -72,10 +72,10 @@
               "questionRu": "Введите название фильма по отрывку звука",
               "questionEn": "Enter the title of the movie from the audio clip",
               "sound": "https://hotmo.org/get/music/20190927/Terminator_-_Astalavista_baby_66753518.mp3",
-              "answerPicture": "src...",
+              "answerPicture": "https://im0-tub-ru.yandex.net/i?id=8cfa11d699898c63d3d1fbc18a08cf6b&n=13",
               "answerOptionsEn": ["Die Hard", "Terminator 2", "Armour of God 2", "Mission: Impossible"],
               "answerOptionsRu": ["Крепкий орешек", "Терминатор 2", "Доспехи Бога 2", "Миссия невыполнима"],
-              "trueOptionsAnswerEn": ["Terminator 2", "Terminator"],
+              "trueOptionsAnswerEn": ["Terminator", "Terminator 2"],
               "trueOptionsAnswerRu": ["Терминатор 2", "Терминатор"]
             }
           ]
@@ -94,7 +94,7 @@
               "questionEn": "Enter the name of the actor",
               "questionPicture": "https://zhenray.ru/wp-content/uploads/2020/11/28888.jpg",
               "trueOptionsAnswerEn": ["Jim Carrey", "Jim Carey", "Carey", "Carrey Jim", "James Eugene Carrey"],
-              "trueOptionsAnswerRu": ["Джим Керри", "Джим Кери", "Кери", "Керри Джим", "Джеймс Юджин Керри"]
+              "trueOptionsAnswerRu": ["Джим Керри", "Керри", "Джим Кери", "Кери", "Керри Джим", "Джеймс Юджин Керри"]
             },
             {
               "type": "input",
@@ -152,6 +152,7 @@
               "questionEn": "Enter the correct answer",
               "descriptionRu": "Режисер фильма Титаник",
               "descriptionEn": "Titanic film producer",
+              "answerPicture": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/James_Cameron_by_Gage_Skidmore.jpg/800px-James_Cameron_by_Gage_Skidmore.jpg",
               "trueOptionsAnswerEn": ["James Cameron", "James", "Cameron", "Cameron James", "James Francis Cameron"],
               "trueOptionsAnswerRu": ["Джеймс Кэмерон", "Джеймс", "Кэмерон", "Кэмерон Джеймс", "Джеймс Френсис Кэмерон"]
             },
@@ -298,6 +299,7 @@
               "questionEn": "Choose the correct option for the description",
               "descriptionRu": "Случайно обнаружив настольную игру со странным названием Алан Пэрриш, не зная о ее сверхъестественных свойствах, на глазах изумленной подружки переносится в джунгли. Но чудеса на этом не заканчиваются...",
               "descriptionEn": "Having accidentally discovered a board game with a strange name, Alan Parrish, not knowing about its supernatural properties, in front of an amazed girlfriend, he is transported into the jungle. But the miracles don't end there ...",
+              "answerPicture": "https://www.heyuguys.com/images/2020/12/Jumanji-header.jpg",
               "answerOptionsEn": ["RoboCop", "Jumanji", "Basic Instinct", "Knockin' on Heaven's Door"],
               "answerOptionsRu": ["Робокоп", "Джуманджи", "Основной инстинкт", "Достучаться до небес"],
               "trueAnswerEn": "Jumanji",

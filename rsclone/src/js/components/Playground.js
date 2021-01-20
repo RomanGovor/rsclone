@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 import { Timer } from './Timer';
 import { Constants, Extra } from '../core';
 import { Storage } from '../core/services/Storage';
@@ -15,7 +16,6 @@ export class Playground {
     this.currentQuestion = null;
     this.countRounds = this.package.rounds.length;
     this.currentRound = 1;
-    this.audioObj = null;
 
     this.render();
     this.showCategories(this.lang === 'en' ? this.allCategoriesEn : this.allCategoriesRu);
@@ -46,6 +46,12 @@ export class Playground {
     this.createTable();
     this.createRound();
     this.createTrueAnswerField();
+    this.createSound();
+  }
+
+  createSound() {
+    this.audioObj = new Audio();
+    this.audioObj.setAttribute('src', null);
   }
 
   createTable() {
@@ -260,14 +266,15 @@ export class Playground {
 
     if (this.table) {
       this.hideTable();
-      // this.hideButton();
     }
     if (this.categoriesList) this.hideCategories();
 
     this.showScoreboard();
     const isQuestionPicture = question.questionPicture === undefined ? ' none' : '';
-    const isQuestionDescriptionEn = question.descriptionEn === undefined ? '' : question.descriptionEn;
-    const isQuestionDescriptionRu = question.descriptionRu === undefined ? '' : question.descriptionRu;
+    const isQuestionDescriptionEn =
+      question.descriptionEn === undefined ? '' : question.descriptionEn;
+    const isQuestionDescriptionRu =
+      question.descriptionRu === undefined ? '' : question.descriptionRu;
     const title = this.lang === 'en' ? 'Repeat sound' : 'Повторить звук';
     this.question.innerHTML = `
       <strong class='playground__question' language='en'>${question.questionEn}</strong>
@@ -275,13 +282,32 @@ export class Playground {
       <span class='playground__question-descriptions' language='en'>${isQuestionDescriptionEn}</span>
       <span class='playground__question-descriptions' language='ru'>${isQuestionDescriptionRu}</span>
       <img src='${question.questionPicture}' class='playground__question-picture${isQuestionPicture}' width=200 height=200>
-      <img src='../../assets/icons/repeat.png' class='playground__question-repeat none' title='${title}' width=100 height=100>
+      <div class='playground__question-repeat none'>
+        <div class='playground__question-repeat-bg'></div>
+        <img src='../../assets/icons/repeat.png' class='playground__question-repeat-button' title='${title}' width=100 height=100>
+      </div>
       `;
 
     const repeat = this.question.querySelector('.playground__question-repeat');
+    const repeatButton = this.question.querySelector('.playground__question-repeat-button');
+    // console.log('const repeat', repeat);
+    repeat.classList.add('none');
+
     if (question.subtype === 'sound') {
-      this.audioObj = new Audio(this.);
+      // console.log(this.currentQuestion);
+      // console.log(this.currentQuestion.sound);
+      // this.audioObj = new Audio(this.currentQuestion.sound);
+      this.audioObj.setAttribute(
+        'src',
+        `../../assets/audio/${this.currentQuestion.trueOptionsAnswerEn[0]}.mp3`,
+      );
+      this.audioObj.play();
       repeat.classList.remove('none');
+      repeatButton.addEventListener('click', () => {
+        this.audioObj.pause();
+        this.audioObj.currentTime = 0;
+        this.audioObj.play();
+      });
     }
 
     if (question.type === 'input') {
@@ -357,15 +383,6 @@ export class Playground {
       // this.showTable();
     }, 3000);
   }
-  // showAnswerPicture(picture) {
-  //   if (picture !== undefined) {
-  //     const pict = this.question.querySelector('.playground__answer-picture');
-  //     pict.classList.remove('none');
-  //     setTimeout(() => {
-  //       pict.classList.add('none');
-  //     }, 3000);
-  //   }
-  // }
 
   changeAnswerOptionsValue(OptionsEn, OptionsRu) {
     this.answerCheckbox

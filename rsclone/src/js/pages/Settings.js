@@ -22,6 +22,12 @@ export class Settings {
         Extra.hidePages(document.querySelector(Constants.MAIN_PAGE));
       });
     });
+
+    const darkMode = document.querySelector('.settings__background .settings__checkbox');
+    const wrap = document.querySelector('.wrap');
+    darkMode.addEventListener('click', () => {
+      wrap.classList.toggle('wrap_mode-dark');
+    });
   }
 
   playMusic() {

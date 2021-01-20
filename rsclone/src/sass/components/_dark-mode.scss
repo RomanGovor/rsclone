@@ -1,0 +1,30 @@
+@import '../abstracts/constants';
+
+.wrap_mode-dark {
+  background-color: black;
+
+  .container__settings,
+  .title,
+  .parameters,
+  .rules {
+    color: $dark-mode-main-text;
+  }
+
+  footer {
+    background-color: $dark-mode-footer-bg;
+    color: $dark-mode-main-text;
+
+    a {
+      color: $dark-mode-main-text;
+    }
+  }
+
+  .main-menu {
+    color: $dark-mode-main-text;
+
+    &__item {
+      background-color: $dark-mode-main-menu;
+      color: $dark-mode-main-text;
+    }
+  }
+}

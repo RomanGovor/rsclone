@@ -6,6 +6,10 @@
   max-width: $content-width;
   padding: 0 79px 0 79px;
 
+  &__user {
+    right: 10px;
+  }
+
   &__menu {
     cursor: pointer;
   }
@@ -13,12 +17,12 @@
   .title {
     font-size: 2rem;
     line-height: initial;
-    padding: 0
+    padding: 0;
   }
 
   &__switch {
     position: relative;
-    @include size(121px,40px);
+    @include size(121px, 40px);
     border-radius: 25px;
     top: 16px;
   }
