@@ -352,6 +352,17 @@ class App {
     const statisticLink = document.querySelector('.menu__item-statistic');
     const statisticModule = new Statistic();
     statisticLink.addEventListener('click', () => {
+      statisticModule.setUserData({
+        numberOfGames: '3',
+        maximumNumberOfWins: '3',
+        points: '7',
+        averagePoints: '4',
+        averagePlayTime: '8',
+        maximumPlayTime: '5',
+      });
+      statisticModule.getUserData();
+      const data = Storage.getUserStatisticData();
+      console.log(data);
       statisticModule.init();
     });
   }
