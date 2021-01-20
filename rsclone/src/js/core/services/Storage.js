@@ -8,6 +8,15 @@ export class Storage {
     localStorage.setItem('sigame/lang', lang);
   }
 
+  static getPossiblePlayer() {
+    const player = sessionStorage.getItem('sigame/possiblePlayer');
+    return !player ? 'player' : player;
+  }
+
+  static setPossiblePlayer(player) {
+    sessionStorage.setItem('sigame/possiblePlayer', player);
+  }
+
   static getPlayBackgroundMusicFlag() {
     const isPlay = JSON.parse(localStorage.getItem('sigame/bgMusic'));
     return isPlay === undefined ? false : isPlay;

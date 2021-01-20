@@ -34,7 +34,9 @@ export const Constants = {
     BOT: 'bot',
   },
   QUESTION_TIME: 30,
+  TIME_SHOW_ANSWER: 3,
   QUESTION_START_ANIMATION_TIME: 3,
+  TIME_CHOOSE_QUESTION: 2,
   LEVELS_BOTS: {
     LOW: 'low',
     MIDDLE: 'middle',
@@ -56,6 +58,10 @@ export const Constants = {
       'freeway', 'barberry', 'enemy', 'karting', 'department store', 'process',
       'fitness', 'plastic', 'forehead', 'epidermis', 'cowberry', 'water-lily',
       'cinnamon roll', 'timing', 'lagman', 'disco', 'snowman', 'brick', 'technical writing'],
+  },
+  BOT_CHOOSE_QUESTION: {
+    EN: 'Give me a second, now I\'ll choose a question',
+    RU: 'Ща секунду, выбираю вопрос',
   },
   USER_RESPONSE_OPTIONS: {
     RU: {

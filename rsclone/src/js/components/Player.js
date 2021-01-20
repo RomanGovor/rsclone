@@ -10,6 +10,7 @@ export class Player {
     this.avatar = options.avatar === 'url(undefined)' ? 'url(../assets/img/ava1.jpg)' : options.avatar;
     this.status = options.status || Constants.USER_STATUSES.BOT;
     this.isActivePlayer = options.isActivePlayer || false;
+    this.workName = options.workName || 'player';
     if (this.status === Constants.USER_STATUSES.BOT) {
       this.botLevel = options.botLevel || Constants.LEVELS_BOTS.LOW;
     }
@@ -68,6 +69,10 @@ export class Player {
     return this.permissionToAnswer;
   }
 
+  getWorkName() {
+    return this.workName;
+  }
+
   getName() {
     return this.name;
   }
@@ -92,6 +97,11 @@ export class Player {
     setTimeout(() => {
       answer.classList.add('none');
     }, 5000);
+  }
+
+  hideSpeech() {
+    const answer = this.player.querySelector('.player__answer-field');
+    answer.classList.add('none');
   }
 
   getActivePlayer() {

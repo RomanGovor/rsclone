@@ -93,61 +93,72 @@ export class Playground {
     }
     this.playground.append(this.table);
 
-    this.bindTableEvent();
     Extra.translate(this.lang);
   }
 
-  bindTableEvent() {
-    this.table.addEventListener('click', (e) => {
-      if (e.target.classList.contains('cell')) {
-        e.target.classList.add('blink');
-        e.target.classList.add('non-clickable');
-        this.table.classList.add('non-clickable');
+  findCellByCoordinates(row, column) {
+    const cells = this.table.querySelectorAll('[question-row]');
+    let cell = null;
 
-        const row = +e.target.getAttribute('question-row');
-        const column = +e.target.getAttribute('question-column');
-        Extra.deleteQuestionFromArray(row + 1, column + 1);
+    for (let i = 0; i < cells.length; i++) {
+      const cellRow = +cells[i].getAttribute('question-row');
+      const cellColumn = +cells[i].getAttribute('question-column');
+      if (cellRow === row && cellColumn === column) {
+        cell = cells[i];
+        break;
+      }
+    }
 
-        this.currentQuestion = this.categories[row].questions[column];
-        this.currentQuestion.row = row;
-        this.currentQuestion.column = column;
-        this.currentQuestion.isPermissionToAnswer = true;
-        Storage.setCurrentQuestion(this.currentQuestion);
+    return cell;
+  }
 
-        Extra.delay(2500)
+  clickOnTable(cell) {
+    cell.classList.add('blink');
+    cell.classList.add('non-clickable');
+    this.table.classList.add('non-clickable');
+
+    const row = +cell.getAttribute('question-row');
+    const column = +cell.getAttribute('question-column');
+    Extra.deleteQuestionFromArray(row + 1, column + 1);
+
+    this.currentQuestion = this.categories[row].questions[column];
+    this.currentQuestion.row = row;
+    this.currentQuestion.column = column;
+    this.currentQuestion.isPermissionToAnswer = true;
+    Storage.setCurrentQuestion(this.currentQuestion);
+
+    Extra.delay(2500)
+      .then(() => {
+        cell.classList.remove('blink');
+        cell.textContent = '';
+        this.table.classList.remove('non-clickable');
+      })
+      .then(() => {
+        Extra.delay(500)
           .then(() => {
-            e.target.classList.remove('blink');
-            e.target.textContent = '';
-            this.table.classList.remove('non-clickable');
+            this.showQuestion(this.currentQuestion);
+            this.TIMER = new Timer();
           })
           .then(() => {
-            Extra.delay(500)
-              .then(() => {
-                this.showQuestion(this.currentQuestion);
-                this.TIMER = new Timer();
-              })
-              .then(() => {
-                Extra.delay((Constants.QUESTION_TIME + 1) * 1000).then(() => {
-                  if (this.currentQuestion.row === row && this.currentQuestion.column === column) {
-                    this.hideScoreboard();
-                    this.showTrueAnswer(this.currentQuestion);
-                    this.currentQuestion = null;
+            Extra.delay((Constants.QUESTION_TIME + 1) * 1000).then(() => {
+              if (this.currentQuestion.row === row && this.currentQuestion.column === column) {
+                this.hideScoreboard();
+                this.showTrueAnswer(this.currentQuestion);
+                this.currentQuestion = null;
 
-                    setTimeout(() => {
-                      if (!this.isLastQuestion()) this.showTable();
-                      else this.updateStatePlayground();
-                    }, 3000);
-                  }
-                });
-              });
+                setTimeout(() => {
+                  if (!this.isLastQuestion()) this.showTable();
+                  else this.updateStatePlayground();
+                }, 3000);
+              }
+            });
           });
-      }
-    });
+      });
   }
 
   isLastQuestion() {
     const questions = Storage.getQuestionsArray();
-    if (questions.length === 0) return true;
+    if (questions.length === 0 || !questions) return true;
     return false;
   }
 
@@ -242,7 +253,6 @@ export class Playground {
     this.scoreboard.append(this.answerCheckbox);
     this.playground.append(this.scoreboard);
 
-    // this.bindAnswerButtonsEvents();
     Extra.translate(this.lang);
   }
 
@@ -255,7 +265,7 @@ export class Playground {
       setTimeout(() => {
         if (!this.isLastQuestion()) this.showTable();
         else this.updateStatePlayground();
-      }, 3000);
+      }, Constants.TIME_SHOW_ANSWER * 1000);
     } else if (user === Constants.USER_STATUSES.PLAYER) {
       console.log('Блокировать нажатия');
     }
@@ -381,7 +391,7 @@ export class Playground {
       answerEn.classList.add('none');
       answerRu.classList.add('none');
       // this.showTable();
-    }, 3000);
+    }, Constants.TIME_SHOW_ANSWER * 1000);
   }
 
   changeAnswerOptionsValue(OptionsEn, OptionsRu) {
