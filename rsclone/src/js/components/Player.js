@@ -68,12 +68,20 @@ export class Player {
     return this.permissionToAnswer;
   }
 
+  getName() {
+    return this.name;
+  }
+
+  getStatus() {
+    return this.status;
+  }
+
   sayPossibleAnswer(lang, isRight, answer) {
     const result = isRight ? 'GOOD' : 'BAD';
     const language = lang.toUpperCase();
     const variants = Constants.USER_RESPONSE_OPTIONS[language][result];
     const choice = variants[Extra.getRandomInt(variants.length) - 1];
-    this.say(`${choice.first}${answer}${choice.second}`);
+    this.say(`${choice.first}${answer.toUpperCase()}${choice.second}`);
   }
 
   say(text = `Hello. I ${this.name}`) {
@@ -84,6 +92,10 @@ export class Player {
     setTimeout(() => {
       answer.classList.add('none');
     }, 5000);
+  }
+
+  getActivePlayer() {
+    return this.player.classList.contains('player_active');
   }
 
   makePlayerActive() {

@@ -45,6 +45,18 @@ export const Constants = {
     'Утка в тапках', 'Девчонка в наушниках', 'Stepa Kurochkin', 'Petrushka',
     'Ibn Asalalaalalal', 'Cmetanka', 'Летучий олень', 'Сын маминой подруги',
     'Суслик переросток', 'Дед с Веслом', 'Олег', '4eByRaShKa'],
+  RANDOM_WORDS: {
+    RU: ['РАСТОПКА', 'РУНЕЦ', 'ОГОВОРЩИК', 'БРУСНИЧНЫЙ СОК', 'ВОЗМЕСТИТЕЛЬ',
+      'ПРОДОЛ', 'РУЛЕТ', 'ОВРАЖЕК', 'ВОЗДУХОСБОРНИК', 'МАСТНЫЙ', 'ЮЖНЫЙ ПОЛЮС',
+      'ДЕТАЛИЗАЦИЯ', 'ПИЛОХВОСТ', 'ТАЗИК ХОХЛОМЫ', 'ОДИНАКОВОСТЬ', 'БЕНЗООТСТОЙНИК',
+      'СКЕПТИЦИЗМ', 'СКОРОПАЛИТЕЛЬНОСТЬ', 'ПОРФИРА', 'ТОПОНИМИЯ', 'ПОКРОВИТЕЛЬ',
+      'СОВЛАДЕЛИЦА', 'ОКУЛИСТКА', 'ЖЕЗЛ', 'МАЛАХИТОВЫЙ', 'ГИДРОЛОКАТОР', 'ЧЕРНИЛА'],
+    EN: ['radio set', 'senate', 'principle', 'decoupage', 'excessive',
+      'russian orthodox church', 'distressed jeans', 'engineer', 'spasm', 'visa',
+      'freeway', 'barberry', 'enemy', 'karting', 'department store', 'process',
+      'fitness', 'plastic', 'forehead', 'epidermis', 'cowberry', 'water-lily',
+      'cinnamon roll', 'timing', 'lagman', 'disco', 'snowman', 'brick', 'technical writing'],
+  },
   USER_RESPONSE_OPTIONS: {
     RU: {
       GOOD: [

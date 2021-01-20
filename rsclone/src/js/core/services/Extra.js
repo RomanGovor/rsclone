@@ -75,14 +75,72 @@ export class Extra {
     return Math.floor(Math.random() * Math.floor(max)) + 1;
   }
 
-  static getRandomArray(len, count) {
-    const currentArr = (new Array(len)).fill(1).map((a, i) => i);
+  static getRandomArray(len, count, defArr) {
+    const currentArr = defArr === undefined
+      ? (new Array(len)).fill(1).map((a, i) => i) : [...defArr];
     const arr = [];
     for (let i = 0; i < count; i++) {
       const removed = currentArr.splice(this.getRandomInt(len - i) - 1, 1);
       arr.push(removed[0]);
     }
+
     return arr;
+  }
+
+  static generateArrayOfAnswers(question, level, lang) {
+    let trueAnswer;
+    let options = [];
+    let result = [];
+
+    if (question.type === 'checkbox') {
+      if (lang === 'en') {
+        trueAnswer = question.trueAnswerEn;
+        options = [...question.answerOptionsEn];
+      } else {
+        trueAnswer = question.trueAnswerRu;
+        options = [...question.answerOptionsRu];
+      }
+
+      console.log(options);
+      result.push(options.splice(options.indexOf(trueAnswer), 1)[0]);
+      console.log(options);
+    } else if (question.type === 'input') {
+      if (lang === 'en') {
+        trueAnswer = question.trueOptionsAnswerEn[0];
+        options = [...this.getRandomArray(Constants.RANDOM_WORDS.EN.length,
+          3, Constants.RANDOM_WORDS.EN)];
+      } else {
+        trueAnswer = question.trueOptionsAnswerRu[0];
+        options = [...this.getRandomArray(Constants.RANDOM_WORDS.RU.length,
+          3, Constants.RANDOM_WORDS.RU)];
+      }
+      result.push(trueAnswer);
+    }
+
+    switch (level) {
+      case Constants.LEVELS_BOTS.LOW:
+        result.push(options.splice(0, 1));
+        result.push(options.splice(options.length - 1, 1)[0]);
+        break;
+
+      case Constants.LEVELS_BOTS.MIDDLE:
+        console.log(options);
+        result.push(options.splice(options.length - 1, 1)[0]);
+        break;
+
+      case Constants.LEVELS_BOTS.HARD:
+        for (let i = 0; i < 3; i++) {
+          result.push(trueAnswer);
+        }
+        result.push(options.splice(options.length - 1, 1)[0]);
+        break;
+
+      default:
+        result.push(options.splice(options.length - 1, 1)[0]);
+    }
+
+    result = this.getRandomArray(result.length, result.length, result);
+    return result;
   }
 
   static deleteQuestionFromArray(row, column) {
@@ -109,7 +167,7 @@ export class Extra {
   }
 
   static createQueueBots(countBots) {
-    const times = this.getRandomArray(Constants.QUESTION_TIME / 2, countBots);
+    const times = this.getRandomArray((Constants.QUESTION_TIME / 2) - 1, countBots);
     const queue = [];
     for (let i = 0; i < countBots; i++) {
       const obj = {
