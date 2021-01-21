@@ -52,6 +52,7 @@ export class Storage {
   static setGameParameters(param) {
     sessionStorage.setItem('sigame/gameParam', JSON.stringify(param));
   }
+
   static setAuthorizationStatus(status) {
     localStorage.setItem('isAuthorization', status);
   }
