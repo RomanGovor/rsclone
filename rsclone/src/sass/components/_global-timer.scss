@@ -1,0 +1,26 @@
+.global-timer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  word-break: break-word;
+
+  &__header {
+    font-weight: bold;
+    font-size: 1.2rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  time {
+    display: flex;
+    font-size: 1.2rem;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.container__global-timer {
+  order: -1;
+  margin-bottom: 30px;
+}

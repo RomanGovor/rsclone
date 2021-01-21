@@ -1,11 +1,16 @@
 import { Constants, Extra, Storage } from '../core/index';
 
 export class Settings {
-  constructor() {
+  constructor(activePage) {
     this.isMusic = Storage.getPlayBackgroundMusicFlag();
     this.audio = null;
+    this.activePage = activePage;
     this.setSettingsEvents();
     this.playMusic();
+  }
+
+  setActivePage(active) {
+    this.activePage = active;
   }
 
   setSettingsEvents() {
@@ -19,7 +24,7 @@ export class Settings {
 
     btnBack.addEventListener('click', () => {
       Extra.delay(1000).then(() => {
-        Extra.hidePages(document.querySelector(Constants.MAIN_PAGE));
+        Extra.hidePages(document.querySelector(this.activePage));
       });
     });
 

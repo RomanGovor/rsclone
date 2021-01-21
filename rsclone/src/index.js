@@ -4,8 +4,11 @@ import {
   Authorization,
   Animations,
   SwitchLang,
+  GlobalTimer,
 } from './js/components/index';
-import { GameParameters, Rules, Settings } from './js/pages/index';
+import {
+  GameParameters, HeaderMenu, Rules, Settings,
+} from './js/pages/index';
 import {
   Extra,
   Constants,
@@ -19,14 +22,17 @@ class App {
   constructor() {
     this.language = Storage.getLanguage();
     this.SWITCHLANG = new SwitchLang(this.language);
+    this.HEADER_MENU = new HeaderMenu(this.language);
+    this.activePage = Constants.MAIN_PAGE;
 
     this.setEvents();
+    this.delegateHeaderMenuEvents();
 
-    this.SETTINGS = new Settings();
+    this.SETTINGS = new Settings(this.activePage);
     this.ANIMATIONS = new Animations();
 
     this.playground = null;
-    Extra.hidePages(document.querySelector(Constants.MAIN_PAGE));
+    Extra.hidePages(document.querySelector(this.activePage));
     Extra.translate(this.language);
   }
 
@@ -75,6 +81,27 @@ class App {
     }
   }
 
+  deletingAndResettingGameplay() {
+    const playground = document.querySelector('.container__playground');
+    const players = document.querySelector('.container__players');
+    const questionTimer = document.querySelector('.container__question-timer');
+    const globalTimer = document.querySelector('.container__global-timer');
+
+    this.resetTimerOfBots();
+    this.clearQuestionTimer();
+    this.playground.deleteTimersAndResettingPlayground();
+    this.GLOBAL_TIMER.clearTimer();
+
+    Extra.clearContainer(playground);
+    Extra.clearContainer(players);
+    Extra.clearContainer(questionTimer);
+    Extra.clearContainer(globalTimer);
+
+    this.playground = null;
+    this.player = null;
+    this.bots = null;
+  }
+
   setEvents() {
     const switchGameModeBtn = document.querySelector('.switch__checkbox');
     const menuRulesBtn = document.querySelector('.menu-rules');
@@ -109,6 +136,9 @@ class App {
 
       this.gameParam = Storage.getGameParameters();
 
+      this.activePage = Constants.GAME;
+      this.HEADER_MENU.deleteActiveItem();
+      this.GLOBAL_TIMER = new GlobalTimer(this.language);
       Extra.hidePages(containerGame);
       this.initPlayground();
       this.addPlayers();
@@ -118,12 +148,47 @@ class App {
     });
 
     menuRulesBtn.addEventListener('click', () => {
-      const rules = new Rules(this.language);
+      const rules = new Rules(this.language, this.activePage);
     });
 
     menuSettingsBtn.addEventListener('click', () => {
       const container = document.querySelector('.container__settings');
       Extra.hidePages(container);
+    });
+  }
+
+  delegateHeaderMenuEvents() {
+    const headerMenu = document.querySelector(Constants.HEADER_MENU);
+    const burgerCheckbox = document.querySelector('.burger-menu__checkbox-input');
+
+    headerMenu.addEventListener('click', (e) => {
+      const li = e.target.closest('li');
+      if (!li) return;
+
+      if (li.classList.contains('menu__item-main-menu')) {
+        if (burgerCheckbox.checked) burgerCheckbox.checked = false;
+        this.activePage = Constants.MAIN_PAGE;
+        const container = document.querySelector(Constants.MAIN_PAGE);
+        Extra.hidePages(container);
+        this.deletingAndResettingGameplay();
+      }
+
+      if (li.classList.contains('menu__item-settings')) {
+        this.SETTINGS.setActivePage(this.activePage);
+        const container = document.querySelector('.container__settings');
+        Extra.hidePages(container);
+      }
+
+      if (li.classList.contains('menu__item-rules')) {
+        const rules = new Rules(this.language, this.activePage);
+      }
+
+      this.HEADER_MENU.setActiveItem(li);
+      if (burgerCheckbox.checked) burgerCheckbox.checked = false;
+
+      if (!burgerCheckbox.checked && this.activePage === Constants.GAME) {
+        this.HEADER_MENU.deleteActiveItem();
+      }
     });
   }
 
@@ -224,11 +289,21 @@ class App {
         this.checkTrueAnswer(button, this.player);
       }
     });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.keyCode === 13) {
+        const value = Extra.checkOnNoEmptyInputs();
+        const isActivePlayer = this.player.getActivePlayer();
+
+        if (value !== '' && isActivePlayer && this.player.getPermissionToAnswer()) {
+          this.checkTrueAnswer(value, this.player);
+        }
+      }
+    });
   }
 
   botResponseAttempt(answer, player) {
     const question = Storage.getCurrentQuestion();
-    console.log(answer, typeof answer);
     if (question.type === 'checkbox') this.checkBySpanValue(answer, player);
     else this.checkTrueAnswerInput(answer, player);
   }
@@ -317,9 +392,11 @@ class App {
   }
 
   resetTimerOfBots() {
-    this.queueBots.forEach((bot) => {
-      clearTimeout(bot.initialTimer);
-    });
+    if (this.queueBots) {
+      this.queueBots.forEach((bot) => {
+        clearTimeout(bot.initialTimer);
+      });
+    }
   }
 }
 

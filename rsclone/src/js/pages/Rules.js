@@ -2,7 +2,8 @@ import { Constants } from '../core/Constants';
 import { Extra } from '../core/services/Extra';
 
 export class Rules {
-  constructor(lang) {
+  constructor(lang, activePage) {
+    this.activePage = activePage;
     this.language = lang;
     this.renderRules();
     Extra.translate(this.language);
@@ -43,10 +44,12 @@ export class Rules {
        <span language="ru">Назад</span>
      `;
 
+    const { activePage } = this;
+
     function handleClick() {
       const container = document.querySelector('.container__rules');
       Extra.clearContainer(container);
-      Extra.hidePages(document.querySelector(Constants.MAIN_PAGE));
+      Extra.hidePages(document.querySelector(activePage));
       btn.removeEventListener('click', handleClick);
     }
 

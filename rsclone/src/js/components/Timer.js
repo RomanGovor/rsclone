@@ -17,7 +17,7 @@ export class Timer {
   }
 
   renderTimer() {
-    const container = document.querySelector('.container__active');
+    const container = document.querySelector('.container__question-timer');
     Extra.clearContainer(container);
 
     const timer = document.createElement('div');
@@ -106,7 +106,7 @@ export class Timer {
       bell.play();
 
       Extra.delay(1000).then(() => {
-        Extra.clearContainer(document.querySelector('.container__active'));
+        Extra.clearContainer(document.querySelector('.container__question-timer'));
       });
 
       circle.classList.add('circle-color');
@@ -115,7 +115,7 @@ export class Timer {
 
   deleteTimer() {
     clearTimeout(this.initial);
-    Extra.clearContainer(document.querySelector('.container__active'));
+    Extra.clearContainer(document.querySelector('.container__question-timer'));
   }
 
   setProgress(percent) {
