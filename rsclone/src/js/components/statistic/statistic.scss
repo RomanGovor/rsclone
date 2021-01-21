@@ -1,0 +1,49 @@
+.statistic__wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: rgb(138, 109, 195);
+  z-index: 2000;
+  color: #ffffff;
+}
+
+.statistic__title {
+  color: #ff9900;
+  text-align: center;
+}
+
+.statistic__close-button {
+  padding: 5px 10px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.statistic__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  border: 1px solid #ffffff;
+  border-bottom: none;
+  width: 60%;
+}
+
+.statistic__item {
+  display: flex;
+}
+
+.statistic__item-title {
+  padding: 10px;
+  margin: 0;
+  width: 50%; 
+  border-bottom: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+}
+
+.statistic__item-count {
+  width: 50%;
+  border-bottom: 1px solid #ffffff;
+  padding: 10px;
+}

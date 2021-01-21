@@ -2,6 +2,7 @@ import {
   PathSignIn, PathSignUp, PathGetAndPutRequest, PathLogout, PathLogoutAll, EmptyUserData,
 } from '../Constants';
 import { removeUserAuthorizationData } from './userAuthorizationData';
+import { Storage } from './Storage';
 
 export class Request {
   // Зарегистрироваться POST
@@ -105,24 +106,23 @@ export class Request {
     };
     fetch(PathGetAndPutRequest, requestOptions)
       .then((response) => response.json())
-      .then((result) => console.log(result))
+      .then((result) => Storage.setUserStatisticData(result.data))
       .catch((err) => console.log(err));
   }
 
   // Получить данные статистики PUT
-  putClientData(data, callbackError) {
+  putClientData(data) {
     const requestOptions = {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.requestToken}`,
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
       body: JSON.stringify(data),
     };
     fetch(PathGetAndPutRequest, requestOptions)
       .then((response) => response.json())
-      .then((result) => console.log(result))
-      .catch(callbackError());
+      .catch((err) => console.log(err));
   }
 
   setUserDataInStorage(result) {

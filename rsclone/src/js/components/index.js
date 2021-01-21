@@ -4,3 +4,4 @@ export * from './Playground';
 export * from './Timer';
 export * from './animation/Animations';
 export * from './authorization/authorization.component';
+export * from './statistic/statistic.component';

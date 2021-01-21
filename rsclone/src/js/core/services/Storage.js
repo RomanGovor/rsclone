@@ -52,4 +52,36 @@ export class Storage {
   static setGameParameters(param) {
     sessionStorage.setItem('sigame/gameParam', JSON.stringify(param));
   }
+
+  static setAuthorizationStatus(status) {
+    localStorage.setItem('isAuthorization', status);
+  }
+
+  static getAuthorizationStatus() {
+    return localStorage.getItem('isAuthorization');
+  }
+
+  static setUserName(name) {
+    localStorage.setItem('name', name);
+  }
+
+  static getUserName() {
+    return localStorage.getItem('name');
+  }
+
+  static setUserToken(token) {
+    localStorage.setItem('token', token);
+  }
+
+  static getUserToken() {
+    return localStorage.getItem('token');
+  }
+
+  static setUserStatisticData(data) {
+    localStorage.setItem('statistic', `${JSON.stringify(data)}`);
+  }
+
+  static getUserStatisticData() {
+    return JSON.parse(localStorage.getItem('statistic'));
+  }
 }
