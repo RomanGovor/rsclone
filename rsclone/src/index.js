@@ -224,11 +224,21 @@ class App {
         this.checkTrueAnswer(button, this.player);
       }
     });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.keyCode === 13) {
+        const value = Extra.checkOnNoEmptyInputs();
+        const isActivePlayer = this.player.getActivePlayer();
+
+        if (value !== '' && isActivePlayer && this.player.getPermissionToAnswer()) {
+          this.checkTrueAnswer(value, this.player);
+        }
+      }
+    });
   }
 
   botResponseAttempt(answer, player) {
     const question = Storage.getCurrentQuestion();
-    console.log(answer, typeof answer);
     if (question.type === 'checkbox') this.checkBySpanValue(answer, player);
     else this.checkTrueAnswerInput(answer, player);
   }
@@ -293,6 +303,7 @@ class App {
   }
 
   updatePlayerScore(num, isRight, answer, player) {
+    // const copyPlayer = !player ? this.player : player;
     player.changeScore(num);
     player.sayPossibleAnswer(this.language, isRight, answer);
     if (!isRight) {

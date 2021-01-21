@@ -60,6 +60,10 @@ export class Extra {
     audio.play();
   }
 
+  static isContains(elem, cssClass) {
+    return elem.player.classList.contains(cssClass);
+  }
+
   static checkOnNoEmptyInputs() {
     const inputs = document.querySelectorAll(Constants.ANSWER_INPUT);
     let value = '';
