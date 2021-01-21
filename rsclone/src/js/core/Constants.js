@@ -22,6 +22,8 @@ export const Constants = {
   ANSWER_INPUT: '.playground__answer-input',
   ANSWER_CHECKBOX: 'playground__answer-button-checkbox',
   PLAYGROUND: '.container__playground',
+  GAME: '.container__game',
+  HEADER_MENU: '.header__menu',
   CELL: 'cell',
   NON_CLICKABLE: 'non-clickable',
   AUDIO: {

@@ -249,11 +249,14 @@ export class Playground {
     Extra.translate(this.lang);
   }
 
+  deleteTimersAndResettingPlayground() {
+    this.TIMER.deleteTimer();
+  }
+
   hideQuestion(isCorrect, user) {
     if (isCorrect) {
       this.hideScoreboard();
       this.showTrueAnswer(this.currentQuestion);
-      this.TIMER.deleteTimer();
 
       setTimeout(() => {
         if (!this.isLastQuestion()) this.showTable();
@@ -405,9 +408,9 @@ export class Playground {
       this.hideTable();
       this.hideScoreboard();
     }
-    if (this.categoriesList) {
-      this.hideCategories();
-    }
+
+    if (this.categoriesList) this.hideCategories();
+
     this.round.classList.remove('none');
     this.round.textContent = `${this.lang === 'en' ? 'Round' : 'Раунд'} ${this.currentRound}`;
 
