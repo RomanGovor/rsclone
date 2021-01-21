@@ -173,7 +173,7 @@
               "points": 300,
               "questionRu": "Введите имя режиссера",
               "questionEn": "Enter the producer's name",
-              "questionPicture": "https://ru.wikipedia.org/wiki/%D0%A2%D0%B0%D1%80%D0%B0%D0%BD%D1%82%D0%B8%D0%BD%D0%BE,_%D0%9A%D0%B2%D0%B5%D0%BD%D1%82%D0%B8%D0%BD#/media/%D0%A4%D0%B0%D0%B9%D0%BB:Quentin_Tarantino_by_Gage_Skidmore.jpg",
+              "questionPicture": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Quentin_Tarantino_by_Gage_Skidmore.jpg",
               "trueOptionsAnswerEn": ["Quentin Tarantino", "Tarantino Quentin", "Tarantino", "Quentin Jerome Tarantino" ],
               "trueOptionsAnswerRu": ["Квентин Тарантино", "Тарантино Квентин", "Тарантино", "Квентин Джером Тарантино"]
             },

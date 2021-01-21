@@ -54,6 +54,9 @@
     }
   }
 
+  .header__menu-list {
+    background-color: $dark-mode-main-menu;
+  }
   .burger-menu__lines {
     .line {
       border-color: $dark-mode-main-text;
