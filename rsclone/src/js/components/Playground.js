@@ -250,13 +250,14 @@ export class Playground {
   }
 
   deleteTimersAndResettingPlayground() {
-    this.TIMER.deleteTimer();
+    if (this.TIMER) this.TIMER.deleteTimer();
   }
 
   hideQuestion(isCorrect, user) {
     if (isCorrect) {
       this.hideScoreboard();
       this.showTrueAnswer(this.currentQuestion);
+      this.TIMER.deleteTimer();
 
       setTimeout(() => {
         if (!this.isLastQuestion()) this.showTable();

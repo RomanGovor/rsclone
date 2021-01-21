@@ -4,6 +4,7 @@ import {
   Authorization,
   Animations,
   SwitchLang,
+  GlobalTimer,
 } from './js/components/index';
 import {
   GameParameters, HeaderMenu, Rules, Settings,
@@ -83,15 +84,18 @@ class App {
   deletingAndResettingGameplay() {
     const playground = document.querySelector('.container__playground');
     const players = document.querySelector('.container__players');
-    const active = document.querySelector('.container__active');
+    const questionTimer = document.querySelector('.container__question-timer');
+    const globalTimer = document.querySelector('.container__global-timer');
 
     this.resetTimerOfBots();
     this.clearQuestionTimer();
     this.playground.deleteTimersAndResettingPlayground();
+    this.GLOBAL_TIMER.clearTimer();
 
     Extra.clearContainer(playground);
     Extra.clearContainer(players);
-    Extra.clearContainer(active);
+    Extra.clearContainer(questionTimer);
+    Extra.clearContainer(globalTimer);
 
     this.playground = null;
     this.player = null;
@@ -134,6 +138,7 @@ class App {
 
       this.activePage = Constants.GAME;
       this.HEADER_MENU.deleteActiveItem();
+      this.GLOBAL_TIMER = new GlobalTimer(this.language);
       Extra.hidePages(containerGame);
       this.initPlayground();
       this.addPlayers();
@@ -154,12 +159,14 @@ class App {
 
   delegateHeaderMenuEvents() {
     const headerMenu = document.querySelector(Constants.HEADER_MENU);
+    const burgerCheckbox = document.querySelector('.burger-menu__checkbox-input');
 
     headerMenu.addEventListener('click', (e) => {
       const li = e.target.closest('li');
       if (!li) return;
 
       if (li.classList.contains('menu__item-main-menu')) {
+        if (burgerCheckbox.checked) burgerCheckbox.checked = false;
         this.activePage = Constants.MAIN_PAGE;
         const container = document.querySelector(Constants.MAIN_PAGE);
         Extra.hidePages(container);
@@ -177,8 +184,7 @@ class App {
       }
 
       this.HEADER_MENU.setActiveItem(li);
-      const burgerCheckbox = document.querySelector('.burger-menu__checkbox-input');
-      burgerCheckbox.checked = !burgerCheckbox.checked;
+      if (burgerCheckbox.checked) burgerCheckbox.checked = false;
 
       if (!burgerCheckbox.checked && this.activePage === Constants.GAME) {
         this.HEADER_MENU.deleteActiveItem();
@@ -386,9 +392,11 @@ class App {
   }
 
   resetTimerOfBots() {
-    this.queueBots.forEach((bot) => {
-      clearTimeout(bot.initialTimer);
-    });
+    if (this.queueBots) {
+      this.queueBots.forEach((bot) => {
+        clearTimeout(bot.initialTimer);
+      });
+    }
   }
 }
 
