@@ -351,19 +351,17 @@ class App {
   statistic() {
     const statisticLink = document.querySelector('.menu__item-statistic');
     const statisticModule = new Statistic();
+
     statisticLink.addEventListener('click', () => {
-      statisticModule.setUserData({
-        numberOfGames: '3',
-        maximumNumberOfWins: '3',
-        points: '7',
-        averagePoints: '4',
-        averagePlayTime: '8',
-        maximumPlayTime: '5',
-      });
       statisticModule.getUserData();
       const data = Storage.getUserStatisticData();
-      console.log(data);
+      const dataArr = Object.keys(Storage.getUserStatisticData());
       statisticModule.init();
+
+      const statisticCountList = document.querySelectorAll('.statistic__item-count');
+      statisticCountList.forEach((item, index) => {
+        item.innerHTML = data[dataArr[index]];
+      });
     });
   }
 }
