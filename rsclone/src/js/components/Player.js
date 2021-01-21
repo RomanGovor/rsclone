@@ -44,6 +44,18 @@ export class Player {
 
     player.textContent = this.score;
     player.value = this.score;
+
+    if (Number(points) < 0) {
+      player.classList.add('player__score_error');
+      setTimeout(() => {
+        player.classList.remove('player__score_error');
+      }, 3000);
+    } else if (Number(points) > 0) {
+      player.classList.add('player__score_true');
+      setTimeout(() => {
+        player.classList.remove('player__score_true');
+      }, 3000);
+    }
   }
 
   setAvatar(src) {

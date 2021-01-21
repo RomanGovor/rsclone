@@ -268,15 +268,18 @@ export class Playground {
       }, Constants.TIME_SHOW_ANSWER * 1000);
     } else if (user === Constants.USER_STATUSES.PLAYER) {
       console.log('Блокировать нажатия');
+      // TODO
+      if (this.answerInput) this.answerInput.classList.add('disabled');
+      if (this.answerCheckbox) this.answerCheckbox.classList.add('disabled');
     }
   }
 
   showQuestion(question) {
     this.lang = Storage.getLanguage();
 
-    if (this.table) {
-      this.hideTable();
-    }
+    if (this.answerInput) this.answerInput.classList.remove('disabled');
+    if (this.answerCheckbox) this.answerCheckbox.classList.remove('disabled');
+    if (this.table) this.hideTable();
     if (this.categoriesList) this.hideCategories();
 
     this.showScoreboard();

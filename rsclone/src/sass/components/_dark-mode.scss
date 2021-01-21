@@ -1,13 +1,38 @@
 @import '../abstracts/constants';
 
 .wrap_mode-dark {
-  background-color: black;
+  background-color: $dark-mode-wrap-bg;
 
   .container__settings,
   .title,
   .parameters,
-  .rules {
+  .rules,
+  .clock,
+  .header__user {
     color: $dark-mode-main-text;
+  }
+
+  .container__playground {
+    background-color: #510d0d;
+  }
+  .container__active {
+    background-color: #8e6404;
+  }
+  .container__players {
+    background-color: #1e054d;
+  }
+
+  .playground {
+    color: $dark-mode-main-text;
+    &__table,
+    &__categories-list,
+    &__round {
+      color: $dark-mode-main-text;
+    }
+  }
+
+  .blink {
+    background-color: rgba($color: #35fa03, $alpha: 0.5);
   }
 
   footer {
@@ -25,6 +50,12 @@
     &__item {
       background-color: $dark-mode-main-menu;
       color: $dark-mode-main-text;
+    }
+  }
+
+  .burger-menu__lines {
+    .line {
+      border-color: $dark-mode-main-text;
     }
   }
 }

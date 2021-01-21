@@ -11,18 +11,20 @@
     margin-right: 4vw;
     -webkit-transform: translateZ(0);
     -webkit-backface-visibility: hidden;
-    transition: all .4s linear .1s;
+    transition: all 0.4s linear 0.1s;
     position: relative;
     z-index: 4;
 
-    .line-1, .line-2, .line-3 {
+    .line-1,
+    .line-2,
+    .line-3 {
       border-bottom: 4px solid $color-black;
-      border-radius: 20%;
       width: 40px;
-      transition: all .4s linear .1s;
+      transition: all 0.4s linear 0.1s;
     }
 
-    .line-2, .line-3 {
+    .line-2,
+    .line-3 {
       padding-top: 8px;
     }
   }
@@ -41,7 +43,7 @@
     }
     .line-3 {
       -webkit-transform: rotate(-45deg);
-      transform: rotate(-45deg) translate(6px, -9px);
+      transform: rotate(-45deg) translate(5px, -11px);
     }
   }
 }
