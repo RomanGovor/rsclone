@@ -1,7 +1,9 @@
 /* eslint-disable prefer-destructuring */
 import { authorizationForm } from './authorization.template';
 import { Request } from '../../core/services/request';
-import { setUserAuthorizationData } from '../../core/index';
+import {
+  setUserAuthorizationData, setGuestName, EmptyUserData, Storage,
+} from '../../core/index';
 
 export class Authorization {
   constructor() {
@@ -146,7 +148,9 @@ export class Authorization {
           this.message.innerHTML = 'Error.Empty name';
           return;
         }
-        localStorage.setItem('name', `${this.nick.value}`);
+        Storage.setUserName(this.nick.value);
+        Storage.setUserStatisticData(EmptyUserData);
+        setGuestName(this.nick.value);
         this.removeForm();
       }
     });

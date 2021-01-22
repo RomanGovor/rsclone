@@ -5,6 +5,7 @@ import {
   Animations,
   SwitchLang,
   GlobalTimer,
+  Statistic,
 } from './js/components/index';
 import {
   GameParameters, HeaderMenu, Rules, Settings,
@@ -398,28 +399,53 @@ class App {
       });
     }
   }
+
+  authorization() {
+    const authorization = new Authorization();
+    const request = new Request();
+    const logoutLink = document.querySelector('.header__userAuthotization');
+
+    if (Storage.getAuthorizationStatus() === null) {
+      Storage.setAuthorizationStatus('false');
+      Storage.setUserToken(null);
+    }
+
+    logoutLink.addEventListener('click', () => {
+      if (logoutLink.textContent === 'Log out') {
+        request.logout();
+        removeUserAuthorizationData();
+      } else if (logoutLink.textContent === 'Log in') {
+        authorization.init();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (Storage.getAuthorizationStatus() === 'false') {
+        authorization.init();
+      } else {
+        setUserAuthorizationData();
+      }
+    });
+  }
+
+  statistic() {
+    const statisticLink = document.querySelector('.menu__item-statistic');
+    const statisticModule = new Statistic();
+
+    statisticLink.addEventListener('click', () => {
+      statisticModule.getUserData();
+      const data = Storage.getUserStatisticData();
+      const dataArr = Object.keys(Storage.getUserStatisticData());
+      statisticModule.init();
+
+      const statisticCountList = document.querySelectorAll('.statistic__item-count');
+      statisticCountList.forEach((item, index) => {
+        item.innerHTML = data[dataArr[index]];
+      });
+    });
+  }
 }
 
 const APP = new App();
-if (localStorage.getItem('isAuthorization') === null) {
-  localStorage.setItem('isAuthorization', 'false');
-  localStorage.setItem('token', null);
-}
-const authorization = new Authorization();
-const request = new Request();
-const logoutLink = document.querySelector('.header__userAuthotization');
-logoutLink.addEventListener('click', () => {
-  if (logoutLink.textContent === 'Log out') {
-    request.logout();
-    // removeUserAuthorizationData();
-  } else if (logoutLink.textContent === 'Log in') {
-    authorization.init();
-  }
-});
-document.addEventListener('DOMContentLoaded', () => {
-  if (localStorage.getItem('isAuthorization') === 'false') {
-    authorization.init();
-  } else {
-    setUserAuthorizationData();
-  }
-});
+APP.authorization();
+APP.statistic();

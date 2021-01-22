@@ -11,3 +11,8 @@ export function removeUserAuthorizationData() {
   linkLogout.innerHTML = 'Log in';
   userName.innerHTML = 'Anonymous';
 }
+
+export function setGuestName(name) {
+  const userName = document.querySelector('.header__userName');
+  userName.innerHTML = name;
+}
