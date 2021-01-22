@@ -111,6 +111,15 @@ export class Player {
     }, 5000);
   }
 
+  getScore() {
+    return {
+      score: this.score,
+      name: this.name,
+      workName: this.workName,
+      avatar: this.avatar,
+    };
+  }
+
   hideSpeech() {
     const answer = this.player.querySelector('.player__answer-field');
     answer.classList.add('none');

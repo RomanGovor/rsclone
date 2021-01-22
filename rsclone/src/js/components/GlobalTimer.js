@@ -58,7 +58,6 @@ export class GlobalTimer {
 
     this.initialTimer = setInterval(() => {
       this.totalTime += 1;
-      console.log(this.totalTime);
       const time = this.divisionIntoMinutes();
 
       document.querySelector('.time').replaceWith(this.renderTime(time.hour, time.min, time.sec));

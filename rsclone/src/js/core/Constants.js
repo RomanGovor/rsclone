@@ -31,6 +31,7 @@ export const Constants = {
     CORRECT: '../assets/audio/success.mp3',
     END_TIME: '../assets/audio/end-time.mp3',
     NEW_ROUND: '../assets/audio/new-round.mp3',
+    WIN: '../assets/audio/win.mp3',
   },
   COUNT_DEFAULT_AVATARS: 40,
   USER_STATUSES: {

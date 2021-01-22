@@ -22,6 +22,10 @@ export class Playground {
     this.getQuestionsArrayByRound();
   }
 
+  getCountRounds() {
+    return this.countRounds;
+  }
+
   getQuestionsArrayByRound() {
     const questions = [];
     this.package.rounds[this.currentRound - 1].categories.forEach((cat, row) => {
@@ -125,6 +129,7 @@ export class Playground {
     this.currentQuestion.row = row;
     this.currentQuestion.column = column;
     this.currentQuestion.isPermissionToAnswer = true;
+    this.currentQuestion.round = this.currentRound;
     Storage.setCurrentQuestion(this.currentQuestion);
 
     Extra.delay(2500)

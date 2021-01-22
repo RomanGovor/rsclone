@@ -208,6 +208,9 @@ class App {
     this.handlerQuestionTimer = setTimeout(() => {
       const possiblePlayer = Storage.getPossiblePlayer();
       Extra.playAudio(Constants.AUDIO.END_TIME);
+
+      this.checkOnFinal();
+
       if (possiblePlayer === Constants.USER_STATUSES.PLAYER) {
         this.player.makePlayerActive();
       } else {
@@ -239,6 +242,8 @@ class App {
           this.clickCell(cell);
         });
       });
+    } else {
+      this.player.makePlayerActive();
     }
   }
 
@@ -378,13 +383,51 @@ class App {
         this.player.setPermissionToAnswer(false);
       }
     } else {
-      Storage.setPossiblePlayer(player.getWorkName);
+      Storage.setPossiblePlayer(player.getWorkName());
       this.resetTimerOfBots();
       this.clearQuestionTimer();
       player.makePlayerActive();
 
-      this.waitForAnswerToBeShownAndSelectQuestion(player);
+      if (player.status === Constants.USER_STATUSES.BOT) {
+        this.waitForAnswerToBeShownAndSelectQuestion(player);
+      }
+
+      this.checkOnFinal();
     }
+  }
+
+  checkOnFinal() {
+    const questionsArray = Storage.getQuestionsArray();
+
+    if (questionsArray.length === 0 || !questionsArray) {
+      const question = Storage.getCurrentQuestion();
+
+      const countRounds = this.playground.getCountRounds();
+      if (question.round === countRounds) {
+        Extra.playAudio(Constants.AUDIO.WIN);
+
+        const time = this.GLOBAL_TIMER.divisionIntoMinutes();
+        this.GLOBAL_TIMER.clearTimer();
+
+        const winner = this.getArrayScores()[0];
+
+        console.log(`Общее время игры тоже вывести ${time.hour}:${time.min}:${time.sec}`);
+        console.log(`Вывести победителя(победителей) ${winner.name} - ${winner.score}`);
+      }
+    }
+  }
+
+  getArrayScores() {
+    const arr = [];
+    arr.push(this.player.getScore());
+
+    for (let i = 0; i < this.gameParam.countBots; i++) {
+      const workName = `bot${i + 1}`;
+      const score = this.bots[workName].getScore();
+      arr.push(score);
+    }
+
+    arr.sort((a, b) => b.score - a.score);
   }
 
   waitForAnswerToBeShownAndSelectQuestion(player) {
