@@ -54,27 +54,27 @@ export class Storage {
   }
 
   static setAuthorizationStatus(status) {
-    localStorage.setItem('isAuthorization', status);
+    localStorage.setItem('sigame/isAuthorization', status);
   }
 
   static getAuthorizationStatus() {
-    return localStorage.getItem('isAuthorization');
+    return localStorage.getItem('sigame/isAuthorization');
   }
 
   static setUserName(name) {
-    localStorage.setItem('name', name);
+    localStorage.setItem('sigame/name', name);
   }
 
   static getUserName() {
-    return localStorage.getItem('name');
+    return localStorage.getItem('sigame/name');
   }
 
   static setUserToken(token) {
-    localStorage.setItem('token', token);
+    localStorage.setItem('sigame/token', token);
   }
 
   static getUserToken() {
-    return localStorage.getItem('token');
+    return localStorage.getItem('sigame/token');
   }
 
   static setUserStatisticData(data) {

@@ -16,6 +16,8 @@ export class Settings {
   setSettingsEvents() {
     const musicCheckbox = document.querySelector('.checkbox-music');
     const btnBack = document.querySelector('.settings__button-back');
+    const darkMode = document.querySelector('.settings__background .settings__checkbox');
+    const wrap = document.querySelector('.wrap');
 
     musicCheckbox.addEventListener('change', () => {
       // eslint-disable-next-line no-unused-expressions
@@ -28,8 +30,6 @@ export class Settings {
       });
     });
 
-    const darkMode = document.querySelector('.settings__background .settings__checkbox');
-    const wrap = document.querySelector('.wrap');
     darkMode.addEventListener('click', () => {
       wrap.classList.toggle('wrap_mode-dark');
     });

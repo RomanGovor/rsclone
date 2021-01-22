@@ -59,7 +59,7 @@ class App {
 
   addPlayers() {
     this.player = new Player({
-      name: 'Pushkin',
+      name: Storage.getUserName(),
       avatar: `url(${this.gameParam.avatar})`,
       status: Constants.USER_STATUSES.PLAYER,
       isActivePlayer: true,
