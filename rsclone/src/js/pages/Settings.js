@@ -7,6 +7,18 @@ export class Settings {
     this.activePage = activePage;
     this.setSettingsEvents();
     this.playMusic();
+    this.initDarkMode();
+  }
+
+  initDarkMode() {
+    const darkMode = document.querySelector('.settings__background .settings__checkbox');
+    const wrap = document.querySelector('.wrap');
+    const isDarkMode = Storage.getDarkMode();
+
+    if (isDarkMode) {
+      darkMode.checked = true;
+      wrap.classList.add('wrap_mode-dark');
+    }
   }
 
   setActivePage(active) {
@@ -31,6 +43,7 @@ export class Settings {
     });
 
     darkMode.addEventListener('click', () => {
+      Storage.setDarkMode(darkMode.checked);
       wrap.classList.toggle('wrap_mode-dark');
     });
   }

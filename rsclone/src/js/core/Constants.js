@@ -29,6 +29,8 @@ export const Constants = {
   AUDIO: {
     FAILURE: '../assets/audio/failure.mp3',
     CORRECT: '../assets/audio/success.mp3',
+    END_TIME: '../assets/audio/end-time.mp3',
+    NEW_ROUND: '../assets/audio/new-round.mp3',
   },
   COUNT_DEFAULT_AVATARS: 40,
   USER_STATUSES: {

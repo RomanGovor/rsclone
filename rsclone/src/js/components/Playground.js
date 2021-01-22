@@ -429,6 +429,7 @@ export class Playground {
 
   showRound() {
     this.lang = Storage.getLanguage();
+    Extra.playAudio(Constants.AUDIO.NEW_ROUND);
 
     if (this.table) {
       this.hideTable();

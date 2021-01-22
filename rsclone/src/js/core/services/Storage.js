@@ -26,6 +26,15 @@ export class Storage {
     localStorage.setItem('sigame/bgMusic', JSON.stringify(isPlay));
   }
 
+  static getDarkMode() {
+    const isDarkMode = JSON.parse(localStorage.getItem('sigame/darkMode'));
+    return isDarkMode === undefined ? false : isDarkMode;
+  }
+
+  static setDarkMode(isDarkMode) {
+    localStorage.setItem('sigame/darkMode', JSON.stringify(isDarkMode));
+  }
+
   static getCurrentQuestion() {
     const question = JSON.parse(sessionStorage.getItem('sigame/currentQuestion'));
     return !question ? {} : question;
@@ -54,27 +63,27 @@ export class Storage {
   }
 
   static setAuthorizationStatus(status) {
-    localStorage.setItem('sigame/isAuthorization', status);
+    localStorage.setItem('isAuthorization', status);
   }
 
   static getAuthorizationStatus() {
-    return localStorage.getItem('sigame/isAuthorization');
+    return localStorage.getItem('isAuthorization');
   }
 
   static setUserName(name) {
-    localStorage.setItem('sigame/name', name);
+    localStorage.setItem('name', name);
   }
 
   static getUserName() {
-    return localStorage.getItem('sigame/name');
+    return localStorage.getItem('name');
   }
 
   static setUserToken(token) {
-    localStorage.setItem('sigame/token', token);
+    localStorage.setItem('token', token);
   }
 
   static getUserToken() {
-    return localStorage.getItem('sigame/token');
+    return localStorage.getItem('token');
   }
 
   static setUserStatisticData(data) {

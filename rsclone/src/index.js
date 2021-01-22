@@ -207,6 +207,7 @@ class App {
   setQuestionTimer() {
     this.handlerQuestionTimer = setTimeout(() => {
       const possiblePlayer = Storage.getPossiblePlayer();
+      Extra.playAudio(Constants.AUDIO.END_TIME);
       if (possiblePlayer === Constants.USER_STATUSES.PLAYER) {
         this.player.makePlayerActive();
       } else {

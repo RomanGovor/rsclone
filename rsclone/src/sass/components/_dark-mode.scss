@@ -14,13 +14,13 @@
   }
 
   .container__playground {
-    background-color: #510d0d;
+    background-color: $color-red-dark;
   }
   .container__active {
-    background-color: #8e6404;
+    background-color: $color-yellow-dark;
   }
   .container__players {
-    background-color: #1e054d;
+    background-color: $color-blue-dark;
   }
 
   .playground {
