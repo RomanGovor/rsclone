@@ -1,14 +1,16 @@
 import createElement from '../createElements/createElement';
 import './statistic.scss';
-import { Extra } from '../../core';
+import { Extra, Storage } from '../../core';
 
 export function statisticPage(activePage) {
   const container = document.querySelector('.container__statistic');
   Extra.clearContainer(container);
   Extra.hidePages(container);
 
-  const statisticCloseButton = createElement('button', 'statistic__close-button');
-  statisticCloseButton.innerHTML = 'X';
+  const statisticCloseButton = Extra
+    .createMultipleLanguageElement('button',
+      ['statistic__close-button'],
+      'Back', 'Назад');
 
   const statisticTitle = Extra
     .createMultipleLanguageElement('h2',
@@ -41,9 +43,12 @@ export function statisticPage(activePage) {
   const statisticList = createElement('ul', 'statistic__list');
   statisticList.append(li1, li2, li3, li4, li5, li6);
 
-  const statisticWrapper = createElement('div', 'statistic', [statisticCloseButton, statisticTitle, statisticList]);
+  const statisticWrapper = createElement('div', 'statistic', [statisticTitle, statisticList, statisticCloseButton]);
 
   container.append(statisticWrapper);
+
+  Extra.translate(Storage.getLanguage());
+
   statisticCloseButton.addEventListener('click', () => {
     Extra.hidePages(document.querySelector(activePage));
     Extra.clearContainer(container);
