@@ -184,6 +184,10 @@ class App {
         const rules = new Rules(this.language, this.activePage);
       }
 
+      // if (li.classList.contains('menu__item-statistic')) {
+      //
+      // }
+
       this.HEADER_MENU.setActiveItem(li);
       if (burgerCheckbox.checked) burgerCheckbox.checked = false;
 
@@ -406,10 +410,23 @@ class App {
       if (question.round === countRounds) {
         Extra.playAudio(Constants.AUDIO.WIN);
 
+        const totalTime = this.GLOBAL_TIMER.getTotalTime();
         const time = this.GLOBAL_TIMER.divisionIntoMinutes();
         this.GLOBAL_TIMER.clearTimer();
 
         const winner = this.getArrayScores()[0];
+
+        if (winner.workName === Constants.USER_STATUSES.PLAYER) {
+          const data = {
+            numberOfGames: `${1}`,
+            maximumNumberOfWins: '0',
+            points: `${winner.score}`,
+            averagePoints: `${winner.score}`,
+            averagePlayTime: `${totalTime}`,
+            maximumPlayTime: `${totalTime}`,
+          };
+          this.statisticModule.setUserData(data);
+        }
 
         console.log(`Общее время игры тоже вывести ${time.hour}:${time.min}:${time.sec}`);
         console.log(`Вывести победителя(победителей) ${winner.name} - ${winner.score}`);
@@ -474,13 +491,13 @@ class App {
 
   statistic() {
     const statisticLink = document.querySelector('.menu__item-statistic');
-    const statisticModule = new Statistic();
+    this.statisticModule = new Statistic();
 
     statisticLink.addEventListener('click', () => {
-      statisticModule.getUserData();
+      this.statisticModule.getUserData();
       const data = Storage.getUserStatisticData();
       const dataArr = Object.keys(Storage.getUserStatisticData());
-      statisticModule.init();
+      this.statisticModule.init(this.activePage);
 
       const statisticCountList = document.querySelectorAll('.statistic__item-count');
       statisticCountList.forEach((item, index) => {

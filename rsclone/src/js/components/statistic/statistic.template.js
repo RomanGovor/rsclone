@@ -1,45 +1,51 @@
 import createElement from '../createElements/createElement';
 import './statistic.scss';
+import { Extra } from '../../core';
 
-export function statisticPage() {
+export function statisticPage(activePage) {
+  const container = document.querySelector('.container__statistic');
+  Extra.clearContainer(container);
+  Extra.hidePages(container);
+
   const statisticCloseButton = createElement('button', 'statistic__close-button');
   statisticCloseButton.innerHTML = 'X';
-  const statisticTitle = createElement('h2', 'statistic__title');
-  statisticTitle.innerHTML = 'Your Results';
-  const statisticItems = `
-  <li class="statistic__item">
-    <h4 class="statistic__item-title">Number of games</h4>
-    <div class="statistic__item-count" data-count="num-games"></div>
-  </li>
-  <li class="statistic__item">
-    <h4 class="statistic__item-title">Maximum number of wins</h4>
-    <div class="statistic__item-count" data-count="max-num-wins"></div>
-  </li>
-  <li class="statistic__item">
-    <h4 class="statistic__item-title">Points</h4>
-    <div class="statistic__item-count" data-count="points"></div>
-  </li>
-  <li class="statistic__item">
-    <h4 class="statistic__item-title">Average points</h4>
-    <div class="statistic__item-count" data-count="max-num-wins"></div>
-  </li>
-  <li class="statistic__item">
-    <h4 class="statistic__item-title">Average play time</h4>
-    <div class="statistic__item-count" data-count="aver-play-time"></div>
-  </li>
-  <li class="statistic__item">
-    <h4 class="statistic__item-title">Maximum play time</h4>
-    <div class="statistic__item-count" data-count="max-play-time"></div>
-  </li>
-      `;
+
+  const statisticTitle = Extra
+    .createMultipleLanguageElement('h2',
+      ['statistic__title'],
+      'Your Results', 'Ваши результаты');
+
+  function createLiItem(textEn, textRu, dataCount) {
+    const li = document.createElement('li');
+    li.classList.add('statistic__item');
+
+    const label = Extra.createMultipleLanguageElement('div',
+      ['statistic__item-title'], textEn, textRu);
+
+    const count = document.createElement('div');
+    count.classList.add('statistic__item-count');
+    count.setAttribute('data-count', dataCount);
+
+    li.append(label, count);
+
+    return li;
+  }
+
+  const li1 = createLiItem('Number of games', 'Общее число игр', 'num-games');
+  const li2 = createLiItem('Maximum number of wins', 'Максимальное число побед', 'max-num-wins');
+  const li3 = createLiItem('Points', 'Очки', 'points');
+  const li4 = createLiItem('Average points', 'Среднее количество очков', 'max-num-wins');
+  const li5 = createLiItem('Average play time', 'Среднее время игры', 'aver-play-time');
+  const li6 = createLiItem('Maximum play time', 'Максимальное время игры', 'max-play-time');
+
   const statisticList = createElement('ul', 'statistic__list');
-  statisticList.insertAdjacentHTML('beforeend', statisticItems);
-  const statisticWrapper = createElement('div', 'statistic__wrapper', [statisticCloseButton, statisticTitle, statisticList]);
+  statisticList.append(li1, li2, li3, li4, li5, li6);
 
-  const body = document.querySelector('body');
+  const statisticWrapper = createElement('div', 'statistic', [statisticCloseButton, statisticTitle, statisticList]);
+
+  container.append(statisticWrapper);
   statisticCloseButton.addEventListener('click', () => {
-    body.removeChild(document.querySelector('.statistic__wrapper'));
+    Extra.hidePages(document.querySelector(activePage));
+    Extra.clearContainer(container);
   });
-
-  return statisticWrapper;
 }

@@ -24,9 +24,9 @@ export class Statistic {
     }
   }
 
-  init() {
-    const page = statisticPage();
-    const body = document.querySelector('body');
-    body.append(page);
+  init(activePage) {
+    statisticPage(activePage);
+    // const body = document.querySelector('body');
+    // body.append(page);
   }
 }

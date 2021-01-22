@@ -70,6 +70,10 @@ export class GlobalTimer {
     this.initialTimer = null;
   }
 
+  getTotalTime() {
+    return this.totalTime;
+  }
+
   divisionIntoMinutes() {
     const time = {};
 
