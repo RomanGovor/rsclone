@@ -494,14 +494,17 @@ class App {
     this.statisticModule = new Statistic();
 
     statisticLink.addEventListener('click', () => {
-      this.statisticModule.getUserData();
-      const data = Storage.getUserStatisticData();
+      const data = this.statisticModule.getUserData();
       const dataArr = Object.keys(Storage.getUserStatisticData());
       this.statisticModule.init(this.activePage);
 
       const statisticCountList = document.querySelectorAll('.statistic__item-count');
       statisticCountList.forEach((item, index) => {
-        item.innerHTML = data[dataArr[index]];
+        if (item.dataset.count === 'aver-play-time' || item.dataset.count === 'max-play-time') {
+          item.innerHTML = this.statisticModule.setStatisticTime(+data[dataArr[index]]);
+        } else {
+          item.innerHTML = data[dataArr[index]];
+        }
       });
     });
   }
