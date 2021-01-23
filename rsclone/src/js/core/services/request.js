@@ -1,5 +1,5 @@
 import {
-  PathSignIn, PathSignUp, PathGetAndPutRequest, PathLogout, PathLogoutAll, EmptyUserData,
+  Constants,
 } from '../Constants';
 import { removeUserAuthorizationData } from './userAuthorizationData';
 import { Storage } from './Storage';
@@ -14,7 +14,7 @@ export class Request {
       },
       body: JSON.stringify(data),
     };
-    fetch(PathSignUp, requestOptions)
+    fetch(Constants.PathSignUp, requestOptions)
       .then((response) => {
         if (response.status >= 400 && response.status < 600) {
           message.innerHTML = 'Fill in the fields correctly.Try again';
@@ -41,7 +41,7 @@ export class Request {
       },
       body: JSON.stringify(data),
     };
-    fetch(PathSignIn, requestOptions)
+    fetch(Constants.PathSignIn, requestOptions)
       .then((response) => {
         if (response.status >= 400 && response.status < 600) {
           message.innerHTML = 'Fill in the fields correctly.Try again';
@@ -67,14 +67,14 @@ export class Request {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     };
-    fetch(PathLogout, requestOptions)
+    fetch(Constants.PathLogout, requestOptions)
       .then((response) => {
         if (response.status >= 400 && response.status < 600) {
           console.log('error');
         } else if (response.status === 200) {
           localStorage.clear();
           localStorage.setItem('isAutorization', 'false');
-          localStorage.setItem('statistic', `${JSON.stringify(EmptyUserData)}`);
+          localStorage.setItem('statistic', `${JSON.stringify(Constants.EmptyUserData)}`);
           removeUserAuthorizationData();
         }
       })
@@ -89,7 +89,7 @@ export class Request {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     };
-    fetch(PathLogoutAll, requestOptions)
+    fetch(Constants.PathLogoutAll, requestOptions)
       .then((response) => response.json())
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
@@ -104,7 +104,7 @@ export class Request {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     };
-    fetch(PathGetAndPutRequest, requestOptions)
+    fetch(Constants.PathGetAndPutRequest, requestOptions)
       .then((response) => response.json())
       .then((result) => Storage.setUserStatisticData(result.data))
       .catch((err) => console.log(err));
@@ -120,7 +120,7 @@ export class Request {
       },
       body: JSON.stringify(data),
     };
-    fetch(PathGetAndPutRequest, requestOptions)
+    fetch(Constants.PathGetAndPutRequest, requestOptions)
       .then((response) => response.json())
       .catch((err) => console.log(err));
   }

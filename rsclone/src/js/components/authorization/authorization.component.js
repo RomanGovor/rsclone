@@ -2,7 +2,7 @@
 import { authorizationForm } from './authorization.template';
 import { Request } from '../../core/services/request';
 import {
-  setUserAuthorizationData, setGuestName, EmptyUserData, Storage,
+  setUserAuthorizationData, setGuestName, Constants, Storage,
 } from '../../core/index';
 
 export class Authorization {
@@ -149,7 +149,7 @@ export class Authorization {
           return;
         }
         Storage.setUserName(this.nick.value);
-        Storage.setUserStatisticData(EmptyUserData);
+        Storage.setUserStatisticData(Constants.EmptyUserData);
         setGuestName(this.nick.value);
         this.removeForm();
       }
