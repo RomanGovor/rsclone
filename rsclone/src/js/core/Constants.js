@@ -16,7 +16,18 @@ export const Constants = {
   },
   BACKGROUND_AUDIO: './assets/audio/background.mp3',
   URLS: {
-    categories: '../assets/quiz.json',
+    quiz1: '../assets/quizzes/quiz1.json',
+    quiz2: '../assets/quizzes/quiz2.json',
+  },
+  QUIZZES: {
+    EN: {
+      quiz1: 'General cognitive',
+      quiz2: 'Games',
+    },
+    RU: {
+      quiz1: 'Общепозновательный',
+      quiz2: 'Игры',
+    },
   },
   MAIN_PAGE: '.main-menu',
   ANSWER_INPUT: '.playground__answer-input',

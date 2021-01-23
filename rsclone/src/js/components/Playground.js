@@ -174,8 +174,6 @@ export class Playground {
       this.createTable();
       this.getQuestionsArrayByRound();
       this.showRound();
-    } else {
-      console.log('!!!!!!<====FINAL====>!!!!!!');
     }
   }
 

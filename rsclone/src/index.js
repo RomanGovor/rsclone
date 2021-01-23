@@ -40,7 +40,7 @@ class App {
   async initPlayground() {
     const categoriesEn = [];
     const categoriesRu = [];
-    const response = await fetch(Constants.URLS.categories);
+    const response = await fetch(Constants.URLS[this.gameParam.pack]);
     const data = await response.json();
     await data.rounds.forEach((el) => {
       el.categories.forEach((cat) => {
@@ -48,6 +48,9 @@ class App {
         categoriesRu.push(cat.categoryInfo.categoryNameRu);
       });
     });
+
+    data.rounds = [...Extra
+      .getRandomArray(data.rounds.length, data.rounds.length, data.rounds)];
 
     this.playground = new Playground({
       lang: this.language,

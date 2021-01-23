@@ -1,7 +1,7 @@
 {
   "mainInfo": {
-    "subjectRu": "Кино",
-    "subjectEn": "Сinema",
+    "subjectRu": "Общепозновательный",
+    "subjectEn": "General cognitive",
     "complexity": 5
   },
   "rounds": [
@@ -679,6 +679,6 @@
         }
       ]
     }
-    
+
   ]
 }

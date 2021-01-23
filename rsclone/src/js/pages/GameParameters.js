@@ -12,10 +12,12 @@ export class GameParameters {
   readingValues() {
     const selectBots = document.querySelector('.select-bots');
     const selectLevels = document.querySelector('.select-levels');
+    const selectPacks = document.querySelector('.select-packs');
 
     const param = {
       countBots: parseInt(selectBots.value, 10),
       level: selectLevels.value,
+      pack: selectPacks.value,
       avatar: this.activeAvatar,
     };
 
@@ -91,13 +93,51 @@ export class GameParameters {
     const containerAvatars = this.renderAvatars();
     avatars.append(avatarsLabel, containerAvatars);
 
-    description.append(bots, levels);
+    const packs = this.renderSelectPack();
+    description.append(bots, levels, packs);
     /** ******************************************************************************** */
 
     const btn = this.appendButton();
 
     parameters.append(header, description, avatars, btn);
     container.append(parameters);
+  }
+
+  renderSelectPack() {
+    const packs = document.createElement('div');
+    packs.classList.add('parameters__packs');
+
+    const packsLabel = Extra.createMultipleLanguageElement('div',
+      ['parameters__label'],
+      'Choose a package of questions', 'Выберете пак вопросов');
+
+    const packsSelect = document.createElement('select');
+    packsSelect.classList.add('select', 'select-packs');
+    packsSelect.setAttribute('name', 'packs');
+
+    const keys = Object.keys(Constants.URLS);
+    console.log(keys);
+
+    for (let i = 0; i < keys.length; i++) {
+      const optionEn = this.createOption('en', keys[i]);
+      const optionRu = this.createOption('ru', keys[i]);
+      packsSelect.append(optionEn, optionRu);
+    }
+
+    packsSelect.children[0].setAttribute('selected', 'selected');
+
+    packsSelect.addEventListener('change', () => { this.readingValues(); });
+    packs.append(packsLabel, packsSelect);
+    return packs;
+  }
+
+  createOption(lang, key) {
+    const option = document.createElement('option');
+    option.setAttribute('value', key);
+    option.setAttribute('language', lang);
+    option.textContent = Constants.QUIZZES[lang.toUpperCase()][key];
+
+    return option;
   }
 
   appendButton() {

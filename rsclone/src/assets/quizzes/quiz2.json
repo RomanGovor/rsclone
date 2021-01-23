@@ -1,0 +1,333 @@
+{
+  "mainInfo": {
+    "subjectRu": "Игры",
+    "subjectEn": "Games",
+    "complexity": 5
+  },
+  "rounds": [
+    {
+      "roundInfo": {
+        "subtopicRU": "Компьютерные игры",
+        "subtopicEn": "Computer Games"
+      },
+      "categories": [
+        {
+          "categoryInfo": {
+            "categoryNameEn": "Screenshot",
+            "categoryNameRu": "Скриншот"
+          },
+          "questions": [
+            {
+              "type": "checkbox",
+              "subtype": "picture",
+              "points": 100,
+              "questionRu": "Из какой игры сделан скриншот?",
+              "questionEn": "What game was the screenshot taken from?",
+              "questionPicture": "https://i.ytimg.com/vi/8kc09bvZUag/maxresdefault.jpg",
+              "answerOptionsEn": ["Far Cry 3", "Homefront", "Medal of Honor", "Uncharted 3"],
+              "answerOptionsRu": ["Far Cry 3", "Homefront", "Medal of Honor", "Uncharted 3"],
+              "trueAnswerEn": "Far Cry 3",
+              "trueAnswerRu": "Far Cry 3"
+            },
+            {
+              "type": "checkbox",
+              "subtype": "picture",
+              "points": 200,
+              "questionRu": "Из какой игры сделан скриншот?",
+              "questionEn": "What game was the screenshot taken from?",
+              "questionPicture": "https://www.gamingaccessweekly.com/wp-content/uploads/2015/07/dishonored_def_ed-10.jpg",
+              "answerOptionsEn": ["Arx Fatalis", "Prey", "Thief", "Dishonored"],
+              "answerOptionsRu": ["Arx Fatalis", "Prey", "Thief", "Dishonored"],
+              "trueAnswerEn": "Dishonored",
+              "trueAnswerRu": "Dishonored"
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 300,
+              "questionRu": "Из какой игры сделан скриншот?",
+              "questionEn": "What game was the screenshot taken from?",
+              "questionPicture": "https://steamuserimages-a.akamaihd.net/ugc/700643652998651485/B72AF46C79A61C909CA57CBD797C436B0AD5944E/?imw=512&amp;imh=287&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true",
+              "trueOptionsAnswerEn": ["Metro Last Light", "Metro Last"],
+              "trueOptionsAnswerRu": ["Метро Ласт Лайт", "Метро Ласт"]
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 400,
+              "questionRu": "Из какой игры сделан скриншот?",
+              "questionEn": "What game was the screenshot taken from?",
+              "questionPicture": "http://s01.riotpixels.net/data/4e/f9/4ef9059b-19ef-4121-b1f4-fa996914e089.jpg/screenshot.long-dark.1920x1080.2017-08-17.108.jpg",
+              "trueOptionsAnswerEn": ["The Long Dark", "Long Dark"],
+              "trueOptionsAnswerRu": ["Лонг Дарк"]
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 500,
+              "questionRu": "Из какой игры сделан скриншот?",
+              "questionEn": "What game was the screenshot taken from?",
+              "questionPicture": "https://images.purexbox.com/screenshots/75225/large.jpg",
+              "trueOptionsAnswerEn": ["The Flame in the Flood", "Flame in the Flood", "Flame in Flood", "The Flame in Flood"],
+              "trueOptionsAnswerRu": ["Флейм ин флуд", "Флэйм ин флуд", "Флэйм ин зе флуд", "Флейм ин зе флуд"]
+            }
+          ]
+        },
+        {
+          "categoryInfo": {
+            "categoryNameEn": "Description",
+            "categoryNameRu": "Описание"
+          },
+          "questions": [
+            {
+              "type": "checkbox",
+              "subtype": "text",
+              "points": 100,
+              "questionRu": "Выберите игру по описанию",
+              "questionEn": "Choose a game by description",
+              "descriptionRu": "Приключенческий экшен-шутер про похождения великого угонщика автомобилей и грозу всех бандитов. Ограбления банков, перестрелки с полицейскими, погони на крутых тачках, огромный открытый мир, три играбельных персонажа, закрученный сюжет и возможность играть по интернету с другими людьми",
+              "descriptionEn": "Adventure action shooter about the adventures of the great car thief and the thunderstorm of all bandits. Bank robberies, shootouts with cops, chases in cool cars, a huge open world, three playable characters, a twisted plot and the ability to play on the Internet with other people",
+              "answerPicture": "https://cdn.wallpapersafari.com/94/31/Vj0Bi8.jpg",
+              "answerOptionsEn": ["Subnautica", "GTA 5", "Saints Row 4", "Watch Dogs 2"],
+              "answerOptionsRu": ["Subnautica", "GTA 5", "Saints Row 4", "Watch Dogs 2"],
+              "trueAnswerEn": "GTA 5",
+              "trueAnswerRu": "GTA 5"
+            },
+            {
+              "type": "checkbox",
+              "subtype": "text",
+              "points": 200,
+              "questionRu": "Выберите игру по описанию",
+              "questionEn": "Choose a game by description",
+              "descriptionRu": "Файтинг, который переходит из поколение в поколение... Игра, в которую играл ваш отец, и может сейчас играете вы. Файтинг просто зашибись какой экшеновый и крутой, там есть мясо, убийства, кровь и все другие прелести, которые вы должны сами попробовать. Уже на протяжении 30 лет до сих пор на этой самой арене Скорпион, Саб-зиро и Рейден",
+              "descriptionEn": "A fighting game that has passed from generation to generation ... The game that your father played, and may now be you. The fighting game is just how cool and action-packed, there is meat, murder, blood and all the other delights that you must try. For 30 years, Scorpion, Sub-Zero and Raiden are still in this very arena",
+              "answerPicture": "https://i.ytimg.com/vi/zIyxMcxnnq8/maxresdefault.jpg",
+              "answerOptionsEn": ["Tekken", "Halo 4", "Mortal Kombat", "Borderlands 2"],
+              "answerOptionsRu": ["Tekken", "Halo 4", "Mortal Kombat", "Borderlands 2"],
+              "trueAnswerEn": "Mortal Kombat",
+              "trueAnswerRu": "Mortal Kombat"
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 300,
+              "questionRu": "Назовите игру по описанию",
+              "questionEn": "Name the game by description",
+              "descriptionRu": "Достойное продолжение одиссеи капитана Шепарда и одна из лучших игр жанра РПГ. Игра начинает удивлять сразу после начальных титров. Вместо ролика с пояснением дальнейшего задания и об устранении неугодных лиц Галактики, игрока сходу шокируют гибелью Шепарда, показывая это в небольшой кат-сцене, но потом радуют его воскрешением. Вернула его в мир живых корпорация «Цербер», которая была в предыдущей части, но особую роль в сюжете не играла",
+              "descriptionEn": "A worthy sequel to Captain Shepard's odyssey and one of the best RPG games ever. The game starts to amaze right after the opening credits. Instead of a video with an explanation of the further task and the elimination of objectionable faces of the Galaxy, the player is shocked outright by the death of Shepard, showing this in a small cut-scene, but then delighting him with his resurrection. The corporation Cerberus returned him to the world of the living, which was in the previous part, but did not play a special role in the plot",
+              "answerPicture": "https://wallpaperset.com/w/full/7/2/e/42293.jpg",
+              "trueOptionsAnswerEn": ["Mass Effect 2", "Mass Efect 2"],
+              "trueOptionsAnswerRu": ["Мас эфект 2", "Мас эффект 2"]
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 400,
+              "questionRu": "Назовите игру по описанию",
+              "questionEn": "Name the game by description",
+              "descriptionRu": "Наш напарник-детектив-человек, с которым знакомят нашего героя-андроида в самом начале игры, не очень-то любит этих самых андроидов. Он убеждён, что есть люди, а есть роботы, и разница меж ними огромна. Более того, он утверждает, что у машин не может быть собственной воли и положительно реагирует на подтверждение в той или иной форме таковой мысли от самого андроида. Но в какой-то момент на нас нападают две машины с арматурами в руках, мы в ходе очень длительной защиты от их нападения убиваем ту, что всё лезет и лезет, напарник вдруг начинает беситься и разочаровываться от рациональности живого механизма и в конце выясняется, что мы должны были ему веру дать и ожидания оправдать, а мы этого не сделали, так что жизнь гoвнo, надо застрелиться",
+              "descriptionEn": "Our partner, a human detective, whom our android hero is introduced to at the very beginning of the game, does not really like these very androids. He is convinced that there are people and there are robots, and the difference between them is huge. Moreover, he claims that machines cannot have their own will and reacts positively to confirmation in one form or another of such a thought from the android itself. But at some point we are attacked by two cars with fittings in their hands, we, during a very long defense against their attack, kill the one that keeps climbing and climbing, the partner suddenly starts to get mad and get frustrated with the rationality of the living mechanism and in the end it turns out that we had to give him faith and justify expectations, but we didn’t, so life, of course, we have to shoot ourselves",
+              "answerPicture": "https://img.gta5-mods.com/q95/images/4k-exclusive-loading-screens-from-the-game-detroit-become-human/24cdf1-6.jpg",
+              "trueOptionsAnswerEn": ["Detroit: Become Human", "Detroit Become Human", "Detroit", "Detroit: Human", "Detroit: Become", "Detroit Human", "Detroit Become"],
+              "trueOptionsAnswerRu": ["Детроит: Биком Хьюман", "Детроит Биком Хьюман", "Детроит", "Детроит: Бикам Хьюман", "Детроит Бикам Хьюман"]
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 500,
+              "questionRu": "Назовите игру по описанию",
+              "questionEn": "Name the game by description",
+              "descriptionRu": "Данная игра представляет из себя что-то по типу мафии: одному или нескольким игрокам выпадает роль предателя, а всем остальным (тем, которым она не выпала) нужно вычислить кто это, исходя из поведения разных игроков. А и да, все в сконфандрах",
+              "descriptionEn": "This game is something like a mafia: one or several players play the role of a traitor, and all the rest (those who did not fall out) need to figure out who it is, based on the behavior of different players. And yes, everyone is in confusion",
+              "answerPicture": "This game is something like a mafia: one or several players play the role of a traitor, and all the rest (those who did not fall out) need to figure out who it is, based on the behavior of different players. And yes, everyone is in confusion",
+              "trueOptionsAnswerEn": ["Among us"],
+              "trueOptionsAnswerRu": ["Эмонг ас", "Амонг ас"]
+            }
+          ]
+        },
+        {
+          "categoryInfo": {
+            "categoryNameEn": "Horrors",
+            "categoryNameRu": "Хорроры"
+          },
+          "questions": [
+            {
+              "type": "checkbox",
+              "subtype": "picture",
+              "points": 100,
+              "questionRu": "Из какого хоррора сделан скриншот?",
+              "questionEn": "What horror is the screenshot from?",
+              "questionPicture": "https://uploads.jovemnerd.com.br/wp-content/uploads/2017/01/resident-evil-7_n.jpg",
+              "answerOptionsEn": ["Far Cry Primal", "Alien Isolation", "Resident Evil 7", "The Last of Us"],
+              "answerOptionsRu": ["Far Cry Primal", "Alien Isolation", "Resident Evil 7", "The Last of Us"],
+              "trueAnswerEn": "Resident Evil 7",
+              "trueAnswerRu": "Resident Evil 7"
+            },
+            {
+              "type": "checkbox",
+              "subtype": "picture",
+              "points": 200,
+              "questionRu": "Из какого хоррора сделан скриншот?",
+              "questionEn": "What horror is the screenshot from?",
+              "questionPicture": "https://www.nintendo.com/content/dam/noa/en_US/games/switch/o/outlast-2-switch/screenshot-gallery/outlast-2-switch-screenshot05.jpg",
+              "answerOptionsEn": ["The Bunker", "Outlast 2", "Amnesia The Dark Descent", "Hello Neighbor 2"],
+              "answerOptionsRu": ["The Bunker", "Outlast 2", "Amnesia The Dark Descent", "Hello Neighbor 2"],
+              "trueAnswerEn": "Outlast 2",
+              "trueAnswerRu": "Outlast 2"
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 300,
+              "questionRu": "Из какого хоррора сделан скриншот?",
+              "questionEn": "What horror is the screenshot from?",
+              "questionPicture": "https://games.mail.ru/hotbox/content_files/gallery/80/6a/576223d8.png",
+              "trueOptionsAnswerEn": ["Inside"],
+              "trueOptionsAnswerRu": ["Инсайд"]
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 400,
+              "questionRu": "Из какого хоррора сделан скриншот?",
+              "questionEn": "What horror is the screenshot from?",
+              "questionPicture": "https://wallpaperaccess.com/full/300103.jpg",
+              "trueOptionsAnswerEn": ["Until Dawn"],
+              "trueOptionsAnswerRu": ["Антил Даун", "Антил Доун"]
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 500,
+              "questionRu": "Из какого хоррора сделан скриншот?",
+              "questionEn": "What horror is the screenshot from?",
+              "questionPicture": "https://cdn.shazoo.ru/83690_7vc1gZNcJU_xlmnqxp.jpg",
+              "trueOptionsAnswerEn": ["Alien: Isolation", "Alien Isolation", "Alien"],
+              "trueOptionsAnswerRu": ["Алиан: Изолейшн", "Алиэн Изолейшн", "Алиэн", "Алиан"]
+            }
+          ]
+        },
+        {
+          "categoryInfo": {
+            "categoryNameEn": "Old School games",
+            "categoryNameRu": "Олдскульные игры"
+          },
+          "questions": [
+            {
+              "type": "checkbox",
+              "subtype": "picture",
+              "points": 100,
+              "questionRu": "Из какой игры сделан скриншот?",
+              "questionEn": "What game was the screenshot taken from?",
+              "questionPicture": "https://media.moddb.com/images/groups/1/8/7899/zdoom_2012-06-22_11-31-59-953.jpg",
+              "answerOptionsEn": ["Diablo", "Icewind Dale", "Hellgate London", "Doom"],
+              "answerOptionsRu": ["Super Meat Boy", "Contra", "Quake", "Doom"],
+              "trueAnswerEn": "Doom",
+              "trueAnswerRu": "Doom"
+            },
+            {
+              "type": "checkbox",
+              "subtype": "picture",
+              "points": 200,
+              "questionRu": "Из какой игры сделан скриншот?",
+              "questionEn": "What game was the screenshot taken from?",
+              "questionPicture": "https://pbs.twimg.com/media/CwcRvkyWEAA_ehh.jpg",
+              "answerOptionsEn": ["Diablo", "Icewind Dale", "Hellgate London", "Warcraft"],
+              "answerOptionsEn": ["Diablo", "Icewind Dale", "Hellgate London", "Warcraft"],
+              "trueAnswerEn": "Diablo",
+              "trueAnswerRu": "Diablo"
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 300,
+              "questionRu": "Из какой игры сделан скриншот?",
+              "questionEn": "What game was the screenshot taken from?",
+              "questionPicture": "https://content.onliner.by/news/2016/07/default/79c275fed0f93ae07e1dc90e9627b633.jpg",
+              "trueOptionsAnswerEn": ["Half-Life", "Half Life", "Half"],
+              "trueOptionsAnswerRu": ["Халф-лайф", "Халф лайф", "Халва"]
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 400,
+              "questionRu": "Из какой игры сделан скриншот?",
+              "questionEn": "What game was the screenshot taken from?",
+              "questionPicture": "https://content.onliner.by/news/2016/07/default/45270c2e6fc7238b2fa0fb294744be97.jpg",
+              "trueOptionsAnswerEn": ["Need for Speed", "Need Speed"],
+              "trueOptionsAnswerRu": ["Нид фор спид"]
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 500,
+              "questionRu": "Из какой игры сделан скриншот?",
+              "questionEn": "What game was the screenshot taken from?",
+              "questionPicture": "https://content.onliner.by/news/2016/07/default/1d0e4ed0b306e19a09dc59b5d769f0d4.png",
+              "trueOptionsAnswerEn": ["Heroes of Might and Magic 3", "Heroes of Might and Magic", "Heroes Might and Magic", "Heroes"],
+              "trueOptionsAnswerRu": ["Герои меча и магии 3", "Герои меча и магии", "Герои", "Хирос"]
+            }
+          ]
+        },
+        {
+          "categoryInfo": {
+            "categoryNameEn": "Year of creation",
+            "categoryNameRu": "Год создания"
+          },
+          "questions": [
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 200,
+              "questionRu": "Введите год создания игры со скриншота (± 2)",
+              "questionEn": "Enter the year the game was created from the screenshot (± 2)",
+              "questionPicture": "https://cdn3.dualshockers.com/wp-content/uploads/2016/03/assassin-s-creed-1-121295571464154.jpg",
+              "trueOptionsAnswerEn": ["2007", "2006", "2005", "2008", "2009"],
+              "trueOptionsAnswerRu": ["2007", "2006", "2005", "2008", "2009"]
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 400,
+              "questionRu": "Введите год создания игры со скриншота (± 2)",
+              "questionEn": "Enter the year the game was created from the screenshot (± 2)",
+              "questionPicture": "https://avatars.mds.yandex.net/get-zen_doc/1586459/pub_5d908e9e04af1f00aec02d9f_5d90a85cb477bf00b108668a/scale_1200",
+              "trueOptionsAnswerEn": ["2000", "2001", "2002", "1999", "1998"],
+              "trueOptionsAnswerRu": ["2000", "2001", "2002", "1999", "1998"]
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 600,
+              "questionRu": "Введите год создания игры со скриншота (± 1)",
+              "questionEn": "Enter the year the game was created from the screenshot (± 1)",
+              "questionPicture": "https://i.playground.ru/p/42BCp5UxWSyQg3HMNSNV6w.jpeg",
+              "trueOptionsAnswerEn": ["2017", "2018", "2016"],
+              "trueOptionsAnswerRu": ["2017", "2018", "2016"]
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 800,
+              "questionRu": "Введите год создания игры со скриншота (± 1)",
+              "questionEn": "Enter the year the game was created from the screenshot (± 1)",
+              "questionPicture": "https://i.ytimg.com/vi/t7sMkhlZhbI/maxresdefault.jpg",
+              "trueOptionsAnswerEn": ["2003", "2002", "2001"],
+              "trueOptionsAnswerRu": ["2003", "2002", "2001"]
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 1000,
+              "questionRu": "Введите год создания игры со скриншота (± 1)",
+              "questionEn": "Enter the year the game was created from the screenshot (± 1)",
+              "questionPicture": "https://cat-a-cat.net/uploads/posts/2016-10/1477653987_b98o0pkh.jpg",
+              "trueOptionsAnswerEn": ["2011", "2010", "2012"],
+              "trueOptionsAnswerRu": ["2011", "2010", "2012"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
