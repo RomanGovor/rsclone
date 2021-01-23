@@ -218,19 +218,19 @@ class App {
       const isActivePlayer = this.player.getActivePlayer();
 
       const key = event.keyCode;
-      if(key === 37 || key === 38 || key === 39 || key === 40 || key === 13) {
+      if (key === 37 || key === 38 || key === 39 || key === 40 || key === 13) {
         if (isActivePlayer && this.isTableActive) {
           const objActiveCell = this.playground.getCellActive();
           const currentActiveCell = objActiveCell.active;
-          const isFirstActive = objActiveCell.isFirstActive;
+          const { isFirstActive } = objActiveCell;
           const curRow = +currentActiveCell.getAttribute('question-row');
           const curColumn = +currentActiveCell.getAttribute('question-column');
 
           let newCell;
 
-          if(!isFirstActive) {
+          if (!isFirstActive) {
             switch (key) {
-              case 37 :
+              case 37:
                 newCell = this.playground.findCellByCoordinates(curRow, curColumn - 1);
                 if (newCell) this.playground.makeCellActive(newCell);
                 break;
@@ -487,19 +487,18 @@ class App {
         const time = this.GLOBAL_TIMER.divisionIntoMinutes();
         this.GLOBAL_TIMER.clearTimer();
 
+        const playerState = this.player.getScore();
         const winner = this.getArrayScores()[0];
+        const data = {
+          points: playerState.score,
+          time: totalTime,
+        };
 
         if (winner.workName === Constants.USER_STATUSES.PLAYER) {
-          const data = {
-            numberOfGames: `${1}`,
-            maximumNumberOfWins: '0',
-            points: `${winner.score}`,
-            averagePoints: `${winner.score}`,
-            averagePlayTime: `${totalTime}`,
-            maximumPlayTime: `${totalTime}`,
-          };
-          this.statisticModule.setUserData(data);
-        }
+          data.win = true;
+        } else data.win = false;
+
+        this.statisticModule.changeUserData(data);
 
         console.log(`Общее время игры тоже вывести ${time.hour}:${time.min}:${time.sec}`);
         console.log(`Вывести победителя(победителей) ${winner.name} - ${winner.score}`);

@@ -120,7 +120,7 @@ export class Playground {
     return {
       active,
       isFirstActive,
-    }
+    };
   }
 
   makeCellActive(cell) {
