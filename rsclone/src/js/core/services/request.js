@@ -64,7 +64,7 @@ export class Request {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${Storage.getUserToken()}`,
       },
     };
     fetch(Constants.PathLogout, requestOptions)
@@ -73,8 +73,8 @@ export class Request {
           console.log('error');
         } else if (response.status === 200) {
           localStorage.clear();
-          localStorage.setItem('isAutorization', 'false');
-          localStorage.setItem('statistic', `${JSON.stringify(Constants.EmptyUserData)}`);
+          Storage.setAuthorizationStatus('false');
+          Storage.setUserStatisticData(Constants.EmptyUserData);
           removeUserAuthorizationData();
         }
       })
@@ -86,7 +86,7 @@ export class Request {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${Storage.getUserToken()}`,
       },
     };
     fetch(Constants.PathLogoutAll, requestOptions)
@@ -101,7 +101,7 @@ export class Request {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${Storage.getUserToken()}`,
       },
     };
     fetch(Constants.PathGetAndPutRequest, requestOptions)
@@ -116,7 +116,7 @@ export class Request {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${Storage.getUserToken()}`,
       },
       body: JSON.stringify(data),
     };
@@ -126,12 +126,12 @@ export class Request {
   }
 
   setUserDataInStorage(result) {
-    localStorage.setItem('token', `${result.token}`);
-    localStorage.setItem('name', `${result.user.name}`);
-    localStorage.setItem('statistic', `${JSON.stringify(result.user.data)}`);
+    Storage.setUserToken(result.token);
+    Storage.setUserName(result.user.name);
+    Storage.setUserStatisticData(result.user.data);
   }
 
   setTokenInStorage(token) {
-    localStorage.setItem('token', token);
+    Storage.setUserToken(token);
   }
 }

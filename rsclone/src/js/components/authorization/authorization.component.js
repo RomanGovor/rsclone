@@ -131,7 +131,7 @@ export class Authorization {
   }
 
   finish() {
-    localStorage.setItem('isAuthorization', true);
+    Storage.setAuthorizationStatus('true');
     setUserAuthorizationData();
     this.removeForm();
   }
