@@ -492,7 +492,6 @@ class App {
   statistic() {
     const statisticLink = document.querySelector('.menu__item-statistic');
     this.statisticModule = new Statistic();
-    this.statisticTime = new GlobalTimer();
 
     statisticLink.addEventListener('click', () => {
       const data = this.statisticModule.getUserData();
@@ -502,9 +501,7 @@ class App {
       const statisticCountList = document.querySelectorAll('.statistic__item-count');
       statisticCountList.forEach((item, index) => {
         if (item.dataset.count === 'aver-play-time' || item.dataset.count === 'max-play-time') {
-          this.statisticTime.totalTime = data[dataArr[index]];
-          const time = this.statisticTime.divisionIntoMinutes();
-          item.innerHTML = `${time.hour}:${time.min}:${time.sec}`;
+          item.innerHTML = this.statisticModule.setStatisticTime(+data[dataArr[index]]);
         } else {
           item.innerHTML = data[dataArr[index]];
         }

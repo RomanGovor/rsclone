@@ -41,4 +41,16 @@ export class Statistic {
   init(activePage) {
     statisticPage(activePage);
   }
+
+  addZero(num) {
+    return num >= 10 ? `${num}` : `0${num}`;
+  }
+
+  setStatisticTime(time) {
+    const seconds = this.addZero(time % 60);
+    const minutes = this.addZero(((time - seconds) / 60) % 60);
+    const hours = this.addZero((time - seconds - minutes * 60) % 3600);
+
+    return `${hours}:${minutes}:${seconds}`;
+  }
 }
