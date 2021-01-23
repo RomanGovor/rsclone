@@ -109,6 +109,23 @@ class App {
     const menuSettingsBtn = document.querySelector('.menu-settings');
     const menuPlaygroundBtn = document.querySelector('.menu-single-player');
     const parametersContainer = document.querySelector('.container__game-param');
+    const returnBtsAfterWin = document.querySelectorAll('.playground__winner-button');
+
+    returnBtsAfterWin.forEach((button) => {
+      button.addEventListener('click', () => {
+        // this.deletingAndResettingGameplay();
+        // this.HEADER_MENU.setActiveItem();
+
+        // this.activePage = Constants.MAIN_PAGE;
+        // const container = document.querySelector(Constants.MAIN_PAGE);
+        // Extra.hidePages(container);
+        this.deletingAndResettingGameplay();
+
+        const containerParameters = document.querySelector('.container__game-param');
+        Extra.hidePages(containerParameters);
+        const parameters = new GameParameters(this.language);
+      });
+    });
 
     switchGameModeBtn.addEventListener('change', () => {
       const switchEn = document.querySelector('.switch__en');
@@ -427,9 +444,9 @@ class App {
           };
           this.statisticModule.setUserData(data);
         }
-
-        console.log(`Общее время игры тоже вывести ${time.hour}:${time.min}:${time.sec}`);
-        console.log(`Вывести победителя(победителей) ${winner.name} - ${winner.score}`);
+        setTimeout(() => {
+          this.playground.showWinner(winner, time);
+        }, 3500);
       }
     }
   }
@@ -445,6 +462,7 @@ class App {
     }
 
     arr.sort((a, b) => b.score - a.score);
+    return arr;
   }
 
   waitForAnswerToBeShownAndSelectQuestion(player) {
