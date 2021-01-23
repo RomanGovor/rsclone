@@ -113,16 +113,20 @@ class App {
     const menuPlaygroundBtn = document.querySelector('.menu-single-player');
     const parametersContainer = document.querySelector('.container__game-param');
 
+    document.addEventListener('keydown', (event) => {
+      if ((this.oldKey === 16 && event.keyCode === 18)
+          || (this.oldKey === 18 && event.keyCode === 16)) {
+        switchGameModeBtn.checked = !switchGameModeBtn.checked;
+        this.language = this.SWITCHLANG.changeLang();
+      }
+
+      if (this.oldKey !== event.keyCode) {
+        this.oldKey = event.keyCode;
+      }
+    });
+
     switchGameModeBtn.addEventListener('change', () => {
-      const switchEn = document.querySelector('.switch__en');
-      const switchRu = document.querySelector('.switch__ru');
-      switchRu.classList.toggle('none');
-      switchEn.classList.toggle('none');
-
-      this.language = this.language === 'en' ? 'ru' : 'en';
-      Storage.setLanguage(this.language);
-
-      Extra.translate(this.language);
+      this.language = this.SWITCHLANG.changeLang();
     });
 
     menuPlaygroundBtn.addEventListener('click', () => {
@@ -172,6 +176,7 @@ class App {
       if (li.classList.contains('menu__item-main-menu')) {
         if (burgerCheckbox.checked) burgerCheckbox.checked = false;
         this.activePage = Constants.MAIN_PAGE;
+
         const container = document.querySelector(Constants.MAIN_PAGE);
         Extra.hidePages(container);
         this.deletingAndResettingGameplay();
