@@ -152,6 +152,8 @@ class App {
       this.addPlayers();
       this.checkAnswerButtonsEvents();
       this.delegateTableEvent();
+      this.setTableActive();
+      this.keydownTable();
       Storage.setPossiblePlayer(Constants.USER_STATUSES.PLAYER);
     });
 
@@ -163,6 +165,12 @@ class App {
       const container = document.querySelector('.container__settings');
       Extra.hidePages(container);
     });
+  }
+
+  setTableActive() {
+    setTimeout(() => {
+      this.isTableActive = true;
+    }, 4000);
   }
 
   delegateHeaderMenuEvents() {
@@ -205,8 +213,56 @@ class App {
     });
   }
 
+  keydownTable() {
+    document.addEventListener('keydown', (event) => {
+      const isActivePlayer = this.player.getActivePlayer();
+
+      const key = event.keyCode;
+      if(key === 37 || key === 38 || key === 39 || key === 40 || key === 13) {
+        if (isActivePlayer && this.isTableActive) {
+          const objActiveCell = this.playground.getCellActive();
+          const currentActiveCell = objActiveCell.active;
+          const isFirstActive = objActiveCell.isFirstActive;
+          const curRow = +currentActiveCell.getAttribute('question-row');
+          const curColumn = +currentActiveCell.getAttribute('question-column');
+
+          let newCell;
+
+          if(!isFirstActive) {
+            switch (key) {
+              case 37 :
+                newCell = this.playground.findCellByCoordinates(curRow, curColumn - 1);
+                if (newCell) this.playground.makeCellActive(newCell);
+                break;
+
+              case 38:
+                newCell = this.playground.findCellByCoordinates(curRow - 1, curColumn);
+                if (newCell) this.playground.makeCellActive(newCell);
+                break;
+
+              case 39:
+                newCell = this.playground.findCellByCoordinates(curRow, curColumn + 1);
+                if (newCell) this.playground.makeCellActive(newCell);
+                break;
+
+              case 40:
+                newCell = this.playground.findCellByCoordinates(curRow + 1, curColumn);
+                if (newCell) this.playground.makeCellActive(newCell);
+                break;
+
+              default:
+                this.clickCell(currentActiveCell);
+                break;
+            }
+          }
+        }
+      }
+    });
+  }
+
   delegateTableEvent() {
     const playground = document.querySelector(Constants.PLAYGROUND);
+
     playground.addEventListener('click', (e) => {
       const isActivePlayer = this.player.getActivePlayer();
 
@@ -220,6 +276,7 @@ class App {
     this.handlerQuestionTimer = setTimeout(() => {
       const possiblePlayer = Storage.getPossiblePlayer();
       Extra.playAudio(Constants.AUDIO.END_TIME);
+      this.isTableActive = true;
 
       this.checkOnFinal();
 
@@ -260,6 +317,8 @@ class App {
   }
 
   clickCell(cell) {
+    this.playground.clearCellActive();
+    this.isTableActive = false;
     this.playground.clickOnTable(cell);
     this.setQuestionTimer();
     this.setUpBotsResponseQueue();
@@ -400,6 +459,10 @@ class App {
       this.clearQuestionTimer();
       player.makePlayerActive();
 
+      setTimeout(() => {
+        this.isTableActive = true;
+      }, Constants.TIME_SHOW_ANSWER * 1000);
+
       if (player.status === Constants.USER_STATUSES.BOT) {
         this.waitForAnswerToBeShownAndSelectQuestion(player);
       }
@@ -417,6 +480,8 @@ class App {
       const countRounds = this.playground.getCountRounds();
       if (question.round === countRounds) {
         Extra.playAudio(Constants.AUDIO.WIN);
+
+        this.isTableActive = null;
 
         const totalTime = this.GLOBAL_TIMER.getTotalTime();
         const time = this.GLOBAL_TIMER.divisionIntoMinutes();

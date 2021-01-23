@@ -100,6 +100,39 @@ export class Playground {
     Extra.translate(this.lang);
   }
 
+  getCellActive() {
+    const arr = this.table.querySelectorAll('.cell');
+    let active;
+    let isFirstActive = false;
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].classList.contains('key-active')) {
+        active = arr[i];
+      }
+    }
+
+    if (!active) {
+      this.makeCellActive(arr[0]);
+      active = arr[0];
+      isFirstActive = true;
+    }
+
+    return {
+      active,
+      isFirstActive,
+    }
+  }
+
+  makeCellActive(cell) {
+    this.clearCellActive();
+    cell.classList.add('key-active');
+  }
+
+  clearCellActive() {
+    const arr = this.table.querySelectorAll('.cell');
+    arr.forEach((el) => el.classList.remove('key-active'));
+  }
+
   findCellByCoordinates(row, column) {
     const cells = this.table.querySelectorAll('[question-row]');
     let cell = null;
