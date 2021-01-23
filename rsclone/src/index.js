@@ -251,7 +251,10 @@ class App {
                 break;
 
               default:
-                this.clickCell(currentActiveCell);
+                if (!currentActiveCell.classList.contains('non-clickable')) {
+                  console.log(1);
+                  this.clickCell(currentActiveCell);
+                }
                 break;
             }
           }
@@ -454,9 +457,9 @@ class App {
         this.player.setPermissionToAnswer(false);
       }
     } else {
+      this.clearQuestionTimer()
       Storage.setPossiblePlayer(player.getWorkName());
       this.resetTimerOfBots();
-      this.clearQuestionTimer();
       player.makePlayerActive();
 
       setTimeout(() => {

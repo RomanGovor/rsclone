@@ -298,6 +298,7 @@ export class Playground {
 
   hideQuestion(isCorrect, user) {
     if (isCorrect) {
+      this.clearInput();
       this.hideScoreboard();
       this.showTrueAnswer(this.currentQuestion);
       this.TIMER.deleteTimer();
@@ -307,8 +308,6 @@ export class Playground {
         else this.updateStatePlayground();
       }, Constants.TIME_SHOW_ANSWER * 1000);
     } else if (user === Constants.USER_STATUSES.PLAYER) {
-      console.log('Блокировать нажатия');
-      // TODO
       if (this.answerInput) this.answerInput.classList.add('disabled');
       if (this.answerCheckbox) this.answerCheckbox.classList.add('disabled');
     }
@@ -343,13 +342,9 @@ export class Playground {
 
     const repeat = this.question.querySelector('.playground__question-repeat');
     const repeatButton = this.question.querySelector('.playground__question-repeat-button');
-    // console.log('const repeat', repeat);
     repeat.classList.add('none');
 
     if (question.subtype === 'sound') {
-      // console.log(this.currentQuestion);
-      // console.log(this.currentQuestion.sound);
-      // this.audioObj = new Audio(this.currentQuestion.sound);
       this.audioObj.setAttribute(
         'src',
         `../../assets/audio/${this.currentQuestion.trueOptionsAnswerEn[0]}.mp3`,

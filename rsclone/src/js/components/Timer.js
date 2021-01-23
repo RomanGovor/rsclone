@@ -32,7 +32,7 @@ export class Timer {
         </svg>
       </figure>
 
-      <div class="timer__btn-group">
+      <div class="timer__btn-group none">
         <button class="button timer__pause">pause</button>
       </div>
     `;
