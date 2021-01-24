@@ -51,6 +51,7 @@ export class Playground {
     this.createRound();
     this.createTrueAnswerField();
     this.createSound();
+    this.createWinner();
   }
 
   createSound() {
@@ -201,7 +202,7 @@ export class Playground {
   }
 
   updateStatePlayground() {
-    if (this.countRounds > this.currentRound - 1) {
+    if (this.countRounds !== this.currentRound) {
       this.currentRound += 1;
       this.categories = this.package.rounds[this.currentRound - 1].categories;
       this.createTable();
@@ -476,6 +477,42 @@ export class Playground {
       this.round.classList.add('none');
       this.showTable();
     }, 1000);
+  }
+
+  createWinner() {
+    this.winner = document.createElement('div');
+    this.winner.classList = 'playground__winner none';
+    this.playground.append(this.winner);
+  }
+
+  showWinner(winner, time) {
+    this.hideWinner();
+    this.hideTable();
+    this.hideQuestion();
+    this.hideScoreboard();
+    this.hideCategories();
+    this.trueAnswerField.classList.add('none');
+
+    this.winner.classList.remove('none');
+    const isNoneEn = this.lang === 'en' ? '' : ' none';
+    const isNoneRu = this.lang === 'ru' ? '' : ' none';
+    this.winner.innerHTML = `
+    <h2 class='playground__winner-title${isNoneEn}' language='en'>Winner: ${winner.name}</h2>
+    <h2 class='playground__winner-title${isNoneRu}' language='ru'>Победитель: ${winner.name}</h2>
+    <div class='player__avatar playground__winner-avatar' style='background-image: ${winner.avatar}'></div>
+    <span class='playground__winner-score${isNoneEn}' language='en'>Points: ${winner.score}</span>
+    <span class='playground__winner-score${isNoneRu}' language='ru'>Очки: ${winner.score}</span>
+    <span class='playground__winner-time${isNoneEn}' language='en'>Total playing time: ${time.hour}:${time.min}:${time.sec}</span>
+    <span class='playground__winner-time${isNoneRu}' language='ru'>Общее время игры: ${time.hour}:${time.min}:${time.sec}</span>
+    <button class='playground__winner-button${isNoneEn}' language='en'>Exit</button>
+    <button class='playground__winner-button${isNoneRu}' language='ru'>Выйти</button>
+    <img class='playground__winner-icon' src='../../assets/icons/trophy.png'>
+    `;
+  }
+
+  hideWinner() {
+    this.winner.classList.add('none');
+    this.winner.innerHTML = '';
   }
 
   showScoreboard() {

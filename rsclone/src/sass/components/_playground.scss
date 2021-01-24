@@ -218,12 +218,16 @@
       flex-wrap: wrap;
       flex-direction: column;
       padding: 20px;
+      
       @media (max-width: $content-hd-width) {
         font-size: 0.75rem;
         padding: 10px;
       }
       @media (max-width: $content-middle-keyboard) {
         padding: 5px;
+      }
+      @media (max-width: $content-little-width) {
+        font-size: 0.6rem; 
       }
     }
 
@@ -244,6 +248,10 @@
         padding: 10px;
         font-size: 0.75rem;
       }
+      @media (max-width: $content-little-width) {
+        padding: 5px;
+        font-size: 0.6rem; 
+      }
     }
 
     &-input {
@@ -258,6 +266,7 @@
 
       @media (max-width: $content-middle-keyboard) {
         font-size: 0.75rem;
+        margin-bottom: 5px;
       }
       @media (max-width: $content-little-width) {
         font-size: 0.6rem;
@@ -269,6 +278,14 @@
       cursor: pointer;
       padding: 10px;
       text-align: center;
+      
+      @media (max-width: $content-middle-width) {
+        font-size: 0.85rem;
+      }
+
+      @media (max-width: $content-little-width) {
+        padding: 5px;
+      }
 
       &-checkbox {
         font-size: 1rem;
@@ -276,11 +293,10 @@
 
         @media (max-width: $content-hd-width) {
           font-size: 0.85rem;
-          padding-left: 5px;
-          padding-right: 5px;
         }
         @media (max-width: $content-middle-width) {
           font-size: 0.5rem;
+          padding: 5px;
         }
       }
     }
@@ -298,6 +314,67 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  &__winner {
+    width: 500px;
+    height: 90%;
+    font-size: 1rem;
+    // border: 1px solid black;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    position: relative;
+    
+    &-title {
+      font-size: 1.5rem;
+
+      @media (max-width: $content-middle-keyboard) {
+        font-size: 1rem;
+      }
+    }
+
+    // &-score {
+    //   color: cornflowerblue;
+    // }
+
+    // &-avatar {
+    //   position: relative;
+    // }
+
+    // &-time {
+    //   color: cornflowerblue;
+    // }
+    
+    // &-button {
+    //   color: cornflowerblue;
+    // }
+    &-icon {
+      width: 200px;
+      position: absolute;
+      animation-name: rotateIn;
+      // animation-iteration-count: infinite;
+      // animation-timing-function: ease;
+      animation-timing-function: ease-in;
+      animation-duration: 3s;
+      // animation-delay: 1s;
+      bottom: 0;
+      transform: rotate(720deg);
+
+      @media (max-width: $content-middle-keyboard) {
+        right: -90px;
+      }
+      @media (max-width: 720px) {
+        width: 120px;
+        right: 0;
+      }
+      @media (max-width: $content-little-width) {
+        width: 100px;
+        right: 45px;
+      }
+    }
   }
 }
 
@@ -324,7 +401,49 @@
   background-color: rgba($color: #8bd636, $alpha: 0.5);
 }
 
-@keyframes blinker {
+@keyframes rotateIn {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg);
+    bottom: 100%;
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(720deg);
+    bottom: 0;
+  }
+  60% {
+    bottom: 7%;
+  }
+  70% {
+    bottom: 0;
+  }
+  80% {
+    bottom: 4%;
+  }
+  90% {
+    bottom: 0;
+  }
+  95% {
+    bottom: 1%;
+  }
+  100% {
+    bottom: 0;
+  }
+  // from {
+  //   opacity: 0;
+  //   transform: rotate(180deg);
+  //   top: 0;
+  // }
+  // to {
+  //   bottom: 0;
+  //   opacity: 1;
+  //   // rotate: 720deg;
+  //   transform: rotate(720deg);
+  // }
+}
+
+@-webkit-keyframes blinker {
   from {
     opacity: 1;
   }
@@ -333,7 +452,7 @@
   }
 }
 
-@-webkit-keyframes blinker {
+@keyframes blinker {
   from {
     opacity: 1;
   }
