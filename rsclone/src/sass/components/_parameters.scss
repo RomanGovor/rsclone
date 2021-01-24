@@ -19,7 +19,8 @@
 
   &__bots,
   &__levels,
-  &__avatars {
+  &__avatars,
+  &__packs {
     display: flex;
     align-items: center;
     text-align: center;
@@ -30,6 +31,12 @@
   &__levels {
     .select {
       width: 100px;
+    }
+  }
+
+  &__packs {
+    .select {
+      width: auto;
     }
   }
 

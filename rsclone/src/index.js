@@ -40,7 +40,7 @@ class App {
   async initPlayground() {
     const categoriesEn = [];
     const categoriesRu = [];
-    const response = await fetch(Constants.URLS.categories);
+    const response = await fetch(Constants.URLS[this.gameParam.pack]);
     const data = await response.json();
     await data.rounds.forEach((el) => {
       el.categories.forEach((cat) => {
@@ -48,6 +48,9 @@ class App {
         categoriesRu.push(cat.categoryInfo.categoryNameRu);
       });
     });
+
+    data.rounds = [...Extra
+      .getRandomArray(data.rounds.length, data.rounds.length, data.rounds)];
 
     this.playground = new Playground({
       lang: this.language,
@@ -127,16 +130,20 @@ class App {
       });
     });
 
+    document.addEventListener('keydown', (event) => {
+      if ((this.oldKey === 16 && event.keyCode === 18)
+          || (this.oldKey === 18 && event.keyCode === 16)) {
+        switchGameModeBtn.checked = !switchGameModeBtn.checked;
+        this.language = this.SWITCHLANG.changeLang();
+      }
+
+      if (this.oldKey !== event.keyCode) {
+        this.oldKey = event.keyCode;
+      }
+    });
+
     switchGameModeBtn.addEventListener('change', () => {
-      const switchEn = document.querySelector('.switch__en');
-      const switchRu = document.querySelector('.switch__ru');
-      switchRu.classList.toggle('none');
-      switchEn.classList.toggle('none');
-
-      this.language = this.language === 'en' ? 'ru' : 'en';
-      Storage.setLanguage(this.language);
-
-      Extra.translate(this.language);
+      this.language = this.SWITCHLANG.changeLang();
     });
 
     menuPlaygroundBtn.addEventListener('click', () => {
@@ -162,6 +169,8 @@ class App {
       this.addPlayers();
       this.checkAnswerButtonsEvents();
       this.delegateTableEvent();
+      this.setTableActive();
+      this.keydownTable();
       Storage.setPossiblePlayer(Constants.USER_STATUSES.PLAYER);
     });
 
@@ -175,6 +184,12 @@ class App {
     });
   }
 
+  setTableActive() {
+    setTimeout(() => {
+      this.isTableActive = true;
+    }, 4000);
+  }
+
   delegateHeaderMenuEvents() {
     const headerMenu = document.querySelector(Constants.HEADER_MENU);
     const burgerCheckbox = document.querySelector('.burger-menu__checkbox-input');
@@ -186,6 +201,7 @@ class App {
       if (li.classList.contains('menu__item-main-menu')) {
         if (burgerCheckbox.checked) burgerCheckbox.checked = false;
         this.activePage = Constants.MAIN_PAGE;
+
         const container = document.querySelector(Constants.MAIN_PAGE);
         Extra.hidePages(container);
         this.deletingAndResettingGameplay();
@@ -214,8 +230,59 @@ class App {
     });
   }
 
+  keydownTable() {
+    document.addEventListener('keydown', (event) => {
+      const isActivePlayer = this.player.getActivePlayer();
+
+      const key = event.keyCode;
+      if (key === 37 || key === 38 || key === 39 || key === 40 || key === 13) {
+        if (isActivePlayer && this.isTableActive) {
+          const objActiveCell = this.playground.getCellActive();
+          const currentActiveCell = objActiveCell.active;
+          const { isFirstActive } = objActiveCell;
+          const curRow = +currentActiveCell.getAttribute('question-row');
+          const curColumn = +currentActiveCell.getAttribute('question-column');
+
+          let newCell;
+
+          if (!isFirstActive) {
+            switch (key) {
+              case 37:
+                newCell = this.playground.findCellByCoordinates(curRow, curColumn - 1);
+                if (newCell) this.playground.makeCellActive(newCell);
+                break;
+
+              case 38:
+                newCell = this.playground.findCellByCoordinates(curRow - 1, curColumn);
+                if (newCell) this.playground.makeCellActive(newCell);
+                break;
+
+              case 39:
+                newCell = this.playground.findCellByCoordinates(curRow, curColumn + 1);
+                if (newCell) this.playground.makeCellActive(newCell);
+                break;
+
+              case 40:
+                newCell = this.playground.findCellByCoordinates(curRow + 1, curColumn);
+                if (newCell) this.playground.makeCellActive(newCell);
+                break;
+
+              default:
+                if (!currentActiveCell.classList.contains('non-clickable')) {
+                  console.log(1);
+                  this.clickCell(currentActiveCell);
+                }
+                break;
+            }
+          }
+        }
+      }
+    });
+  }
+
   delegateTableEvent() {
     const playground = document.querySelector(Constants.PLAYGROUND);
+
     playground.addEventListener('click', (e) => {
       const isActivePlayer = this.player.getActivePlayer();
 
@@ -229,6 +296,7 @@ class App {
     this.handlerQuestionTimer = setTimeout(() => {
       const possiblePlayer = Storage.getPossiblePlayer();
       Extra.playAudio(Constants.AUDIO.END_TIME);
+      this.isTableActive = true;
 
       this.checkOnFinal();
 
@@ -269,6 +337,8 @@ class App {
   }
 
   clickCell(cell) {
+    this.playground.clearCellActive();
+    this.isTableActive = false;
     this.playground.clickOnTable(cell);
     this.setQuestionTimer();
     this.setUpBotsResponseQueue();
@@ -404,10 +474,14 @@ class App {
         this.player.setPermissionToAnswer(false);
       }
     } else {
+      this.clearQuestionTimer();
       Storage.setPossiblePlayer(player.getWorkName());
       this.resetTimerOfBots();
-      this.clearQuestionTimer();
       player.makePlayerActive();
+
+      setTimeout(() => {
+        this.isTableActive = true;
+      }, Constants.TIME_SHOW_ANSWER * 1000);
 
       if (player.status === Constants.USER_STATUSES.BOT) {
         this.waitForAnswerToBeShownAndSelectQuestion(player);
@@ -427,23 +501,27 @@ class App {
       if (question.round === countRounds) {
         Extra.playAudio(Constants.AUDIO.WIN);
 
+        this.isTableActive = null;
+
         const totalTime = this.GLOBAL_TIMER.getTotalTime();
         const time = this.GLOBAL_TIMER.divisionIntoMinutes();
         this.GLOBAL_TIMER.clearTimer();
 
+        const playerState = this.player.getScore();
         const winner = this.getArrayScores()[0];
+        const data = {
+          points: playerState.score,
+          time: totalTime,
+        };
 
         if (winner.workName === Constants.USER_STATUSES.PLAYER) {
-          const data = {
-            numberOfGames: `${1}`,
-            maximumNumberOfWins: '0',
-            points: `${winner.score}`,
-            averagePoints: `${winner.score}`,
-            averagePlayTime: `${totalTime}`,
-            maximumPlayTime: `${totalTime}`,
-          };
-          this.statisticModule.setUserData(data);
-        }
+          data.win = true;
+        } else data.win = false;
+
+        this.statisticModule.changeUserData(data);
+
+        // console.log(`Общее время игры тоже вывести ${time.hour}:${time.min}:${time.sec}`);
+        // console.log(`Вывести победителя(победителей) ${winner.name} - ${winner.score}`);
         setTimeout(() => {
           this.playground.showWinner(winner, time);
         }, 3500);
@@ -512,14 +590,17 @@ class App {
     this.statisticModule = new Statistic();
 
     statisticLink.addEventListener('click', () => {
-      this.statisticModule.getUserData();
-      const data = Storage.getUserStatisticData();
+      const data = this.statisticModule.getUserData();
       const dataArr = Object.keys(Storage.getUserStatisticData());
       this.statisticModule.init(this.activePage);
 
       const statisticCountList = document.querySelectorAll('.statistic__item-count');
       statisticCountList.forEach((item, index) => {
-        item.innerHTML = data[dataArr[index]];
+        if (item.dataset.count === 'aver-play-time' || item.dataset.count === 'max-play-time') {
+          item.innerHTML = this.statisticModule.setStatisticTime(+data[dataArr[index]]);
+        } else {
+          item.innerHTML = data[dataArr[index]];
+        }
       });
     });
   }

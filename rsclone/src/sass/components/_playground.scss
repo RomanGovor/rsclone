@@ -83,6 +83,10 @@
     }
   }
 
+  .key-active {
+    background: $color-td-hovered;
+  }
+
   &__categories-list {
     display: flex;
     flex-direction: column;
@@ -338,6 +342,10 @@
       // animation-delay: 1s;
       bottom: 0;
       transform: rotate(720deg);
+
+      @media (max-width: $content-middle-keyboard) {
+        right: -70px;
+      }
     }
   }
 }

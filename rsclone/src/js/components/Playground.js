@@ -101,6 +101,39 @@ export class Playground {
     Extra.translate(this.lang);
   }
 
+  getCellActive() {
+    const arr = this.table.querySelectorAll('.cell');
+    let active;
+    let isFirstActive = false;
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].classList.contains('key-active')) {
+        active = arr[i];
+      }
+    }
+
+    if (!active) {
+      this.makeCellActive(arr[0]);
+      active = arr[0];
+      isFirstActive = true;
+    }
+
+    return {
+      active,
+      isFirstActive,
+    };
+  }
+
+  makeCellActive(cell) {
+    this.clearCellActive();
+    cell.classList.add('key-active');
+  }
+
+  clearCellActive() {
+    const arr = this.table.querySelectorAll('.cell');
+    arr.forEach((el) => el.classList.remove('key-active'));
+  }
+
   findCellByCoordinates(row, column) {
     const cells = this.table.querySelectorAll('[question-row]');
     let cell = null;
@@ -169,14 +202,12 @@ export class Playground {
   }
 
   updateStatePlayground() {
-    if (this.countRounds > this.currentRound - 1) {
+    if (this.countRounds !== this.currentRound) {
       this.currentRound += 1;
       this.categories = this.package.rounds[this.currentRound - 1].categories;
       this.createTable();
       this.getQuestionsArrayByRound();
       this.showRound();
-    } else {
-      console.log('!!!!!!<====FINAL====>!!!!!!');
     }
   }
 
@@ -268,6 +299,7 @@ export class Playground {
 
   hideQuestion(isCorrect, user) {
     if (isCorrect) {
+      this.clearInput();
       this.hideScoreboard();
       this.showTrueAnswer(this.currentQuestion);
       this.TIMER.deleteTimer();
@@ -311,13 +343,9 @@ export class Playground {
 
     const repeat = this.question.querySelector('.playground__question-repeat');
     const repeatButton = this.question.querySelector('.playground__question-repeat-button');
-    // console.log('const repeat', repeat);
     repeat.classList.add('none');
 
     if (question.subtype === 'sound') {
-      // console.log(this.currentQuestion);
-      // console.log(this.currentQuestion.sound);
-      // this.audioObj = new Audio(this.currentQuestion.sound);
       this.audioObj.setAttribute(
         'src',
         `../../assets/audio/${this.currentQuestion.trueOptionsAnswerEn[0]}.mp3`,

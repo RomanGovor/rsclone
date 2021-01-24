@@ -1,11 +1,12 @@
 // import {Storage} from "../core/services/Storage.js";
 // import {Extra} from "../core/services/Extra.js";
 
+import { Extra, Storage } from '../core';
+
 export class SwitchLang {
   constructor(lang) {
     this.language = lang;
     this.setSwitchBtn();
-    // this.setChangeLangEvent();
   }
 
   setSwitchBtn() {
@@ -20,19 +21,17 @@ export class SwitchLang {
     }
   }
 
-  // setChangeLangEvent() {
-  //     const switchGameModeBtn = document.querySelector('.switch__checkbox');
-  //
-  //     switchGameModeBtn.addEventListener('change', () => {
-  //         const switchEn = document.querySelector('.switch__en');
-  //         const switchRu = document.querySelector('.switch__ru');
-  //         switchRu.classList.toggle('none');
-  //         switchEn.classList.toggle('none');
-  //         this.language = this.language === 'en' ? 'ru' : 'en';
-  //         Storage.setLanguage(this.language);
-  //
-  //         // this.startMenu.renderByLang(this.language);
-  //         Extra.translate(this.language);
-  //     });
-  // }
+  changeLang() {
+    const switchEn = document.querySelector('.switch__en');
+    const switchRu = document.querySelector('.switch__ru');
+    switchRu.classList.toggle('none');
+    switchEn.classList.toggle('none');
+
+    this.language = this.language === 'en' ? 'ru' : 'en';
+    Storage.setLanguage(this.language);
+
+    Extra.translate(this.language);
+
+    return this.language;
+  }
 }

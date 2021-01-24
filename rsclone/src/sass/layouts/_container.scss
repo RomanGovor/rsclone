@@ -89,6 +89,18 @@
       justify-content: center;
       overflow: hidden;
     }
+    @media (max-width: $content-middle-keyboard) {
+      justify-content: start;
+      .timer {
+        margin: 0 50px;
+      }
+      .clock {
+        margin: 0;
+      }
+      .global-timer {
+        margin: 47px 20px 0;
+      }
+    }
   }
 
   &__playground {
