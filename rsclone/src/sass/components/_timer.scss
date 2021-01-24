@@ -83,6 +83,7 @@
   }
 
   @media screen and (min-width: $content-little-width) {
+    height: auto;
     &__btn-group {
       justify-content: center;
     }

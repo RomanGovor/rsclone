@@ -133,6 +133,11 @@
   .none {
     display: none;
   }
+  &__question-timer {
+    @media (max-width: $content-middle-keyboard) {
+      margin-top: 50px;
+    }
+  }
 }
 
 .none {
