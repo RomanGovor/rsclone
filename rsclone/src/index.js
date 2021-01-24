@@ -112,35 +112,36 @@ class App {
     const menuSettingsBtn = document.querySelector('.menu-settings');
     const menuPlaygroundBtn = document.querySelector('.menu-single-player');
     const parametersContainer = document.querySelector('.container__game-param');
-    const returnBtsAfterWin = document.querySelectorAll('.playground__winner-button');
+    // const returnBtsAfterWin = document.querySelectorAll('.playground__winner-button');
+    //
+    // returnBtsAfterWin.forEach((button) => {
+    //   button.addEventListener('click', () => {
+    //
+    //     // this.deletingAndResettingGameplay();
+    //     // this.HEADER_MENU.setActiveItem();
+    //
+    //     // this.activePage = Constants.MAIN_PAGE;
+    //     // const container = document.querySelector(Constants.MAIN_PAGE);
+    //     // Extra.hidePages(container);
+    //     this.deletingAndResettingGameplay();
+    //
+    //     const containerParameters = document.querySelector('.container__game-param');
+    //     Extra.hidePages(containerParameters);
+    //     const parameters = new GameParameters(this.language);
+    //   });
+    // });
 
-    returnBtsAfterWin.forEach((button) => {
-      button.addEventListener('click', () => {
-        // this.deletingAndResettingGameplay();
-        // this.HEADER_MENU.setActiveItem();
-
-        // this.activePage = Constants.MAIN_PAGE;
-        // const container = document.querySelector(Constants.MAIN_PAGE);
-        // Extra.hidePages(container);
-        this.deletingAndResettingGameplay();
-
-        const containerParameters = document.querySelector('.container__game-param');
-        Extra.hidePages(containerParameters);
-        const parameters = new GameParameters(this.language);
-      });
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if ((this.oldKey === 16 && event.keyCode === 18)
-          || (this.oldKey === 18 && event.keyCode === 16)) {
-        switchGameModeBtn.checked = !switchGameModeBtn.checked;
-        this.language = this.SWITCHLANG.changeLang();
-      }
-
-      if (this.oldKey !== event.keyCode) {
-        this.oldKey = event.keyCode;
-      }
-    });
+    // document.addEventListener('keydown', (event) => {
+    //   if ((this.oldKey === 16 && event.keyCode === 18)
+    //       || (this.oldKey === 18 && event.keyCode === 16)) {
+    //     switchGameModeBtn.checked = !switchGameModeBtn.checked;
+    //     this.language = this.SWITCHLANG.changeLang();
+    //   }
+    //
+    //   if (this.oldKey !== event.keyCode) {
+    //     this.oldKey = event.keyCode;
+    //   }
+    // });
 
     switchGameModeBtn.addEventListener('change', () => {
       this.language = this.SWITCHLANG.changeLang();
@@ -171,6 +172,7 @@ class App {
       this.delegateTableEvent();
       this.setTableActive();
       this.keydownTable();
+      this.closeGameEvent();
       Storage.setPossiblePlayer(Constants.USER_STATUSES.PLAYER);
     });
 
@@ -181,6 +183,21 @@ class App {
     menuSettingsBtn.addEventListener('click', () => {
       const container = document.querySelector('.container__settings');
       Extra.hidePages(container);
+    });
+  }
+
+  closeGameEvent() {
+    const playground = document.querySelector(Constants.PLAYGROUND);
+    playground.addEventListener('click', (e) => {
+      const button = e.target.closest('button');
+
+      if (!button || !button.classList.contains('playground__winner-button')) return;
+
+      this.deletingAndResettingGameplay();
+
+      const containerParameters = document.querySelector('.container__game-param');
+      Extra.hidePages(containerParameters);
+      const parameters = new GameParameters(this.language);
     });
   }
 
