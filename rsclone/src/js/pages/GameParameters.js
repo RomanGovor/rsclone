@@ -116,7 +116,6 @@ export class GameParameters {
     packsSelect.setAttribute('name', 'packs');
 
     const keys = Object.keys(Constants.URLS);
-    console.log(keys);
 
     for (let i = 0; i < keys.length; i++) {
       const optionEn = this.createOption('en', keys[i]);

@@ -133,16 +133,12 @@ export class Player {
     document.querySelectorAll('.player').forEach((el) => el.classList.remove('player_active'));
     this.isActivePlayer = true;
     this.player.classList.add('player_active');
-    // if (this.isActivePlayer === true) {
-    //   this.player.classList.add('player_active');
-    // } else this.player.classList.remove('player_active');
   }
 
   bindEvents() {
     this.player.addEventListener('click', (e) => {
       if (e.target.classList.contains('player__avatar')) {
         this.say(`hello my name is ${this.name} and I'm ${this.gender} :)`);
-        this.makePlayerActive();
       }
     });
   }

@@ -14,6 +14,7 @@ export const Constants = {
       'Если никто не произносит правильный ответ или если кто-то отвечает правильно, то ответ появляется на экране. Вопрос выбирает тот же игрок, что выбирал предыдущий или тот, кто ответил на вопрос правильно.',
     ],
   },
+  DEFAULT_IMG: '../assets/images/default.png',
   BACKGROUND_AUDIO: './assets/audio/background.mp3',
   URLS: {
     quiz1: '../assets/quizzes/quiz1.json',

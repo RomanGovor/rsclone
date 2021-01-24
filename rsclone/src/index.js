@@ -93,8 +93,11 @@ class App {
 
     this.resetTimerOfBots();
     this.clearQuestionTimer();
-    this.playground.deleteTimersAndResettingPlayground();
-    this.GLOBAL_TIMER.clearTimer();
+    if (this.playground) {
+      this.playground.deleteTimersAndResettingPlayground();
+    }
+
+    if (this.GLOBAL_TIMER) this.GLOBAL_TIMER.clearTimer();
 
     Extra.clearContainer(playground);
     Extra.clearContainer(players);
@@ -112,24 +115,6 @@ class App {
     const menuSettingsBtn = document.querySelector('.menu-settings');
     const menuPlaygroundBtn = document.querySelector('.menu-single-player');
     const parametersContainer = document.querySelector('.container__game-param');
-    // const returnBtsAfterWin = document.querySelectorAll('.playground__winner-button');
-    //
-    // returnBtsAfterWin.forEach((button) => {
-    //   button.addEventListener('click', () => {
-    //
-    //     // this.deletingAndResettingGameplay();
-    //     // this.HEADER_MENU.setActiveItem();
-    //
-    //     // this.activePage = Constants.MAIN_PAGE;
-    //     // const container = document.querySelector(Constants.MAIN_PAGE);
-    //     // Extra.hidePages(container);
-    //     this.deletingAndResettingGameplay();
-    //
-    //     const containerParameters = document.querySelector('.container__game-param');
-    //     Extra.hidePages(containerParameters);
-    //     const parameters = new GameParameters(this.language);
-    //   });
-    // });
 
     // document.addEventListener('keydown', (event) => {
     //   if ((this.oldKey === 16 && event.keyCode === 18)
@@ -234,10 +219,6 @@ class App {
         const rules = new Rules(this.language, this.activePage);
       }
 
-      // if (li.classList.contains('menu__item-statistic')) {
-      //
-      // }
-
       this.HEADER_MENU.setActiveItem(li);
       if (burgerCheckbox.checked) burgerCheckbox.checked = false;
 
@@ -286,7 +267,6 @@ class App {
 
               default:
                 if (!currentActiveCell.classList.contains('non-clickable')) {
-                  console.log(1);
                   this.clickCell(currentActiveCell);
                 }
                 break;
@@ -361,7 +341,7 @@ class App {
     this.setUpBotsResponseQueue();
 
     setTimeout(() => {
-      this.player.makePlayerActive();
+      if (this.player) this.player.makePlayerActive();
     }, Constants.QUESTION_START_ANIMATION_TIME * 1000);
   }
 
@@ -535,10 +515,9 @@ class App {
           data.win = true;
         } else data.win = false;
 
-        this.statisticModule.changeUserData(data);
+        const newData = this.statisticModule.changeUserData(playerState.score, totalTime, data.win);
+        this.statisticModule.setUserData(newData);
 
-        // console.log(`Общее время игры тоже вывести ${time.hour}:${time.min}:${time.sec}`);
-        // console.log(`Вывести победителя(победителей) ${winner.name} - ${winner.score}`);
         setTimeout(() => {
           this.playground.showWinner(winner, time);
         }, 3500);

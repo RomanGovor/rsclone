@@ -38,6 +38,8 @@ export class Timer {
     `;
 
     container.append(timer);
+
+    this.circle = document.querySelector('.progress-ring__circle');
   }
 
   timerCircleInit() {
@@ -80,12 +82,12 @@ export class Timer {
   decrement() {
     const mindiv = document.querySelector('.clock__mins');
     const secdiv = document.querySelector('.clock__secs');
-    const circle = document.querySelector('.progress-ring__circle');
+    // const circle = document.querySelector('.progress-ring__circle');
 
     mindiv.textContent = Math.floor(this.seconds / 60);
     secdiv.textContent = this.seconds % 60 > 9 ? this.seconds % 60 : `0${this.seconds % 60}`;
-    if (circle.classList.contains('timer__danger')) {
-      circle.classList.remove('timer__danger');
+    if (this.circle.classList.contains('timer__danger')) {
+      this.circle.classList.remove('timer__danger');
     }
 
     if (this.seconds > 0) {
@@ -96,9 +98,9 @@ export class Timer {
       const bindDecrement = this.decrement.bind(this);
       this.initial = setTimeout(bindDecrement, 1000);
       if (this.seconds < 10) {
-        circle.classList.remove('circle-color');
-        circle.classList.add('timer__danger');
-      } else circle.classList.add('circle-color');
+        this.circle.classList.remove('circle-color');
+        this.circle.classList.add('timer__danger');
+      } else this.circle.classList.add('circle-color');
     } else {
       this.perc = 100;
       this.setProgress(this.perc);
@@ -109,17 +111,17 @@ export class Timer {
         Extra.clearContainer(document.querySelector('.container__question-timer'));
       });
 
-      circle.classList.add('circle-color');
+      this.circle.classList.add('circle-color');
     }
   }
 
   deleteTimer() {
     clearTimeout(this.initial);
+    this.initial = null;
     Extra.clearContainer(document.querySelector('.container__question-timer'));
   }
 
   setProgress(percent) {
-    const circle = document.querySelector('.progress-ring__circle');
-    circle.style.strokeDashoffset = this.circumference - (percent / 100) * this.circumference;
+    this.circle.style.strokeDashoffset = this.circumference - (percent / 100) * this.circumference;
   }
 }

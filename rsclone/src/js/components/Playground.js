@@ -176,7 +176,12 @@ export class Playground {
         Extra.delay(500)
           .then(() => {
             this.showQuestion(this.currentQuestion);
-            this.TIMER = new Timer();
+            if (this.TIMER === null || this.TIMER === undefined) {
+              this.TIMER = new Timer();
+            } else {
+              this.TIMER.deleteTimer();
+              this.TIMER = new Timer();
+            }
           })
           .then(() => {
             Extra.delay((Constants.QUESTION_TIME + 1) * 1000).then(() => {
@@ -294,7 +299,9 @@ export class Playground {
   }
 
   deleteTimersAndResettingPlayground() {
-    if (this.TIMER) this.TIMER.deleteTimer();
+    if (this.TIMER !== null && this.TIMER !== undefined) {
+      this.TIMER.deleteTimer();
+    }
   }
 
   hideQuestion(isCorrect, user) {
@@ -302,7 +309,10 @@ export class Playground {
       this.clearInput();
       this.hideScoreboard();
       this.showTrueAnswer(this.currentQuestion);
-      this.TIMER.deleteTimer();
+
+      if (this.TIMER !== null && this.TIMER !== undefined) {
+        this.TIMER.deleteTimer();
+      }
 
       setTimeout(() => {
         if (!this.isLastQuestion()) this.showTable();
@@ -329,12 +339,16 @@ export class Playground {
     const isQuestionDescriptionRu =
       question.descriptionRu === undefined ? '' : question.descriptionRu;
     const title = this.lang === 'en' ? 'Repeat sound' : 'Повторить звук';
+
+    const picture = question.questionPicture === undefined
+      ? Constants.DEFAULT_IMG : question.questionPicture;
+
     this.question.innerHTML = `
       <strong class='playground__question' language='en'>${question.questionEn}</strong>
       <strong class='playground__question' language='ru'>${question.questionRu}</strong>
       <span class='playground__question-descriptions' language='en'>${isQuestionDescriptionEn}</span>
       <span class='playground__question-descriptions' language='ru'>${isQuestionDescriptionRu}</span>
-      <img src='${question.questionPicture}' class='playground__question-picture${isQuestionPicture}' width=200 height=200>
+      <img src='${picture}' class='playground__question-picture${isQuestionPicture}' width=200 height=200>
       <div class='playground__question-repeat none'>
         <div class='playground__question-repeat-bg'></div>
         <img src='../../assets/icons/repeat.png' class='playground__question-repeat-button' title='${title}' width=100 height=100>

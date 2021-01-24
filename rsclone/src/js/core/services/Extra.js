@@ -105,9 +105,7 @@ export class Extra {
         options = [...question.answerOptionsRu];
       }
 
-      console.log(options);
       result.push(options.splice(options.indexOf(trueAnswer), 1)[0]);
-      console.log(options);
     } else if (question.type === 'input') {
       if (lang === 'en') {
         trueAnswer = question.trueOptionsAnswerEn[0];
@@ -128,7 +126,6 @@ export class Extra {
         break;
 
       case Constants.LEVELS_BOTS.MIDDLE:
-        console.log(options);
         result.push(options.splice(options.length - 1, 1)[0]);
         break;
 

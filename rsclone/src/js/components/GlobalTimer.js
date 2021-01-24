@@ -65,7 +65,6 @@ export class GlobalTimer {
   }
 
   clearTimer() {
-    console.log(1, this.initialTimer);
     clearInterval(this.initialTimer);
     this.initialTimer = null;
   }
