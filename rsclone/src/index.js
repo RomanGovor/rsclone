@@ -419,13 +419,13 @@ class App {
 
     if (value === currentQuestion.trueAnswerEn
         || value === currentQuestion.trueAnswerRu) {
+      this.playground.hideQuestion(true, player.getStatus());
       this.updatePlayerScore(currentQuestion.points, true, value, player);
       Extra.playAudio(Constants.AUDIO.CORRECT);
-      this.playground.hideQuestion(true, player.getStatus());
     } else {
+      this.playground.hideQuestion(false, player.getStatus());
       this.updatePlayerScore((-1) * currentQuestion.points, false, value, player);
       Extra.playAudio(Constants.AUDIO.FAILURE);
-      this.playground.hideQuestion(false, player.getStatus());
     }
   }
 
@@ -442,16 +442,16 @@ class App {
     for (let i = 0; i < answersArray.length; i++) {
       if (value === answersArray[i]) {
         isCorrect = true;
+        this.playground.hideQuestion(isCorrect, player.getStatus());
         this.updatePlayerScore(currentQuestion.points, isCorrect, input, player);
         Extra.playAudio(Constants.AUDIO.CORRECT);
-        this.playground.hideQuestion(isCorrect, player.getStatus());
         break;
       }
     }
     if (!isCorrect) {
+      this.playground.hideQuestion(isCorrect, player.getStatus());
       this.updatePlayerScore((-1) * currentQuestion.points, isCorrect, input, player);
       Extra.playAudio(Constants.AUDIO.FAILURE);
-      this.playground.hideQuestion(isCorrect, player.getStatus());
     }
   }
 

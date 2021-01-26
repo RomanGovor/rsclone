@@ -46,6 +46,14 @@
         font-weight: bold;
         transition: 0.3s all;
 
+        @media screen and (max-width: $content-pre-middle) {
+          font-size: 1.5rem;
+        }
+
+        @media screen and (max-width: $content-little-width) {
+          font-size: 1.2rem;
+        }
+
         &:hover {
           transform: scale(1.2);
         }
