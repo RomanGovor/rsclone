@@ -185,19 +185,25 @@ export class Playground {
           })
           .then(() => {
             Extra.delay((Constants.QUESTION_TIME + 1) * 1000).then(() => {
-              if (this.currentQuestion.row === row && this.currentQuestion.column === column) {
-                this.hideScoreboard();
-                this.showTrueAnswer(this.currentQuestion);
-                this.currentQuestion = null;
+              if (this.currentQuestion) {
+                if (this.currentQuestion.row === row && this.currentQuestion.column === column) {
+                  this.hideScoreboard();
+                  this.showTrueAnswer(this.currentQuestion);
+                  this.currentQuestion = null;
 
-                setTimeout(() => {
-                  if (!this.isLastQuestion()) this.showTable();
-                  else this.updateStatePlayground();
-                }, 3000);
+                  setTimeout(() => {
+                    if (!this.isLastQuestion()) this.showTable();
+                    else this.updateStatePlayground();
+                  }, 3000);
+                }
               }
             });
           });
       });
+  }
+
+  clearCurrentQuestion() {
+    this.currentQuestion = null;
   }
 
   isLastQuestion() {
@@ -309,6 +315,7 @@ export class Playground {
       this.clearInput();
       this.hideScoreboard();
       this.showTrueAnswer(this.currentQuestion);
+      this.clearCurrentQuestion();
 
       if (this.TIMER !== null && this.TIMER !== undefined) {
         this.TIMER.deleteTimer();
