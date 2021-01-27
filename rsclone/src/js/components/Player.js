@@ -7,7 +7,7 @@ export class Player {
     this.gender = options.gender || 'man';
     this.score = options.score || 0;
     this.lang = options.lang || 'en';
-    this.avatar = options.avatar === 'url(undefined)' ? 'url(../assets/img/ava1.jpg)' : options.avatar;
+    this.avatar = options.avatar;
     this.status = options.status || Constants.USER_STATUSES.BOT;
     this.isActivePlayer = options.isActivePlayer || false;
     this.workName = options.workName || 'player';
@@ -35,7 +35,9 @@ export class Player {
     <div class='player__answer-field none'></div>
       `;
     this.addAvatar();
-    this.container.append(this.player);
+    if (this.container) {
+      this.container.append(this.player);
+    }
   }
 
   changeScore(points) {
@@ -66,7 +68,7 @@ export class Player {
   }
 
   addAvatar() {
-    if (this.avatar !== null) {
+    if (this.avatar !== undefined && this.avatar !== 'url(undefined)') {
       const ava = this.player.querySelector('.player__avatar');
       ava.setAttribute('style', `background-image: ${this.avatar}`);
     }
