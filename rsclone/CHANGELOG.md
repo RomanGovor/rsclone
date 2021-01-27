@@ -1,0 +1,87 @@
+- Merge branch 'romangovor/gameprocess' into develop
+- fix: bug with currentQuestion
+- feat: update responsive design
+- feat: add name in title
+- fix: bugs with timer and images
+- feat: add close event on win button
+- Merge pull request #7 from RomanGovor/sam
+- fix: play with adaptive
+- fix: showWinner bugs
+- fix: bug with arrow
+- feat: add showWinner
+- feat: update saving final scores of player
+- Merge branch 'develop' into romangovor/gameprocess
+- feat: support keydown arrows on choice question
+- Merge pull request #6 from RomanGovor/dubichtonya/statistic
+- fix: output time in statistic
+- feat: added function which change user data
+- refactor: rename vars for better readability
+- feat: added function which change user data
+- feat: add support for pressing language change keys
+- feat: add pack for quiz
+- feat: update statistic burron
+- feat: redesign statistic page
+- feat: add check on final question function
+- feat: update sounds
+- feat: update user name
+- fix: fix conflicts
+- fix: bugs
+- Merge branch 'romangovor/gameprocess' into sam
+- feat: add true/false answer, disabled and burger styles
+- feat: add global timer
+- Merge pull request #5 from RomanGovor/dubichtonya/statistic
+- feat: update header menu
+- feat: fix bugs after rebase
+- feat: add output of statistics values
+- feat: add styles on statistic page
+- feat: add statistic template
+- feat: update avatars, rules
+- Merge branch 'develop' of https://github.com/RomanGovor/rsclone into sam
+- feat: add soungs and start dark mode
+- feat: add full functional of bots
+- Merge branch 'romangovor/gameprocess' of https://github.com/RomanGovor/rsclone into sam
+- feat: add repeat button to repeat sound
+- feat: bots start working
+- feat: add game parameters
+- feat: add queue of bots
+- feat: add access to give answer
+- feat: add active player class and showTrueAnswer method + fix adaptive
+- feat: add translate into table and saying player results
+- Merge pull request #4 from RomanGovor/sam
+- feat: merge branchs
+- Merge branch 'romangovor/gameprocess' of https://github.com/RomanGovor/rsclone into sam
+- Merge pull request #3 from RomanGovor/dubichtonya/authorization
+- feat: add adaptive style
+- feat: add change avatars in bots
+- feat: fix adaptive + add createTrueAnswerField
+- feat: add logout function
+- fix: pronlems with authorization
+- feat: add validation input value
+- feat: add validation checkbox and drawing playground by categories
+- feat: add question puctires and simple adaptive
+- fix: import path
+- fix: bugs in import
+- fix: bugs in import
+- fix: change authorization form
+- fix: bugs in import
+- feat: add multipages
+- Merge pull request #2 from sam
+- fix: fix answer inputs
+- feat: add input and radio  into Scoreboard
+- feat: add Scoreboard
+- Merge branch 'develop' of  into sam
+- feat: add Playground
+- config: structured separation
+- Merge branch 'romangovor/settings' into develop
+- feat: add default avatars
+- feat: add background music and rules
+- Merge branch 'romangovor/timer' into develop
+- fix: fix some features
+- Merge pull request #1 from RomanGovor/dubichtonya/backend
+-  feat: add database and server request
+- feat: add timer
+- feat: add player, bots and startMenu
+- feat: add menu and canvas of playground
+- feat: add header and footer
+- Initial commit
+- Initial commit
