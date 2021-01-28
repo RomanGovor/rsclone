@@ -75,8 +75,10 @@ class App {
       this.bots[workName] = new Player({
         name: Constants.NICKNAMES_BOTS[Extra
           .getRandomInt(Constants.NICKNAMES_BOTS.length) - 1],
-        avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(
-          Constants.COUNT_DEFAULT_AVATARS,
+        // avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(
+        //   Constants.COUNT_DEFAULT_AVATARS,
+        avatar: `url(./assets/images/avatars/avatar_${Extra.getRandomInt(
+            Constants.COUNT_DEFAULT_AVATARS,
         )}.jpg)`,
         botLevel: this.gameParam.level,
         workName,
