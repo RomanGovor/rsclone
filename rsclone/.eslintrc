@@ -19,14 +19,18 @@
     "no-shadow": "off",
     "import/extensions": "warn",
     "no-unused-expressions": "warn",
-	  "no-console": "off",
+    "no-console": "off",
     "prefer-destructuring": "warn"
   },
   "env": {
     "es6": true,
-    "browser": true
+    "browser": true,
+    "jest/globals": true
   },
   "extends": [
     "airbnb"
+  ],
+  "plugins": [
+    "jest"
   ]
 }
