@@ -1,6 +1,4 @@
-/* eslint-disable no-undef */
 import { Player } from '../js/components/Player';
-// import { Constants } from '../js/core/Constants';
 import '@testing-library/jest-dom';
 
 describe('Player', () => {
@@ -20,7 +18,6 @@ describe('Player', () => {
     workName: 'bot1',
     permissionToAnswer: true,
   });
-  // const testo = Constants.USER_STATUSES.PLAYER;
 
   test('should init Player', () => {
     expect(typeof defaultPlayer).toEqual('object');
@@ -58,14 +55,14 @@ describe('Player', () => {
   });
 
   test('should contain DOM elements', () => {
-    const avatarka = player.player.querySelector('.player__avatar');
+    const avatar = player.player.querySelector('.player__avatar');
     const info = player.player.querySelector('.player__info');
     const name = player.player.querySelector('.player__name');
     const score = player.player.querySelector('.player__score');
     const answerField = player.player.querySelector('.player__answer-field');
 
-    expect(avatarka).toBeDefined();
-    expect(avatarka).toHaveClass('player__avatar player__avatar_woman');
+    expect(avatar).toBeDefined();
+    expect(avatar).toHaveClass('player__avatar player__avatar_woman');
     expect(info).toBeDefined();
     expect(info).toHaveClass('player__info');
     expect(name).toBeDefined();
@@ -88,14 +85,14 @@ describe('Player', () => {
   });
 
   test('setAvatar - should change avatar', () => {
-    const ava1 = '../assets/images/avatars/avatar_1';
+    const ava = '../assets/images/avatars/avatar_1';
 
-    player.setAvatar(ava1);
+    player.setAvatar(ava);
 
-    const avatarka = player.player.querySelector('.player__avatar');
-    expect(avatarka).toBeDefined();
-    expect(avatarka).toHaveClass('player__avatar player__avatar_woman');
-    expect(avatarka).toHaveAttribute('style', `background-image: url(${ava1})`);
+    const avatar = player.player.querySelector('.player__avatar');
+    expect(avatar).toBeDefined();
+    expect(avatar).toHaveClass('player__avatar player__avatar_woman');
+    expect(avatar).toHaveAttribute('style', `background-image: url(${ava})`);
   });
   test('setPermissionToAnswer - should change permissionToAnswer ', () => {
     player.setPermissionToAnswer(false);
