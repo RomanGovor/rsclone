@@ -78,7 +78,7 @@ class App {
         // avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(
         //   Constants.COUNT_DEFAULT_AVATARS,
         avatar: `url(./assets/images/avatars/avatar_${Extra.getRandomInt(
-            Constants.COUNT_DEFAULT_AVATARS,
+          Constants.COUNT_DEFAULT_AVATARS,
         )}.jpg)`,
         botLevel: this.gameParam.level,
         workName,
@@ -569,6 +569,11 @@ class App {
       if (logoutLink.textContent === 'Log out') {
         request.logout();
         removeUserAuthorizationData();
+        this.activePage = Constants.MAIN_PAGE;
+
+        const container = document.querySelector(Constants.MAIN_PAGE);
+        Extra.hidePages(container);
+        this.deletingAndResettingGameplay();
       } else if (logoutLink.textContent === 'Log in') {
         authorization.init();
       }
