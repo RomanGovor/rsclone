@@ -118,18 +118,6 @@ class App {
     const menuPlaygroundBtn = document.querySelector('.menu-single-player');
     const parametersContainer = document.querySelector('.container__game-param');
 
-    // document.addEventListener('keydown', (event) => {
-    //   if ((this.oldKey === 16 && event.keyCode === 18)
-    //       || (this.oldKey === 18 && event.keyCode === 16)) {
-    //     switchGameModeBtn.checked = !switchGameModeBtn.checked;
-    //     this.language = this.SWITCHLANG.changeLang();
-    //   }
-    //
-    //   if (this.oldKey !== event.keyCode) {
-    //     this.oldKey = event.keyCode;
-    //   }
-    // });
-
     switchGameModeBtn.addEventListener('change', () => {
       this.language = this.SWITCHLANG.changeLang();
     });
@@ -139,6 +127,7 @@ class App {
       Extra.hidePages(containerParameters);
 
       const parameters = new GameParameters(this.language);
+      HeaderMenu.deleteActiveItem();
     });
 
     parametersContainer.addEventListener('click', (e) => {
@@ -150,7 +139,7 @@ class App {
       this.gameParam = Storage.getGameParameters();
 
       this.activePage = Constants.GAME;
-      this.HEADER_MENU.deleteActiveItem();
+      HeaderMenu.deleteActiveItem();
       this.GLOBAL_TIMER = new GlobalTimer(this.language);
       Extra.hidePages(containerGame);
       this.initPlayground();
@@ -164,12 +153,18 @@ class App {
     });
 
     menuRulesBtn.addEventListener('click', () => {
-      const rules = new Rules(this.language, this.activePage);
+      const rules = new Rules(this.language, this.activePage)
+
+      const li = HeaderMenu.getListItemByClass('menu__item-rules');
+      HeaderMenu.setActiveItem(li);
     });
 
     menuSettingsBtn.addEventListener('click', () => {
       const container = document.querySelector('.container__settings');
       Extra.hidePages(container);
+
+      const li = HeaderMenu.getListItemByClass('menu__item-settings');
+      HeaderMenu.setActiveItem(li);
     });
   }
 
@@ -221,12 +216,12 @@ class App {
         const rules = new Rules(this.language, this.activePage);
       }
 
-      this.HEADER_MENU.setActiveItem(li);
+      HeaderMenu.setActiveItem(li);
       if (burgerCheckbox.checked) burgerCheckbox.checked = false;
 
-      if (!burgerCheckbox.checked && this.activePage === Constants.GAME) {
-        this.HEADER_MENU.deleteActiveItem();
-      }
+      // if (!burgerCheckbox.checked && this.activePage === Constants.GAME) {
+      //   HeaderMenu.deleteActiveItem();
+      // }
     });
   }
 

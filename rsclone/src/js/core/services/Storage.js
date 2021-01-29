@@ -35,6 +35,15 @@ export class Storage {
     localStorage.setItem('sigame/darkMode', JSON.stringify(isDarkMode));
   }
 
+  static getAudioPlay() {
+    const isAudioPlay = JSON.parse(localStorage.getItem('sigame/audioPlay'));
+    return !isAudioPlay && isAudioPlay !== false ? true : isAudioPlay;
+  }
+
+  static setAudioPlay(isAudioPlay) {
+    localStorage.setItem('sigame/audioPlay', JSON.stringify(isAudioPlay));
+  }
+
   static getCurrentQuestion() {
     const question = JSON.parse(sessionStorage.getItem('sigame/currentQuestion'));
     return !question ? {} : question;

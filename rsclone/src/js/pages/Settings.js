@@ -1,4 +1,5 @@
 import { Constants, Extra, Storage } from '../core/index';
+import {HeaderMenu} from "./HeaderMenu";
 
 export class Settings {
   constructor(activePage) {
@@ -8,6 +9,15 @@ export class Settings {
     this.setSettingsEvents();
     this.playMusic();
     this.initDarkMode();
+    this.initAudioPlay();
+  }
+
+  initAudioPlay() {
+    const checkboxAudio = document.querySelector('.settings__audio .settings__checkbox');
+    const isAudioPlay = Storage.getAudioPlay();
+
+    console.log(isAudioPlay);
+    if (isAudioPlay) checkboxAudio.checked = true;
   }
 
   initDarkMode() {
@@ -29,6 +39,7 @@ export class Settings {
     const musicCheckbox = document.querySelector('.checkbox-music');
     const btnBack = document.querySelector('.settings__button-back');
     const darkMode = document.querySelector('.settings__background .settings__checkbox');
+    const checkboxAudio = document.querySelector('.settings__audio .settings__checkbox');
     const wrap = document.querySelector('.wrap');
 
     musicCheckbox.addEventListener('change', () => {
@@ -36,9 +47,14 @@ export class Settings {
       musicCheckbox.checked ? this.countinueMusic() : this.pauseMusic();
     });
 
+    checkboxAudio.addEventListener('change', () => {
+      Storage.setAudioPlay(checkboxAudio.checked);
+    });
+
     btnBack.addEventListener('click', () => {
       Extra.delay(1000).then(() => {
         Extra.hidePages(document.querySelector(this.activePage));
+        HeaderMenu.createActiveListItemByActivePage(this.activePage);
       });
     });
 
@@ -50,12 +66,7 @@ export class Settings {
 
   playMusic() {
     this.audio = new Audio(Constants.BACKGROUND_AUDIO);
-    // if (this.isMusic) {
-    //   this.audio.play();
-    //   // this.audio.autoplay = true;
-    // }
     this.audio.loop = true;
-    // this.setMusicCheckbox();
   }
 
   setMusicCheckbox() {

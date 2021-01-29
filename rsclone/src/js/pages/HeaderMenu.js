@@ -1,4 +1,4 @@
-import { Extra } from '../core';
+import {Constants, Extra} from '../core';
 
 export class HeaderMenu {
   constructor(lang) {
@@ -37,14 +37,27 @@ export class HeaderMenu {
     this.container.append(this.menuList);
   }
 
-  setActiveItem(newActiveItem) {
-    document.querySelectorAll('.menu__item')
-      .forEach((el) => el.classList.remove('active-item'));
+  static createActiveListItemByActivePage(activePage) {
+    if (activePage === Constants.MAIN_PAGE) {
+      const li = this.getListItemByClass('menu__item-main-menu');
+      this.setActiveItem(li);
+    } else {
+      this.deleteActiveItem();
+    }
+  }
+
+  static getListItemByClass(cl) {
+    const li = document.querySelector('.' + cl);
+    return li;
+  }
+
+  static setActiveItem(newActiveItem) {
+    this.deleteActiveItem();
 
     newActiveItem.classList.add('active-item');
   }
 
-  deleteActiveItem() {
+  static deleteActiveItem() {
     document.querySelectorAll('.menu__item')
       .forEach((el) => el.classList.remove('active-item'));
   }

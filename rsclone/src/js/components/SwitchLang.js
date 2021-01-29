@@ -1,6 +1,3 @@
-// import {Storage} from "../core/services/Storage.js";
-// import {Extra} from "../core/services/Extra.js";
-
 import { Extra, Storage } from '../core';
 
 export class SwitchLang {
