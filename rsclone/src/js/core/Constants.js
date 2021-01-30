@@ -19,15 +19,18 @@ export const Constants = {
   URLS: {
     quiz1: './assets/quizzes/quiz1.json',
     quiz2: './assets/quizzes/quiz2.json',
+    quiz3: './assets/quizzes/quiz3.json',
   },
   QUIZZES: {
     EN: {
       quiz1: 'General cognitive',
       quiz2: 'Games',
+      quiz3: 'Cinema',
     },
     RU: {
       quiz1: 'Общепозновательный',
       quiz2: 'Игры',
+      quiz3: 'Кино',
     },
   },
   MAIN_PAGE: '.main-menu',
