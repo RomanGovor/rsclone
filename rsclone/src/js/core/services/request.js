@@ -6,7 +6,7 @@ import { Storage } from './Storage';
 
 export class Request {
   // Зарегистрироваться POST
-  signUp(data, message, finish) {
+  async signUp(data, message, finish) {
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -14,7 +14,7 @@ export class Request {
       },
       body: JSON.stringify(data),
     };
-    fetch(Constants.PathSignUp, requestOptions)
+    await fetch(Constants.PathSignUp, requestOptions)
       .then((response) => {
         if (response.status >= 400 && response.status < 600) {
           message.innerHTML = 'Fill in the fields correctly.Try again';
@@ -29,11 +29,11 @@ export class Request {
         }
         return response.json();
       }).then((result) => this.setUserDataInStorage(result))
-      .catch((err) => console.log(err));
+      .catch((err) => console.err(err));
   }
 
   // Войти POST
-  signIn(data, message, finish) {
+  async signIn(data, message, finish) {
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -41,7 +41,7 @@ export class Request {
       },
       body: JSON.stringify(data),
     };
-    fetch(Constants.PathSignIn, requestOptions)
+    await fetch(Constants.PathSignIn, requestOptions)
       .then((response) => {
         if (response.status >= 400 && response.status < 600) {
           message.innerHTML = 'Fill in the fields correctly.Try again';
@@ -56,10 +56,10 @@ export class Request {
         }
         return response.json();
       }).then((result) => this.setUserDataInStorage(result))
-      .catch((err) => { console.log(err); });
+      .catch((err) => { console.err(err); });
   }
 
-  logout() {
+  async logout() {
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -67,10 +67,10 @@ export class Request {
         Authorization: `Bearer ${Storage.getUserToken()}`,
       },
     };
-    fetch(Constants.PathLogout, requestOptions)
+    await fetch(Constants.PathLogout, requestOptions)
       .then((response) => {
         if (response.status >= 400 && response.status < 600) {
-          console.log('error');
+          throw new Error(`Wrong status: ${response.status}`);
         } else if (response.status === 200) {
           localStorage.clear();
           Storage.setAuthorizationStatus('false');
@@ -78,25 +78,11 @@ export class Request {
           removeUserAuthorizationData();
         }
       })
-      .catch((err) => console.log(err));
-  }
-
-  logoutAll() {
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${Storage.getUserToken()}`,
-      },
-    };
-    fetch(Constants.PathLogoutAll, requestOptions)
-      .then((response) => response.json())
-      .then((result) => console.log(result))
-      .catch((err) => console.log(err));
+      .catch((err) => console.err(err));
   }
 
   // Получить данные клиента GET
-  getClientData() {
+  async getClientData() {
     const requestOptions = {
       method: 'GET',
       headers: {
@@ -104,14 +90,14 @@ export class Request {
         Authorization: `Bearer ${Storage.getUserToken()}`,
       },
     };
-    fetch(Constants.PathGetAndPutRequest, requestOptions)
+    await fetch(Constants.PathGetAndPutRequest, requestOptions)
       .then((response) => response.json())
       .then((result) => Storage.setUserStatisticData(result.data))
-      .catch((err) => console.log(err));
+      .catch((err) => console.err(err));
   }
 
   // Получить данные статистики PUT
-  putClientData(data) {
+  async putClientData(data) {
     const requestOptions = {
       method: 'PUT',
       headers: {
@@ -120,9 +106,9 @@ export class Request {
       },
       body: JSON.stringify(data),
     };
-    fetch(Constants.PathGetAndPutRequest, requestOptions)
+    await fetch(Constants.PathGetAndPutRequest, requestOptions)
       .then((response) => response.json())
-      .catch((err) => console.log(err));
+      .catch((err) => console.err(err));
   }
 
   setUserDataInStorage(result) {
