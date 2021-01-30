@@ -151,7 +151,8 @@ export class Authorization {
         Storage.setUserName(this.nick.value);
         Storage.setUserStatisticData(Constants.EmptyUserData);
         setGuestName(this.nick.value);
-        this.removeForm();
+        const body = document.querySelector('body');
+        body.removeChild(this.authorizationForm);
       }
     });
   }

@@ -60,7 +60,6 @@ export class Request {
   }
 
   async logout() {
-    console.log(Storage.getUserToken());
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -70,13 +69,10 @@ export class Request {
     };
     await fetch(Constants.PathLogout, requestOptions)
       .then((response) => {
-        console.log(`RESPONSE: ${response}`);
         if (response.status >= 400 && response.status < 600) {
-          console.log('error');
-          console.log('step1');
+          throw new Error(`Wrong status: ${response.status}`);
         } else if (response.status === 200) {
           localStorage.clear();
-          console.log('step2');
           Storage.setAuthorizationStatus('false');
           Storage.setUserStatisticData(Constants.EmptyUserData);
           removeUserAuthorizationData();
