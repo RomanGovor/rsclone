@@ -146,14 +146,17 @@ export class Authorization {
       } else if (this.form.classList.contains('guest')) {
         if (this.nick.value === '') {
           this.message.innerHTML = 'Error.Empty name';
-          return;
+        } else {
+          Storage.setUserName(this.nick.value);
+          Storage.setUserStatisticData(Constants.EmptyUserData);
+          setGuestName(this.nick.value);
+          const body = document.querySelector('body');
+          const form = document.querySelector('.authorization__form-wrapper');
+          if (form) {
+            body.removeChild(this.authorizationForm);
+          }
         }
-        Storage.setUserName(this.nick.value);
-        Storage.setUserStatisticData(Constants.EmptyUserData);
-        setGuestName(this.nick.value);
-        const body = document.querySelector('body');
-        body.removeChild(this.authorizationForm);
       }
-    });
+    }, { once: true });
   }
 }
