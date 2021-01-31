@@ -568,13 +568,15 @@ class App {
     logoutLink.addEventListener('click', () => {
       if (logoutLink.textContent === 'Log out') {
         request.logout();
-        removeUserAuthorizationData();
         this.activePage = Constants.MAIN_PAGE;
 
         const container = document.querySelector(Constants.MAIN_PAGE);
         Extra.hidePages(container);
         this.deletingAndResettingGameplay();
       } else if (logoutLink.textContent === 'Log in') {
+        const container = document.querySelector(Constants.MAIN_PAGE);
+        Extra.hidePages(container);
+        this.deletingAndResettingGameplay();
         authorization.init();
       }
     });
