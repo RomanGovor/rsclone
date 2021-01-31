@@ -64,7 +64,7 @@
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20500_1.jpg?raw=true",
               "trueOptionsAnswerEn": ["Public Enemies", "Public Enemy"],
-              "trueOptionsAnswerRu": ["Джонни Д", "Джонни Д.", "Джонни Диллинджер", "Джон Диллинджер"]
+              "trueOptionsAnswerRu": ["Джонни Д.", "Джонни Д", "Джонни Диллинджер", "Джон Диллинджер", "Джони Д", "Джони Диллинджер", "Джони Д."]
             }
           ]
         },
@@ -92,7 +92,7 @@
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20200_2.jpg?raw=true",
               "trueOptionsAnswerEn": ["The Wolf of Wall Street", "The Wolf of Street", "The Wolf of the Street", "The Wolf Street", "Wolf Street", "Wolf of Wall Street", "Wolf of the Street", "Wolf of Street"],
-              "trueOptionsAnswerRu": ["Волк с Уолл-стрит", "Волк с Уолл стрит", "Волк с улицы", "Волк"]
+              "trueOptionsAnswerRu": ["Волк с Уолл-стрит", "Волк с Уолл стрит", "Волк с улицы", "Волк", "Волк с вол стрит", "Волк с волл стрит"]
             },
             {
               "type": "input",
@@ -102,7 +102,7 @@
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20300_2.jpg?raw=true",
               "trueOptionsAnswerEn": ["The Legend of Zorro", "Zorro", "The Mask of Zorro", "Mask of Zorro", "Legend of Zorro", "Legend Zorro"],
-              "trueOptionsAnswerRu": ["Зорро", "Легенда Зорро", "Маска Зорро"]
+              "trueOptionsAnswerRu": ["Легнда Зорро", "Зорро", "Маска Зорро"]
             },
             {
               "type": "input",
@@ -178,7 +178,7 @@
               "descriptionEn": "A half-blood vampire protects humans from their blood-sucking brethren",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20400_1.jpg?raw=true",
               "trueOptionsAnswerEn": ["Blade"],
-              "trueOptionsAnswerRu": ["Блейд", "Блэйд"]
+              "trueOptionsAnswerRu": ["Блэйд", "Блейд"]
             },
             {
               "type": "input",
@@ -190,7 +190,7 @@
               "descriptionEn": "Outstanding drama about the power of talent, the importance of friendship, the pursuit of freedom and Rita Hayworth",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20500_1.jpg?raw=true",
               "trueOptionsAnswerEn": ["The Shawshank Redemption", "Shawshank Redemption", "The Shawshank", "Shawshank"],
-              "trueOptionsAnswerRu": ["Побег из Шоушенка", "Шоушенк", "Побег из тюрьмы"]
+              "trueOptionsAnswerRu": ["Побег из Шоушенка", "Шоушенк", "Побег из тюрьмы", "Побег из шоу шенка"]
             }
           ]
         },
@@ -210,7 +210,7 @@
               "descriptionEn": "An old man without a nose, whose name cannot be called, tries to kill a teenager and seize power in the world",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20100_2.jpg?raw=true",
               "trueOptionsAnswerEn": ["Harry Potter"],
-              "trueOptionsAnswerRu": ["Гарри Поттер"]
+              "trueOptionsAnswerRu": ["Гарри Поттер", "Гарри", "Поттер", "Гари Поттер", "Гари Потер", "Гарри Потер"]
             },
             {
               "type": "input",
@@ -290,7 +290,7 @@
               "descriptionEn": "As a child, he received a psychological trauma because of an animal, in a suit of which he protects the city from the underworld at night",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20200_3.jpg?raw=true",
               "trueOptionsAnswerEn": ["Batman", "The Dark Knight", "Dark Knight"],
-              "trueOptionsAnswerRu": ["Бетмен", "Бэтмен", "Тёмный рыцарь", "Темный рыцарь"]
+              "trueOptionsAnswerRu": ["Бетмен", "Бэтмен", "Тёмный рыцарь", "Темный рыцарь", "Брюс", "Брюс Уэйн"]
             },
             {
               "type": "input",
@@ -314,7 +314,7 @@
               "descriptionEn": "After spending five years on the island, he returned to become a masked avenger fighting crime in his hometown with a bow and arrow",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20400_3.jpg?raw=true",
               "trueOptionsAnswerEn": ["Arrow"],
-              "trueOptionsAnswerRu": ["Стрела"]
+              "trueOptionsAnswerRu": ["Стрела", "Оливер", "Оливер Квин", "Оливер Куин"]
             },
             {
               "type": "input",
@@ -382,8 +382,8 @@
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%B1%D0%BE%D0%B5%D0%B2%D0%B8%D0%BA%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20800.jpg?raw=true",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%205%20%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82.jpg?raw=true",
-              "trueOptionsAnswerEn": ["The Fifth Element", "Fifth Element"],
-              "trueOptionsAnswerRu": ["Пятый элемент"]
+              "trueOptionsAnswerEn": ["The Fifth Element", "Fifth Element", "5 Element"],
+              "trueOptionsAnswerRu": ["Пятый элемент", "5 элемент", "5ый элемент", "5-ый элемент"]
             },
             {
               "type": "input",
@@ -411,7 +411,7 @@
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BC%D1%83%D0%BB%D1%8C%D1%82%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20200.jpg?raw=true",
               "trueOptionsAnswerEn": ["Shrek"],
-              "trueOptionsAnswerRu": ["Шрек"]
+              "trueOptionsAnswerRu": ["Шрек", "Шрэк"]
             },
             {
               "type": "input",
@@ -489,7 +489,7 @@
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BA%D0%B0%D0%B7%D0%B8%D0%BD%D0%BE%20600.jpg?raw=true",
               "trueOptionsAnswerEn": ["21", "Twenty one"],
-              "trueOptionsAnswerRu": ["Двадцать одно", "21"]
+              "trueOptionsAnswerRu": ["Двадцать одно", "21", "Двадцать один"]
             },
             {
               "type": "input",
@@ -623,7 +623,7 @@
               "descriptionEn": "Dystopia about the world of the future, divided into factions",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20800.jpg?raw=true",
               "trueOptionsAnswerEn": ["Divergent"],
-              "trueOptionsAnswerRu": ["Дивергент"]
+              "trueOptionsAnswerRu": ["Дивергент", "Дивиргент"]
             },
             {
               "type": "input",
