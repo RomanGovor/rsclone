@@ -49,8 +49,8 @@ class App {
       });
     });
 
-    data.rounds = [...Extra
-      .getRandomArray(data.rounds.length, data.rounds.length, data.rounds)];
+    // data.rounds = [...Extra
+    //   .getRandomArray(data.rounds.length, data.rounds.length, data.rounds)];
 
     this.playground = new Playground({
       lang: this.language,
