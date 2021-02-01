@@ -1,13 +1,14 @@
 import { Extra } from '../js/core/services/Extra';
 import '@testing-library/jest-dom';
+
 describe('Extra', () => {
   const extra = new Extra();
-  
+
   const mocList = document.createElement('div');
   document.body.append(mocList);
 
-  beforeAll(()=> {
-    mocList.innerHTML = `<span class='span1 none' language="en">hello</span><span class='span2' language="ru">привет</span>`;
+  beforeAll(() => {
+    mocList.innerHTML = '<span class=\'span1 none\' language="en">hello</span><span class=\'span2\' language="ru">привет</span>';
   });
 
   test('should init Extra', () => {
@@ -18,10 +19,10 @@ describe('Extra', () => {
   test('translate - should translate language', () => {
     const span1 = mocList.querySelector('.span1');
     const span2 = mocList.querySelector('.span2');
-    
+
     expect(span1.classList.contains('none')).toEqual(true);
     expect(span2.classList.contains('none')).toEqual(false);
-    
+
     Extra.translate('en');
     expect(span1.classList.contains('none')).toEqual(false);
     expect(span2.classList.contains('none')).toEqual(true);
@@ -62,7 +63,7 @@ describe('Extra', () => {
   test('getRandomArray - should create array random number', () => {
     const len = 25;
     const count = 5;
-    const randomArray = Extra.getRandomArray(len, count, [1,2,3,4,5]);
+    const randomArray = Extra.getRandomArray(len, count, [1, 2, 3, 4, 5]);
 
     expect(randomArray instanceof Array).toEqual(true);
     expect(randomArray.length).toEqual(5);

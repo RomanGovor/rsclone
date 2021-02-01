@@ -1,4 +1,4 @@
-import {Constants, Extra} from '../core';
+import { Constants, Extra } from '../core';
 
 export class HeaderMenu {
   constructor(lang) {
@@ -47,7 +47,7 @@ export class HeaderMenu {
   }
 
   static getListItemByClass(cl) {
-    const li = document.querySelector('.' + cl);
+    const li = document.querySelector(`.${cl}`);
     return li;
   }
 

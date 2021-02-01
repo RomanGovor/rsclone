@@ -1,6 +1,6 @@
 import { Constants } from '../core/Constants';
 import { Extra } from '../core/services/Extra';
-import {HeaderMenu} from "./HeaderMenu";
+import { HeaderMenu } from './HeaderMenu';
 
 export class Rules {
   constructor(lang, activePage) {
