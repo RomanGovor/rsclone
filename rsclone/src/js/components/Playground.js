@@ -1,4 +1,3 @@
-/* eslint-disable operator-linebreak */
 import { Timer } from './Timer';
 import { Constants, Extra } from '../core';
 import { Storage } from '../core/services/Storage';
@@ -11,7 +10,6 @@ export class Playground {
     this.allCategoriesEn = options.allCategoriesEn || [];
     this.allCategoriesRu = options.allCategoriesRu || [];
     this.package = options.package || {};
-
     this.categories = this.package.rounds[0].categories;
     this.currentQuestion = null;
     this.countRounds = this.package.rounds.length;
@@ -341,10 +339,8 @@ export class Playground {
 
     this.showScoreboard();
     const isQuestionPicture = question.questionPicture === undefined ? ' none' : '';
-    const isQuestionDescriptionEn =
-      question.descriptionEn === undefined ? '' : question.descriptionEn;
-    const isQuestionDescriptionRu =
-      question.descriptionRu === undefined ? '' : question.descriptionRu;
+    const isQuestionDescriptionEn = question.descriptionEn === undefined ? '' : question.descriptionEn;
+    const isQuestionDescriptionRu = question.descriptionRu === undefined ? '' : question.descriptionRu;
     const title = this.lang === 'en' ? 'Repeat sound' : 'Повторить звук';
 
     const picture = question.questionPicture === undefined
@@ -413,7 +409,6 @@ export class Playground {
     this.hideCategories();
     this.trueAnswerField.classList.remove('none');
 
-    // type = 'text', answer = 'Ответ', lang = this.lang
     const answerEn = this.trueAnswerField.querySelector('.playground__answer-text[language="en"]');
     const answerRu = this.trueAnswerField.querySelector('.playground__answer-text[language="ru"]');
 
@@ -474,9 +469,17 @@ export class Playground {
   }
 
   createRound() {
-    this.round = document.createElement('h2');
-    this.round.textContent = `${this.lang === 'en' ? 'Round' : 'Раунд'} ${this.currentRound}`;
+    this.round = document.createElement('div');
     this.round.classList = 'playground__round none';
+
+    const roundTitle = document.createElement('h2');
+    roundTitle.classList.add('playground__round-title');
+
+    const roundInfo = document.createElement('span');
+    roundInfo.classList.add('playground__round-info');
+
+    this.round.append(roundTitle);
+    this.round.append(roundInfo);
     this.playground.append(this.round);
   }
 
@@ -492,12 +495,17 @@ export class Playground {
     if (this.categoriesList) this.hideCategories();
 
     this.round.classList.remove('none');
-    this.round.textContent = `${this.lang === 'en' ? 'Round' : 'Раунд'} ${this.currentRound}`;
+
+    const title = this.round.querySelector('.playground__round-title');
+    title.textContent = `${this.lang === 'en' ? 'Round' : 'Раунд'} ${this.currentRound}`;
+    const info = this.round.querySelector('.playground__round-info');
+    const translate = this.package.rounds[this.currentRound - 1].roundInfo;
+    info.textContent = `${this.lang === 'en' ? `${translate.subtopicEn}` : `${translate.subtopicRU}`}`;
 
     setTimeout(() => {
       this.round.classList.add('none');
       this.showTable();
-    }, 1000);
+    }, 2000);
   }
 
   createWinner() {
