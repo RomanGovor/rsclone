@@ -16,7 +16,6 @@ export class Settings {
     const checkboxAudio = document.querySelector('.settings__audio .settings__checkbox');
     const isAudioPlay = Storage.getAudioPlay();
 
-    console.log(isAudioPlay);
     if (isAudioPlay) checkboxAudio.checked = true;
   }
 
