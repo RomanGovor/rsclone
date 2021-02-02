@@ -28,6 +28,7 @@ class App {
 
     this.setEvents();
     this.delegateHeaderMenuEvents();
+    this.burgerKeydownEvents();
 
     this.SETTINGS = new Settings(this.activePage);
     this.ANIMATIONS = new Animations();
@@ -48,9 +49,6 @@ class App {
         categoriesRu.push(cat.categoryInfo.categoryNameRu);
       });
     });
-
-    // data.rounds = [...Extra
-    //   .getRandomArray(data.rounds.length, data.rounds.length, data.rounds)];
 
     this.playground = new Playground({
       lang: this.language,
@@ -75,8 +73,6 @@ class App {
       this.bots[workName] = new Player({
         name: Constants.NICKNAMES_BOTS[Extra
           .getRandomInt(Constants.NICKNAMES_BOTS.length) - 1],
-        // avatar: `url(../assets/images/avatars/avatar_${Extra.getRandomInt(
-        //   Constants.COUNT_DEFAULT_AVATARS,
         avatar: `url(./assets/images/avatars/avatar_${Extra.getRandomInt(
           Constants.COUNT_DEFAULT_AVATARS,
         )}.jpg)`,
@@ -142,6 +138,7 @@ class App {
       HeaderMenu.deleteActiveItem();
       this.GLOBAL_TIMER = new GlobalTimer(this.language);
       Extra.hidePages(containerGame);
+
       this.initPlayground();
       this.addPlayers();
       this.checkAnswerButtonsEvents();
@@ -218,10 +215,17 @@ class App {
 
       HeaderMenu.setActiveItem(li);
       if (burgerCheckbox.checked) burgerCheckbox.checked = false;
+    });
+  }
 
-      // if (!burgerCheckbox.checked && this.activePage === Constants.GAME) {
-      //   HeaderMenu.deleteActiveItem();
-      // }
+  burgerKeydownEvents() {
+    document.addEventListener('keydown', (event) => {
+      const burgerCheckbox = document.querySelector('.burger-menu__checkbox-input');
+      const key = event.keyCode;
+
+      if (key === 27) {
+        burgerCheckbox.checked = !burgerCheckbox.checked;
+      }
     });
   }
 
