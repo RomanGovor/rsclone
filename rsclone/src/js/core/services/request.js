@@ -6,7 +6,7 @@ import { Storage } from './Storage';
 
 export class Request {
   // Зарегистрироваться POST
-  signUp(data, message, finish) {
+  async signUp(data, message, finish) {
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -14,15 +14,15 @@ export class Request {
       },
       body: JSON.stringify(data),
     };
-    fetch(Constants.PathSignUp, requestOptions)
+    await fetch(Constants.PathSignUp, requestOptions)
       .then((response) => {
-        if (response.status >= 400 && response.status < 600) {
+        if (response.status >= 400 && response.status < 500) {
           message.innerHTML = 'Fill in the fields correctly.Try again';
-          setTimeout(() => {
-            message.innerHTML = 'Sign in';
-          }, 2000);
-        } else {
-          message.innerHTML = 'Registration was successful';
+          setTimeout(() => { message.innerHTML = 'Sing Up'; }, 2000);
+        } else if (response.status >= 500 && response.status < 600) {
+          this.errorMessage('Sorry, the server is temporarily unresponsive. Try later');
+        } else if (response.status >= 200 && response.status < 300) {
+          this.errorMessage('Registration was successful');
           setTimeout(() => {
             finish();
           }, 1000);
@@ -33,7 +33,7 @@ export class Request {
   }
 
   // Войти POST
-  signIn(data, message, finish) {
+  async signIn(data, message, finish) {
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -41,25 +41,27 @@ export class Request {
       },
       body: JSON.stringify(data),
     };
-    fetch(Constants.PathSignIn, requestOptions)
+    await fetch(Constants.PathSignIn, requestOptions)
       .then((response) => {
-        if (response.status >= 400 && response.status < 600) {
+        if (response.status >= 400 && response.status < 500) {
+          setTimeout(() => { message.innerHTML = 'Sing In'; }, 2000);
           message.innerHTML = 'Fill in the fields correctly.Try again';
-          setTimeout(() => {
-            message.innerHTML = 'Authorization';
-          }, 2000);
-        } else {
-          message.innerHTML = 'Authorization was successful';
+        } else if (response.status >= 500 && response.status < 600) {
+          this.errorMessage('Sorry, the server is temporarily unresponsive. Try later');
+        } else if (response.status >= 200 && response.status < 300) {
+          this.errorMessage('Authorization was successful');
           setTimeout(() => {
             finish();
           }, 1000);
         }
         return response.json();
-      }).then((result) => this.setUserDataInStorage(result))
+      }).then((result) => {
+        this.setUserDataInStorage(result);
+      })
       .catch((err) => { console.log(err); });
   }
 
-  logout() {
+  async logout() {
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -67,36 +69,25 @@ export class Request {
         Authorization: `Bearer ${Storage.getUserToken()}`,
       },
     };
-    fetch(Constants.PathLogout, requestOptions)
+    await fetch(Constants.PathLogout, requestOptions)
       .then((response) => {
-        if (response.status >= 400 && response.status < 600) {
-          console.log('error');
-        } else if (response.status === 200) {
+        if (response.status >= 400 && response.status < 500) {
+          throw new Error(`Wrong status: ${response.status}`);
+        } else if (response.status >= 500 && response.status < 600) {
+          this.errorMessage('Sorry, the server is temporarily unresponsive. Try later');
+        } else if (response.status >= 200 && response.status < 300) {
           localStorage.clear();
           Storage.setAuthorizationStatus('false');
           Storage.setUserStatisticData(Constants.EmptyUserData);
+          Storage.setUserName('Anonymous');
           removeUserAuthorizationData();
         }
       })
       .catch((err) => console.log(err));
   }
 
-  logoutAll() {
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${Storage.getUserToken()}`,
-      },
-    };
-    fetch(Constants.PathLogoutAll, requestOptions)
-      .then((response) => response.json())
-      .then((result) => console.log(result))
-      .catch((err) => console.log(err));
-  }
-
   // Получить данные клиента GET
-  getClientData() {
+  async getClientData() {
     const requestOptions = {
       method: 'GET',
       headers: {
@@ -104,14 +95,19 @@ export class Request {
         Authorization: `Bearer ${Storage.getUserToken()}`,
       },
     };
-    fetch(Constants.PathGetAndPutRequest, requestOptions)
-      .then((response) => response.json())
+    await fetch(Constants.PathGetAndPutRequest, requestOptions)
+      .then((response) => {
+        if (response.status >= 500 && response.status < 600) {
+          this.errorMessage('Sorry, the server is temporarily unresponsive. Try later');
+        }
+        return response.json();
+      })
       .then((result) => Storage.setUserStatisticData(result.data))
       .catch((err) => console.log(err));
   }
 
   // Получить данные статистики PUT
-  putClientData(data) {
+  async putClientData(data) {
     const requestOptions = {
       method: 'PUT',
       headers: {
@@ -120,8 +116,13 @@ export class Request {
       },
       body: JSON.stringify(data),
     };
-    fetch(Constants.PathGetAndPutRequest, requestOptions)
-      .then((response) => response.json())
+    await fetch(Constants.PathGetAndPutRequest, requestOptions)
+      .then((response) => {
+        if (response.status >= 500 && response.status < 600) {
+          this.errorMessage('Sorry, the server is temporarily unresponsive. Try later');
+        }
+        return response.json();
+      })
       .catch((err) => console.log(err));
   }
 
@@ -133,5 +134,15 @@ export class Request {
 
   setTokenInStorage(token) {
     Storage.setUserToken(token);
+  }
+
+  errorMessage(message) {
+    const messageBlock = document.createElement('div');
+    messageBlock.classList.add('error-message');
+    messageBlock.innerHTML = message;
+    document.querySelector('body').append(messageBlock);
+    setTimeout(() => {
+      document.querySelector('body').removeChild(messageBlock);
+    }, 2000);
   }
 }

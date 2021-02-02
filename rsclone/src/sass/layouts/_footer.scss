@@ -17,7 +17,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 84px;
+  height: 87px;
   max-width: $content-width;
   padding: 0 79px;
 
@@ -37,7 +37,7 @@ footer {
     }
 
     @media screen and (max-width: $content-pre-little) {
-      font-size: 1rem;
+      font-size: 0.8rem;
     }
   }
 
@@ -51,6 +51,9 @@ footer {
     }
     @media (max-width: $content-little-width) {
       font-size: 1rem;
+    }
+    @media (max-width: $content-pre-little) {
+      font-size: 0.46rem;
     }
   }
 

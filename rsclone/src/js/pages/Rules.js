@@ -1,5 +1,6 @@
 import { Constants } from '../core/Constants';
 import { Extra } from '../core/services/Extra';
+import { HeaderMenu } from './HeaderMenu';
 
 export class Rules {
   constructor(lang, activePage) {
@@ -47,10 +48,13 @@ export class Rules {
     const { activePage } = this;
 
     function handleClick() {
-      const container = document.querySelector('.container__rules');
-      Extra.clearContainer(container);
-      Extra.hidePages(document.querySelector(activePage));
-      btn.removeEventListener('click', handleClick);
+      Extra.delay(1000).then(() => {
+        const container = document.querySelector('.container__rules');
+        Extra.clearContainer(container);
+        Extra.hidePages(document.querySelector(activePage));
+        HeaderMenu.createActiveListItemByActivePage(activePage);
+        btn.removeEventListener('click', handleClick);
+      });
     }
 
     btn.addEventListener('click', handleClick);

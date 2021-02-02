@@ -4,7 +4,6 @@
   position: relative;
   font-size: 1rem;
   width: 100%;
-  // border: 2px solid $color-border;
   background-color: rgba($color: $color-border, $alpha: 0.2);
   border-radius: 5px;
   display: flex;
@@ -14,6 +13,9 @@
     width: 20%;
     padding: 0 5px;
   }
+  // @media (max-width: $content-pre-little) {
+    
+  // }
 
   &_active {
     background-color: rgba($color: rgb(130, 241, 2), $alpha: 0.7);
@@ -41,6 +43,10 @@
     @media (max-width: 720px) {
       width: 60px;
       height: 80px;
+    }
+    @media (max-width: $content-little-width) {
+      width: 45px;
+      height: 60px;
     }
 
     &_man {
@@ -75,6 +81,16 @@
     }
     @media (max-width: 720px) {
       font-size: 0.6rem;
+    }
+    @media (max-width: $content-little-width) {
+      position: absolute;
+      width: 90%;
+      justify-content: space-between;
+      padding: 0 5px 5px;
+      font-size: 0.5rem;
+    }
+    @media (max-width: $content-pre-little) {
+      font-size: 0.5rem;
     }
   }
 

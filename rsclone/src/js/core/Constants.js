@@ -14,20 +14,23 @@ export const Constants = {
       'Если никто не произносит правильный ответ или если кто-то отвечает правильно, то ответ появляется на экране. Вопрос выбирает тот же игрок, что выбирал предыдущий или тот, кто ответил на вопрос правильно.',
     ],
   },
-  DEFAULT_IMG: '../assets/images/default.png',
+  DEFAULT_IMG: './assets/images/default.png',
   BACKGROUND_AUDIO: './assets/audio/background.mp3',
   URLS: {
-    quiz1: '../assets/quizzes/quiz1.json',
-    quiz2: '../assets/quizzes/quiz2.json',
+    quiz1: './assets/quizzes/quiz1.json',
+    quiz2: './assets/quizzes/quiz2.json',
+    quiz3: './assets/quizzes/quiz3.json',
   },
   QUIZZES: {
     EN: {
       quiz1: 'General cognitive',
       quiz2: 'Games',
+      quiz3: 'Cinema',
     },
     RU: {
       quiz1: 'Общепозновательный',
       quiz2: 'Игры',
+      quiz3: 'Кино',
     },
   },
   MAIN_PAGE: '.main-menu',
@@ -39,11 +42,11 @@ export const Constants = {
   CELL: 'cell',
   NON_CLICKABLE: 'non-clickable',
   AUDIO: {
-    FAILURE: '../assets/audio/failure.mp3',
-    CORRECT: '../assets/audio/success.mp3',
-    END_TIME: '../assets/audio/end-time.mp3',
-    NEW_ROUND: '../assets/audio/new-round.mp3',
-    WIN: '../assets/audio/win.mp3',
+    FAILURE: './assets/audio/failure.mp3',
+    CORRECT: './assets/audio/success.mp3',
+    END_TIME: './assets/audio/end-time.mp3',
+    NEW_ROUND: './assets/audio/new-round.mp3',
+    WIN: './assets/audio/win.mp3',
   },
   COUNT_DEFAULT_AVATARS: 40,
   USER_STATUSES: {

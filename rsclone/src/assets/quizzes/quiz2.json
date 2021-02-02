@@ -233,7 +233,7 @@
               "questionEn": "What game was the screenshot taken from?",
               "questionPicture": "https://pbs.twimg.com/media/CwcRvkyWEAA_ehh.jpg",
               "answerOptionsEn": ["Diablo", "Icewind Dale", "Hellgate London", "Warcraft"],
-              "answerOptionsEn": ["Diablo", "Icewind Dale", "Hellgate London", "Warcraft"],
+              "answerOptionsRu": ["Diablo", "Icewind Dale", "Hellgate London", "Warcraft"],
               "trueAnswerEn": "Diablo",
               "trueAnswerRu": "Diablo"
             },

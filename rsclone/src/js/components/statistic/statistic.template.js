@@ -1,6 +1,7 @@
 import createElement from '../createElements/createElement';
 import './statistic.scss';
 import { Extra, Storage } from '../../core';
+import { HeaderMenu } from '../../pages';
 
 export function statisticPage(activePage) {
   const container = document.querySelector('.container__statistic');
@@ -50,7 +51,10 @@ export function statisticPage(activePage) {
   Extra.translate(Storage.getLanguage());
 
   statisticCloseButton.addEventListener('click', () => {
-    Extra.hidePages(document.querySelector(activePage));
-    Extra.clearContainer(container);
+    Extra.delay(1000).then(() => {
+      Extra.hidePages(document.querySelector(activePage));
+      HeaderMenu.createActiveListItemByActivePage(activePage);
+      Extra.clearContainer(container);
+    });
   });
 }

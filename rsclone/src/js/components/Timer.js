@@ -104,8 +104,8 @@ export class Timer {
     } else {
       this.perc = 100;
       this.setProgress(this.perc);
-      const bell = new Audio(Constants.BELL);
-      bell.play();
+
+      Extra.playAudio(Constants.BELL);
 
       Extra.delay(1000).then(() => {
         Extra.clearContainer(document.querySelector('.container__question-timer'));

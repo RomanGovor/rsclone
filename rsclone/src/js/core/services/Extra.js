@@ -56,12 +56,10 @@ export class Extra {
   }
 
   static playAudio(src) {
-    const audio = new Audio(src);
-    audio.play();
-  }
-
-  static isContains(elem, cssClass) {
-    return elem.player.classList.contains(cssClass);
+    if (Storage.getAudioPlay()) {
+      const audio = new Audio(src);
+      audio.play();
+    }
   }
 
   static checkOnNoEmptyInputs() {
