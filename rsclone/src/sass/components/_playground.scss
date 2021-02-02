@@ -28,9 +28,13 @@
     overflow: hidden;
     border-collapse: collapse;
     empty-cells: hide;
+    
 
     @media (max-width: $content-big-width) {
       font-size: 1.25rem;
+    }
+    @media (max-width: $content-middle-width) {
+      font-size: 1.15rem;
     }
     @media (max-width: $content-middle-keyboard) {
       font-size: 1rem;
@@ -67,6 +71,7 @@
       border: 1px solid $color-yellow;
       text-align: center;
       cursor: pointer;
+      word-break: break-word;
     }
 
     td {
@@ -182,6 +187,13 @@
         background-image: url(../assets/icons/wave.gif);
         background-size: contain;
         background-position: center;
+
+        @media (max-width: 1000px) {
+          width: 280px;
+        }
+        @media (max-width: $content-pre-little) {
+          width: 240px;
+        }
       }
 
       &-button {
@@ -198,6 +210,17 @@
         &:hover {
           transform: rotate(90deg);
           filter: saturate(1);
+        }
+
+        @media (max-width: 1000px) {
+          width: 50px;
+          height: 50px;
+          left: calc(35%);
+          top: calc(50% - 25px);
+        }
+        @media (max-width: $content-pre-little) {
+          width: 40px;
+          height: 40px;
         }
       }
     }
@@ -232,7 +255,6 @@
     &_checkbox {
       width: 100%;
       height: max-content;
-      // background: white;
       border-radius: 5px;
       font-size: 1rem;
       text-align: center;
@@ -408,7 +430,6 @@
   100% {
     bottom: 0;
   }
-
 }
 
 @-webkit-keyframes blinker {
