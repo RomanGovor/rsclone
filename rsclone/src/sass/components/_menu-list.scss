@@ -66,6 +66,13 @@
     }
   }
 
+  .menu__item-active {
+    color: $color-hovered;
+    border-bottom: 3px solid $color-additional;
+    background: linear-gradient(45deg, $color-yellow, transparent);
+    border-left: 5px solid $color-light;
+  }
+
   .play-color {
     background: $color-recovered;
   }

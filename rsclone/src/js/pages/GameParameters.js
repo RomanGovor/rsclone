@@ -123,11 +123,32 @@ export class GameParameters {
       packsSelect.append(optionEn, optionRu);
     }
 
-    packsSelect.children[0].setAttribute('selected', 'selected');
+    if (this.language === 'en') {
+      packsSelect.children[0].setAttribute('selected', 'selected');
+    } else {
+      packsSelect.children[1].setAttribute('selected', 'selected');
+    }
 
     packsSelect.addEventListener('change', () => { this.readingValues(); });
     packs.append(packsLabel, packsSelect);
     return packs;
+  }
+
+  static changeSelectedOption(lang) {
+    const container = document.querySelector('.container__game-param');
+    if (container.childElementCount !== 0) {
+      const select = container.querySelector('.select-packs');
+      const valueStr = select.value;
+      const valueOptions = select.querySelectorAll(`[value=${valueStr}]`);
+
+      valueOptions.forEach((val) => {
+        if (val.getAttribute('language') === lang) {
+          val.setAttribute('selected','selected');
+        } else {
+          val.removeAttribute('selected');
+        }
+      });
+    }
   }
 
   createOption(lang, key) {
