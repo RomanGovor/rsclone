@@ -106,11 +106,11 @@ export class Extra {
       result.push(options.splice(options.indexOf(trueAnswer), 1)[0]);
     } else if (question.type === 'input') {
       if (lang === 'en') {
-        trueAnswer = question.trueOptionsAnswerEn[0];
+        [trueAnswer] = question.trueOptionsAnswerEn;
         options = [...this.getRandomArray(Constants.RANDOM_WORDS.EN.length,
           3, Constants.RANDOM_WORDS.EN)];
       } else {
-        trueAnswer = question.trueOptionsAnswerRu[0];
+        [trueAnswer] = question.trueOptionsAnswerRu;
         options = [...this.getRandomArray(Constants.RANDOM_WORDS.RU.length,
           3, Constants.RANDOM_WORDS.RU)];
       }

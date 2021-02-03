@@ -143,7 +143,7 @@ export class GameParameters {
 
       valueOptions.forEach((val) => {
         if (val.getAttribute('language') === lang) {
-          val.setAttribute('selected','selected');
+          val.setAttribute('selected', 'selected');
         } else {
           val.removeAttribute('selected');
         }

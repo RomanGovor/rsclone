@@ -1,5 +1,5 @@
 import { Extra, Storage } from '../core';
-import {GameParameters} from "../pages";
+import { GameParameters } from '../pages';
 
 export class SwitchLang {
   constructor(lang) {

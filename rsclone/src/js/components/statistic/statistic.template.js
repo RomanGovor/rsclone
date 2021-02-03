@@ -1,7 +1,7 @@
 import createElement from '../createElements/createElement';
 import './statistic.scss';
 import { Extra, Storage } from '../../core';
-import {HeaderMenu} from "../../pages";
+import { HeaderMenu } from '../../pages';
 
 export function statisticPage(activePage) {
   const container = document.querySelector('.container__statistic');

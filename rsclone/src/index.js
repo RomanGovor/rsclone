@@ -15,7 +15,6 @@ import {
   Constants,
   Storage,
   setUserAuthorizationData,
-  removeUserAuthorizationData,
   Request,
 } from './js/core/index';
 
@@ -150,7 +149,7 @@ class App {
     });
 
     menuRulesBtn.addEventListener('click', () => {
-      const rules = new Rules(this.language, this.activePage)
+      const rules = new Rules(this.language, this.activePage);
 
       const li = HeaderMenu.getListItemByClass('menu__item-rules');
       HeaderMenu.setActiveItem(li);

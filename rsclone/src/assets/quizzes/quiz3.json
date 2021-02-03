@@ -6,8 +6,8 @@
   "rounds": [
     {
       "roundInfo": {
-        "subtopicRU": "Раунд 1",
-        "subtopicEn": "Round 1"
+        "subtopicRU": "Современное кино",
+        "subtopicEn": "Contemporary cinema"
       },
       "categories": [
         {
@@ -23,8 +23,14 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20100_1.jpg?raw=true",
-              "trueOptionsAnswerEn": ["The Matrix", "Matrix"],
-              "trueOptionsAnswerRu": ["Матрица", "Двумерный массив"]
+              "trueOptionsAnswerEn": [
+                "The Matrix",
+                "Matrix"
+              ],
+              "trueOptionsAnswerRu": [
+                "Матрица",
+                "Двумерный массив"
+              ]
             },
             {
               "type": "input",
@@ -33,8 +39,19 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20200_1.jpg?raw=true",
-              "trueOptionsAnswerEn": ["The Lord of the Rings", "The Lord of the Ring", "The Lord", "Ring"],
-              "trueOptionsAnswerRu": ["Властелин колец", "Владыка колец", "Кольцо", "Братство", "Хоббиты"]
+              "trueOptionsAnswerEn": [
+                "The Lord of the Rings",
+                "The Lord of the Ring",
+                "The Lord",
+                "Ring"
+              ],
+              "trueOptionsAnswerRu": [
+                "Властелин колец",
+                "Владыка колец",
+                "Кольцо",
+                "Братство",
+                "Хоббиты"
+              ]
             },
             {
               "type": "input",
@@ -43,8 +60,12 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20300_1.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Troy"],
-              "trueOptionsAnswerRu": ["Троя"]
+              "trueOptionsAnswerEn": [
+                "Troy"
+              ],
+              "trueOptionsAnswerRu": [
+                "Троя"
+              ]
             },
             {
               "type": "input",
@@ -53,8 +74,12 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20400_1.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Wasabi"],
-              "trueOptionsAnswerRu": ["Васаби"]
+              "trueOptionsAnswerEn": [
+                "Wasabi"
+              ],
+              "trueOptionsAnswerRu": [
+                "Васаби"
+              ]
             },
             {
               "type": "input",
@@ -63,8 +88,19 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20500_1.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Public Enemies", "Public Enemy"],
-              "trueOptionsAnswerRu": ["Джонни Д.", "Джонни Д", "Джонни Диллинджер", "Джон Диллинджер", "Джони Д", "Джони Диллинджер", "Джони Д."]
+              "trueOptionsAnswerEn": [
+                "Public Enemies",
+                "Public Enemy"
+              ],
+              "trueOptionsAnswerRu": [
+                "Джонни Д.",
+                "Джонни Д",
+                "Джонни Диллинджер",
+                "Джон Диллинджер",
+                "Джони Д",
+                "Джони Диллинджер",
+                "Джони Д."
+              ]
             }
           ]
         },
@@ -81,8 +117,16 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20100_2.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Pirates of the Caribbean", "Pirates Caribbean", "Pirates of Caribbean", "Pirates"],
-              "trueOptionsAnswerRu": ["Пираты Карибского моря", "Пираты"]
+              "trueOptionsAnswerEn": [
+                "Pirates of the Caribbean",
+                "Pirates Caribbean",
+                "Pirates of Caribbean",
+                "Pirates"
+              ],
+              "trueOptionsAnswerRu": [
+                "Пираты Карибского моря",
+                "Пираты"
+              ]
             },
             {
               "type": "input",
@@ -91,8 +135,24 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20200_2.jpg?raw=true",
-              "trueOptionsAnswerEn": ["The Wolf of Wall Street", "The Wolf of Street", "The Wolf of the Street", "The Wolf Street", "Wolf Street", "Wolf of Wall Street", "Wolf of the Street", "Wolf of Street"],
-              "trueOptionsAnswerRu": ["Волк с Уолл-стрит", "Волк с Уолл стрит", "Волк с улицы", "Волк", "Волк с вол стрит", "Волк с волл стрит"]
+              "trueOptionsAnswerEn": [
+                "The Wolf of Wall Street",
+                "The Wolf of Street",
+                "The Wolf of the Street",
+                "The Wolf Street",
+                "Wolf Street",
+                "Wolf of Wall Street",
+                "Wolf of the Street",
+                "Wolf of Street"
+              ],
+              "trueOptionsAnswerRu": [
+                "Волк с Уолл-стрит",
+                "Волк с Уолл стрит",
+                "Волк с улицы",
+                "Волк",
+                "Волк с вол стрит",
+                "Волк с волл стрит"
+              ]
             },
             {
               "type": "input",
@@ -101,8 +161,19 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20300_2.jpg?raw=true",
-              "trueOptionsAnswerEn": ["The Legend of Zorro", "Zorro", "The Mask of Zorro", "Mask of Zorro", "Legend of Zorro", "Legend Zorro"],
-              "trueOptionsAnswerRu": ["Легнда Зорро", "Зорро", "Маска Зорро"]
+              "trueOptionsAnswerEn": [
+                "The Legend of Zorro",
+                "Zorro",
+                "The Mask of Zorro",
+                "Mask of Zorro",
+                "Legend of Zorro",
+                "Legend Zorro"
+              ],
+              "trueOptionsAnswerRu": [
+                "Легнда Зорро",
+                "Зорро",
+                "Маска Зорро"
+              ]
             },
             {
               "type": "input",
@@ -111,8 +182,12 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20400_2.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Stilyagi"],
-              "trueOptionsAnswerRu": ["Стиляги"]
+              "trueOptionsAnswerEn": [
+                "Stilyagi"
+              ],
+              "trueOptionsAnswerRu": [
+                "Стиляги"
+              ]
             },
             {
               "type": "input",
@@ -121,8 +196,14 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20500_2.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Gentlemen of Fortune", "Lucky gentlemen", "Gentlemen Fortune"],
-              "trueOptionsAnswerRu": ["Джентльмены удачи"]
+              "trueOptionsAnswerEn": [
+                "Gentlemen of Fortune",
+                "Lucky gentlemen",
+                "Gentlemen Fortune"
+              ],
+              "trueOptionsAnswerRu": [
+                "Джентльмены удачи"
+              ]
             }
           ]
         },
@@ -141,8 +222,14 @@
               "descriptionRu": "Постапокалипсис в Нью-Йорке. Уилл Смит в одиночку противостоит хищным мутантам, которые когда-то были людьми",
               "descriptionEn": "Post-apocalypse in New York. Will Smith single-handedly confronts predatory mutants that were once human",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20100_1.jpg?raw=true",
-              "trueOptionsAnswerEn": ["I Am Legend", "I Legend"],
-              "trueOptionsAnswerRu": ["Я легенда", "Я - легенда"]
+              "trueOptionsAnswerEn": [
+                "I Am Legend",
+                "I Legend"
+              ],
+              "trueOptionsAnswerRu": [
+                "Я легенда",
+                "Я - легенда"
+              ]
             },
             {
               "type": "input",
@@ -153,8 +240,13 @@
               "descriptionRu": "Безумный ученый и 17-летний оболтус тестируют машину времени и наводят шороху в 1950-х",
               "descriptionEn": "A mad scientist and a 17-year-old moron test a time machine and make a rustle in the 1950s",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20200_1.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Back to the Future", "Back to Future"],
-              "trueOptionsAnswerRu": ["Назад в будущее"]
+              "trueOptionsAnswerEn": [
+                "Back to the Future",
+                "Back to Future"
+              ],
+              "trueOptionsAnswerRu": [
+                "Назад в будущее"
+              ]
             },
             {
               "type": "input",
@@ -165,8 +257,19 @@
               "descriptionRu": "Контрабандисты гоняются за примерным семьянином. Народная комедия с элементами абсурда от Леонида Гайдая",
               "descriptionEn": "Smugglers are chasing an exemplary family man. Folk comedy with elements of absurdity from Leonid Gaidai",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20300_1.jpg?raw=true",
-              "trueOptionsAnswerEn": ["The Diamond Arm", "Diamond Arm", "The Diamond Hand", "Diamond Hand", "James Francis Cameron"],
-              "trueOptionsAnswerRu": ["Бриллиантовая рука", "Брилиантовая рука", "Брильантовая рука", "Брильянтовая рука"]
+              "trueOptionsAnswerEn": [
+                "The Diamond Arm",
+                "Diamond Arm",
+                "The Diamond Hand",
+                "Diamond Hand",
+                "James Francis Cameron"
+              ],
+              "trueOptionsAnswerRu": [
+                "Бриллиантовая рука",
+                "Брилиантовая рука",
+                "Брильантовая рука",
+                "Брильянтовая рука"
+              ]
             },
             {
               "type": "input",
@@ -177,8 +280,13 @@
               "descriptionRu": "Вампир-полукровка защищает людей от своих кровососущих собратьев",
               "descriptionEn": "A half-blood vampire protects humans from their blood-sucking brethren",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20400_1.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Blade"],
-              "trueOptionsAnswerRu": ["Блэйд", "Блейд"]
+              "trueOptionsAnswerEn": [
+                "Blade"
+              ],
+              "trueOptionsAnswerRu": [
+                "Блэйд",
+                "Блейд"
+              ]
             },
             {
               "type": "input",
@@ -189,8 +297,18 @@
               "descriptionRu": "Выдающаяся драма о силе таланта, важности дружбы, стремлении к свободе и Рите Хэйворт",
               "descriptionEn": "Outstanding drama about the power of talent, the importance of friendship, the pursuit of freedom and Rita Hayworth",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20500_1.jpg?raw=true",
-              "trueOptionsAnswerEn": ["The Shawshank Redemption", "Shawshank Redemption", "The Shawshank", "Shawshank"],
-              "trueOptionsAnswerRu": ["Побег из Шоушенка", "Шоушенк", "Побег из тюрьмы", "Побег из шоу шенка"]
+              "trueOptionsAnswerEn": [
+                "The Shawshank Redemption",
+                "Shawshank Redemption",
+                "The Shawshank",
+                "Shawshank"
+              ],
+              "trueOptionsAnswerRu": [
+                "Побег из Шоушенка",
+                "Шоушенк",
+                "Побег из тюрьмы",
+                "Побег из шоу шенка"
+              ]
             }
           ]
         },
@@ -209,8 +327,17 @@
               "descriptionRu": "Старый мужик без носа, имя которого нельзя называть, пытается убить подростка и захватить власть в мире",
               "descriptionEn": "An old man without a nose, whose name cannot be called, tries to kill a teenager and seize power in the world",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20100_2.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Harry Potter"],
-              "trueOptionsAnswerRu": ["Гарри Поттер", "Гарри", "Поттер", "Гари Поттер", "Гари Потер", "Гарри Потер"]
+              "trueOptionsAnswerEn": [
+                "Harry Potter"
+              ],
+              "trueOptionsAnswerRu": [
+                "Гарри Поттер",
+                "Гарри",
+                "Поттер",
+                "Гари Поттер",
+                "Гари Потер",
+                "Гарри Потер"
+              ]
             },
             {
               "type": "input",
@@ -221,8 +348,12 @@
               "descriptionRu": "Самый большой и крутой корабль своего времени против куска льда",
               "descriptionEn": "The biggest and coolest ship of its time against a piece of ice",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20200_2.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Titanic"],
-              "trueOptionsAnswerRu": ["Титаник"]
+              "trueOptionsAnswerEn": [
+                "Titanic"
+              ],
+              "trueOptionsAnswerRu": [
+                "Титаник"
+              ]
             },
             {
               "type": "input",
@@ -233,8 +364,14 @@
               "descriptionRu": "Родители одного надоедливого ребёнка вечно забывают его дома, чтобы не мешал на семейных поездках",
               "descriptionEn": "Parents of one annoying child always forget him at home so as not to interfere on family trips",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20300_2.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Alone at home", "1 at home"],
-              "trueOptionsAnswerRu": ["Один дома", "1 дома"]
+              "trueOptionsAnswerEn": [
+                "Alone at home",
+                "1 at home"
+              ],
+              "trueOptionsAnswerRu": [
+                "Один дома",
+                "1 дома"
+              ]
             },
             {
               "type": "input",
@@ -245,8 +382,13 @@
               "descriptionRu": "Очень богатый человек решил сыграть в Игру, которую ему подарил брат",
               "descriptionEn": "A very rich man decided to play the Game that his brother gave him",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20400_2.jpg?raw=true",
-              "trueOptionsAnswerEn": ["The Game", "Game"],
-              "trueOptionsAnswerRu": ["Игра"]
+              "trueOptionsAnswerEn": [
+                "The Game",
+                "Game"
+              ],
+              "trueOptionsAnswerRu": [
+                "Игра"
+              ]
             },
             {
               "type": "input",
@@ -257,8 +399,13 @@
               "descriptionRu": "Марк Уолберг страдает от игровой зависимости",
               "descriptionEn": "Mark Wahlberg suffers from gambling addiction",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20500_2.jpg?raw=true",
-              "trueOptionsAnswerEn": ["The Gambler", "Gambler"],
-              "trueOptionsAnswerRu": ["Игрок"]
+              "trueOptionsAnswerEn": [
+                "The Gambler",
+                "Gambler"
+              ],
+              "trueOptionsAnswerRu": [
+                "Игрок"
+              ]
             }
           ]
         },
@@ -277,8 +424,16 @@
               "descriptionRu": "― Да, парень в бронированном костюме. А снять - кто ты без него? ― Гений, миллиардер, плейбой, филантроп",
               "descriptionEn": "― Yes, the guy in the armored suit. And to remove - who are you without him? ― Genius, billionaire, playboy, philanthropist",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20100_3.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Iron Man", "Tony Stark", "Tony"],
-              "trueOptionsAnswerRu": ["Железный человек", "Тони Старк", "Тони"]
+              "trueOptionsAnswerEn": [
+                "Iron Man",
+                "Tony Stark",
+                "Tony"
+              ],
+              "trueOptionsAnswerRu": [
+                "Железный человек",
+                "Тони Старк",
+                "Тони"
+              ]
             },
             {
               "type": "input",
@@ -289,8 +444,19 @@
               "descriptionRu": "В детстве получил психологическую трваму из-за животного, в костюме которого по ночам защищает город от преступного мира",
               "descriptionEn": "As a child, he received a psychological trauma because of an animal, in a suit of which he protects the city from the underworld at night",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20200_3.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Batman", "The Dark Knight", "Dark Knight"],
-              "trueOptionsAnswerRu": ["Бетмен", "Бэтмен", "Тёмный рыцарь", "Темный рыцарь", "Брюс", "Брюс Уэйн"]
+              "trueOptionsAnswerEn": [
+                "Batman",
+                "The Dark Knight",
+                "Dark Knight"
+              ],
+              "trueOptionsAnswerRu": [
+                "Бетмен",
+                "Бэтмен",
+                "Тёмный рыцарь",
+                "Темный рыцарь",
+                "Брюс",
+                "Брюс Уэйн"
+              ]
             },
             {
               "type": "input",
@@ -301,8 +467,13 @@
               "descriptionRu": "Тёмное животное семейства кошачьих",
               "descriptionEn": "Dark feline",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20300_3.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Black Panther"],
-              "trueOptionsAnswerRu": ["Чёрная Пантера", "Черная Пантера"]
+              "trueOptionsAnswerEn": [
+                "Black Panther"
+              ],
+              "trueOptionsAnswerRu": [
+                "Чёрная Пантера",
+                "Черная Пантера"
+              ]
             },
             {
               "type": "input",
@@ -313,8 +484,15 @@
               "descriptionRu": "Пробыв пять лет на острове, вернулся, чтобы стать мстителем в маске, борющимся с преступностью в его родном городе при помощи лука и стрел",
               "descriptionEn": "After spending five years on the island, he returned to become a masked avenger fighting crime in his hometown with a bow and arrow",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20400_3.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Arrow"],
-              "trueOptionsAnswerRu": ["Стрела", "Оливер", "Оливер Квин", "Оливер Куин"]
+              "trueOptionsAnswerEn": [
+                "Arrow"
+              ],
+              "trueOptionsAnswerRu": [
+                "Стрела",
+                "Оливер",
+                "Оливер Квин",
+                "Оливер Куин"
+              ]
             },
             {
               "type": "input",
@@ -325,8 +503,22 @@
               "descriptionRu": "Народ белорусский рискнул и избрал меня Президентом. Это бывает чрезвычайно редко в истории и больше, возможно, не будет",
               "descriptionEn": "The Belarusian people took a chance and elected me President. This is extremely rare in history and may not be more",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20500_3.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Lukashenko", "Lukashenka"],
-              "trueOptionsAnswerRu": ["Лукашенко", "Александр", "Александр Григорьевич", "Диктатор", "Лукашенко А. Г.", "Саша 3%", "3%", "Таракан", "Чык чырык", "Чык-чырык"]
+              "trueOptionsAnswerEn": [
+                "Lukashenko",
+                "Lukashenka"
+              ],
+              "trueOptionsAnswerRu": [
+                "Лукашенко",
+                "Александр",
+                "Александр Григорьевич",
+                "Диктатор",
+                "Лукашенко А. Г.",
+                "Саша 3%",
+                "3%",
+                "Таракан",
+                "Чык чырык",
+                "Чык-чырык"
+              ]
             }
           ]
         }
@@ -334,8 +526,8 @@
     },
     {
       "roundInfo": {
-        "subtopicRU": "Раунд 2",
-        "subtopicEn": "Round 2"
+        "subtopicRU": "Жанр",
+        "subtopicEn": "Genre"
       },
       "categories": [
         {
@@ -351,8 +543,14 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%B1%D0%BE%D0%B5%D0%B2%D0%B8%D0%BA%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20200.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Django Unchained", "Django"],
-              "trueOptionsAnswerRu": ["Джанго освобождённый", "Джанго"]
+              "trueOptionsAnswerEn": [
+                "Django Unchained",
+                "Django"
+              ],
+              "trueOptionsAnswerRu": [
+                "Джанго освобождённый",
+                "Джанго"
+              ]
             },
             {
               "type": "input",
@@ -361,8 +559,12 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%B1%D0%BE%D0%B5%D0%B2%D0%B8%D0%BA%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20400.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Leon"],
-              "trueOptionsAnswerRu": ["Леон"]
+              "trueOptionsAnswerEn": [
+                "Leon"
+              ],
+              "trueOptionsAnswerRu": [
+                "Леон"
+              ]
             },
             {
               "type": "input",
@@ -371,8 +573,12 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%B1%D0%BE%D0%B5%D0%B2%D0%B8%D0%BA%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20600.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Gladiator"],
-              "trueOptionsAnswerRu": ["Гладиатор"]
+              "trueOptionsAnswerEn": [
+                "Gladiator"
+              ],
+              "trueOptionsAnswerRu": [
+                "Гладиатор"
+              ]
             },
             {
               "type": "input",
@@ -382,8 +588,17 @@
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%B1%D0%BE%D0%B5%D0%B2%D0%B8%D0%BA%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20800.jpg?raw=true",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%205%20%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82.jpg?raw=true",
-              "trueOptionsAnswerEn": ["The Fifth Element", "Fifth Element", "5 Element"],
-              "trueOptionsAnswerRu": ["Пятый элемент", "5 элемент", "5ый элемент", "5-ый элемент"]
+              "trueOptionsAnswerEn": [
+                "The Fifth Element",
+                "Fifth Element",
+                "5 Element"
+              ],
+              "trueOptionsAnswerRu": [
+                "Пятый элемент",
+                "5 элемент",
+                "5ый элемент",
+                "5-ый элемент"
+              ]
             },
             {
               "type": "input",
@@ -392,8 +607,13 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%B1%D0%BE%D0%B5%D0%B2%D0%B8%D0%BA%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%201000.jpg?raw=true",
-              "trueOptionsAnswerEn": ["The Last Samurai", "Last Samurai"],
-              "trueOptionsAnswerRu": ["Последний самурай"]
+              "trueOptionsAnswerEn": [
+                "The Last Samurai",
+                "Last Samurai"
+              ],
+              "trueOptionsAnswerRu": [
+                "Последний самурай"
+              ]
             }
           ]
         },
@@ -410,8 +630,13 @@
               "questionRu": "Введите название мультфильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BC%D1%83%D0%BB%D1%8C%D1%82%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20200.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Shrek"],
-              "trueOptionsAnswerRu": ["Шрек", "Шрэк"]
+              "trueOptionsAnswerEn": [
+                "Shrek"
+              ],
+              "trueOptionsAnswerRu": [
+                "Шрек",
+                "Шрэк"
+              ]
             },
             {
               "type": "input",
@@ -420,8 +645,12 @@
               "questionRu": "Введите название мультфильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BC%D1%83%D0%BB%D1%8C%D1%82%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20400.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Toy Story"],
-              "trueOptionsAnswerRu": ["История игрушек"]
+              "trueOptionsAnswerEn": [
+                "Toy Story"
+              ],
+              "trueOptionsAnswerRu": [
+                "История игрушек"
+              ]
             },
             {
               "type": "input",
@@ -430,8 +659,12 @@
               "questionRu": "Введите название мультфильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BC%D1%83%D0%BB%D1%8C%D1%82%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20600.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Dinosaur"],
-              "trueOptionsAnswerRu": ["Динозавр"]
+              "trueOptionsAnswerEn": [
+                "Dinosaur"
+              ],
+              "trueOptionsAnswerRu": [
+                "Динозавр"
+              ]
             },
             {
               "type": "input",
@@ -440,8 +673,16 @@
               "questionRu": "Введите название мультфильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BC%D1%83%D0%BB%D1%8C%D1%82%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%20800.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Barbie", "Barbie and the Magic of Pegasus", "Barbie and the Magic Pegasus"],
-              "trueOptionsAnswerRu": ["Барби", "Барби: волшебство пегаса", "Барби волшебство пегаса"]
+              "trueOptionsAnswerEn": [
+                "Barbie",
+                "Barbie and the Magic of Pegasus",
+                "Barbie and the Magic Pegasus"
+              ],
+              "trueOptionsAnswerRu": [
+                "Барби",
+                "Барби: волшебство пегаса",
+                "Барби волшебство пегаса"
+              ]
             },
             {
               "type": "input",
@@ -450,8 +691,12 @@
               "questionRu": "Введите название мультфильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BC%D1%83%D0%BB%D1%8C%D1%82%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%B4%D1%80%D1%83%201000.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Spirit"],
-              "trueOptionsAnswerRu": ["Спирит"]
+              "trueOptionsAnswerEn": [
+                "Spirit"
+              ],
+              "trueOptionsAnswerRu": [
+                "Спирит"
+              ]
             }
           ]
         },
@@ -468,8 +713,14 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BA%D0%B0%D0%B7%D0%B8%D0%BD%D0%BE%20200.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Ocean's Eleven"],
-              "trueOptionsAnswerRu": ["Одиннадцать друзей Оушена", "11 друзей Оушена", "Друзья Оушена"]
+              "trueOptionsAnswerEn": [
+                "Ocean's Eleven"
+              ],
+              "trueOptionsAnswerRu": [
+                "Одиннадцать друзей Оушена",
+                "11 друзей Оушена",
+                "Друзья Оушена"
+              ]
             },
             {
               "type": "input",
@@ -478,8 +729,12 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BA%D0%B0%D0%B7%D0%B8%D0%BD%D0%BE%20400.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Casino Royale"],
-              "trueOptionsAnswerRu": ["Казино Рояль"]
+              "trueOptionsAnswerEn": [
+                "Casino Royale"
+              ],
+              "trueOptionsAnswerRu": [
+                "Казино Рояль"
+              ]
             },
             {
               "type": "input",
@@ -488,8 +743,15 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BA%D0%B0%D0%B7%D0%B8%D0%BD%D0%BE%20600.jpg?raw=true",
-              "trueOptionsAnswerEn": ["21", "Twenty one"],
-              "trueOptionsAnswerRu": ["Двадцать одно", "21", "Двадцать один"]
+              "trueOptionsAnswerEn": [
+                "21",
+                "Twenty one"
+              ],
+              "trueOptionsAnswerRu": [
+                "Двадцать одно",
+                "21",
+                "Двадцать один"
+              ]
             },
             {
               "type": "input",
@@ -498,8 +760,14 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BA%D0%B0%D0%B7%D0%B8%D0%BD%D0%BE%20800.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Ocean's Eleven"],
-              "trueOptionsAnswerRu": ["Одиннадцать друзей Оушена", "11 друзей Оушена", "Друзья Оушена"]
+              "trueOptionsAnswerEn": [
+                "Ocean's Eleven"
+              ],
+              "trueOptionsAnswerRu": [
+                "Одиннадцать друзей Оушена",
+                "11 друзей Оушена",
+                "Друзья Оушена"
+              ]
             },
             {
               "type": "input",
@@ -508,8 +776,12 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BA%D0%B0%D0%B7%D0%B8%D0%BD%D0%BE%201000.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Casino"],
-              "trueOptionsAnswerRu": ["Казино"]
+              "trueOptionsAnswerEn": [
+                "Casino"
+              ],
+              "trueOptionsAnswerRu": [
+                "Казино"
+              ]
             }
           ]
         },
@@ -526,8 +798,24 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%B7%D0%B0%D0%BC%D0%BE%D0%BA%20%D0%B8%D0%B7%20%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D0%B0%20200.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Palace for Putin. The history of the biggest bribe", "Palace for Putin The history of the biggest bribe", "Palace for Putin", "Putin's Palace", "The history of the biggest bribe", "History of the biggest bribe", "The biggest bribe", "Biggest bribe"],
-              "trueOptionsAnswerRu": ["Дворец для Путина", "Дворец Путина", "История самой большой взятки", "Самая большая взятка", "Дворец для Путина. История самой большой взятки", "Дворец для Путина История самой большой взятки"]
+              "trueOptionsAnswerEn": [
+                "Palace for Putin. The history of the biggest bribe",
+                "Palace for Putin The history of the biggest bribe",
+                "Palace for Putin",
+                "Putin's Palace",
+                "The history of the biggest bribe",
+                "History of the biggest bribe",
+                "The biggest bribe",
+                "Biggest bribe"
+              ],
+              "trueOptionsAnswerRu": [
+                "Дворец для Путина",
+                "Дворец Путина",
+                "История самой большой взятки",
+                "Самая большая взятка",
+                "Дворец для Путина. История самой большой взятки",
+                "Дворец для Путина История самой большой взятки"
+              ]
             },
             {
               "type": "input",
@@ -536,8 +824,13 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%B7%D0%B0%D0%BC%D0%BE%D0%BA%20%D0%B8%D0%B7%20%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D0%B0%20400.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Brest Fortress", "Fortress of War"],
-              "trueOptionsAnswerRu": ["Брестская крепость"]
+              "trueOptionsAnswerEn": [
+                "Brest Fortress",
+                "Fortress of War"
+              ],
+              "trueOptionsAnswerRu": [
+                "Брестская крепость"
+              ]
             },
             {
               "type": "input",
@@ -546,8 +839,19 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%B7%D0%B0%D0%BC%D0%BE%D0%BA%20%D0%B8%D0%B7%20%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D0%B0%20600.jpg?raw=true",
-              "trueOptionsAnswerEn": ["The Lord of the Rings", "The Lord of the Ring", "The Lord", "Ring"],
-              "trueOptionsAnswerRu": ["Властелин колец", "Владыка колец", "Кольцо", "Братство", "Хоббиты"]
+              "trueOptionsAnswerEn": [
+                "The Lord of the Rings",
+                "The Lord of the Ring",
+                "The Lord",
+                "Ring"
+              ],
+              "trueOptionsAnswerRu": [
+                "Властелин колец",
+                "Владыка колец",
+                "Кольцо",
+                "Братство",
+                "Хоббиты"
+              ]
             },
             {
               "type": "input",
@@ -556,8 +860,12 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%B7%D0%B0%D0%BC%D0%BE%D0%BA%20%D0%B8%D0%B7%20%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D0%B0%20800.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Kingdom of Heaven"],
-              "trueOptionsAnswerRu": ["Царство небесное"]
+              "trueOptionsAnswerEn": [
+                "Kingdom of Heaven"
+              ],
+              "trueOptionsAnswerRu": [
+                "Царство небесное"
+              ]
             },
             {
               "type": "input",
@@ -566,8 +874,12 @@
               "questionRu": "Введите название фильма по картинке",
               "questionEn": "Enter the name of the movie from the picture",
               "questionPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%B7%D0%B0%D0%BC%D0%BE%D0%BA%20%D0%B8%D0%B7%20%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D0%B0%201000.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Garfield 2"],
-              "trueOptionsAnswerRu": ["Гарфилд 2"]
+              "trueOptionsAnswerEn": [
+                "Garfield 2"
+              ],
+              "trueOptionsAnswerRu": [
+                "Гарфилд 2"
+              ]
             }
           ]
         },
@@ -586,8 +898,12 @@
               "descriptionRu": "Фантастический эпос про задыхающуюся Землю, космические полеты и парадоксы времени",
               "descriptionEn": "Fantastic epic about the choking Earth, space flights and paradoxes of time",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20200.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Interstellar"],
-              "trueOptionsAnswerRu": ["Интерстеллар"]
+              "trueOptionsAnswerEn": [
+                "Interstellar"
+              ],
+              "trueOptionsAnswerRu": [
+                "Интерстеллар"
+              ]
             },
             {
               "type": "input",
@@ -598,8 +914,12 @@
               "descriptionRu": "Нью-йоркский писатель меняет свою жизнь с помощью чудесных таблеток",
               "descriptionEn": "New York writer changes his life with miraculous pills",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20400.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Limitless"],
-              "trueOptionsAnswerRu": ["Области тьмы"]
+              "trueOptionsAnswerEn": [
+                "Limitless"
+              ],
+              "trueOptionsAnswerRu": [
+                "Области тьмы"
+              ]
             },
             {
               "type": "input",
@@ -610,8 +930,12 @@
               "descriptionRu": "Джейк Джилленхол путешествует во времени",
               "descriptionEn": "Jake Gyllenhaal Time Travel",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20600.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Source Code"],
-              "trueOptionsAnswerRu": ["Исходный код"]
+              "trueOptionsAnswerEn": [
+                "Source Code"
+              ],
+              "trueOptionsAnswerRu": [
+                "Исходный код"
+              ]
             },
             {
               "type": "input",
@@ -622,8 +946,13 @@
               "descriptionRu": "Антиутопия о мире будущего, поделенном на фракции",
               "descriptionEn": "Dystopia about the world of the future, divided into factions",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%20800.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Divergent"],
-              "trueOptionsAnswerRu": ["Дивергент", "Дивиргент"]
+              "trueOptionsAnswerEn": [
+                "Divergent"
+              ],
+              "trueOptionsAnswerRu": [
+                "Дивергент",
+                "Дивиргент"
+              ]
             },
             {
               "type": "input",
@@ -634,12 +963,16 @@
               "descriptionRu": "Красивый экшен с хорошим юмором по японской манге",
               "descriptionEn": "Beautiful action with good humor based on Japanese manga",
               "answerPicture": "https://github.com/RomanGovor/materialsForQuizzes/blob/main/Cinema_2/pictures/%D0%BE%D1%82%D0%B2%D0%B5%D1%82%201000.jpg?raw=true",
-              "trueOptionsAnswerEn": ["Edge of Tomorrow"],
-              "trueOptionsAnswerRu": ["Грань будущего"]
+              "trueOptionsAnswerEn": [
+                "Edge of Tomorrow"
+              ],
+              "trueOptionsAnswerRu": [
+                "Грань будущего"
+              ]
             }
-        	]
-       	}
-     	]
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1,5 +1,5 @@
 import { Constants, Extra, Storage } from '../core/index';
-import {HeaderMenu} from "./HeaderMenu";
+import { HeaderMenu } from './HeaderMenu';
 
 export class Settings {
   constructor(activePage) {

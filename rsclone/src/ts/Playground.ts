@@ -1,33 +1,95 @@
-import { Timer } from './Timer';
-import { Constants, Extra } from '../core';
-import { Storage } from '../core/services/Storage';
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
+import {
+  IPlayground, Package, playgroundOptions, question, categories, userStatuses,
+} from './IPlayground';
+import {
+  landType, currentQuestion, winner, time,
+} from './Types';
 
-export class Playground {
-  constructor(options) {
+import { Timer } from '../js/components/Timer';
+import { Constants, Extra } from '../js/core';
+import { Storage } from '../js/core/services/Storage';
+
+export class Playground implements IPlayground {
+  container: HTMLDivElement;
+
+  lang: landType | string;
+
+  allCategoriesEn: string[];
+
+  allCategoriesRu: string[];
+
+  package: Package;
+
+  categories: categories[];
+
+  currentQuestion: question | null;
+
+  countRounds: number;
+
+  currentRound: number;
+
+  playground: HTMLDivElement | null;
+
+  audioObj: HTMLAudioElement;
+
+  table: HTMLDivElement | null;
+
+  TIMER: any;
+
+  categoriesList: HTMLUListElement;
+
+  scoreboard: HTMLDivElement;
+
+  question: HTMLParagraphElement;
+
+  answerInput: HTMLDivElement;
+
+  answerCheckbox: HTMLDivElement;
+
+  trueAnswerField: HTMLDivElement;
+
+  round: HTMLHeadingElement;
+
+  winner: HTMLDivElement;
+
+  constructor(options: playgroundOptions) {
     this.container = options.container || document.querySelector('.container__playground');
 
     this.lang = options.lang || 'en';
     this.allCategoriesEn = options.allCategoriesEn || [];
     this.allCategoriesRu = options.allCategoriesRu || [];
     this.package = options.package || {};
+
     this.categories = this.package.rounds[0].categories;
-    this.currentQuestion = null;
     this.countRounds = this.package.rounds.length;
     this.currentRound = 1;
+
+    this.currentQuestion = null;
+    this.playground = null;
+    this.audioObj = new Audio();
+    this.table = null;
+    this.categoriesList = document.createElement('ul');
+    this.scoreboard = document.createElement('div');
+    this.question = document.createElement('p');
+    this.answerInput = document.createElement('div');
+    this.answerCheckbox = document.createElement('div');
+    this.trueAnswerField = document.createElement('div');
+    this.round = document.createElement('h2');
+    this.winner = document.createElement('div');
 
     this.render();
     this.showCategories(this.lang === 'en' ? this.allCategoriesEn : this.allCategoriesRu);
     this.getQuestionsArrayByRound();
   }
 
-  getCountRounds() {
-    return this.countRounds;
-  }
+  getCountRounds = (): number => this.countRounds
 
-  getQuestionsArrayByRound() {
-    const questions = [];
+  getQuestionsArrayByRound = (): void => {
+    const questions: Object[] = [];
     this.package.rounds[this.currentRound - 1].categories.forEach((cat, row) => {
-      cat.questions.forEach((quest, column) => {
+      cat.questions.forEach((quest, column: number) => {
         const coords = {
           row: row + 1,
           column: column + 1,
@@ -39,9 +101,9 @@ export class Playground {
     Storage.setQuestionsArray(questions);
   }
 
-  render() {
+  render = (): void => {
     this.playground = document.createElement('div');
-    this.playground.classList = 'playground';
+    this.playground.classList.add('playground');
     this.container.append(this.playground);
 
     this.createScoreboard();
@@ -52,17 +114,17 @@ export class Playground {
     this.createWinner();
   }
 
-  createSound() {
+  createSound = (): void => {
     this.audioObj = new Audio();
-    this.audioObj.setAttribute('src', null);
+    this.audioObj.setAttribute('src', 'null');
   }
 
-  createTable() {
+  createTable = (): void => {
     this.lang = Storage.getLanguage();
 
     this.table = null;
     this.table = document.createElement('table');
-    this.table.classList = 'playground__table';
+    this.table.classList.add('playground__table');
 
     for (let i = 0; i < this.categories.length; i++) {
       const row = document.createElement('tr');
@@ -79,101 +141,115 @@ export class Playground {
       for (let j = 0; j < this.categories[i].questions.length; j++) {
         const td = document.createElement('td');
         td.classList.add('cell', `cell-${j + 1}`);
-        td.setAttribute('question-row', i);
-        td.setAttribute('question-column', j);
+        td.setAttribute('question-row', i.toString());
+        td.setAttribute('question-column', j.toString());
         td.textContent = this.categories[i].questions[j].points;
         row.append(td);
       }
       this.table.append(row);
     }
 
-    const childesPlayground = this.playground.children;
-    for (let i = 0; i < childesPlayground.length; i++) {
-      const child = childesPlayground[i];
-      if (child.localName === 'table') {
-        this.playground.removeChild(child);
+    const children = this.playground?.children;
+    if (children) {
+      for (let i = 0; i < children.length; i++) {
+        const child = children[i];
+        if (child.localName === 'table') {
+          if (this.playground) {
+            this.playground.removeChild(child);
+          }
+        }
+      }
+      if (this.playground) {
+        this.playground.append(this.table);
       }
     }
-    this.playground.append(this.table);
 
     Extra.translate(this.lang);
   }
 
-  getCellActive() {
-    const arr = this.table.querySelectorAll('.cell');
-    let active;
-    let isFirstActive = false;
+  getCellActive = () => {
+    let active = null;
+    let isFirstActive: boolean = false;
 
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].classList.contains('key-active')) {
-        active = arr[i];
+    if (this.table) {
+      const arr = this.table.querySelectorAll('.cell');
+
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].classList.contains('key-active')) {
+          active = arr[i];
+        }
+      }
+
+      if (!active) {
+        this.makeCellActive(arr[0]);
+        active = arr[0];
+        isFirstActive = true;
       }
     }
-
-    if (!active) {
-      this.makeCellActive(arr[0]);
-      [active] = arr;
-      isFirstActive = true;
-    }
-
     return {
       active,
       isFirstActive,
     };
   }
 
-  makeCellActive(cell) {
+  makeCellActive = (cell: Element): void => {
     this.clearCellActive();
     cell.classList.add('key-active');
   }
 
-  clearCellActive() {
-    const arr = this.table.querySelectorAll('.cell');
-    arr.forEach((el) => el.classList.remove('key-active'));
+  clearCellActive = (): void => {
+    if (this.table) {
+      const arr = this.table.querySelectorAll('.cell');
+      arr.forEach((el) => el.classList.remove('key-active'));
+    }
   }
 
-  findCellByCoordinates(row, column) {
-    const cells = this.table.querySelectorAll('[question-row]');
+  findCellByCoordinates = (row: number, column: number) => {
+    const cells = this.table?.querySelectorAll('[question-row]');
     let cell = null;
 
-    for (let i = 0; i < cells.length; i++) {
-      const cellRow = +cells[i].getAttribute('question-row');
-      const cellColumn = +cells[i].getAttribute('question-column');
-      if (cellRow === row && cellColumn === column) {
-        cell = cells[i];
-        break;
+    if (cells) {
+      for (let i = 0; i < cells.length; i++) {
+        const cellRow = cells[i].getAttribute('question-row');
+        const cellColumn = cells[i].getAttribute('question-column');
+        if (Number(cellRow) === row && Number(cellColumn) === column) {
+          cell = cells[i];
+          break;
+        }
       }
     }
-
     return cell;
   }
 
-  clickOnTable(cell) {
+  clickOnTable(cell: HTMLElement) {
     cell.classList.add('blink');
     cell.classList.add('non-clickable');
-    this.table.classList.add('non-clickable');
 
-    const row = +cell.getAttribute('question-row');
-    const column = +cell.getAttribute('question-column');
+    if (this.table) this.table.classList.add('non-clickable');
+
+    const row = Number(cell.getAttribute('question-row'));
+    const column = Number(cell.getAttribute('question-column'));
     Extra.deleteQuestionFromArray(row + 1, column + 1);
 
-    this.currentQuestion = this.categories[row].questions[column];
-    this.currentQuestion.row = row;
-    this.currentQuestion.column = column;
-    this.currentQuestion.isPermissionToAnswer = true;
-    this.currentQuestion.round = this.currentRound;
-    Storage.setCurrentQuestion(this.currentQuestion);
+    if (this.currentQuestion) {
+      this.currentQuestion = this.categories[row].questions[column];
+      this.currentQuestion.row = row;
+      this.currentQuestion.column = column;
+      this.currentQuestion.isPermissionToAnswer = true;
+      this.currentQuestion.round = this.currentRound;
+      Storage.setCurrentQuestion(this.currentQuestion);
+    }
 
     Extra.delay(2500)
       .then(() => {
         cell.classList.remove('blink');
         cell.textContent = '';
-        this.table.classList.remove('non-clickable');
+        if (this.table) this.table.classList.remove('non-clickable');
       })
       .then(() => {
         Extra.delay(500)
           .then(() => {
-            this.showQuestion(this.currentQuestion);
+            if (this.currentQuestion) this.showQuestion(this.currentQuestion);
             if (this.TIMER === null || this.TIMER === undefined) {
               this.TIMER = new Timer();
             } else {
@@ -225,18 +301,17 @@ export class Playground {
 
     if (this.table) {
       this.hideTable();
-      // this.hideButton();
     }
 
-    this.categoriesList = document.createElement('ul');
-    this.categoriesList.classList = 'playground__categories-list';
+    // this.categoriesList = document.createElement('ul');
+    this.categoriesList.classList.add('playground__categories-list');
     arr.forEach((el) => {
       const item = document.createElement('li');
-      item.classList = 'playground__categories-item';
+      item.classList.add('playground__categories-item');
       item.textContent = el;
       this.categoriesList.append(item);
     });
-    this.playground.append(this.categoriesList);
+    if (this.playground) this.playground.append(this.categoriesList);
 
     setTimeout(() => {
       this.categoriesList.classList.add('playground__categories-list_animated');
@@ -260,22 +335,22 @@ export class Playground {
     const inputs = document.querySelectorAll('.playground__answer-input');
     inputs.forEach((input) => {
       input.textContent = '';
-      input.value = '';
+      // input.value = '';
     });
   }
 
   createScoreboard() {
     this.lang = Storage.getLanguage();
 
-    this.scoreboard = document.createElement('div');
-    this.scoreboard.classList = 'playground__scoreboard none';
+    // this.scoreboard = document.createElement('div');
+    this.scoreboard.classList.add('playground__scoreboard', 'none');
 
     this.question = document.createElement('p');
-    this.question.classList = 'playground__question';
+    this.question.classList.add('playground__question');
     this.scoreboard.append(this.question);
 
     this.answerInput = document.createElement('div');
-    this.answerInput.classList = 'playground__answer_input';
+    this.answerInput.classList.add('playground__answer_input');
     this.answerInput.innerHTML = `
       <input type='text' class='playground__answer-input' placeholder='enter answer' language='en'>
       <button class='playground__answer-button' language='en'>Reply</button>
@@ -285,7 +360,7 @@ export class Playground {
     this.scoreboard.append(this.answerInput);
 
     this.answerCheckbox = document.createElement('div');
-    this.answerCheckbox.classList = 'playground__answer_checkbox none';
+    this.answerCheckbox.classList.add('playground__answer_checkbox', 'none');
     for (let i = 0; i < 4; i++) {
       const button = Extra.createMultipleLanguageElement(
         'button',
@@ -297,7 +372,7 @@ export class Playground {
     }
 
     this.scoreboard.append(this.answerCheckbox);
-    this.playground.append(this.scoreboard);
+    if (this.playground) this.playground.append(this.scoreboard);
 
     Extra.translate(this.lang);
   }
@@ -308,7 +383,7 @@ export class Playground {
     }
   }
 
-  hideQuestion(isCorrect, user) {
+  hideQuestion(isCorrect: boolean, user: userStatuses) {
     if (isCorrect) {
       this.clearInput();
       this.hideScoreboard();
@@ -329,7 +404,8 @@ export class Playground {
     }
   }
 
-  showQuestion(question) {
+  // eslint-disable-next-line no-use-before-define
+  showQuestion(question: question) {
     this.lang = Storage.getLanguage();
 
     if (this.answerInput) this.answerInput.classList.remove('disabled');
@@ -360,29 +436,37 @@ export class Playground {
 
     const repeat = this.question.querySelector('.playground__question-repeat');
     const repeatButton = this.question.querySelector('.playground__question-repeat-button');
-    repeat.classList.add('none');
+    if (repeat) repeat.classList.add('none');
 
     if (question.subtype === 'sound') {
-      this.audioObj.setAttribute(
-        'src',
-        `../../assets/audio/${this.currentQuestion.trueOptionsAnswerEn[0]}.mp3`,
-      );
+      if (this.currentQuestion && this.currentQuestion.trueOptionsAnswerEn) {
+        const answerEn = this.currentQuestion.trueOptionsAnswerEn[0];
+        this.audioObj.setAttribute(
+          'src',
+          `../../assets/audio/${answerEn}.mp3`,
+        );
+      }
       this.audioObj.play();
-      repeat.classList.remove('none');
-      repeatButton.addEventListener('click', () => {
-        this.audioObj.pause();
-        this.audioObj.currentTime = 0;
-        this.audioObj.play();
-      });
+      if (repeat) repeat.classList.remove('none');
+      if (repeatButton) {
+        repeatButton.addEventListener('click', () => {
+          this.audioObj.pause();
+          this.audioObj.currentTime = 0;
+          this.audioObj.play();
+        });
+      }
     }
 
     if (question.type === 'input') {
       this.answerInput.classList.remove('none');
       this.answerCheckbox.classList.add('none');
-      this.answerInput.querySelector('.playground__answer-input').value = '';
+      // this.answerInput.querySelector('.playground__answer-input').value = '';
       this.clearInput();
     } else if (question.type === 'checkbox') {
-      this.changeAnswerOptionsValue(question.answerOptionsEn, question.answerOptionsRu);
+      if (question.answerOptionsEn && question.answerOptionsRu) {
+        this.changeAnswerOptionsValue(question.answerOptionsEn, question.answerOptionsRu);
+      }
+
       this.answerCheckbox.classList.remove('none');
       this.answerInput.classList.add('none');
     }
@@ -393,75 +477,78 @@ export class Playground {
   createTrueAnswerField() {
     this.lang = Storage.getLanguage();
     this.trueAnswerField = document.createElement('div');
-    this.trueAnswerField.classList = 'playground__true-answer none';
+    this.trueAnswerField.classList.add('playground__true-answer none');
 
     this.trueAnswerField.innerHTML = `
     <span class='playground__answer-text none' language='en'>en</span>
     <span class='playground__answer-text none' language='ru'>ru</span>
     <img class='playground__answer-picture none' width=200 height=200>
     `;
-    this.playground.append(this.trueAnswerField);
+    if (this.playground) this.playground.append(this.trueAnswerField);
     Extra.translate(this.lang);
   }
 
-  showTrueAnswer(answer) {
+  showTrueAnswer(answer: question | null) {
     this.hideScoreboard();
     this.hideCategories();
     this.trueAnswerField.classList.remove('none');
 
+    // type = 'text', answer = 'Ответ', lang = this.lang
     const answerEn = this.trueAnswerField.querySelector('.playground__answer-text[language="en"]');
     const answerRu = this.trueAnswerField.querySelector('.playground__answer-text[language="ru"]');
 
-    if (answer.trueAnswerEn && answer.trueAnswerRu) {
-      answerEn.textContent = answer.trueAnswerEn;
-      answerRu.textContent = answer.trueAnswerRu;
-    } else if (answer.trueOptionsAnswerEn && answer.trueOptionsAnswerRu) {
-      [answerEn.textContent] = answer.trueOptionsAnswerEn;
-      [answerRu.textContent] = answer.trueOptionsAnswerRu;
+    if (answer && answer.trueAnswerEn && answer.trueAnswerRu) {
+      if (answerEn) answerEn.textContent = answer.trueAnswerEn;
+      if (answerRu) answerRu.textContent = answer.trueAnswerRu;
+    } else if (answer && answer.trueOptionsAnswerEn && answer.trueOptionsAnswerRu) {
+      if (answerEn) answerEn.textContent = answer.trueOptionsAnswerEn[0];
+      if (answerRu) answerRu.textContent = answer.trueOptionsAnswerRu[0];
     }
 
     if (this.lang === 'en') {
-      answerEn.classList.remove('none');
-      answerRu.classList.add('none');
+      if (answerEn) answerEn.classList.remove('none');
+      if (answerRu) answerRu.classList.add('none');
     } else {
-      answerRu.classList.remove('none');
-      answerEn.classList.add('none');
+      if (answerRu) answerRu.classList.remove('none');
+      if (answerEn) answerEn.classList.add('none');
     }
 
-    let pict;
-    if (answer.answerPicture) {
+    let pict: Element | null = null;
+    if (answer && answer.answerPicture) {
       pict = this.trueAnswerField.querySelector('.playground__answer-picture');
-      pict.classList.remove('none');
-      pict.setAttribute('src', answer.answerPicture);
+      if (pict) {
+        pict.classList.remove('none');
+        pict.setAttribute('src', answer.answerPicture);
+      }
     }
 
     setTimeout(() => {
       this.trueAnswerField.classList.add('none');
-      answerEn.textContent = '';
-      answerRu.textContent = '';
+      if (answerEn) answerEn.textContent = '';
+      if (answerRu) answerRu.textContent = '';
       if (pict) {
         pict.setAttribute('src', '');
         pict.classList.add('none');
       }
-      answerEn.classList.add('none');
-      answerRu.classList.add('none');
+      if (answerEn) answerEn.classList.add('none');
+      if (answerRu) answerRu.classList.add('none');
       // this.showTable();
     }, Constants.TIME_SHOW_ANSWER * 1000);
   }
 
-  changeAnswerOptionsValue(OptionsEn, OptionsRu) {
+  changeAnswerOptionsValue(OptionsEn: string[], OptionsRu: string[]) {
     this.answerCheckbox
       .querySelectorAll('.playground__answer-button-checkbox span[language="ru"]')
       .forEach((child, index) => {
         child.textContent = OptionsRu[index];
-        child.value = OptionsRu[index];
+        // child.value = OptionsRu[index];
       });
 
     this.answerCheckbox
       .querySelectorAll('.playground__answer-button-checkbox span[language="en"]')
       .forEach((child, index) => {
         child.textContent = OptionsEn[index];
-        child.value = OptionsEn[index];
+        // child.value = OptionsEn[index];
       });
 
     this.lang = Storage.getLanguage();
@@ -469,18 +556,10 @@ export class Playground {
   }
 
   createRound() {
-    this.round = document.createElement('div');
-    this.round.classList = 'playground__round none';
-
-    const roundTitle = document.createElement('h2');
-    roundTitle.classList.add('playground__round-title');
-
-    const roundInfo = document.createElement('span');
-    roundInfo.classList.add('playground__round-info');
-
-    this.round.append(roundTitle);
-    this.round.append(roundInfo);
-    this.playground.append(this.round);
+    this.round = document.createElement('h2');
+    this.round.textContent = `${this.lang === 'en' ? 'Round' : 'Раунд'} ${this.currentRound}`;
+    this.round.classList.add('playground__round', 'none');
+    if (this.playground) this.playground.append(this.round);
   }
 
   showRound() {
@@ -495,29 +574,25 @@ export class Playground {
     if (this.categoriesList) this.hideCategories();
 
     this.round.classList.remove('none');
-
-    const title = this.round.querySelector('.playground__round-title');
-    title.textContent = `${this.lang === 'en' ? 'Round' : 'Раунд'} ${this.currentRound}`;
-    const info = this.round.querySelector('.playground__round-info');
-    const translate = this.package.rounds[this.currentRound - 1].roundInfo;
-    info.textContent = `${this.lang === 'en' ? `${translate.subtopicEn}` : `${translate.subtopicRU}`}`;
+    this.round.textContent = `${this.lang === 'en' ? 'Round' : 'Раунд'} ${this.currentRound}`;
 
     setTimeout(() => {
       this.round.classList.add('none');
       this.showTable();
-    }, 2000);
+    }, 1000);
   }
 
   createWinner() {
     this.winner = document.createElement('div');
-    this.winner.classList = 'playground__winner none';
-    this.playground.append(this.winner);
+    this.winner.classList.add('playground__winner', 'none');
+    if (this.playground) this.playground.append(this.winner);
   }
 
-  showWinner(winner, time) {
+  // eslint-disable-next-line no-use-before-define
+  showWinner(winner: winner, time: time) {
     this.hideWinner();
     this.hideTable();
-    this.hideQuestion();
+    this.hideQuestion(false, 'player');
     this.hideScoreboard();
     this.hideCategories();
     this.trueAnswerField.classList.add('none');
@@ -559,16 +634,16 @@ export class Playground {
   }
 
   hideTable() {
-    this.table.classList.add('none');
+    if (this.table) this.table.classList.add('none');
   }
 
   showTable() {
     this.lang = Storage.getLanguage();
-    this.table.classList.remove('none');
+    if (this.table) this.table.classList.remove('none');
     Extra.translate(this.lang);
   }
 
   clear() {
-    this.playground.innerHTML = '';
+    if (this.playground) this.playground.innerHTML = '';
   }
 }
