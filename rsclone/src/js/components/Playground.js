@@ -112,7 +112,7 @@ export class Playground {
 
     if (!active) {
       this.makeCellActive(arr[0]);
-      active = arr[0];
+      [active] = arr;
       isFirstActive = true;
     }
 
@@ -416,8 +416,8 @@ export class Playground {
       answerEn.textContent = answer.trueAnswerEn;
       answerRu.textContent = answer.trueAnswerRu;
     } else if (answer.trueOptionsAnswerEn && answer.trueOptionsAnswerRu) {
-      answerEn.textContent = answer.trueOptionsAnswerEn[0];
-      answerRu.textContent = answer.trueOptionsAnswerRu[0];
+      [answerEn.textContent] = answer.trueOptionsAnswerEn;
+      [answerRu.textContent] = answer.trueOptionsAnswerRu;
     }
 
     if (this.lang === 'en') {

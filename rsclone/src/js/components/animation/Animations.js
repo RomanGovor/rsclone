@@ -7,7 +7,7 @@ export class Animations {
     const buttons = document.querySelectorAll('button');
 
     buttons.forEach((btn) => {
-      btn.addEventListener('click', function (e) {
+      btn.addEventListener('click', (e) => {
         const x = e.pageX;
         const y = e.pageY - 76;
 

@@ -1,4 +1,5 @@
 import { Extra, Storage } from '../core';
+import { GameParameters } from '../pages';
 
 export class SwitchLang {
   constructor(lang) {
@@ -27,8 +28,8 @@ export class SwitchLang {
     this.language = this.language === 'en' ? 'ru' : 'en';
     Storage.setLanguage(this.language);
 
+    GameParameters.changeSelectedOption(this.language);
     Extra.translate(this.language);
-
     return this.language;
   }
 }
