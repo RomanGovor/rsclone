@@ -4,7 +4,7 @@
     "ecmaVersion": 12
   },
   "rules": {
-    "no-unused-vars": "warn",
+    "no-unused-vars": "off",
     "class-methods-use-this": "off",
     "no-plusplus": "off",
     "no-new": "warn",
@@ -18,9 +18,9 @@
     "no-implied-eval": "off",
     "no-shadow": "off",
     "import/extensions": "warn",
-    "no-unused-expressions": "warn",
+    "no-unused-expressions": "off",
     "no-console": "off",
-    "prefer-destructuring": "warn"
+    "prefer-destructuring": "off"
   },
   "env": {
     "es6": true,

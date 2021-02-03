@@ -1,4 +1,3 @@
-/* eslint-disable prefer-destructuring */
 import { authorizationForm } from './authorization.template';
 import { Request } from '../../core/services/request';
 import {
@@ -76,7 +75,6 @@ export class Authorization {
   }
 
   formValidationName() {
-    // eslint-disable-next-line no-useless-escape
     if (this.nick.value.length > 1 && this.nick.value.length < 21) {
       this.nick.style.border = '1px solid green';
       this.nick.dataset.validation = 'true';

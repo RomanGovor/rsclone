@@ -2,7 +2,6 @@
 /* eslint-disable import/extensions */
 import { landType, time, winner } from './Types';
 
-// type landType = 'en' | 'ru';
 type userStatuses = 'player' | 'bot';
 
 type question = {

@@ -82,7 +82,6 @@ export class Timer {
   decrement() {
     const mindiv = document.querySelector('.clock__mins');
     const secdiv = document.querySelector('.clock__secs');
-    // const circle = document.querySelector('.progress-ring__circle');
 
     mindiv.textContent = Math.floor(this.seconds / 60);
     secdiv.textContent = this.seconds % 60 > 9 ? this.seconds % 60 : `0${this.seconds % 60}`;

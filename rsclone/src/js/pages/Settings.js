@@ -42,7 +42,6 @@ export class Settings {
     const wrap = document.querySelector('.wrap');
 
     musicCheckbox.addEventListener('change', () => {
-      // eslint-disable-next-line no-unused-expressions
       musicCheckbox.checked ? this.countinueMusic() : this.pauseMusic();
     });
 

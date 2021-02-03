@@ -6,7 +6,6 @@ const update = require('../midlware/update');
 const router = express.Router();
 
 router.post('/users', async (req, res) => {
-  // Create a new user
   try {
     console.log(`Body: ${req.body}`);
     const user = new User(req.body);
@@ -19,7 +18,6 @@ router.post('/users', async (req, res) => {
 });
 
 router.post('/users/login', async (req, res) => {
-  //Login a registered user
   try {
     const { email, password } = req.body;
     const user = await User.findByCredentials(email, password);
@@ -36,7 +34,6 @@ router.post('/users/login', async (req, res) => {
 });
 
 router.get('/users/me', auth, async (req, res) => {
-  // View logged in user profile
   res.send(req.user);
 });
 
@@ -45,7 +42,6 @@ router.put('/users/me', update, function (req, res) {
 });
 
 router.post('/users/me/logout', auth, async (req, res) => {
-  // Log user out of the application
   try {
     res.header('Access-Control-Allow-Origin', '*');
     req.user.tokens = req.user.tokens.filter((token) => {
@@ -59,7 +55,6 @@ router.post('/users/me/logout', auth, async (req, res) => {
 });
 
 router.post('/users/me/logoutall', auth, async (req, res) => {
-  // Log user out of all devices
   try {
     res.header('Access-Control-Allow-Origin', '*');
     req.user.tokens.splice(0, req.user.tokens.length);

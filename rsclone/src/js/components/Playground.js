@@ -225,7 +225,6 @@ export class Playground {
 
     if (this.table) {
       this.hideTable();
-      // this.hideButton();
     }
 
     this.categoriesList = document.createElement('ul');
@@ -445,7 +444,6 @@ export class Playground {
       }
       answerEn.classList.add('none');
       answerRu.classList.add('none');
-      // this.showTable();
     }, Constants.TIME_SHOW_ANSWER * 1000);
   }
 
