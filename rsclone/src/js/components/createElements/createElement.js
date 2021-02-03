@@ -1,9 +1,3 @@
-// @param {String} el
-// @param {String} className
-// @param {HtmlElement} child
-// @param {HtmlElement} parent
-// @param {...array} attrEl
-
 export default function createElement(el, className, child, parent, ...attrEl) {
   let element = null;
   try {

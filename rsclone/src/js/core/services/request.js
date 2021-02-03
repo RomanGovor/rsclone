@@ -5,7 +5,6 @@ import { removeUserAuthorizationData } from './userAuthorizationData';
 import { Storage } from './Storage';
 
 export class Request {
-  // Зарегистрироваться POST
   async signUp(data, message, finish) {
     const requestOptions = {
       method: 'POST',
@@ -32,7 +31,6 @@ export class Request {
       .catch((err) => console.log(err));
   }
 
-  // Войти POST
   async signIn(data, message, finish) {
     const requestOptions = {
       method: 'POST',
@@ -86,7 +84,6 @@ export class Request {
       .catch((err) => console.log(err));
   }
 
-  // Получить данные клиента GET
   async getClientData() {
     const requestOptions = {
       method: 'GET',
@@ -106,7 +103,6 @@ export class Request {
       .catch((err) => console.log(err));
   }
 
-  // Получить данные статистики PUT
   async putClientData(data) {
     const requestOptions = {
       method: 'PUT',

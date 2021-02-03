@@ -1,7 +1,7 @@
 {
   "name": "rsclone",
   "version": "1.0.0",
-  "description": "final project for rss",
+  "description": "final project for Rolling Scopes School",
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --open chrome",
@@ -9,7 +9,8 @@
     "lint": "eslint --fix --ext .js .",
     "test": "jest"
   },
-  "author": "Govor Roman and KO",
+  "author": "Govor Roman, Dubich Tonya, Saakyan Samvel",
+  "homepage": "https://github.com/RomanGovor/rsclone",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.12.10",
