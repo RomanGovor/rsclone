@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
 import {
@@ -303,7 +304,6 @@ export class Playground implements IPlayground {
       this.hideTable();
     }
 
-    // this.categoriesList = document.createElement('ul');
     this.categoriesList.classList.add('playground__categories-list');
     arr.forEach((el) => {
       const item = document.createElement('li');
@@ -335,14 +335,12 @@ export class Playground implements IPlayground {
     const inputs = document.querySelectorAll('.playground__answer-input');
     inputs.forEach((input) => {
       input.textContent = '';
-      // input.value = '';
     });
   }
 
   createScoreboard() {
     this.lang = Storage.getLanguage();
 
-    // this.scoreboard = document.createElement('div');
     this.scoreboard.classList.add('playground__scoreboard', 'none');
 
     this.question = document.createElement('p');
@@ -404,7 +402,6 @@ export class Playground implements IPlayground {
     }
   }
 
-  // eslint-disable-next-line no-use-before-define
   showQuestion(question: question) {
     this.lang = Storage.getLanguage();
 
@@ -460,7 +457,6 @@ export class Playground implements IPlayground {
     if (question.type === 'input') {
       this.answerInput.classList.remove('none');
       this.answerCheckbox.classList.add('none');
-      // this.answerInput.querySelector('.playground__answer-input').value = '';
       this.clearInput();
     } else if (question.type === 'checkbox') {
       if (question.answerOptionsEn && question.answerOptionsRu) {
@@ -493,7 +489,6 @@ export class Playground implements IPlayground {
     this.hideCategories();
     this.trueAnswerField.classList.remove('none');
 
-    // type = 'text', answer = 'Ответ', lang = this.lang
     const answerEn = this.trueAnswerField.querySelector('.playground__answer-text[language="en"]');
     const answerRu = this.trueAnswerField.querySelector('.playground__answer-text[language="ru"]');
 
@@ -501,8 +496,8 @@ export class Playground implements IPlayground {
       if (answerEn) answerEn.textContent = answer.trueAnswerEn;
       if (answerRu) answerRu.textContent = answer.trueAnswerRu;
     } else if (answer && answer.trueOptionsAnswerEn && answer.trueOptionsAnswerRu) {
-      if (answerEn) answerEn.textContent = answer.trueOptionsAnswerEn[0];
-      if (answerRu) answerRu.textContent = answer.trueOptionsAnswerRu[0];
+      if (answerEn) [answerEn.textContent] = answer.trueOptionsAnswerEn;
+      if (answerRu) [answerRu.textContent] = answer.trueOptionsAnswerRu;
     }
 
     if (this.lang === 'en') {
@@ -532,7 +527,6 @@ export class Playground implements IPlayground {
       }
       if (answerEn) answerEn.classList.add('none');
       if (answerRu) answerRu.classList.add('none');
-      // this.showTable();
     }, Constants.TIME_SHOW_ANSWER * 1000);
   }
 
@@ -541,14 +535,12 @@ export class Playground implements IPlayground {
       .querySelectorAll('.playground__answer-button-checkbox span[language="ru"]')
       .forEach((child, index) => {
         child.textContent = OptionsRu[index];
-        // child.value = OptionsRu[index];
       });
 
     this.answerCheckbox
       .querySelectorAll('.playground__answer-button-checkbox span[language="en"]')
       .forEach((child, index) => {
         child.textContent = OptionsEn[index];
-        // child.value = OptionsEn[index];
       });
 
     this.lang = Storage.getLanguage();
@@ -588,7 +580,6 @@ export class Playground implements IPlayground {
     if (this.playground) this.playground.append(this.winner);
   }
 
-  // eslint-disable-next-line no-use-before-define
   showWinner(winner: winner, time: time) {
     this.hideWinner();
     this.hideTable();
