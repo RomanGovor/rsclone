@@ -1,0 +1,1121 @@
+{
+  "mainInfo": {
+    "subjectRu": "Общепозновательный",
+    "subjectEn": "General cognitive",
+    "complexity": 5
+  },
+  "rounds": [
+    {
+      "roundInfo": {
+        "subtopicRU": "Кино 90-х",
+        "subtopicEn": "Cinema 90s"
+      },
+      "categories": [
+        {
+          "categoryInfo": {
+            "categoryNameEn": "Action Movies",
+            "categoryNameRu": "Боевики"
+          },
+          "questions": [
+            {
+              "type": "checkbox",
+              "subtype": "picture",
+              "points": 100,
+              "questionRu": "Выберите правильный фильм по картинке",
+              "questionEn": "Choose the right movie from the picture",
+              "questionPicture": "https://avatars.mds.yandex.net/get-zen_doc/1118263/pub_5b0032a7256d5c9a9f04fe5d_5b0032c4c71a92a4925466ec/scale_1200",
+              "answerOptionsEn": [
+                "Die Hard",
+                "Terminator 2",
+                "Armour of God 2",
+                "Mission: Impossible"
+              ],
+              "answerOptionsRu": [
+                "Крепкий орешек",
+                "Терминатор 2",
+                "Доспехи Бога 2",
+                "Миссия невыполнима"
+              ],
+              "trueAnswerEn": "Terminator 2",
+              "trueAnswerRu": "Терминатор 2"
+            },
+            {
+              "type": "checkbox",
+              "subtype": "text",
+              "points": 200,
+              "questionRu": "Выберите правильный вариант по описанию",
+              "questionEn": "Choose the correct option for the description",
+              "descriptionRu": "Азиатский Ястреб возвращается! На этот раз ему предстоит новая работа, из-за которой наш герой опять приезжает в Мадрид. Некий загадочный миллионер предлагает Ястребу заняться поисками нацистских сокровищ, которые спрятаны в глубине африканской пустыни. Он передает ключ к сокровищнице, соглашается финансировать экспедицию и отправляет с Ястребом попутчицу - специалиста по Африке Аду. Во время своего пребывания в Мадриде Ястреб знакомится с немецкой девушкой Эльзой, которая разыскивает своего деда, пропавшего во время войны в Африке. После ряда приключений Эльза тоже присоединяется к экспедиции.",
+              "descriptionEn": "The Asian Hawk is back! This time he has a new job, because of which our hero comes to Madrid again. A certain mysterious millionaire invites Hawk to start looking for Nazi treasures hidden in the depths of the African desert. He hands over the key to the treasury, agrees to finance the expedition and sends a fellow traveler with the Hawk, the African specialist Hell. During his stay in Madrid, Hawk meets a German girl Elsa, who is looking for her grandfather, who disappeared during the war in Africa. After a series of adventures, Elsa also joins the expedition.",
+              "answerPicture": "https://www.zastavki.com/pictures/originals/2014/Movies_Armour_of_God_2_055480_.jpg",
+              "answerOptionsEn": [
+                "The Fugitive",
+                "Enemy of the State",
+                "Armour of God 2",
+                "Leon"
+              ],
+              "answerOptionsRu": [
+                "Беглец",
+                "Враг государства",
+                "Доспехи Бога 2",
+                "Леон"
+              ],
+              "trueAnswerEn": "Armour of God 2",
+              "trueAnswerRu": "Доспехи Бога 2"
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 300,
+              "questionRu": "Введите название фильма по картинке",
+              "questionEn": "Enter the name of the movie from the picture",
+              "questionPicture": "https://007.biglive.ru/wp-content/uploads/2018/06/mission-im_6.jpg",
+              "trueOptionsAnswerEn": [
+                "Mission: Impossible",
+                "Mission impossible",
+                "Impossible mission"
+              ],
+              "trueOptionsAnswerRu": [
+                "Миссия невыполнима",
+                "Миссия: Невыполнима",
+                "Невыполнима Миссия"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 400,
+              "questionRu": "Введите название фильма по картинке",
+              "questionEn": "Enter the name of the movie from the picture",
+              "descriptionRu": "Юному киноману Дэнни Мэдигану достается волшебный билет, который переносит его на другую сторону экрана. Мальчик оказывается рядом со своим любимым персонажем, знаменитым полицейским Джеком Слэйтером, и становится полноправным участником всех событий напряженного боевика. Впереди напарников ждет самое страшное испытание: Джек и Дэнни попадают в реальный мир, где непобедимый герой теряет свою фантастическую силу и теперь может погибнуть как любой смертный. А для настоящих преступников непревзойденный супермен - всего лишь очередная мишень.",
+              "descriptionEn": "Young moviegoer Danny Madigan gets a magical ticket that takes him to the other side of the screen. The boy finds himself next to his favorite character, the famous police officer Jack Slater, and becomes a full-fledged participant in all the events of this intense action movie. Ahead of the partners, the most terrible test awaits: Jack and Danny find themselves in the real world, where the invincible hero loses his fantastic strength and can now die like any mortal. And for real criminals, the consummate Superman is just another target.",
+              "answerPicture": "https://www.slashfilm.com/wp/wp-content/images/ZZ5AAAF5A4.jpg",
+              "trueOptionsAnswerEn": [
+                "Last Action Hero",
+                "Action Hero",
+                "Movie Hero Last"
+              ],
+              "trueOptionsAnswerRu": [
+                "Последний киногерой",
+                "Киногерой",
+                "Киногерой последний"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "sound",
+              "points": 500,
+              "questionRu": "Введите название фильма по отрывку звука",
+              "questionEn": "Enter the title of the movie from the audio clip",
+              "sound": "https://hotmo.org/get/music/20190927/Terminator_-_Astalavista_baby_66753518.mp3",
+              "answerPicture": "https://im0-tub-ru.yandex.net/i?id=8cfa11d699898c63d3d1fbc18a08cf6b&n=13",
+              "answerOptionsEn": [
+                "Die Hard",
+                "Terminator 2",
+                "Armour of God 2",
+                "Mission: Impossible"
+              ],
+              "answerOptionsRu": [
+                "Крепкий орешек",
+                "Терминатор 2",
+                "Доспехи Бога 2",
+                "Миссия невыполнима"
+              ],
+              "trueOptionsAnswerEn": [
+                "Terminator",
+                "Terminator 2"
+              ],
+              "trueOptionsAnswerRu": [
+                "Терминатор 2",
+                "Терминатор"
+              ]
+            }
+          ]
+        },
+        {
+          "categoryInfo": {
+            "categoryNameEn": "Actors",
+            "categoryNameRu": "Актеры"
+          },
+          "questions": [
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 100,
+              "questionRu": "Введите имя актера",
+              "questionEn": "Enter the name of the actor",
+              "questionPicture": "https://zhenray.ru/wp-content/uploads/2020/11/28888.jpg",
+              "trueOptionsAnswerEn": [
+                "Jim Carrey",
+                "Jim Carey",
+                "Carey",
+                "Carrey Jim",
+                "James Eugene Carrey"
+              ],
+              "trueOptionsAnswerRu": [
+                "Джим Керри",
+                "Керри",
+                "Джим Кери",
+                "Кери",
+                "Керри Джим",
+                "Джеймс Юджин Керри"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 200,
+              "questionRu": "Введите имя актера",
+              "questionEn": "Enter the name of the actor",
+              "questionPicture": "https://persons-info.com/userfiles/image/persons/0-10000/8000-9000/8212/GIR_Richard11.jpg",
+              "trueOptionsAnswerEn": [
+                "Richard Gere",
+                "Gere",
+                "Gere Richard"
+              ],
+              "trueOptionsAnswerRu": [
+                "Ричард Гир",
+                "Гир",
+                "Гир Ричард"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 300,
+              "questionRu": "Введите имя актера",
+              "questionEn": "Enter the name of the actor",
+              "questionPicture": "https://i.pinimg.com/originals/f5/5d/b2/f55db2a9149605f08c740cece947a143.jpg",
+              "trueOptionsAnswerEn": [
+                "Jean Reno",
+                "Reno",
+                "Reno Jean"
+              ],
+              "trueOptionsAnswerRu": [
+                "Жан Рено",
+                "Рено",
+                "Рено Жан"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 400,
+              "questionRu": "Введите имя актера",
+              "questionEn": "Enter the name of the actor",
+              "questionPicture": "https://www.kino-teatr.ru/news/8428/85249.jpg",
+              "trueOptionsAnswerEn": [
+                "Julia Roberts",
+                "Roberts",
+                "Roberts Julia"
+              ],
+              "trueOptionsAnswerRu": [
+                "Джулия Робертс",
+                "Робертс",
+                "Робертс Джулия"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 500,
+              "questionRu": "Введите имя актера",
+              "questionEn": "Enter the name of the actor",
+              "questionPicture": "https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1Rk-1sXd5S5r0v2PI4CbwP6y6aKTM5SRkZCeTgDn6uOyic",
+              "trueOptionsAnswerEn": [
+                "Uma Thurman",
+                "Thurman",
+                "Thurman Uma"
+              ],
+              "trueOptionsAnswerRu": [
+                "Ума Турман",
+                "Турман",
+                "Турман Ума"
+              ]
+            }
+          ]
+        },
+        {
+          "categoryInfo": {
+            "categoryNameEn": "Producers",
+            "categoryNameRu": "Режиссеры"
+          },
+          "questions": [
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 100,
+              "questionRu": "Введите правильный ответ",
+              "questionEn": "Enter the correct answer",
+              "descriptionRu": "Режисер фильма Титаник",
+              "descriptionEn": "Titanic film producer",
+              "answerPicture": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/James_Cameron_by_Gage_Skidmore.jpg/800px-James_Cameron_by_Gage_Skidmore.jpg",
+              "trueOptionsAnswerEn": [
+                "James Cameron",
+                "James",
+                "Cameron",
+                "Cameron James",
+                "James Francis Cameron"
+              ],
+              "trueOptionsAnswerRu": [
+                "Джеймс Кэмерон",
+                "Джеймс",
+                "Кэмерон",
+                "Кэмерон Джеймс",
+                "Джеймс Френсис Кэмерон"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 200,
+              "questionRu": "Введите правильный ответ",
+              "questionEn": "Enter the correct answer",
+              "descriptionRu": "Режисер бесцеллеров Зеленая миля и Побег из Шоушенка",
+              "descriptionEn": "Filmless producer Green Mile and The Shawshank Redemption",
+              "trueOptionsAnswerEn": [
+                "Frank Darabont",
+                "Darabont",
+                "Darabont Frank"
+              ],
+              "trueOptionsAnswerRu": [
+                "Фрэнк Дарабонт",
+                "Дарабонт",
+                "Дарабонт Фрэнк"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 300,
+              "questionRu": "Введите имя режиссера",
+              "questionEn": "Enter the producer's name",
+              "questionPicture": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Quentin_Tarantino_by_Gage_Skidmore.jpg",
+              "trueOptionsAnswerEn": [
+                "Quentin Tarantino",
+                "Tarantino Quentin",
+                "Tarantino",
+                "Quentin Jerome Tarantino"
+              ],
+              "trueOptionsAnswerRu": [
+                "Квентин Тарантино",
+                "Тарантино Квентин",
+                "Тарантино",
+                "Квентин Джером Тарантино"
+              ]
+            },
+            {
+              "type": "checkbox",
+              "subtype": "text",
+              "points": 400,
+              "questionRu": "Выберите правильный вариант по описанию",
+              "questionEn": "Choose the correct option for the description",
+              "descriptionRu": "Британский кинорежиссёр, сценарист, продюсер, чаще всего работающий в жанре криминальной комедии. Был женат на американской певице Мадонне. Имеет чёрные пояса по карате и дзюдо. Является болельщиком футбольного клуба «Челси»",
+              "descriptionEn": "British film director, screenwriter, producer, most often working in the crime comedy genre. He was married to the American singer Madonna. Has black belts in karate and judo. Fan of Chelsea Football Club.",
+              "answerPicture": "https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/3616db69-c960-417b-a0eb-3428a50dc20a/orig",
+              "answerOptionsEn": [
+                "John Madden",
+                "Guy Ritchie",
+                "Мэттью де Вер Драммонд",
+                "Ридли Скотт"
+              ],
+              "answerOptionsRu": [
+                "Джон Мэдден",
+                "Гай Ричи",
+                " Matthew de Vere Drummon",
+                "Ridley Scott"
+              ],
+              "trueAnswerEn": "Guy Ritchie",
+              "trueAnswerRu": "Гай Ричи"
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 500,
+              "questionRu": "Введите правильный вариант по описанию",
+              "questionEn": "Enter the correct option for the description",
+              "descriptionRu": "Фильм этого режиссера, вышедший в 1995 году собрал $677 млн по всему миру и стал культовой картиной, получив шесть премий «Оскар» — в категориях «Лучшая картина», «Лучший актёр в ведущей роли», «Лучший режиссёр», «Лучшие визуальные эффекты», «Лучший адаптированный сценарий» и «Лучший монтаж».",
+              "descriptionEn": "The film by this director, released in 1995, grossed $ 677 million worldwide and became a cult film, receiving six Oscars - in the categories Best Picture, Best Actor in a Leading Role, Best Director, Best Visual Effects ”,“ Best Adapted Screenplay ”and“ Best Editing ”.",
+              "answerPicture": "https://avatars.mds.yandex.net/get-kinopoisk-image/1777765/bb25d97c-1762-4e4d-bb47-99422bbb22da/orig",
+              "trueOptionsAnswerEn": [
+                "Robert Zemeckis",
+                "Zemeckis Robert",
+                "Zemeckis"
+              ],
+              "trueOptionsAnswerRu": [
+                "Роберт Земекис",
+                "Земекис Роберт",
+                "Земекис"
+              ]
+            }
+          ]
+        },
+        {
+          "categoryInfo": {
+            "categoryNameEn": "Animated cartoon",
+            "categoryNameRu": "Мультфильмы"
+          },
+          "questions": [
+            {
+              "type": "checkbox",
+              "subtype": "picture",
+              "points": 100,
+              "questionRu": "Выберите правильный мультфильм по картинке",
+              "questionEn": "Choose the right cartoon from the picture",
+              "questionPicture": "https://regnum.ru/uploads/pictures/news/2017/11/22/regnum_picture_1511370887532540_normal.jpg",
+              "answerOptionsEn": [
+                "Dunno on the Moon",
+                "Hercules",
+                "Tarzan",
+                "Futurama"
+              ],
+              "answerOptionsRu": [
+                "Незнайка на луне",
+                "Геркулес",
+                "Тарзан",
+                "Футурама"
+              ],
+              "trueAnswerEn": "Dunno on the Moon",
+              "trueAnswerRu": "Незнайка на луне"
+            },
+            {
+              "type": "checkbox",
+              "subtype": "text",
+              "points": 200,
+              "questionRu": "Выберите правильный вариант по описанию",
+              "questionEn": "Choose the correct option for the description",
+              "descriptionRu": "Мультипликационный шедевр, получивший два «Оскара» и самые большие сборы в истории американской анимации. Закалённый испытаниями, главный герой картины в нелёгкой борьбе отвоёвывает своё законное место в «Круге жизни», осознав, что значит быть настоящим Королём.",
+              "descriptionEn": "A cartoon masterpiece that won two Oscars and the largest box office in American animation history. Hardened by trials, the main character of the picture in a difficult struggle wins his rightful place in the 'Circle of Life', realizing what it means to be a real King.",
+              "answerPicture": "https://saltmag.ru/media/articles/covers/2019/1439/LionKing_PreviewH.jpg",
+              "answerOptionsEn": [
+                "The Lion King",
+                "The Iron Giant",
+                "Teenage Mutant Ninja Turtles",
+                "Mulan"
+              ],
+              "answerOptionsRu": [
+                "Король лев",
+                "Стальной гигант",
+                "Черепашки ниндзя",
+                "Мулан"
+              ],
+              "trueAnswerEn": "The Lion King",
+              "trueAnswerRu": "Король лев"
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 300,
+              "questionRu": "Введите название мультфильма по картинке",
+              "questionEn": "Enter the name of the cartoon from the picture",
+              "questionPicture": "https://upload.wikimedia.org/wikipedia/ru/c/c1/South_Park_S22_E09.jpg",
+              "trueOptionsAnswerEn": [
+                "South Park",
+                "Park South"
+              ],
+              "trueOptionsAnswerRu": [
+                "Южный Парк",
+                "Парк Южный"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 400,
+              "questionRu": "Введите название мультфильма по описанию",
+              "questionEn": "Enter the name of the cartoon according to the description",
+              "descriptionRu": "Главные герои мультфильма — игрушки, обитающие в комнате их владельца, мальчика по имени Энди Дэвис. Все игрушки живые, хотя они тщательно скрывают это от своего хозяина и вообще от людей. Ежегодно ко дню рождения Энди дарят новые игрушки, так что старым в этот день приходится поволноваться: ведь с появлением новой игрушки они могут быть забыты и отвергнуты — тогда их ждёт либо гаражная распродажа, либо свалка.",
+              "descriptionEn": "Young moviegoer Danny Madigan gets a magical ticket that takes him to the other side of the screen. The boy finds himself next to his favorite character, the famous police officer Jack Slater, and becomes a full-fledged participant in all the events of this intense action movie. Ahead of the partners, the most terrible test awaits: Jack and Danny find themselves in the real world, where the invincible hero loses his fantastic strength and can now die like any mortal. And for real criminals, the consummate Superman is just another target.",
+              "answerPicture": "https://upload.wikimedia.org/wikipedia/ru/a/a6/Toy_Story_1995_Poster.jpg",
+              "trueOptionsAnswerEn": [
+                "Toy Story",
+                "Story of toy"
+              ],
+              "trueOptionsAnswerRu": [
+                "История игрушек",
+                "История про игрушки"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "sound",
+              "points": 500,
+              "questionRu": "Введите название мультфильма по отрывку звука",
+              "questionEn": "Enter the title of the cartoon from the audio clip",
+              "sound": "https://d4.hotplayer.ru/download/12838e94407bce5d91078194380757cd/68155267_349055467/779ab881a451-23c9f71b9739-114a8b2d7e9f/vk.com%2Fprazdniksnab%20-%20%D0%A2%D0%B0%D1%80%D0%B7%D0%B0%D0%BD%20-%20%D0%BA%D1%80%D0%B8%D0%BA.mp3",
+              "answerPicture": "https://i.pinimg.com/originals/36/aa/a0/36aaa061eb5f58bd622f784fdea20546.jpg",
+              "trueOptionsAnswerEn": [
+                "Tarzan"
+              ],
+              "trueOptionsAnswerRu": [
+                "Тарзан"
+              ]
+            }
+          ]
+        },
+        {
+          "categoryInfo": {
+            "categoryNameEn": "Main characters",
+            "categoryNameRu": "Сюжет"
+          },
+          "questions": [
+            {
+              "type": "checkbox",
+              "subtype": "text",
+              "points": 100,
+              "questionRu": "Введите правильный вариант по описанию",
+              "questionEn": "Choose the correct option for the description",
+              "descriptionRu": "От лица главного героя, слабоумного безобидного человека с благородным и открытым сердцем, рассказывается история его необыкновенной жизни. Фантастическим образом превращается он в известного футболиста, героя войны, преуспевающего бизнесмена. Он становится миллиардером, но остается таким же бесхитростным, глупым и добрым. Его ждет постоянный успех во всем, а он любит девочку, с которой дружил в детстве, но взаимность приходит слишком поздно.",
+              "descriptionEn": "The story of his extraordinary life is told on behalf of the protagonist, a feeble-minded harmless person with a noble and open heart. In a fantastic way, he turns into a famous football player, a war hero, a successful businessman. He becomes a billionaire, but remains as ingenuous, stupid and kind. Constant success awaits him in everything, and he loves a girl with whom he was friends in childhood, but reciprocity comes too late.",
+              "answerOptionsEn": [
+                "Die Hard",
+                "Jurassic Park",
+                "Forrest Gump",
+                "Mission: Impossible"
+              ],
+              "answerOptionsRu": [
+                "Крепкий орешек",
+                "Парк Юрского периода",
+                "Форрест Гамп",
+                "Миссия невыполнима"
+              ],
+              "trueAnswerEn": "Forrest Gump",
+              "trueAnswerRu": "Форрест Гамп"
+            },
+            {
+              "type": "checkbox",
+              "subtype": "text",
+              "points": 200,
+              "questionRu": "Выберите правильный вариант по описанию",
+              "questionEn": "Choose the correct option for the description",
+              "descriptionRu": "Случайно обнаружив настольную игру со странным названием Алан Пэрриш, не зная о ее сверхъестественных свойствах, на глазах изумленной подружки переносится в джунгли. Но чудеса на этом не заканчиваются...",
+              "descriptionEn": "Having accidentally discovered a board game with a strange name, Alan Parrish, not knowing about its supernatural properties, in front of an amazed girlfriend, he is transported into the jungle. But the miracles don't end there ...",
+              "answerPicture": "https://www.heyuguys.com/images/2020/12/Jumanji-header.jpg",
+              "answerOptionsEn": [
+                "RoboCop",
+                "Jumanji",
+                "Basic Instinct",
+                "Knockin' on Heaven's Door"
+              ],
+              "answerOptionsRu": [
+                "Робокоп",
+                "Джуманджи",
+                "Основной инстинкт",
+                "Достучаться до небес"
+              ],
+              "trueAnswerEn": "Jumanji",
+              "trueAnswerRu": "Джуманджи"
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 300,
+              "questionRu": "Введите правильный вариант по описанию",
+              "questionEn": "Enter the correct option for the description",
+              "descriptionRu": "Обвиненный в страшном преступлении, Джон Коффи оказывается в блоке смертников тюрьмы «Холодная гора». Вновь прибывший обладал поразительным ростом и был пугающе спокоен, что, впрочем, никак не влияло на отношение к нему начальника блока Пола Эджкомба, привыкшего исполнять приговор.",
+              "descriptionEn": "Charged with a gruesome crime, John Coffey ends up on death row at Cold Mountain Prison. The newcomer was strikingly tall and frighteningly calm, which, however, did not in any way affect the attitude of the head of the block, Paul Edgecomb, who was used to carrying out the sentence.",
+              "answerPicture": "https://im0-tub-ru.yandex.net/i?id=62020c3cc31a944540f6fdddc5ca6d2b&n=13",
+              "trueOptionsAnswerEn": [
+                "The Green Mile",
+                "Green Mile",
+                "Mile Green"
+              ],
+              "trueOptionsAnswerRu": [
+                "Зеленая миля",
+                "Миля зеленая"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 400,
+              "questionRu": "Введите правильный вариант по описанию",
+              "questionEn": "Enter the correct option for the description",
+              "descriptionRu": "Ученица старшей школы поздно вечером находится дома одна и ждёт, когда к ней придёт её парень. Она получает кокетливый телефонный звонок от незнакомца, который спрашивает её «Каков твой любимый фильм ужасов?» Ситуация быстро выходит из-под контроля, поскольку незнакомец начинает проявлять на словах нездоровый садизм в отношении нее и угрожает её жизни.",
+              "descriptionEn": "A high school student is at home alone late at night, waiting for her boyfriend to come to her. She receives a flirtatious phone call from a stranger who asks her 'What's your favorite horror movie?' The situation quickly spirals out of control, as the stranger begins to verbally manifest unhealthy sadism towards her and threatens her life.",
+              "answerPicture": "https://im0-tub-ru.yandex.net/i?id=5f93974845b117403ae6df83f4869ce6&n=13",
+              "trueOptionsAnswerEn": [
+                "Scream"
+              ],
+              "trueOptionsAnswerRu": [
+                "Крик"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 500,
+              "questionRu": "Введите правильный вариант по описанию",
+              "questionEn": "Enter the correct option for the description",
+              "descriptionRu": "Банда, действующая в Лос-Анджелесе и пригородах, основана не только на принципах строгой дисциплины и тщательной подготовки преступлений, но и на старых товарищеских отношениях её участников. Однако хорошо спланированный налёт на инкассаторскую машину едва не сорван из-за недостатка выдержки привлечённого со стороны рецидивиста. Без необходимости он убивает одного охранника, что вынуждает преступников хладнокровно добить остальных.",
+              "descriptionEn": "The gang, operating in Los Angeles and the suburbs, is based not only on the principles of strict discipline and careful preparation of crimes, but also on the old companionship of its members. However, a well-planned raid on a cash-in-transit vehicle was almost foiled due to a lack of self-control of a repeat offender. He unnecessarily kills one guard, forcing the criminals to finish off the rest in cold blood.",
+              "trueOptionsAnswerEn": [
+                "Heat"
+              ],
+              "trueOptionsAnswerRu": [
+                "Схватка"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "roundInfo": {
+        "subtopicRU": "Спорт",
+        "subtopicEn": "Sport"
+      },
+      "categories": [
+        {
+          "categoryInfo": {
+            "categoryNameEn": "Football Rules",
+            "categoryNameRu": "Футбольные правила"
+          },
+          "questions": [
+            {
+              "type": "checkbox",
+              "subtype": "text",
+              "points": 100,
+              "questionRu": "Выберите правильный вариант по описанию",
+              "questionEn": "Choose the correct option for the description",
+              "descriptionRu": "Как называется гол, забитый игроком в ворота своей команды?",
+              "descriptionEn": "What is the name of a goal scored by a player against his team?",
+              "answerOptionsEn": [
+                "goal",
+                "random goal",
+                "own goal",
+                "stupid goal"
+              ],
+              "answerOptionsRu": [
+                "гол",
+                "случайный гол",
+                "автогол",
+                "глупый гол"
+              ],
+              "trueAnswerEn": "own goal",
+              "trueAnswerRu": "автогол"
+            },
+            {
+              "type": "checkbox",
+              "subtype": "text",
+              "points": 200,
+              "questionRu": "Выберите правильный вариант по описанию",
+              "questionEn": "Choose the correct option for the description",
+              "descriptionRu": "Сколько игроков команда выпускает на поле?",
+              "descriptionEn": "How many players does the team play on the field?",
+              "answerOptionsEn": [
+                "11",
+                "12",
+                "22",
+                "10"
+              ],
+              "answerOptionsRu": [
+                "11",
+                "12",
+                "22",
+                "10"
+              ],
+              "trueAnswerEn": "11",
+              "trueAnswerRu": "11"
+            },
+            {
+              "type": "checkbox",
+              "subtype": "picture",
+              "points": 300,
+              "questionRu": "Выберите правильную схему по картинке",
+              "questionEn": "Choose the correct scheme from the picture",
+              "questionPicture": "https://i.trbna.com/preset/wysiwyg/5/94/3e732e23911eabe8590327a4afe94.jpeg",
+              "answerOptionsEn": [
+                "4-4-1-1",
+                "4-4-2",
+                "5-4-1",
+                "5-3-2"
+              ],
+              "answerOptionsRu": [
+                "4-4-1-1",
+                "4-4-2",
+                "5-4-1",
+                "5-3-2"
+              ],
+              "trueAnswerEn": "4-4-2",
+              "trueAnswerRu": "4-4-2"
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 400,
+              "questionRu": "Введите правильный ответ",
+              "questionEn": "Enter the correct answer",
+              "descriptionRu": "Какое футбольное амплуа у игрока команды, которому разрешено играть руками?",
+              "descriptionEn": "What is the football role of a team player who is allowed to play with his hands?",
+              "answerPicture": "https://im0-tub-ru.yandex.net/i?id=052676874fb626a71df08f11080a821b&n=13",
+              "trueOptionsAnswerEn": [
+                "Goalkeeper",
+                "Keeper",
+                "Goaltender",
+                "Goalie"
+              ],
+              "trueOptionsAnswerRu": [
+                "Вратарь",
+                "Голкипер",
+                "Кипер"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 500,
+              "questionRu": "Введите правильный ответ",
+              "questionEn": "Enter the correct answer",
+              "descriptionRu": "Сколько очков получает команда в групповых этапах чемпионата мира в случае победы?",
+              "descriptionEn": "How many points does a team receive in the group stages of the World Cup if they win?",
+              "trueOptionsAnswerEn": [
+                "3",
+                "three",
+                "ternary",
+                "trio"
+              ],
+              "trueOptionsAnswerRu": [
+                "3",
+                "Три",
+                "тройка",
+                "Трешка"
+              ]
+            }
+          ]
+        },
+        {
+          "categoryInfo": {
+            "categoryNameEn": "Kind of sport",
+            "categoryNameRu": "Вид спорта"
+          },
+          "questions": [
+            {
+              "type": "checkbox",
+              "subtype": "picture",
+              "points": 100,
+              "questionRu": "Выберите правильный вариант",
+              "questionEn": "Choose the right option",
+              "questionPicture": "https://old.rewizor.ru/files/104301jxhy.jpg",
+              "answerOptionsEn": [
+                "American Football",
+                "Swimming",
+                "Football",
+                "Basketball"
+              ],
+              "answerOptionsRu": [
+                "Американский футбол",
+                "Плавание",
+                "Футбол",
+                "Баскетбол"
+              ],
+              "trueAnswerEn": "American Football",
+              "trueAnswerRu": "Американский футбол"
+            },
+            {
+              "type": "checkbox",
+              "subtype": "text",
+              "points": 200,
+              "questionRu": "Выберите правильный вариант по описанию",
+              "questionEn": "Choose the correct option for the description",
+              "descriptionRu": "Восхождение на труднодоступные горные вершины.",
+              "descriptionEn": "Climbing hard-to-reach mountain peaks.",
+              "answerOptionsEn": [
+                "Mountaineering",
+                "Sports Ridge",
+                "Boxing",
+                "Figure Skating"
+              ],
+              "answerOptionsRu": [
+                "Альпинизм",
+                "Спортивная гребня",
+                "Бокс",
+                "Фигурное катание"
+              ],
+              "answerPicture": "https://im0-tub-ru.yandex.net/i?id=b4ec7a6ab25be8928556803b46251790&n=13",
+              "trueAnswerEn": "Mountaineering",
+              "trueAnswerRu": "Альпинизм"
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 300,
+              "questionRu": "Введите вид спорта",
+              "questionEn": "Enter the sport",
+              "questionPicture": "https://im0-tub-ru.yandex.net/i?id=4028906b9f63d26955dea7d1c7d34c08&n=13&exp=1",
+              "trueOptionsAnswerEn": [
+                "Сurling"
+              ],
+              "trueOptionsAnswerRu": [
+                "Кёрлинг",
+                "Керлинг"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 400,
+              "questionRu": "Введите вид спорта",
+              "questionEn": "Enter the sport",
+              "descriptionRu": "Зимний олимпийский вид спорта, сочетающий лыжные гонки со стрельбой из винтовки.",
+              "descriptionEn": "An Olympic winter sport that combines cross-country skiing with rifle shooting.",
+              "answerPicture": "https://im0-tub-ru.yandex.net/i?id=24a139625bc84d8ec2ddd97f397286d0&n=13",
+              "trueOptionsAnswerEn": [
+                "Biathlon"
+              ],
+              "trueOptionsAnswerRu": [
+                "Биатлон"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 500,
+              "questionRu": "Введите вид спорта",
+              "questionEn": "Enter the sport",
+              "descriptionRu": "Олимпийская дисциплина гребли на байдарках и каноэ, преодоление на скорость размеченной воротами дистанции: участка порожистой реки или искусственной трассы (скорость потока воды должна быть не менее 2 м/с).",
+              "descriptionEn": "Olympic discipline of rowing and canoeing, overcoming the distance marked by the gate at speed: a section of a rapids river or an artificial track (the water flow speed must be at least 2 m/s).",
+              "answerPicture": "https://im0-tub-ru.yandex.net/i?id=9f1742c4c0a762e21f8ae68d1108b0ef&n=13",
+              "trueOptionsAnswerEn": [
+                "Canoe slalom",
+                "Slalom canoe"
+              ],
+              "trueOptionsAnswerRu": [
+                "Гребной слалом",
+                "Слалом гребной"
+              ]
+            }
+          ]
+        },
+        {
+          "categoryInfo": {
+            "categoryNameEn": "Sports stars",
+            "categoryNameRu": "Знаменитости в спорте"
+          },
+          "questions": [
+            {
+              "type": "checkbox",
+              "subtype": "picture",
+              "points": 100,
+              "questionRu": "Выберите правильный вариант",
+              "questionEn": "Choose the right option",
+              "questionPicture": "https://im0-tub-ru.yandex.net/i?id=d32a6e5399985b2badfc2c058e35d253&n=13&exp=1",
+              "answerOptionsEn": [
+                "Dzyuba",
+                "Messi",
+                "Pele",
+                "Neymar"
+              ],
+              "answerOptionsRu": [
+                "Дзюба",
+                "Месси",
+                "Пеле",
+                "Неймар"
+              ],
+              "trueAnswerEn": "Messi",
+              "trueAnswerRu": "Месси"
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 200,
+              "questionRu": "Введите имя знаменитости",
+              "questionEn": "Enter the name of the celebrity",
+              "questionPicture": "https://im0-tub-ru.yandex.net/i?id=b89230d0d8892c0db017439055d9f56d&n=13&exp=1",
+              "trueOptionsAnswerEn": [
+                "Cristiano Ronaldo",
+                "Ronaldo Cristiano",
+                "Cristiano",
+                "Ronaldo",
+                "Cristiano Ronaldo dos Santos Aveiro"
+              ],
+              "trueOptionsAnswerRu": [
+                "Криштиану Роналду",
+                "Роналду Криштиану",
+                "Роналду",
+                "Криштиану",
+                "Криштиану Роналду душ Сантуш Авейру"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 300,
+              "questionRu": "Введите имя знаменитости",
+              "questionEn": "Enter the name of the celebrity",
+              "questionPicture": "https://im0-tub-ru.yandex.net/i?id=29c842dd5faacdaf3deb2e464d0e9324&n=13&exp=1",
+              "trueOptionsAnswerEn": [
+                "Khabib Nurmagomedov",
+                "Nurmagomedov Khabib",
+                "Nurmagomedov",
+                "Khabib",
+                "Khabib Abdulmanapovich Nurmagomedov"
+              ],
+              "trueOptionsAnswerRu": [
+                "Нурмагомедов Хабиб",
+                "Хабиб Нурмагомедов",
+                "Хабиб",
+                "Нурмагомедов",
+                "Нурмагомедов Хабиб Абдулманапович"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 400,
+              "questionRu": "Введите имя знаменитости",
+              "questionEn": "Enter the name of the celebrity",
+              "descriptionRu": "Родители маленького уроженца Мальорки даже не могли представить, что их сын в будущем получит звание “Короля грунта”. Темпераментный испанец с детства увлекался теннисом, и в 8 лет одержал свою первую победу на чемпионате Испании. Золото олимпиады в Пекине, победы на Ролан Гаррос, кубок Дэвиса, кубки турниров Мастерс принесли звание одной из лучших ракеток мира. Единственный обладатель Красного Шлема.",
+              "descriptionEn": "The parents of a little native of Mallorca could not even imagine that their son would receive the title of “King of the soil” in the future. The temperamental Spaniard has been fond of tennis since childhood, and at the age of 8 he won his first victory in the Spanish Championship. Gold Olympic Games in Beijing, victories at Roland Garros, Davis Cup, Masters Tournament Cups brought the title of one of the best rackets in the world. Sole owner of the Red Helmet.",
+              "trueOptionsAnswerEn": [
+                "Rafael Nadal",
+                "Nadal Rafael",
+                "Rafael Nadal Parera",
+                "Rafa"
+              ],
+              "trueOptionsAnswerRu": [
+                "Рафаэль Надаль",
+                "Надаль Рафаэль",
+                "Надаль"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 500,
+              "questionRu": "Введите имя знаменитости",
+              "questionEn": "Enter the name of the celebrity",
+              "descriptionRu": "Российская фигуристка, серебряный призёр Олимпийских игр 2002 года, бронзовый призёр Олимпийских игр 2006 года, двукратная чемпионка мира (2002, 2005), первая в истории одиночница — семикратная чемпионка Европы (1996, 1997, 2000, 2001, 2003, 2005, 2006), четырёхкратная победительница финалов серии Гран-при (1999—2000, 2000—2001, 2001—2002, 2004—2005).",
+              "descriptionEn": "Russian figure skater, silver medalist of the 2002 Olympic Games, bronze medalist of the 2006 Olympic Games, two-time world champion (2002, 2005), the first single skater in history - seven-time European champion (1996, 1997, 2000, 2001, 2003, 2005, 2006), four-time winner of the Grand Prix series finals (1999-2000, 2000-2001, 2001-2002, 2004-2005).",
+              "trueOptionsAnswerEn": [
+                "Irina Slutskaya",
+                "Slutskaya",
+                "Slutskaya Irina",
+                "Irina Eduardovna Slutskaya"
+              ],
+              "trueOptionsAnswerRu": [
+                "Ирина Слуцкая",
+                "Слуцкая Ирина",
+                "Слуцкая",
+                "Слуцкая Ирина Эдуардовна"
+              ]
+            }
+          ]
+        },
+        {
+          "categoryInfo": {
+            "categoryNameEn": "Basketball rules",
+            "categoryNameRu": "Правила баскетбола"
+          },
+          "questions": [
+            {
+              "type": "checkbox",
+              "subtype": "text",
+              "points": 100,
+              "questionRu": "Выберите правильный вариант",
+              "questionEn": "Choose the right option",
+              "descriptionRu": "Сколько замен можно сделать в течении матча?",
+              "descriptionEn": "How many substitutions can be made during a match?",
+              "answerOptionsEn": [
+                "3",
+                "5",
+                "12",
+                "not limited"
+              ],
+              "answerOptionsRu": [
+                "3",
+                "5",
+                "12",
+                "неограниченно"
+              ],
+              "trueAnswerEn": "not limited",
+              "trueAnswerRu": "неограниченно"
+            },
+            {
+              "type": "checkbox",
+              "subtype": "text",
+              "points": 200,
+              "questionRu": "Выберите правильный вариант",
+              "questionEn": "Choose the right option",
+              "descriptionRu": "Как называется бросок, за который дают 1 очко?",
+              "descriptionEn": "What is the name of the throw for which 1 point is awarded?",
+              "answerOptionsEn": [
+                "Simple throw",
+                "Three-point throw",
+                "Free throw",
+                "Two-point throw"
+              ],
+              "answerOptionsRu": [
+                "Простой",
+                "3х очковый",
+                "Штрафной",
+                "2х очковый"
+              ],
+              "trueAnswerEn": "Free throw",
+              "trueAnswerRu": "Штрафной"
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 300,
+              "questionRu": "Введите правильный ответ",
+              "questionEn": "Enter the correct answer",
+              "descriptionRu": "Как называется дополнительное время, добавленное в случае равенства очков?",
+              "descriptionEn": "What is the name of the extra time added in case of a tie?",
+              "trueOptionsAnswerEn": [
+                "Overtime"
+              ],
+              "trueOptionsAnswerRu": [
+                "Овертайм"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 400,
+              "questionRu": "Введите правильный ответ",
+              "questionEn": "Enter the correct answer",
+              "descriptionRu": "Как называется нарушение, когда игрок делает более двух шагов с мячом в руках?",
+              "descriptionEn": "What is the violation called when a player takes more than two steps with the ball in his hands?",
+              "trueOptionsAnswerEn": [
+                "traveling rule",
+                "traveling",
+                "rule traveling"
+              ],
+              "trueOptionsAnswerRu": [
+                "пробежка"
+              ]
+            },
+            {
+              "type": "checkbox",
+              "subtype": "text",
+              "points": 500,
+              "questionRu": "Выберите правильный вариант",
+              "questionEn": "Choose the right option",
+              "descriptionRu": "Как обычно называют игрока, роль которого заключается в том, чтобы играеть под кольцом и бороться за подбор. Так же он должен быть атлетического телосложения?",
+              "descriptionEn": "As the commonly called player, whose role is to play under the basket and fight for the rebound. He must also be athletic?",
+              "answerOptionsEn": [
+                "power forward",
+                "shooting guard",
+                "center",
+                "point guard"
+              ],
+              "answerOptionsRu": [
+                "тяжелый форвард",
+                "атакующий защитник",
+                "центровой",
+                "разыгрывающий защитник"
+              ],
+              "trueAnswerEn": "center",
+              "trueAnswerRu": "центровой"
+            }
+          ]
+        },
+        {
+          "categoryInfo": {
+            "categoryNameEn": "Martial arts",
+            "categoryNameRu": "Боевые исскуства"
+          },
+          "questions": [
+            {
+              "type": "checkbox",
+              "subtype": "text",
+              "points": 100,
+              "questionRu": "Выберите правильный вариант",
+              "questionEn": "Choose the correct option",
+              "descriptionRu": "Боевым искусством какой страны является карате?",
+              "descriptionEn": "What country is karate martial art?",
+              "answerOptionsEn": [
+                "russia",
+                "japan",
+                "китай",
+                "боливия"
+              ],
+              "answerOptionsRu": [
+                "россия",
+                "япония",
+                "china",
+                "bolivia"
+              ],
+              "trueAnswerEn": "japan",
+              "trueAnswerRu": "япония"
+            },
+            {
+              "type": "checkbox",
+              "subtype": "text",
+              "points": 200,
+              "questionRu": "Выберите правильный вариант",
+              "questionEn": "Choose the correct option",
+              "descriptionRu": "Что используется во время состязаний по дзюдо и карате?",
+              "descriptionEn": "What is used during judo and karate competitions?",
+              "answerOptionsEn": [
+                "tatami",
+                "bansai",
+                "harakiri",
+                "origami"
+              ],
+              "answerOptionsRu": [
+                "татами",
+                "бансай",
+                "харакири",
+                "оригами"
+              ],
+              "trueAnswerEn": "tatami",
+              "trueAnswerRu": "татами"
+            },
+            {
+              "type": "input",
+              "subtype": "text",
+              "points": 300,
+              "questionRu": "Выберите правильный вариант",
+              "questionEn": "Choose the correct option",
+              "descriptionRu": "Как называются формальные технические комплексы приёмов традиционного карате?",
+              "descriptionEn": "What are the formal technical complexes of traditional karate techniques called?",
+              "trueOptionsAnswerEn": [
+                "kata",
+                "ka-ta",
+                "ka ta"
+              ],
+              "trueOptionsAnswerRu": [
+                "ката",
+                "катэ",
+                "ка  та",
+                "ка-та"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 400,
+              "questionRu": "Введите вид единоборства по картинке",
+              "questionEn": "Enter the type of single combat according to the picture",
+              "questionPicture": "https://static.mk.ru/upload/entities/2019/02/14/23/photoreportsImages/detailPicture/4e/cf/a7/d0/5569135_7423559.jpg",
+              "trueOptionsAnswerEn": [
+                "judo"
+              ],
+              "trueOptionsAnswerRu": [
+                "дзюдо"
+              ]
+            },
+            {
+              "type": "input",
+              "subtype": "picture",
+              "points": 500,
+              "questionRu": "Введите название обязательной процедуры, установленной правилами ММА, изветсная как битва взглядов",
+              "questionEn": "Enter the name of the mandatory procedure established by the rules of MMA, known as a battle of views",
+              "questionPicture": "https://s74794.cdn.ngenix.net/m/54d8/821c/9358/f5d2/9b6e/d46d/31ff/2c6d/1600_1000_max.jpeg",
+              "trueOptionsAnswerEn": [
+                "weight-in",
+                "weight in",
+                "weighing"
+              ],
+              "trueOptionsAnswerRu": [
+                "взвешивание"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+@import '../abstracts/constants';
+
+.wrap_mode-dark {
+  background-color: $dark-mode-wrap-bg;
+
+  .container__settings,
+  .title,
+  .parameters,
+  .rules,
+  .clock,
+  .header__user,
+  .global-timer,
+  .statistic {
+    color: $dark-mode-main-text;
+  }
+
+  .container__playground {
+    background-color: $color-red-dark;
+  }
+  .container__active {
+    background-color: $color-yellow-dark;
+  }
+  .container__players {
+    background-color: $color-blue-dark;
+  }
+
+  .playground {
+    color: $dark-mode-main-text;
+    &__table,
+    &__categories-list,
+    &__round {
+      color: $dark-mode-main-text;
+    }
+  }
+
+  .blink {
+    background-color: rgba($color: #35fa03, $alpha: 0.5);
+  }
+
+  footer {
+    background-color: $dark-mode-footer-bg;
+    color: $dark-mode-main-text;
+
+    a {
+      color: $dark-mode-main-text;
+    }
+  }
+
+  .main-menu {
+    color: $dark-mode-main-text;
+
+    &__item {
+      background-color: $dark-mode-main-menu;
+      color: $dark-mode-main-text;
+    }
+  }
+
+  .header__menu-list {
+    background-color: $dark-mode-main-menu;
+  }
+  .burger-menu__lines {
+    .line {
+      border-color: $dark-mode-main-text;
+    }
+  }
+}

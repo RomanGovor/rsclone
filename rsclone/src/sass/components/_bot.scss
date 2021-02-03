@@ -1,0 +1,34 @@
+@import '../abstracts/constants.scss';
+
+.bot {
+  font-size: 1rem;
+  border: 2px solid $color-black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+
+  &__avatar {
+    width: 150px;
+    min-height: 200px;
+    margin: 5px auto;
+    background-size: cover;
+
+    &_man {
+      background-image: url('../assets/icons/man.png');
+    }
+
+    &_woman {
+      background-image: url('../assets/icons/woman.png');
+    }
+
+    &__name {
+      margin: 5px 0;
+    }
+
+    &__score {
+      margin: 5px 0;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+.parameters {
+  display: flex;
+  max-width: $content-big-width;
+  width: 80vw;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__header {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+
+    .select {
+      cursor: pointer;
+      
+      @media screen and (max-width: $content-little-width) {
+        font-size: 1rem;
+      }
+
+      @media screen and (max-width: $content-pre-little) {
+        font-size: 0.6rem;
+      }
+    }
+  }
+
+  &__bots,
+  &__levels,
+  &__avatars,
+  &__packs {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__levels {
+    .select {
+      width: 100px;
+    }
+  }
+
+  &__packs {
+    .select {
+      width: auto;
+    }
+  }
+
+  &__label {
+    font-size: 1.2rem;
+
+    @media screen and (max-width: $content-little-width) {
+      font-size: 1rem;
+    }
+    @media screen and (max-width: $content-pre-little) {
+      font-size: 0.6rem;
+    }
+  }
+
+  &__avatars {
+    margin-top: 15px;
+    flex-direction: column;
+  }
+
+  &__button-start {
+    margin-bottom: 84px;
+    position: sticky;
+    bottom: 20px;
+    transition: all 0.2s;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}

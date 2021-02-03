@@ -1,0 +1,53 @@
+.statistic {
+  max-width: 1600px;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  word-break: break-word;
+
+  &__title {
+    font-weight: bold;
+    font-size: 2rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__close-button {
+    margin-top: 20px;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    border: 1px solid #ffffff;
+    border-bottom: none;
+    width: 60%;
+
+    @media screen and (max-width: 600px) {
+      width: 90%;
+    }
+  }
+
+  &__item {
+    display: flex;
+
+    &-title {
+      padding: 10px;
+      margin: 0;
+      width: 50%;
+      border-bottom: 1px solid #ffffff;
+      border-right: 1px solid #ffffff;
+    }
+
+    &-count {
+      width: 50%;
+      border-bottom: 1px solid #ffffff;
+      padding: 10px;
+    }
+  }
+}
+
+

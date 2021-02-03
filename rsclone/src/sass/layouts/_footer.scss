@@ -1,0 +1,78 @@
+footer {
+  position: absolute;
+  bottom: 0;
+  height: 89px;
+  width: 100%;
+  background: white;
+
+  @media (max-width: $content-little-width) {
+    bottom: -10px;
+  }
+  @media (max-width: $content-middle-keyboard) {
+    bottom: -15px;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 87px;
+  max-width: $content-width;
+  padding: 0 79px;
+
+  &__author,
+  &__courses {
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+
+    @media screen and (max-width: $content-pre-middle) {
+      font-size: 1.5rem;
+    }
+
+    @media screen and (max-width: $content-little-width) {
+      font-size: 1.2rem;
+    }
+
+    @media screen and (max-width: $content-pre-little) {
+      font-size: 0.8rem;
+    }
+  }
+
+  &__author {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.4rem;
+
+    @media (max-width: $content-middle-keyboard) {
+      font-size: 1.2rem;
+    }
+    @media (max-width: $content-little-width) {
+      font-size: 1rem;
+    }
+    @media (max-width: $content-pre-little) {
+      font-size: 0.46rem;
+    }
+  }
+
+  &__author > a,
+  &__courses > a {
+    text-decoration: none;
+  }
+
+  &__logo {
+    position: relative;
+    @include size(121px, 60px);
+    bottom: -10px;
+  }
+
+  @media (max-width: $content-little-width) {
+    padding: 0 10px;
+
+    &__logo {
+      transform: scale(0.75);
+    }
+  }
+}

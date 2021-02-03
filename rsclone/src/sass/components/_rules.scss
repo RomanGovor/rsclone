@@ -1,0 +1,25 @@
+.rules {
+  max-width: $content-big-width;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  word-break: break-word;
+
+  &__header {
+    font-weight: bold;
+    font-size: 2rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__description {
+    font-size: 1.2rem;
+    line-break: auto;
+
+    @media screen and (max-width: $content-pre-middle) {
+      font-size: 1rem;
+    }
+  }
+}
